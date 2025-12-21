@@ -84,6 +84,18 @@
     color: var(--secondary-text);
 }
 
+.about-image {
+    margin-top: 32px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Connect Section */
 .connect-section {
     margin-bottom: 80px;
