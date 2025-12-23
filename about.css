@@ -103,7 +103,7 @@
 
 .clubs-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 24px;
     margin-top: 24px;
 }
@@ -241,12 +241,16 @@
     }
 
     .clubs-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 16px;
     }
 }
 
 @media (max-width: 480px) {
+    .clubs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .about-page-title {
         font-size: 32px;
     }
