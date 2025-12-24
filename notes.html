@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - Jacob Olenick</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="nav-container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-link">Work</a>
+                <a href="notes.html" class="nav-link active">Notes</a>
+                <a href="about.html" class="nav-link">About</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="material-icons theme-icon">dark_mode</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Notes</h1>
+            <p class="page-description">Thoughts and learnings on design systems, product design, and more.</p>
+        </section>
+
+        <!-- Notes List -->
+        <section class="notes-list-section">
+            <div class="note-list-item">
+                <div class="note-list-image">
+                    <img src="images/Notes 1.jpg" alt="Design Systems Note">
+                </div>
+                <div class="note-list-content">
+                    <h2 class="note-list-title">Building Scalable Design Systems</h2>
+                    <p class="note-list-description">Exploring the key principles and best practices for creating design systems that can grow with your organization.</p>
+                    <p class="note-list-date">Nov 15, 2024</p>
+                    
+                    <div class="note-expandable-content">
+                        <p>Creating a design system that scales requires thoughtful planning and a deep understanding of your organization's needs. It's not just about building components—it's about creating a living ecosystem that evolves with your product.</p>
+                        
+                        <p>One of the most important lessons I've learned is to start small and iterate. Don't try to build everything at once. Focus on the most commonly used components and patterns first, then expand as you understand how teams are actually using the system.</p>
+                    </div>
+                    
+                    <button class="read-more-btn">
+                        <span class="read-more-text">Read more</span>
+                        <span class="material-icons read-more-icon">expand_more</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="note-list-item">
+                <div class="note-list-image">
+                    <img src="images/work/mentorship.webp" alt="Design Process Note">
+                </div>
+                <div class="note-list-content">
+                    <h2 class="note-list-title">Lessons from Design Mentorship</h2>
+                    <p class="note-list-description">Reflecting on what I've learned from mentoring designers and being mentored throughout my career.</p>
+                    <p class="note-list-date">Nov 8, 2024</p>
+                    
+                    <div class="note-expandable-content">
+                        <p>Mentorship has been one of the most rewarding aspects of my design career. Whether I'm the mentor or the mentee, I always come away with new perspectives and insights that shape how I approach problems.</p>
+                        
+                        <p>The best mentorship relationships are built on mutual respect and genuine curiosity. It's not about having all the answers—it's about asking the right questions and creating space for growth and experimentation.</p>
+                    </div>
+                    
+                    <button class="read-more-btn">
+                        <span class="read-more-text">Read more</span>
+                        <span class="material-icons read-more-icon">expand_more</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="note-list-item">
+                <div class="note-list-image">
+                    <img src="images/work/figmaprops.png" alt="Component Design Note">
+                </div>
+                <div class="note-list-content">
+                    <h2 class="note-list-title">Advanced Component Architecture in Figma</h2>
+                    <p class="note-list-description">Deep dive into building flexible, maintainable components using properties and variants.</p>
+                    <p class="note-list-date">Oct 28, 2024</p>
+                    
+                    <div class="note-expandable-content">
+                        <p>Figma's component properties and variants have revolutionized how we build design systems. The key is understanding when to use each approach and how to structure your components for maximum flexibility without overcomplicating them.</p>
+                        
+                        <p>I've found that the best component architectures balance flexibility with simplicity. Too many variants can make components overwhelming, while too few can limit their usefulness. Finding that sweet spot comes with experience and user feedback.</p>
+                    </div>
+                    
+                    <button class="read-more-btn">
+                        <span class="read-more-text">Read more</span>
+                        <span class="material-icons read-more-icon">expand_more</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="note-list-item">
+                <div class="note-list-image">
+                    <img src="images/work/office.jpg" alt="Design Process Note">
+                </div>
+                <div class="note-list-content">
+                    <h2 class="note-list-title">Designing for Cross-Platform Consistency</h2>
+                    <p class="note-list-description">How to maintain design consistency across web, iOS, and Android platforms.</p>
+                    <p class="note-list-date">Oct 12, 2024</p>
+                    
+                    <div class="note-expandable-content">
+                        <p>Maintaining consistency across different platforms while respecting platform conventions is one of the biggest challenges in product design. The goal isn't to make everything look identical—it's to create a cohesive experience that feels native to each platform.</p>
+                        
+                        <p>This requires deep understanding of platform guidelines, close collaboration with developers, and a design system that can flex to accommodate platform-specific patterns while maintaining brand consistency.</p>
+                    </div>
+                    
+                    <button class="read-more-btn">
+                        <span class="read-more-text">Read more</span>
+                        <span class="material-icons read-more-icon">expand_more</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="about" class="contact-section">
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+                <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                <a href="#" class="social-link" aria-label="Threads">@</a>
+            </div>
+            
+            <p class="footer-text">
+                <span class="material-icons coffee-icon">coffee</span>
+                Made with cursor and claude and plenty of coffee in Las Vegas, NV
+            </p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
