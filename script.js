@@ -122,3 +122,40 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
     });
 });
 
+// Video Card Controls
+const vantageVideo = document.getElementById('vantage-video');
+if (vantageVideo) {
+    const videoContainer = vantageVideo.closest('.video-container');
+    const playBtn = videoContainer.querySelector('.play-btn');
+    const muteBtn = videoContainer.querySelector('.mute-btn');
+    const playIcon = playBtn.querySelector('.material-icons');
+    const muteIcon = muteBtn.querySelector('.material-icons');
+
+    // Play/Pause toggle
+    playBtn.addEventListener('click', function() {
+        if (vantageVideo.paused) {
+            vantageVideo.play();
+            playIcon.textContent = 'pause';
+        } else {
+            vantageVideo.pause();
+            playIcon.textContent = 'play_arrow';
+        }
+    });
+
+    // Mute/Unmute toggle
+    muteBtn.addEventListener('click', function() {
+        if (vantageVideo.muted) {
+            vantageVideo.muted = false;
+            muteIcon.textContent = 'volume_up';
+        } else {
+            vantageVideo.muted = true;
+            muteIcon.textContent = 'volume_off';
+        }
+    });
+
+    // Update play button when video ends
+    vantageVideo.addEventListener('ended', function() {
+        playIcon.textContent = 'play_arrow';
+    });
+}
+

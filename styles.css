@@ -402,6 +402,57 @@ header {
     color: var(--secondary-text);
 }
 
+/* Video Card */
+.video-card {
+    cursor: default;
+}
+
+.video-card:hover {
+    transform: none;
+}
+
+.video-container {
+    position: relative;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.video-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.video-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+.video-btn .material-icons {
+    font-size: 20px;
+}
+
 /* Stack Section */
 .stack-section {
     margin-bottom: 80px;
