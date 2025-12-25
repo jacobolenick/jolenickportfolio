@@ -155,6 +155,11 @@
     color: var(--primary-text);
 }
 
+.content-section .figma-deck-link {
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
 /* Image Section */
 .image-section {
     margin-top: 64px;
