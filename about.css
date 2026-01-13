@@ -1,0 +1,293 @@
+/* About Page Specific Styles */
+
+.about-container {
+    max-width: 800px;
+}
+
+/* Info Section */
+.info-section {
+    margin-bottom: 80px;
+}
+
+.about-page-title {
+    font-size: 56px;
+    font-weight: 600;
+    margin-bottom: 48px;
+    font-family: var(--heading-font);
+}
+
+/* Photo Stack */
+.photo-stack {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 550px;
+}
+
+.photo-card {
+    position: absolute;
+    width: 320px;
+    height: 480px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-1 {
+    z-index: 3;
+    transform: rotate(-8deg);
+    top: 0;
+    left: 0;
+}
+
+.photo-2 {
+    z-index: 2;
+    transform: rotate(5deg);
+    top: 40px;
+    left: 180px;
+}
+
+.photo-3 {
+    z-index: 1;
+    transform: rotate(-3deg);
+    top: 80px;
+    left: 360px;
+}
+
+.photo-card:hover {
+    z-index: 10;
+    transform: rotate(0deg) scale(1.05);
+}
+
+/* About Me Section */
+.about-me-section {
+    margin-bottom: 64px;
+}
+
+.about-heading {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    font-family: var(--heading-font);
+}
+
+.about-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--secondary-text);
+}
+
+.about-image {
+    margin-top: 32px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Football Clubs Section */
+.football-clubs-section {
+    margin-bottom: 64px;
+}
+
+.clubs-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.club-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 16px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    transition: transform 0.2s ease;
+}
+
+.club-item:hover {
+    transform: translateY(-4px);
+}
+
+.club-item img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.club-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--secondary-text);
+    text-align: center;
+}
+
+/* Connect Section */
+.connect-section {
+    margin-bottom: 80px;
+}
+
+.connect-intro {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--secondary-text);
+    margin-bottom: 32px;
+}
+
+.social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.social-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 18px;
+}
+
+.social-platform {
+    font-weight: 600;
+    color: var(--primary-text);
+}
+
+.social-handle {
+    color: var(--secondary-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.social-handle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-text);
+    transition: width 0.3s ease;
+}
+
+.social-handle:hover {
+    color: var(--primary-text);
+}
+
+.social-handle:hover::after {
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-page-title {
+        font-size: 40px;
+        margin-bottom: 32px;
+    }
+
+    .photo-stack {
+        height: 320px;
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .photo-card {
+        width: 180px;
+        height: 260px;
+        border-radius: 16px;
+    }
+
+    .photo-1 {
+        transform: rotate(-6deg);
+        left: 5%;
+    }
+
+    .photo-2 {
+        left: 30%;
+        top: 20px;
+        transform: rotate(4deg);
+    }
+
+    .photo-3 {
+        left: 55%;
+        top: 40px;
+        transform: rotate(-2deg);
+    }
+
+    .about-heading {
+        font-size: 28px;
+    }
+
+    .about-text,
+    .connect-intro,
+    .social-item {
+        font-size: 16px;
+    }
+
+    .clubs-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clubs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-page-title {
+        font-size: 32px;
+    }
+
+    .photo-stack {
+        height: 240px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .photo-card {
+        width: 130px;
+        height: 190px;
+        border-radius: 12px;
+    }
+
+    .photo-1 {
+        transform: rotate(-5deg);
+        left: 5%;
+    }
+
+    .photo-2 {
+        left: 32%;
+        top: 15px;
+        transform: rotate(3deg);
+    }
+
+    .photo-3 {
+        left: 58%;
+        top: 30px;
+        transform: rotate(-2deg);
+    }
+
+    .social-item {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+    }
+}
+
