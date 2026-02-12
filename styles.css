@@ -493,6 +493,7 @@ header {
     display: flex;
     gap: 0;
     margin-bottom: 0;
+    margin-top: 8px;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -527,14 +528,15 @@ header {
     background: var(--primary-text);
 }
 
+/* Hide all plugin items by default; show only the active category */
 .project-list .project-item[data-category] {
-    display: none;
+    display: none !important;
 }
 
 .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"],
 .project-list[data-active-category="productivity"] .project-item[data-category="productivity"],
 .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] {
-    display: flex;
+    display: flex !important;
 }
 
 .project-list {

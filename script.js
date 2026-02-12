@@ -122,25 +122,33 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
     });
 });
 
-// Figma Plugin tabs
-const pluginTabs = document.querySelectorAll('.plugin-tab');
-const projectList = document.querySelector('.project-list[data-active-category]');
+// Figma Plugin tabs (run when DOM is ready)
+function initPluginTabs() {
+    const pluginTabs = document.querySelectorAll('.plugin-tab');
+    const projectList = document.querySelector('#case-studies .project-list');
+    if (!projectList || !pluginTabs.length) return;
 
-function setPluginTab(category) {
-    if (!projectList) return;
-    projectList.setAttribute('data-active-category', category);
+    function setPluginTab(category) {
+        projectList.setAttribute('data-active-category', category);
+        pluginTabs.forEach(tab => {
+            const isActive = tab.getAttribute('data-category') === category;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', isActive);
+        });
+    }
+
     pluginTabs.forEach(tab => {
-        const isActive = tab.getAttribute('data-category') === category;
-        tab.classList.toggle('active', isActive);
-        tab.setAttribute('aria-selected', isActive);
+        tab.addEventListener('click', () => {
+            setPluginTab(tab.getAttribute('data-category'));
+        });
     });
 }
 
-pluginTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        setPluginTab(tab.getAttribute('data-category'));
-    });
-});
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPluginTabs);
+} else {
+    initPluginTabs();
+}
 
 // Video Card Controls
 const vantageVideo = document.getElementById('vantage-video');
