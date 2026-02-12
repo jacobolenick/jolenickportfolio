@@ -985,7 +985,7 @@ header {
         padding: 40px 16px 80px;
     }
 
-    /* Figma Plugins section - mobile */
+    /* Figma Plugins section - mobile: grid so description has room */
     .plugin-tabs {
         gap: 4px;
         margin-top: 4px;
@@ -997,26 +997,44 @@ header {
         display: none;
     }
     .plugin-tab {
-        padding: 12px 16px 12px 0;
+        padding: 12px 14px 12px 0;
         font-size: 15px;
     }
     .project-item {
-        padding: 16px 12px;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: 36px 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 4px 10px;
+        padding: 16px 14px;
+        align-items: start;
     }
     .project-icon {
         width: 36px;
         height: 36px;
-        margin-right: 4px;
-    }
-    .project-title {
-        font-size: 17px;
-    }
-    .project-description {
-        font-size: 15px;
+        margin-right: 0;
+        grid-row: 1 / -1;
+        grid-column: 1;
+        align-self: center;
     }
     .project-info {
-        padding-right: 12px;
+        grid-column: 2;
+        grid-row: 1 / -1;
+        padding-right: 8px;
+        min-width: 0;
+    }
+    .project-title {
+        font-size: 16px;
+        margin-bottom: 2px;
+    }
+    .project-description {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    .project-arrow {
+        grid-column: 3;
+        grid-row: 1 / -1;
+        align-self: center;
+        flex-shrink: 0;
     }
 
     .hero-title,
@@ -1082,30 +1100,26 @@ header {
         font-size: 28px;
     }
 
-    /* Figma Plugins - small mobile: keep row layout, tighter spacing */
+    /* Figma Plugins - small mobile: same grid, tighter */
     .plugin-tab {
-        padding: 10px 12px 10px 0;
+        padding: 10px 10px 10px 0;
         font-size: 14px;
     }
     .project-item {
+        grid-template-columns: 32px 1fr auto;
+        gap: 2px 8px;
         padding: 14px 12px;
-        gap: 10px;
-        align-items: center;
     }
     .project-icon {
         width: 32px;
         height: 32px;
-        margin-right: 0;
     }
     .project-title {
-        font-size: 16px;
+        font-size: 15px;
     }
     .project-description {
-        font-size: 14px;
-        line-height: 1.4;
-    }
-    .project-arrow {
-        flex-shrink: 0;
+        font-size: 13px;
+        line-height: 1.35;
     }
 
     .notes-grid {
