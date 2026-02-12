@@ -124,9 +124,10 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
 
 // Figma Plugin tabs (run when DOM is ready)
 function initPluginTabs() {
-    const pluginTabs = document.querySelectorAll('.plugin-tab');
+    const section = document.getElementById('case-studies');
     const projectList = document.querySelector('#case-studies .project-list');
-    if (!projectList || !pluginTabs.length) return;
+    const pluginTabs = document.querySelectorAll('.plugin-tab');
+    if (!section || !projectList || !pluginTabs.length) return;
 
     function setPluginTab(category) {
         projectList.setAttribute('data-active-category', category);
@@ -142,21 +143,23 @@ function initPluginTabs() {
         if (category) setPluginTab(category);
     }
 
-    pluginTabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
+    // Delegate to section so taps on tabs always hit this (mobile-friendly)
+    section.addEventListener('click', (e) => {
+        const tab = e.target.closest('.plugin-tab');
+        if (tab) {
             e.preventDefault();
-            handleTabSelect(tab);
-        });
-        // Touch: fire immediately so scroll doesn’t steal the tap
-        tab.addEventListener('touchstart', (e) => {
             e.stopPropagation();
-            e.preventDefault();
-        }, { passive: false });
-        tab.addEventListener('touchend', (e) => {
-            e.preventDefault();
             handleTabSelect(tab);
-        }, { passive: false });
+        }
     });
+    section.addEventListener('touchend', (e) => {
+        const tab = e.target.closest('.plugin-tab');
+        if (tab) {
+            e.preventDefault();
+            e.stopPropagation();
+            handleTabSelect(tab);
+        }
+    }, { passive: false });
 }
 
 if (document.readyState === 'loading') {

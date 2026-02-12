@@ -1032,8 +1032,9 @@ header {
         min-width: 44px;
         display: inline-flex;
         align-items: center;
-        touch-action: manipulation;
+        touch-action: none;
         -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
     }
     /* Plugin list items (mobile only): same category filter as desktop, then icon | title+description | arrow */
     .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"],
