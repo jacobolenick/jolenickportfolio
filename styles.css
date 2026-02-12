@@ -595,7 +595,8 @@ header {
     flex-shrink: 0;
 }
 
-.support-section {
+/* Support section: inside Figma Plugins so production picks up styles */
+.projects-section .support-section {
     margin-top: 48px;
     padding-top: 32px;
     border-top: 1px solid var(--border-color);
@@ -604,15 +605,23 @@ header {
     gap: 20px;
 }
 
-.support-text {
+.projects-section .support-section .support-text {
     font-size: 16px;
     color: var(--secondary-text);
     margin: 0;
     line-height: 1.5;
 }
 
-.support-section a {
+.projects-section .support-section a {
     display: inline-block;
+}
+
+.projects-section .support-section a img {
+    display: block;
+    height: 36px;
+    width: auto;
+    border: 0;
+    vertical-align: middle;
 }
 
 /* Notes Section */
