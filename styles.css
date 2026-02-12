@@ -1000,40 +1000,40 @@ header {
         padding: 12px 14px 12px 0;
         font-size: 15px;
     }
-    .project-item {
-        display: grid;
-        grid-template-columns: 36px 1fr auto;
-        grid-template-rows: auto auto;
-        gap: 4px 10px;
+    /* Plugin list items: icon left, text middle, arrow right — all in one row */
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"],
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"],
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 12px;
         padding: 16px 14px;
-        align-items: start;
     }
-    .project-icon {
+    .project-list .project-item {
+        padding: 16px 14px;
+    }
+    .project-item .project-icon {
         width: 36px;
         height: 36px;
         margin-right: 0;
-        grid-row: 1 / -1;
-        grid-column: 1;
-        align-self: center;
+        flex-shrink: 0;
     }
-    .project-info {
-        grid-column: 2;
-        grid-row: 1 / -1;
-        padding-right: 8px;
+    .project-item .project-info {
+        flex: 1;
         min-width: 0;
+        padding-right: 8px;
     }
-    .project-title {
+    .project-item .project-title {
         font-size: 16px;
         margin-bottom: 2px;
     }
-    .project-description {
+    .project-item .project-description {
         font-size: 14px;
         line-height: 1.4;
     }
-    .project-arrow {
-        grid-column: 3;
-        grid-row: 1 / -1;
-        align-self: center;
+    .project-item .project-arrow {
         flex-shrink: 0;
     }
 
@@ -1100,24 +1100,23 @@ header {
         font-size: 28px;
     }
 
-    /* Figma Plugins - small mobile: same grid, tighter */
+    /* Figma Plugins - small mobile: same horizontal row, tighter */
     .plugin-tab {
         padding: 10px 10px 10px 0;
         font-size: 14px;
     }
-    .project-item {
-        grid-template-columns: 32px 1fr auto;
-        gap: 2px 8px;
+    .project-list .project-item {
+        gap: 10px;
         padding: 14px 12px;
     }
-    .project-icon {
+    .project-item .project-icon {
         width: 32px;
         height: 32px;
     }
-    .project-title {
+    .project-item .project-title {
         font-size: 15px;
     }
-    .project-description {
+    .project-item .project-description {
         font-size: 13px;
         line-height: 1.35;
     }
