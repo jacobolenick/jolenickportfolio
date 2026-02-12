@@ -105,6 +105,24 @@
     transform: scale(1.02);
 }
 
+.gallery-figure {
+    margin: 0;
+}
+
+.gallery-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.gallery-figure figcaption {
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin-top: 8px;
+    text-align: center;
+}
+
 /* Project Content */
 .project-content {
     margin-bottom: 80px;
