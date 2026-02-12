@@ -1028,9 +1028,17 @@ header {
     .plugin-tab {
         padding: 12px 14px 12px 0;
         font-size: 15px;
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
     }
-    /* Plugin list items (mobile only): icon left | title+description | arrow far right */
-    .project-list[data-active-category] .project-item[data-category] {
+    /* Plugin list items (mobile only): same category filter as desktop, then icon | title+description | arrow */
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"],
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"],
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] {
         display: flex !important;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -1038,28 +1046,38 @@ header {
         gap: 12px;
         padding: 16px 14px;
     }
-    .project-list[data-active-category] .project-item[data-category] .project-icon {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"] .project-icon,
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"] .project-icon,
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] .project-icon {
         width: 36px;
         height: 36px;
         margin: 0;
         flex-shrink: 0;
         order: 1;
     }
-    .project-list[data-active-category] .project-item[data-category] .project-info {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"] .project-info,
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"] .project-info,
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] .project-info {
         flex: 1;
         min-width: 0;
         padding-right: 8px;
         order: 2;
     }
-    .project-list[data-active-category] .project-item[data-category] .project-title {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"] .project-title,
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"] .project-title,
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] .project-title {
         font-size: 16px;
         margin-bottom: 2px;
     }
-    .project-list[data-active-category] .project-item[data-category] .project-description {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"] .project-description,
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"] .project-description,
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] .project-description {
         font-size: 14px;
         line-height: 1.4;
     }
-    .project-list[data-active-category] .project-item[data-category] .project-arrow {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"] .project-arrow,
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"] .project-arrow,
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] .project-arrow {
         flex-shrink: 0;
         margin-left: auto;
         order: 3;
@@ -1133,18 +1151,26 @@ header {
         padding: 10px 10px 10px 0;
         font-size: 14px;
     }
-    .project-list[data-active-category] .project-item[data-category] {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"],
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"],
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] {
         gap: 10px;
         padding: 14px 12px;
     }
-    .project-list[data-active-category] .project-item[data-category] .project-icon {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"] .project-icon,
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"] .project-icon,
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] .project-icon {
         width: 32px;
         height: 32px;
     }
-    .project-list[data-active-category] .project-item[data-category] .project-title {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"] .project-title,
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"] .project-title,
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] .project-title {
         font-size: 15px;
     }
-    .project-list[data-active-category] .project-item[data-category] .project-description {
+    .project-list[data-active-category="design-systems"] .project-item[data-category="design-systems"] .project-description,
+    .project-list[data-active-category="productivity"] .project-item[data-category="productivity"] .project-description,
+    .project-list[data-active-category="widgets"] .project-item[data-category="widgets"] .project-description {
         font-size: 13px;
         line-height: 1.35;
     }

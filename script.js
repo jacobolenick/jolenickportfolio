@@ -137,10 +137,21 @@ function initPluginTabs() {
         });
     }
 
+    function handleTabSelect(tab) {
+        const category = tab.getAttribute('data-category');
+        if (category) setPluginTab(category);
+    }
+
     pluginTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            setPluginTab(tab.getAttribute('data-category'));
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleTabSelect(tab);
         });
+        // Touch: fire immediately so scroll doesn’t steal the tap
+        tab.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            handleTabSelect(tab);
+        }, { passive: false });
     });
 }
 
