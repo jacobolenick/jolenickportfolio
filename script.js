@@ -148,6 +148,10 @@ function initPluginTabs() {
             handleTabSelect(tab);
         });
         // Touch: fire immediately so scroll doesn’t steal the tap
+        tab.addEventListener('touchstart', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+        }, { passive: false });
         tab.addEventListener('touchend', (e) => {
             e.preventDefault();
             handleTabSelect(tab);
