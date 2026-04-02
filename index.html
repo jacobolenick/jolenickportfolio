@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="images/work/socialthumbnail.png">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
     <!-- Header -->
@@ -42,14 +42,23 @@
     <main class="container">
         <!-- Hero Section -->
         <section id="home" class="hero-section">
-            <div class="profile-image">
-                <img src="images/profile.png" alt="Jacob Olenick">
+            <div class="figma-cursors" aria-hidden="true">
+                <div class="figma-cursor figma-cursor--you">
+                    <img src="images/figma-cursor-you.png" alt="">
+                </div>
+                <div class="figma-cursor figma-cursor--jacob">
+                    <img src="images/figma-cursor-jacob.png" alt="">
+                </div>
             </div>
-            <h1 class="hero-subtitle">Design Systems Designer working on building free tools, plugins, UI kits, for the design community</h1>
-            <p class="hero-description">
-                I work on the Lilly Design System at Eli Lilly. In my free time I design UI kits for the design community to use for free, I build Figma plugins and widgets as well that make designers work easier. I do all this under my freelance business, DesignOps Studio where I take on Design Systems client work.
-            </p>
-
+            <div class="hero-content">
+                <div class="profile-image">
+                    <img src="images/profile.png" alt="Jacob Olenick">
+                </div>
+                <h1 class="hero-subtitle">Design Systems Designer working on building free tools, plugins, UI kits, for the design community</h1>
+                <p class="hero-description">
+                    I work on the Lilly Design System at Eli Lilly. In my free time I design UI kits for the design community to use for free, I build Figma plugins and widgets as well that make designers work easier. I do all this under my freelance business, DesignOps Studio where I take on Design Systems client work.
+                </p>
+            </div>
         </section>
 
         <!-- Resume Section -->
@@ -343,7 +352,7 @@
         </section>
     </main>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=4"></script>
     <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
     <script>
       kofiWidgetOverlay.draw('jacobolenick', {

@@ -168,6 +168,75 @@ if (document.readyState === 'loading') {
     initPluginTabs();
 }
 
+/** Figma-style drifting cursors on home hero (index only) */
+(function initFigmaCursors() {
+    const root = document.querySelector('.figma-cursors');
+    if (!root) return;
+
+    const cursorEls = root.querySelectorAll('.figma-cursor');
+    if (!cursorEls.length) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const speeds = [0.016, 0.012];
+    /* Keep movement in the upper band so cursor art (extends below anchor) isn’t clipped */
+    const yMin = 0.06;
+    const yMax = 0.42;
+
+    function placeStatic() {
+        const w = root.clientWidth || 1;
+        const h = root.clientHeight || 1;
+        const spots = [
+            { x: 0.12, y: 0.22 },
+            { x: 0.68, y: 0.32 },
+        ];
+        cursorEls.forEach((el, i) => {
+            const s = spots[i] || spots[0];
+            el.style.transform = `translate(${s.x * w}px, ${s.y * h}px)`;
+        });
+    }
+
+    if (reducedMotion) {
+        placeStatic();
+        window.addEventListener('resize', placeStatic);
+        return;
+    }
+
+    const state = Array.from(cursorEls).map((el, i) => ({
+        el,
+        x: 0.08 + Math.random() * 0.84,
+        y: yMin + Math.random() * (yMax - yMin),
+        tx: 0.5,
+        ty: 0.25,
+        speed: speeds[i] ?? 0.014,
+    }));
+
+    function randomTarget(s) {
+        s.tx = 0.05 + Math.random() * 0.9;
+        s.ty = yMin + Math.random() * (yMax - yMin);
+    }
+    state.forEach(randomTarget);
+
+    function tick() {
+        const w = root.clientWidth;
+        const h = root.clientHeight;
+        if (w < 8 || h < 8) {
+            requestAnimationFrame(tick);
+            return;
+        }
+        state.forEach((s) => {
+            s.x += (s.tx - s.x) * s.speed;
+            s.y += (s.ty - s.y) * s.speed;
+            if (Math.hypot(s.tx - s.x, s.ty - s.y) < 0.018) {
+                randomTarget(s);
+            }
+            s.el.style.transform = `translate(${s.x * w}px, ${s.y * h}px)`;
+        });
+        requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+})();
+
 // Video Card Controls
 const vantageVideo = document.getElementById('vantage-video');
 if (vantageVideo) {
