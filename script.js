@@ -1,3 +1,87 @@
+(function initHomeSkeleton() {
+    if (!document.getElementById('home')) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    document.body.classList.add('skeleton-loading');
+    window.setTimeout(() => {
+        document.body.classList.remove('skeleton-loading');
+    }, 750);
+})();
+
+/** Mega footer: reveal when bottom sentinel is in view; scale name to viewport width */
+(function initMegaNameFooter() {
+    const mega = document.querySelector('.mega-name-footer');
+    const el = document.querySelector('.mega-name-footer__text');
+    const sentinel = document.querySelector('.mega-name-scroll-sentinel');
+    if (!mega || !el || !sentinel) return;
+
+    function viewportWidth() {
+        return document.documentElement.clientWidth;
+    }
+
+    function apply() {
+        if (document.body.classList.contains('skeleton-loading')) return;
+        if (!mega.classList.contains('mega-name-footer--visible')) return;
+        const vw = viewportWidth();
+        if (vw < 2) return;
+
+        el.style.fontSize = '100px';
+        const measured = el.scrollWidth;
+        if (!measured) return;
+
+        const px = (100 * vw) / measured;
+        el.style.fontSize = `${px}px`;
+    }
+
+    function run() {
+        window.requestAnimationFrame(apply);
+    }
+
+    function refreshFromSentinel() {
+        if (document.body.classList.contains('skeleton-loading')) return;
+        const r = sentinel.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const inView = r.top < vh && r.bottom > 0;
+        mega.classList.toggle('mega-name-footer--visible', inView);
+        if (inView) {
+            run();
+            window.setTimeout(run, 50);
+        }
+    }
+
+    let scrollRaf = false;
+    function onScrollOrResize() {
+        if (scrollRaf) return;
+        scrollRaf = true;
+        window.requestAnimationFrame(() => {
+            scrollRaf = false;
+            refreshFromSentinel();
+        });
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize);
+
+    function afterFonts() {
+        refreshFromSentinel();
+        window.setTimeout(run, 100);
+        window.setTimeout(run, 900);
+    }
+
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(afterFonts);
+    } else {
+        afterFonts();
+    }
+
+    const moBody = new MutationObserver(() => {
+        if (!document.body.classList.contains('skeleton-loading')) {
+            refreshFromSentinel();
+        }
+    });
+    moBody.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+})();
+
 // Dark Mode Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.querySelector('.theme-icon');
@@ -8,16 +92,19 @@ const currentTheme = localStorage.getItem('theme') || 'light';
 htmlElement.setAttribute('data-theme', currentTheme);
 updateThemeIcon(currentTheme);
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-});
+if (themeToggle && themeIcon) {
+    themeToggle.addEventListener('click', () => {
+        const current = htmlElement.getAttribute('data-theme');
+        const newTheme = current === 'light' ? 'dark' : 'light';
+
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+}
 
 function updateThemeIcon(theme) {
+    if (!themeIcon) return;
     themeIcon.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
 }
 
@@ -82,28 +169,39 @@ postCards.forEach(card => {
     });
 });
 
-// Optional: Add fade-in animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// Optional: fade-in on scroll (delayed on home until skeleton state ends)
+function initSectionFadeIn() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach((section) => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
     });
-}, observerOptions);
+}
 
-// Apply animation to sections (optional - can be removed if not desired)
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
-});
+const skipSkeletonDelay =
+    !document.getElementById('home') ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (skipSkeletonDelay) {
+    initSectionFadeIn();
+} else {
+    window.setTimeout(initSectionFadeIn, 750);
+}
 
 // Read More functionality for notes
 document.querySelectorAll('.read-more-btn').forEach(button => {

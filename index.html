@@ -21,9 +21,9 @@
     <meta name="twitter:image" content="images/work/socialthumbnail.png">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=15">
 </head>
-<body>
+<body class="has-mega-name">
     <!-- Header -->
     <header>
         <nav class="nav-container">
@@ -275,8 +275,10 @@
             </div>
 
             <div class="support-section">
-                <p class="support-text">Support me in making more plugins, resources, and UI kits by buying me a coffee.</p>
-                <a href="https://ko-fi.com/O5O31U1KMI" target="_blank" rel="noopener noreferrer"><img height="36" style="border:0;height:36px;" src="https://storage.ko-fi.com/cdn/kofi1.png?v=6" alt="Buy Me a Coffee at ko-fi.com" /></a>
+                <p class="support-text">Support me in making more plugins, resources, and UI kits.</p>
+                <a href="https://ko-fi.com/O5O31U1KMI" class="kofi-support-btn" target="_blank" rel="noopener noreferrer">
+                    <img src="https://storage.ko-fi.com/cdn/kofi1.png?v=6" alt="Buy me a coffee at ko-fi.com" width="145" height="36" loading="lazy" decoding="async">
+                </a>
             </div>
         </section>
 
@@ -352,16 +354,13 @@
         </section>
     </main>
 
-    <script src="script.js?v=4"></script>
-    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-    <script>
-      kofiWidgetOverlay.draw('jacobolenick', {
-        'type': 'floating-chat',
-        'floating-chat.donateButton.text': 'Support Me',
-        'floating-chat.donateButton.background-color': '#ffffff',
-        'floating-chat.donateButton.text-color': '#323842'
-      });
-    </script>
+    <div class="mega-name-scroll-sentinel" aria-hidden="true"></div>
+
+    <div class="mega-name-footer" aria-hidden="true">
+        <p class="mega-name-footer__text">Jacob Olenick</p>
+    </div>
+
+    <script src="script.js?v=9"></script>
 </body>
 </html>
 
