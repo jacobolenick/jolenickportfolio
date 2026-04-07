@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience - Jacob Olenick</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=19">
 </head>
 <body>
     <!-- Header -->
@@ -15,9 +15,14 @@
                 <a href="/" class="nav-link">Work</a>
                 <a href="/notes/" class="nav-link">Notes</a>
                 <a href="/about/" class="nav-link">About</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                    <span class="material-icons theme-icon">dark_mode</span>
-                </button>
+                <div class="nav-theme-controls">
+                    <button type="button" class="spec-toggle" id="spec-toggle" aria-label="Turn on design spec overlay" aria-pressed="false" title="Show tokens &amp; inspector">
+                        <span class="material-icons spec-icon" aria-hidden="true">straighten</span>
+                    </button>
+                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="material-icons theme-icon">dark_mode</span>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
@@ -199,7 +204,7 @@ Design the design system and B2B (White) experience for AXS                </p>
         </section>
     </main>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=13"></script>
 </body>
 </html>
 

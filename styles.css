@@ -52,6 +52,7 @@
     --site-cursor: url('images/figma-pointer-cursor.png') 1 1, auto;
     --skeleton-base: #e6e6e3;
     --skeleton-shine: #f0f0ec;
+    --header-bg: rgba(247, 247, 244, 0.8);
 }
 
 /* Dark Mode */
@@ -65,6 +66,7 @@
     --grid-dot-color: rgba(255, 255, 255, 0.08);
     --skeleton-base: #2a2a2a;
     --skeleton-shine: #383838;
+    --header-bg: rgba(0, 0, 0, 0.8);
 }
 
 html {
@@ -343,15 +345,11 @@ h1, h2, h3, h4, h5, h6 {
 header {
     position: sticky;
     top: 0;
-    background-color: rgba(247, 247, 244, 0.8);
+    background-color: var(--header-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     z-index: 100;
     transition: background-color 0.3s ease;
-}
-
-[data-theme="dark"] header {
-    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .nav-container {
@@ -367,9 +365,16 @@ header {
     padding: 16px 0;
 }
 
-/* Dark Mode Toggle */
-.theme-toggle {
+/* Theme controls: design spec + light/dark */
+.nav-theme-controls {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.spec-toggle,
+.theme-toggle {
     background: none;
     border: none;
     cursor: pointer;
@@ -382,12 +387,130 @@ header {
     color: var(--primary-text);
 }
 
+.spec-toggle:hover,
 .theme-toggle:hover {
     background-color: var(--hover-bg);
 }
 
+.spec-icon,
 .theme-icon {
     font-size: 20px;
+}
+
+/* Design spec mode — token panel + hover inspector */
+body.spec-mode {
+    cursor: crosshair;
+}
+
+body.spec-mode a,
+body.spec-mode button,
+body.spec-mode [role="button"] {
+    cursor: crosshair;
+}
+
+.spec-mode-highlight {
+    outline: 2px solid var(--accent-color) !important;
+    outline-offset: 2px !important;
+}
+
+#spec-mode-tooltip {
+    position: fixed;
+    z-index: 10001;
+    max-width: min(320px, 92vw);
+    padding: 10px 12px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 11px;
+    line-height: 1.45;
+    color: #f0f0f0;
+    background: rgba(22, 22, 22, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    pointer-events: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+#spec-mode-panel {
+    position: fixed;
+    z-index: 10000;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+    max-height: 44vh;
+    overflow: auto;
+    padding: 0;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 11px;
+    line-height: 1.45;
+    color: #e8e8e8;
+    background: rgba(16, 16, 16, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+}
+
+#spec-mode-panel .spec-panel-inner {
+    padding: 12px 14px 14px;
+}
+
+#spec-mode-panel h3 {
+    font-family: var(--body-font);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: #fff;
+}
+
+#spec-mode-panel h4 {
+    font-family: var(--body-font);
+    font-size: 12px;
+    font-weight: 600;
+    margin: 14px 0 6px;
+    color: #b0b0b0;
+}
+
+#spec-mode-panel h4:first-of-type {
+    margin-top: 0;
+}
+
+#spec-mode-panel dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 10px;
+}
+
+#spec-mode-panel dt {
+    color: #888;
+    font-weight: 400;
+}
+
+#spec-mode-panel dd {
+    margin: 0;
+    color: #e0e0e0;
+    word-break: break-word;
+}
+
+#spec-mode-panel ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+#spec-mode-panel li {
+    margin-bottom: 4px;
+    color: #ccc;
+}
+
+@media (min-width: 768px) {
+    #spec-mode-panel {
+        left: auto;
+        right: 16px;
+        margin: 0;
+    }
 }
 
 .nav-link {

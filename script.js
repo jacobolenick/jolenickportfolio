@@ -85,7 +85,12 @@
 // Dark Mode Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.querySelector('.theme-icon');
+const specToggle = document.getElementById('spec-toggle');
 const htmlElement = document.documentElement;
+
+// Legacy: remove color-palette state
+localStorage.removeItem('palette');
+htmlElement.removeAttribute('data-palette');
 
 // Check for saved theme preference or default to light mode
 const currentTheme = localStorage.getItem('theme') || 'light';
@@ -100,6 +105,7 @@ if (themeToggle && themeIcon) {
         htmlElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
+        refreshSpecPanelTokens();
     });
 }
 
@@ -107,6 +113,216 @@ function updateThemeIcon(theme) {
     if (!themeIcon) return;
     themeIcon.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
 }
+
+// Design spec overlay — CSS variables panel + hover inspector
+const SPEC_TOKEN_VARS = [
+    '--primary-text',
+    '--secondary-text',
+    '--border-color',
+    '--background',
+    '--hover-bg',
+    '--accent-color',
+    '--heading-font',
+    '--body-font',
+    '--grid-dot-color',
+    '--header-bg',
+    '--skeleton-base',
+    '--skeleton-shine'
+];
+
+let specTooltip = null;
+let specPanel = null;
+let specLastEl = null;
+let specMoveHandler = null;
+
+function escapeHtml(s) {
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+function clearSpecHighlight() {
+    if (specLastEl && specLastEl.classList) {
+        specLastEl.classList.remove('spec-mode-highlight');
+    }
+    specLastEl = null;
+}
+
+function hideSpecTooltip() {
+    if (specTooltip) specTooltip.style.display = 'none';
+}
+
+function showSpecTooltip(x, y, text) {
+    if (!specTooltip) return;
+    specTooltip.textContent = text;
+    specTooltip.style.display = 'block';
+    const pad = 14;
+    const tw = specTooltip.offsetWidth;
+    const th = specTooltip.offsetHeight;
+    let left = x + pad;
+    let top = y + pad;
+    if (left + tw > window.innerWidth - 8) left = x - tw - pad;
+    if (top + th > window.innerHeight - 8) top = y - th - pad;
+    if (left < 8) left = 8;
+    if (top < 8) top = 8;
+    specTooltip.style.left = `${left}px`;
+    specTooltip.style.top = `${top}px`;
+}
+
+function getClassSuffix(el) {
+    if (!el.className) return '';
+    const raw =
+        typeof el.className === 'string'
+            ? el.className
+            : el.className.baseVal != null
+              ? String(el.className.baseVal)
+              : '';
+    const parts = raw.trim().split(/\s+/).filter(Boolean).slice(0, 4);
+    return parts.length ? `.${parts.join('.')}` : '';
+}
+
+function buildSpecTooltipText(el) {
+    if (!el || el.nodeType !== 1) return '';
+    const cs = getComputedStyle(el);
+    const cls = getClassSuffix(el);
+    const tag = el.tagName.toLowerCase();
+    return [
+        `${tag}${cls}`,
+        '',
+        `font-size: ${cs.fontSize}`,
+        `line-height: ${cs.lineHeight}`,
+        `font-weight: ${cs.fontWeight}`,
+        `letter-spacing: ${cs.letterSpacing}`,
+        '',
+        `padding: ${cs.padding}`,
+        `margin: ${cs.margin}`,
+        `border-radius: ${cs.borderRadius}`,
+        `border: ${cs.borderWidth} ${cs.borderStyle} ${cs.borderColor}`,
+        '',
+        `width: ${cs.width} | height: ${cs.height}`,
+        `color: ${cs.color}`
+    ].join('\n');
+}
+
+function buildSpecPanelHtml() {
+    const root = getComputedStyle(document.documentElement);
+    const bodyStyle = getComputedStyle(document.body);
+    let rows = '';
+    SPEC_TOKEN_VARS.forEach((name) => {
+        const v = root.getPropertyValue(name).trim();
+        rows += `<dt>${escapeHtml(name)}</dt><dd>${escapeHtml(v)}</dd>`;
+    });
+    const ffShort = bodyStyle.fontFamily.split(',')[0].replace(/"/g, '');
+    return `
+<div class="spec-panel-inner">
+<h3>Design tokens</h3>
+<h4>CSS variables (:root)</h4>
+<dl>${rows}</dl>
+<h4>Typography (body)</h4>
+<ul>
+<li>font-size: ${escapeHtml(bodyStyle.fontSize)}</li>
+<li>line-height: ${escapeHtml(bodyStyle.lineHeight)}</li>
+<li>font-family: ${escapeHtml(ffShort)}…</li>
+</ul>
+<h4>Spacing scale (site)</h4>
+<ul>
+<li>4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px, 80px — gaps / padding</li>
+<li>Background grid: 24px × 24px dot grid</li>
+</ul>
+<h4>Border radius</h4>
+<ul>
+<li>6px, 8px, 12px, 16px, 999px (pills)</li>
+</ul>
+</div>`;
+}
+
+function refreshSpecPanelTokens() {
+    if (specPanel && document.body.classList.contains('spec-mode')) {
+        specPanel.innerHTML = buildSpecPanelHtml();
+    }
+}
+
+function setSpecMode(on) {
+    document.body.classList.toggle('spec-mode', on);
+    localStorage.setItem('specMode', on ? 'on' : 'off');
+    if (specToggle) {
+        specToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+        specToggle.setAttribute(
+            'aria-label',
+            on ? 'Turn off design spec overlay' : 'Turn on design spec overlay'
+        );
+        specToggle.setAttribute('title', on ? 'Hide tokens & inspector' : 'Show tokens & inspector');
+    }
+    if (on) {
+        if (!specTooltip) {
+            specTooltip = document.createElement('div');
+            specTooltip.id = 'spec-mode-tooltip';
+            specTooltip.style.display = 'none';
+            document.body.appendChild(specTooltip);
+        }
+        if (!specPanel) {
+            specPanel = document.createElement('aside');
+            specPanel.id = 'spec-mode-panel';
+            specPanel.setAttribute('aria-label', 'Design tokens');
+            document.body.appendChild(specPanel);
+        }
+        specPanel.innerHTML = buildSpecPanelHtml();
+        specMoveHandler = (e) => {
+            if (!document.body.classList.contains('spec-mode')) return;
+            if (specPanel && specPanel.contains(e.target)) {
+                clearSpecHighlight();
+                hideSpecTooltip();
+                return;
+            }
+            if (e.target.closest && e.target.closest('header')) {
+                clearSpecHighlight();
+                hideSpecTooltip();
+                return;
+            }
+            const el = e.target;
+            if (el.nodeType !== 1) return;
+            clearSpecHighlight();
+            specLastEl = el;
+            el.classList.add('spec-mode-highlight');
+            showSpecTooltip(e.clientX, e.clientY, buildSpecTooltipText(el));
+        };
+        document.addEventListener('mousemove', specMoveHandler, true);
+    } else {
+        clearSpecHighlight();
+        hideSpecTooltip();
+        if (specMoveHandler) {
+            document.removeEventListener('mousemove', specMoveHandler, true);
+            specMoveHandler = null;
+        }
+        if (specPanel) {
+            specPanel.remove();
+            specPanel = null;
+        }
+        if (specTooltip) {
+            specTooltip.remove();
+            specTooltip = null;
+        }
+    }
+}
+
+if (specToggle) {
+    specToggle.addEventListener('click', () => {
+        setSpecMode(!document.body.classList.contains('spec-mode'));
+    });
+}
+
+if (localStorage.getItem('specMode') === 'on') {
+    setSpecMode(true);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (document.body.classList.contains('spec-mode')) {
+        setSpecMode(false);
+    }
+});
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
