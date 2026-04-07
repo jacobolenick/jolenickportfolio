@@ -760,6 +760,122 @@ header {
     font-size: 20px;
 }
 
+/* What I bring — tool cards (above Stack) */
+.bring-section {
+    margin-bottom: 80px;
+}
+
+.bring-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: var(--background);
+}
+
+.bring-card {
+    padding: 28px 24px 32px;
+    border-right: 1px solid var(--border-color);
+    margin: 0;
+}
+
+.bring-card:last-child {
+    border-right: none;
+}
+
+.bring-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.bring-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+[data-theme="dark"] .bring-icon-wrap {
+    background-color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.bring-logo {
+    display: block;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.bring-logo--figma {
+    max-width: 24px;
+    max-height: 36px;
+}
+
+.bring-logo--claude {
+    width: 22px;
+    height: 22px;
+}
+
+.bring-logo--cursor {
+    width: 22px;
+    height: 22px;
+}
+
+.bring-index {
+    font-family: var(--body-font);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--border-color);
+    opacity: 0.85;
+    user-select: none;
+}
+
+[data-theme="dark"] .bring-index {
+    color: var(--secondary-text);
+    opacity: 0.35;
+}
+
+.bring-card-title {
+    font-family: var(--heading-font);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-text);
+}
+
+.bring-card-body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--secondary-text);
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .bring-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bring-card {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .bring-card:last-child {
+        border-bottom: none;
+    }
+}
+
 /* Stack Section */
 .stack-section {
     margin-bottom: 80px;
