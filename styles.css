@@ -1141,6 +1141,15 @@ header {
     display: block;
 }
 
+.note-image--espresso-logo {
+    background-color: #000000;
+}
+
+.note-image--espresso-logo img {
+    object-fit: contain;
+    padding: 12%;
+}
+
 .note-title {
     font-size: 16px;
     font-weight: 600;
@@ -1203,6 +1212,15 @@ header {
     display: block;
 }
 
+.note-list-image--espresso-logo {
+    background-color: #000000;
+}
+
+.note-list-image--espresso-logo img {
+    object-fit: contain;
+    padding: 12%;
+}
+
 .note-list-content {
     display: flex;
     flex-direction: column;
@@ -1233,7 +1251,7 @@ header {
 }
 
 .note-expandable-content.expanded {
-    max-height: 1000px;
+    max-height: 3200px;
 }
 
 .note-expandable-content p {
@@ -1241,6 +1259,18 @@ header {
     color: var(--secondary-text);
     line-height: 1.6;
     margin-top: 16px;
+}
+
+.note-expandable-content .note-inline-figure {
+    margin: 20px 0 0;
+}
+
+.note-expandable-content .note-inline-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
 }
 
 .note-content-link {
