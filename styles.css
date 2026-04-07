@@ -218,7 +218,8 @@ body.skeleton-loading .video-controls {
     pointer-events: none;
 }
 
-body.skeleton-loading .tag {
+body.skeleton-loading .tag,
+body.skeleton-loading .post-pill {
     color: transparent !important;
     border-color: transparent;
     background: linear-gradient(90deg, var(--skeleton-base) 0%, var(--skeleton-shine) 45%, var(--skeleton-base) 90%);
@@ -701,7 +702,27 @@ header {
 .post-title {
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
+}
+
+.post-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.post-pill {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--secondary-text);
+    background-color: var(--hover-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    letter-spacing: 0.01em;
 }
 
 .post-subtitle {
