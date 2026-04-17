@@ -84,26 +84,42 @@
     color: var(--secondary-text);
 }
 
-.about-image {
+.about-photos-row {
     margin-top: 32px;
-    border-radius: 16px;
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
 }
 
-.about-image img {
+.about-photo {
+    margin: 0;
+}
+
+.about-photo img {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 16px;
 }
 
-/* Football Clubs Section */
-.football-clubs-section {
+.about-photo-caption {
+    margin-top: 12px;
+    padding: 0 4px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--secondary-text);
+    text-align: center;
+}
+
+/* Sports teams grid */
+.sports-teams-section {
     margin-bottom: 64px;
 }
 
 .clubs-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     margin-top: 24px;
 }
@@ -243,6 +259,11 @@
     .clubs-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 16px;
+    }
+
+    .about-photos-row {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 }
 
