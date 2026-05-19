@@ -1,0 +1,468 @@
+/* Design System documentation page */
+
+.ds-container {
+    max-width: 800px;
+}
+
+.ds-page-header {
+    margin-bottom: 48px;
+}
+
+.ds-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 64px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ds-toc a {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--secondary-text);
+    text-decoration: none;
+    background-color: var(--hover-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.ds-toc a:hover {
+    color: var(--primary-text);
+}
+
+.ds-section {
+    margin-bottom: 80px;
+    scroll-margin-top: 88px;
+}
+
+.ds-section-label {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--secondary-text);
+    margin-bottom: 12px;
+}
+
+.ds-section-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-family: var(--heading-font);
+}
+
+.ds-section-desc {
+    font-size: 16px;
+    color: var(--secondary-text);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 56ch;
+}
+
+.ds-section-desc code,
+.ds-layout-diagram code,
+.ds-asset-info code {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: var(--hover-bg);
+    border: 1px solid var(--border-color);
+}
+
+.ds-subsection {
+    margin-bottom: 40px;
+}
+
+.ds-subsection-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-family: var(--heading-font);
+}
+
+/* Color swatches */
+.ds-color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+}
+
+.ds-color-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--background);
+}
+
+.ds-color-swatch {
+    height: 72px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ds-color-swatch--primary-text { background-color: var(--primary-text); }
+.ds-color-swatch--secondary-text { background-color: var(--secondary-text); }
+.ds-color-swatch--border { background-color: var(--border-color); }
+.ds-color-swatch--background { background-color: var(--background); }
+.ds-color-swatch--hover-bg { background-color: var(--hover-bg); }
+.ds-color-swatch--accent { background-color: var(--accent-color); }
+.ds-color-swatch--skeleton-base { background-color: var(--skeleton-base); }
+.ds-color-swatch--skeleton-shine { background-color: var(--skeleton-shine); }
+.ds-color-swatch--header-bg {
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+}
+.ds-color-swatch--grid-dot {
+    background-color: var(--background);
+    background-image: radial-gradient(circle at center, var(--grid-dot-color) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.ds-color-meta {
+    padding: 12px;
+}
+
+.ds-color-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.ds-color-token {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: var(--secondary-text);
+    word-break: break-all;
+}
+
+/* Typography */
+.ds-type-specimen {
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    background-color: var(--hover-bg);
+}
+
+.ds-type-specimen--heading {
+    font-family: var(--heading-font);
+}
+
+.ds-type-specimen--body {
+    font-family: var(--body-font);
+}
+
+.ds-type-sample {
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.ds-type-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 13px;
+    color: var(--secondary-text);
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.ds-type-scale-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.ds-type-scale-table th,
+.ds-type-scale-table td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ds-type-scale-table th {
+    font-weight: 600;
+    color: var(--secondary-text);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.ds-type-scale-table td:first-child {
+    font-family: var(--heading-font);
+    font-weight: 600;
+}
+
+.ds-font-weights {
+    display: grid;
+    gap: 12px;
+}
+
+.ds-font-weight-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.ds-font-weight-sample {
+    font-family: var(--heading-font);
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.ds-font-weight-meta {
+    font-size: 13px;
+    color: var(--secondary-text);
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    white-space: nowrap;
+}
+
+/* Icons */
+.ds-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+}
+
+.ds-icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--hover-bg);
+    text-align: center;
+}
+
+.ds-icon-card .material-icons {
+    font-size: 24px;
+    color: var(--primary-text);
+}
+
+.ds-icon-name {
+    font-size: 11px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    color: var(--secondary-text);
+    word-break: break-all;
+}
+
+.ds-icon-note {
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.ds-icon-note a {
+    color: var(--accent-color);
+}
+
+/* Spacing & radius */
+.ds-token-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+.ds-token-card {
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.ds-spacing-bar {
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    margin: 0 auto 12px;
+    max-width: 100%;
+}
+
+.ds-radius-demo {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    background-color: var(--hover-bg);
+    border: 1px solid var(--border-color);
+}
+
+.ds-token-value {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.ds-token-label {
+    font-size: 12px;
+    color: var(--secondary-text);
+}
+
+/* Component showcase */
+.ds-component-block {
+    margin-bottom: 32px;
+}
+
+.ds-component-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--secondary-text);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.ds-component-preview {
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--background);
+}
+
+.ds-component-preview--stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.ds-component-preview--row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.ds-demo-nav {
+    display: flex;
+    gap: 24px;
+    padding: 12px 0;
+}
+
+.ds-demo-card {
+    max-width: 280px;
+}
+
+.ds-demo-resume {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+/* Layout diagram */
+.ds-layout-diagram {
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--secondary-text);
+}
+
+.ds-layout-diagram strong {
+    color: var(--primary-text);
+    font-weight: 600;
+}
+
+/* Motion */
+.ds-motion-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ds-motion-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 15px;
+}
+
+.ds-motion-list li:last-child {
+    border-bottom: none;
+}
+
+.ds-motion-duration {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 13px;
+    color: var(--secondary-text);
+}
+
+/* Assets */
+.ds-asset-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ds-asset-row:last-child {
+    border-bottom: none;
+}
+
+.ds-asset-preview {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--hover-bg);
+}
+
+.ds-asset-preview img {
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.ds-asset-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.ds-asset-info p {
+    font-size: 14px;
+    color: var(--secondary-text);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .ds-section-title {
+        font-size: 28px;
+    }
+
+    .ds-color-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ds-type-scale-table {
+        font-size: 13px;
+    }
+
+    .ds-type-scale-table th,
+    .ds-type-scale-table td {
+        padding: 10px 8px;
+    }
+
+    .ds-font-weight-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
