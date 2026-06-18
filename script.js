@@ -414,3 +414,239 @@ if (vantageVideo) {
     });
 }
 
+// Nav dropdown menus (Work & Notes)
+(function initNavDropdowns() {
+    const WORK_ITEMS = [
+        {
+            href: '/projects/c1b/',
+            image: '/images/work/c1b-design-system-cover.png',
+            title: 'Design System and Product for a large Credit Card Company',
+            description: 'I designed the design system and the product for a large credit card company.'
+        },
+        {
+            href: '/projects/wasai/',
+            image: '/images/work/wasai-visual-app-cover.png',
+            title: 'Visual App Design System',
+            description: 'Design system for an AI image generation platform'
+        },
+        {
+            href: '/projects/axs/',
+            image: '/images/work/axs-4x3.png',
+            title: 'AXS Ticketing',
+            description: 'Event ticketing and seat selection platform'
+        },
+        {
+            href: '/projects/paramount/',
+            image: '/images/work/paramount-streaming-cover.png',
+            title: 'Paramount+',
+            description: 'Streaming platform experience design'
+        },
+        {
+            href: '/projects/publix/',
+            image: '/images/work/publix-design-system-cover.png',
+            title: 'Publix',
+            description: 'Grocery e-commerce and delivery experience'
+        }
+    ];
+
+    const SIDE_PROJECTS = [
+        {
+            href: 'https://espressoterminal.com/',
+            image: '/images/work/espresso-terminal-light.png',
+            title: 'Espresso Terminal',
+            description: 'A terminal for designers that\'s less intimidating and more designer friendly.',
+            external: true
+        },
+        {
+            href: 'https://coffeeorderai.com/',
+            image: '/images/work/coffee-order-cover.png',
+            title: 'Coffee Order',
+            description: 'Your meetings, turned into clean, structured notes.',
+            external: true
+        }
+    ];
+
+    const NOTES_ITEMS = [
+        {
+            href: '/notes/#great-first-week-lilly-creative-people',
+            image: '/images/note-lilly-first-week.png',
+            title: 'Great first week at my new gig with Lilly through Creative People.',
+            description: 'Week one on the Lilly Design System—already impressed by the team and grateful I chose this offer.'
+        },
+        {
+            href: '/notes/#espresso-ui-agentic-design-system',
+            image: '/images/espresso-ui-cover.png',
+            title: 'I\'m building a free product. An Agentic Design System called Espresso UI.',
+            description: 'Giving back, growing the brand, and shipping a Figma-first system with Claude Code and Figma MCP.',
+            logoThumb: true
+        },
+        {
+            href: '/notes/#design-systems-studio',
+            image: '/images/designops-studio-note.png',
+            title: 'I\'m starting something new',
+            description: 'A Design Systems Studio—0 → 1 systems for startups, from Figma to production-ready agentic design systems.'
+        },
+        {
+            href: '/notes/#lilly-design-system-role',
+            image: '/images/logos/creative-people.png',
+            title: 'I\'m stepping into a new design system role at Lilly',
+            description: 'From CVS Health and the Rhythm Design System to Creative People, placed on Eli Lilly.',
+            logoThumb: true
+        }
+    ];
+
+    function createMenuItem(item) {
+        const link = document.createElement('a');
+        link.href = item.href;
+        link.className = 'nav-menu-item';
+        link.setAttribute('role', 'menuitem');
+
+        if (item.external) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        }
+
+        const thumbWrap = document.createElement('div');
+        thumbWrap.className = 'nav-menu-thumb-wrap' + (item.logoThumb ? ' nav-menu-thumb-wrap--logo' : '');
+
+        const img = document.createElement('img');
+        img.className = 'nav-menu-thumb';
+        img.src = item.image;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        thumbWrap.appendChild(img);
+
+        const text = document.createElement('div');
+        text.className = 'nav-menu-text';
+
+        const title = document.createElement('span');
+        title.className = 'nav-menu-title';
+        title.textContent = item.title;
+
+        const desc = document.createElement('span');
+        desc.className = 'nav-menu-desc';
+        desc.textContent = item.description;
+
+        text.appendChild(title);
+        text.appendChild(desc);
+        link.appendChild(thumbWrap);
+        link.appendChild(text);
+
+        return link;
+    }
+
+    function createMenuList(items) {
+        const list = document.createElement('ul');
+        list.className = 'nav-menu-list';
+        list.setAttribute('role', 'none');
+
+        items.forEach(item => {
+            const li = document.createElement('li');
+            li.setAttribute('role', 'none');
+            li.appendChild(createMenuItem(item));
+            list.appendChild(li);
+        });
+
+        return list;
+    }
+
+    function createColumn(label, items) {
+        const col = document.createElement('div');
+        col.className = 'nav-menu-col';
+
+        const labelEl = document.createElement('p');
+        labelEl.className = 'nav-menu-col-label';
+        labelEl.textContent = label;
+
+        col.appendChild(labelEl);
+        col.appendChild(createMenuList(items));
+
+        return col;
+    }
+
+    function buildWorkMenu() {
+        const menu = document.createElement('div');
+        menu.className = 'nav-menu nav-menu--work';
+        menu.setAttribute('role', 'menu');
+        menu.setAttribute('aria-label', 'Work');
+
+        const panel = document.createElement('div');
+        panel.className = 'nav-menu-panel';
+
+        const columns = document.createElement('div');
+        columns.className = 'nav-menu-columns';
+        columns.appendChild(createColumn('Recent Work', WORK_ITEMS));
+        columns.appendChild(createColumn('Side Projects', SIDE_PROJECTS));
+
+        panel.appendChild(columns);
+        menu.appendChild(panel);
+
+        return menu;
+    }
+
+    function buildNotesMenu() {
+        const menu = document.createElement('div');
+        menu.className = 'nav-menu nav-menu--notes';
+        menu.setAttribute('role', 'menu');
+        menu.setAttribute('aria-label', 'Notes');
+
+        const panel = document.createElement('div');
+        panel.className = 'nav-menu-panel';
+        panel.appendChild(createMenuList(NOTES_ITEMS));
+
+        menu.appendChild(panel);
+
+        return menu;
+    }
+
+    function wrapNavLink(link, menu) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'nav-item nav-item--has-menu';
+
+        link.parentNode.insertBefore(wrapper, link);
+        wrapper.appendChild(link);
+        wrapper.appendChild(menu);
+
+        let closeTimer = null;
+
+        function openMenu() {
+            window.clearTimeout(closeTimer);
+            wrapper.classList.add('is-open');
+        }
+
+        function scheduleClose() {
+            window.clearTimeout(closeTimer);
+            closeTimer = window.setTimeout(() => {
+                wrapper.classList.remove('is-open');
+            }, 120);
+        }
+
+        wrapper.addEventListener('mouseenter', openMenu);
+        wrapper.addEventListener('mouseleave', scheduleClose);
+        wrapper.addEventListener('focusin', openMenu);
+        wrapper.addEventListener('focusout', (event) => {
+            if (!wrapper.contains(event.relatedTarget)) {
+                scheduleClose();
+            }
+        });
+
+        menu.querySelectorAll('.nav-menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                wrapper.classList.remove('is-open');
+            });
+        });
+    }
+
+    const workLink = document.querySelector('header .nav-link[href="/"], header .nav-link[href="#home"]');
+    const notesLink = document.querySelector('header .nav-link[href="/notes/"]');
+
+    if (workLink) {
+        wrapNavLink(workLink, buildWorkMenu());
+    }
+
+    if (notesLink) {
+        wrapNavLink(notesLink, buildNotesMenu());
+    }
+})();
+
