@@ -47,12 +47,14 @@
     --accent-color: #0066ff;
     --heading-font: 'Apple Garamond', Georgia, serif;
     --body-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    --grid-dot-color: rgba(0, 0, 0, 0.07);
+    --grid-dot-color: rgba(0, 0, 0, 0.14);
     /* Custom pointer (~32px, typical OS size); hotspot at arrow tip */
     --site-cursor: url('images/figma-pointer-cursor.png') 1 1, auto;
     --skeleton-base: #e6e6e3;
     --skeleton-shine: #f0f0ec;
     --header-bg: rgba(247, 247, 244, 0.8);
+    --project-image-border-width: 4px;
+    --project-image-glass-blur: 12px;
 }
 
 /* Dark Mode */
@@ -63,7 +65,7 @@
     --background: #000000;
     --hover-bg: #1a1a1a;
     --accent-color: #4d9fff;
-    --grid-dot-color: rgba(255, 255, 255, 0.08);
+    --grid-dot-color: rgba(255, 255, 255, 0.16);
     --skeleton-base: #2a2a2a;
     --skeleton-shine: #383838;
     --header-bg: rgba(0, 0, 0, 0.8);
@@ -145,6 +147,9 @@ body.skeleton-loading .profile-image img {
     opacity: 0;
 }
 
+body.skeleton-loading .hero-name,
+body.skeleton-loading .hero-role,
+body.skeleton-loading .hero-location,
 body.skeleton-loading .hero-subtitle,
 body.skeleton-loading .hero-description {
     color: transparent !important;
@@ -399,12 +404,23 @@ header {
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
-    transition: color 0.2s ease;
+    padding: 6px 14px;
+    border-radius: 999px;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover {
     color: var(--primary-text);
+}
+
+.nav-link.active {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+[data-theme="dark"] .nav-link.active {
+    color: #000000;
+    background-color: #ffffff;
 }
 
 /* Container */
@@ -468,18 +484,54 @@ header {
     z-index: 0;
 }
 
+.hero-identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
 .profile-image {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     overflow: hidden;
-    margin-bottom: 24px;
+    flex-shrink: 0;
 }
 
 .profile-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.hero-identity-text {
+    min-width: 0;
+}
+
+.hero-name {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 4px;
+}
+
+.hero-pronouns {
+    font-weight: 500;
+}
+
+.hero-role {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 4px;
+    color: var(--primary-text);
+}
+
+.hero-location {
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--secondary-text);
 }
 
 .hero-title {
@@ -692,6 +744,38 @@ header {
     overflow: hidden;
     position: relative;
     background-color: #f5f5f5;
+}
+
+.post-image::after,
+.project-hero-image::after,
+.section-image::after,
+.gallery-figure::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 2;
+    padding: var(--project-image-border-width);
+    background: linear-gradient(
+        140deg,
+        rgba(255, 255, 255, 0.58) 0%,
+        rgba(255, 255, 255, 0.14) 42%,
+        rgba(255, 255, 255, 0.32) 100%
+    );
+    -webkit-backdrop-filter: blur(var(--project-image-glass-blur)) saturate(1.25);
+    backdrop-filter: blur(var(--project-image-glass-blur)) saturate(1.25);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.72),
+        inset 0 0 16px rgba(255, 255, 255, 0.1);
 }
 
 .post-image img {
@@ -1703,6 +1787,7 @@ body.skeleton-loading .mega-name-footer {
 
     .nav-link {
         font-size: 15px;
+        padding: 6px 12px;
     }
 
     .section-header {

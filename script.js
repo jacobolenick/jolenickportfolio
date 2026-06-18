@@ -135,32 +135,69 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Active navigation link on scroll
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
+// Active navigation link — scroll on home, pathname match elsewhere
+const headerNavLinks = document.querySelectorAll('header .nav-link');
 
-function setActiveNavLink() {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
+if (headerNavLinks.length) {
+    function normalizeNavPath(pathname) {
+        if (!pathname || pathname === '/') return '/';
+        return pathname
+            .replace(/\/index\.html$/, '')
+            .replace(/\.html$/, '')
+            .replace(/\/$/, '') || '/';
+    }
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+    function navLinkMatchesCurrentPage(link) {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#')) return false;
+
+        try {
+            const linkPath = normalizeNavPath(new URL(href, window.location.origin).pathname);
+            const currentPath = normalizeNavPath(window.location.pathname);
+
+            if (linkPath === '/') {
+                return currentPath === '/' || currentPath === '/experience';
+            }
+
+            return currentPath === linkPath || currentPath.startsWith(`${linkPath}/`);
+        } catch {
+            return false;
         }
-    });
+    }
+
+    const isHomeWithHashNav = Boolean(document.querySelector('header .nav-link[href="#home"]'));
+
+    function setActiveNavLinkByScroll() {
+        const sections = document.querySelectorAll('section[id]');
+        let current = '';
+
+        sections.forEach(section => {
+            if (window.pageYOffset >= section.offsetTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        headerNavLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                link.classList.toggle('active', href === `#${current}`);
+            }
+        });
+    }
+
+    function setActiveNavLinkByPath() {
+        headerNavLinks.forEach(link => {
+            link.classList.toggle('active', navLinkMatchesCurrentPage(link));
+        });
+    }
+
+    if (isHomeWithHashNav) {
+        window.addEventListener('scroll', setActiveNavLinkByScroll);
+        window.addEventListener('load', setActiveNavLinkByScroll);
+    } else {
+        setActiveNavLinkByPath();
+    }
 }
-
-window.addEventListener('scroll', setActiveNavLink);
-window.addEventListener('load', setActiveNavLink);
 
 // Add hover effect to post cards
 const postCards = document.querySelectorAll('.post-card');
