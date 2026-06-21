@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System - Jacob Olenick</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../styles.css?v=24">
+    <link rel="stylesheet" href="../design-system.css?v=1">
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="nav-content">
+                <a href="/" class="nav-link">Work</a>
+                <a href="/notes/" class="nav-link">Notes</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/design-system/" class="nav-link active">System</a>
+                <div class="nav-theme-controls">
+                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="material-icons theme-icon">dark_mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container ds-container">
+        <section class="ds-page-header page-header">
+            <h1 class="page-title">Design System</h1>
+            <p class="page-description">Tokens, typography, icons, and components extracted from jacobolenick.com. Toggle light/dark in the header to preview theme-aware values.</p>
+        </section>
+
+        <nav class="ds-toc" aria-label="On this page">
+            <a href="#colors">Colors</a>
+            <a href="#typography">Typography</a>
+            <a href="#icons">Icons</a>
+            <a href="#spacing">Spacing</a>
+            <a href="#radius">Radius</a>
+            <a href="#components">Components</a>
+            <a href="#layout">Layout</a>
+            <a href="#motion">Motion</a>
+            <a href="#assets">Assets</a>
+        </nav>
+
+        <!-- Colors -->
+        <section id="colors" class="ds-section">
+            <p class="ds-section-label">Foundations</p>
+            <h2 class="ds-section-title">Color</h2>
+            <p class="ds-section-desc">Semantic tokens in <code>:root</code> and <code>[data-theme="dark"]</code>. Swatches reflect the active theme.</p>
+
+            <div class="ds-color-grid">
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--primary-text"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Primary text</p>
+                        <p class="ds-color-token">--primary-text</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--secondary-text"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Secondary text</p>
+                        <p class="ds-color-token">--secondary-text</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--border"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Border</p>
+                        <p class="ds-color-token">--border-color</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--background"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Background</p>
+                        <p class="ds-color-token">--background</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--hover-bg"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Hover surface</p>
+                        <p class="ds-color-token">--hover-bg</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--accent"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Accent</p>
+                        <p class="ds-color-token">--accent-color</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--header-bg"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Header</p>
+                        <p class="ds-color-token">--header-bg</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--skeleton-base"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Skeleton base</p>
+                        <p class="ds-color-token">--skeleton-base</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--skeleton-shine"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Skeleton shine</p>
+                        <p class="ds-color-token">--skeleton-shine</p>
+                    </div>
+                </article>
+                <article class="ds-color-card">
+                    <div class="ds-color-swatch ds-color-swatch--grid-dot"></div>
+                    <div class="ds-color-meta">
+                        <p class="ds-color-name">Dot grid</p>
+                        <p class="ds-color-token">--grid-dot-color</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="ds-subsection" style="margin-top: 40px;">
+                <h3 class="ds-subsection-title">Raw values</h3>
+                <table class="ds-type-scale-table">
+                    <thead>
+                        <tr>
+                            <th>Token</th>
+                            <th>Light</th>
+                            <th>Dark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>--primary-text</td><td>#1a1a1a</td><td>#ffffff</td></tr>
+                        <tr><td>--secondary-text</td><td>#666666</td><td>#a0a0a0</td></tr>
+                        <tr><td>--border-color</td><td>#e5e5e5</td><td>#333333</td></tr>
+                        <tr><td>--background</td><td>#F7F7F4</td><td>#000000</td></tr>
+                        <tr><td>--hover-bg</td><td>#eeeeeb</td><td>#1a1a1a</td></tr>
+                        <tr><td>--accent-color</td><td>#0066ff</td><td>#4d9fff</td></tr>
+                        <tr><td>--header-bg</td><td>rgba(247, 247, 244, 0.8)</td><td>rgba(0, 0, 0, 0.8)</td></tr>
+                        <tr><td>--skeleton-base</td><td>#e6e6e3</td><td>#2a2a2a</td></tr>
+                        <tr><td>--skeleton-shine</td><td>#f0f0ec</td><td>#383838</td></tr>
+                        <tr><td>--grid-dot-color</td><td>rgba(0,0,0,0.07)</td><td>rgba(255,255,255,0.08)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section id="typography" class="ds-section">
+            <p class="ds-section-label">Foundations</p>
+            <h2 class="ds-section-title">Typography</h2>
+            <p class="ds-section-desc">Headings use Apple Garamond; UI and body copy use the system sans stack.</p>
+
+            <div class="ds-subsection">
+                <h3 class="ds-subsection-title">Font families</h3>
+                <div class="ds-type-specimen ds-type-specimen--heading">
+                    <p class="ds-type-sample" style="font-size: 40px; font-weight: 600;">Apple Garamond</p>
+                    <p class="ds-type-meta"><span>--heading-font</span><span>'Apple Garamond', Georgia, serif</span></p>
+                </div>
+                <div class="ds-type-specimen ds-type-specimen--body">
+                    <p class="ds-type-sample" style="font-size: 24px; font-weight: 400;">System UI Sans</p>
+                    <p class="ds-type-meta"><span>--body-font</span><span>-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto…</span></p>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3 class="ds-subsection-title">Apple Garamond weights</h3>
+                <div class="ds-font-weights">
+                    <div class="ds-font-weight-row">
+                        <span class="ds-font-weight-sample" style="font-weight: 300;">Light — Design systems that ship</span>
+                        <span class="ds-font-weight-meta">300 · Light</span>
+                    </div>
+                    <div class="ds-font-weight-row">
+                        <span class="ds-font-weight-sample" style="font-weight: 400;">Regular — Design systems that ship</span>
+                        <span class="ds-font-weight-meta">400 · Regular</span>
+                    </div>
+                    <div class="ds-font-weight-row">
+                        <span class="ds-font-weight-sample" style="font-weight: 300; font-style: italic;">Light Italic — Agentic workflows</span>
+                        <span class="ds-font-weight-meta">300 · Light Italic</span>
+                    </div>
+                    <div class="ds-font-weight-row">
+                        <span class="ds-font-weight-sample" style="font-style: italic;">Italic — Agentic workflows</span>
+                        <span class="ds-font-weight-meta">400 · Italic</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-subsection">
+                <h3 class="ds-subsection-title">Type scale</h3>
+                <table class="ds-type-scale-table">
+                    <thead>
+                        <tr>
+                            <th>Sample</th>
+                            <th>Size</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="font-size: 48px; line-height: 1.2;">Aa</td><td>48px</td><td>Hero subtitle, page titles</td></tr>
+                        <tr><td style="font-size: 32px;">Aa</td><td>32px</td><td>Section titles (DS page), post display</td></tr>
+                        <tr><td style="font-size: 24px;">Aa</td><td>24px</td><td>Note list titles, experience titles</td></tr>
+                        <tr><td style="font-size: 20px;">Aa</td><td>20px</td><td>Resume titles, section headers</td></tr>
+                        <tr><td style="font-family: var(--body-font); font-size: 18px; font-weight: 400;">Aa</td><td>18px</td><td>Hero &amp; page descriptions, post titles</td></tr>
+                        <tr><td style="font-family: var(--body-font); font-size: 17px;">Aa</td><td>17px</td><td>Resume body</td></tr>
+                        <tr><td style="font-family: var(--body-font); font-size: 16px;">Aa</td><td>16px</td><td>Base body, nav links</td></tr>
+                        <tr><td style="font-family: var(--body-font); font-size: 15px;">Aa</td><td>15px</td><td>Section labels, tags, read more</td></tr>
+                        <tr><td style="font-family: var(--body-font); font-size: 14px;">Aa</td><td>14px</td><td>Dates, footer, social labels</td></tr>
+                        <tr><td style="font-family: var(--body-font); font-size: 12px;">Aa</td><td>12px</td><td>Post pills</td></tr>
+                    </tbody>
+                </table>
+                <p class="ds-section-desc" style="margin-top: 16px; margin-bottom: 0;">Body default: 16px / line-height 1.6. Section labels: uppercase, letter-spacing 0.05em, weight 600.</p>
+            </div>
+        </section>
+
+        <!-- Icons -->
+        <section id="icons" class="ds-section">
+            <p class="ds-section-label">Foundations</p>
+            <h2 class="ds-section-title">Icons</h2>
+            <p class="ds-icon-note">Google <a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer">Material Icons</a> loaded via stylesheet. Default UI size is 20px; footer coffee uses 18px; video controls use 20px on 40px circular buttons.</p>
+
+            <div class="ds-icon-grid">
+                <div class="ds-icon-card"><span class="material-icons">straighten</span><span class="ds-icon-name">straighten</span></div>
+                <div class="ds-icon-card"><span class="material-icons">dark_mode</span><span class="ds-icon-name">dark_mode</span></div>
+                <div class="ds-icon-card"><span class="material-icons">light_mode</span><span class="ds-icon-name">light_mode</span></div>
+                <div class="ds-icon-card"><span class="material-icons">arrow_forward</span><span class="ds-icon-name">arrow_forward</span></div>
+                <div class="ds-icon-card"><span class="material-icons">arrow_back</span><span class="ds-icon-name">arrow_back</span></div>
+                <div class="ds-icon-card"><span class="material-icons">expand_more</span><span class="ds-icon-name">expand_more</span></div>
+                <div class="ds-icon-card"><span class="material-icons">play_arrow</span><span class="ds-icon-name">play_arrow</span></div>
+                <div class="ds-icon-card"><span class="material-icons">pause</span><span class="ds-icon-name">pause</span></div>
+                <div class="ds-icon-card"><span class="material-icons">volume_off</span><span class="ds-icon-name">volume_off</span></div>
+                <div class="ds-icon-card"><span class="material-icons">volume_up</span><span class="ds-icon-name">volume_up</span></div>
+                <div class="ds-icon-card"><span class="material-icons">coffee</span><span class="ds-icon-name">coffee</span></div>
+            </div>
+        </section>
+
+        <!-- Spacing -->
+        <section id="spacing" class="ds-section">
+            <p class="ds-section-label">Foundations</p>
+            <h2 class="ds-section-title">Spacing</h2>
+            <p class="ds-section-desc">Consistent rhythm across sections and components. No formal spacing token file — values below are used throughout the site.</p>
+
+            <div class="ds-token-grid">
+                <div class="ds-token-card"><div class="ds-spacing-bar" style="width: 8px;"></div><p class="ds-token-value">8px</p><p class="ds-token-label">Tight gaps, pills</p></div>
+                <div class="ds-token-card"><div class="ds-spacing-bar" style="width: 16px;"></div><p class="ds-token-value">16px</p><p class="ds-token-label">List rows, logos</p></div>
+                <div class="ds-token-card"><div class="ds-spacing-bar" style="width: 24px;"></div><p class="ds-token-value">24px</p><p class="ds-token-label">Nav gap, notes grid</p></div>
+                <div class="ds-token-card"><div class="ds-spacing-bar" style="width: 32px;"></div><p class="ds-token-value">32px</p><p class="ds-token-label">Section padding, cards</p></div>
+                <div class="ds-token-card"><div class="ds-spacing-bar" style="width: 48px;"></div><p class="ds-token-value">48px</p><p class="ds-token-label">Post grid gap</p></div>
+                <div class="ds-token-card"><div class="ds-spacing-bar" style="width: 80px;"></div><p class="ds-token-value">80px</p><p class="ds-token-label">Section margin-bottom</p></div>
+            </div>
+        </section>
+
+        <!-- Radius -->
+        <section id="radius" class="ds-section">
+            <p class="ds-section-label">Foundations</p>
+            <h2 class="ds-section-title">Border radius</h2>
+            <p class="ds-section-desc">Rounded corners reinforce a soft, editorial feel. Pills use full rounding (999px).</p>
+
+            <div class="ds-token-grid">
+                <div class="ds-token-card"><div class="ds-radius-demo" style="border-radius: 4px;"></div><p class="ds-token-value">4px</p><p class="ds-token-label">Skeleton chips</p></div>
+                <div class="ds-token-card"><div class="ds-radius-demo" style="border-radius: 8px;"></div><p class="ds-token-value">8px</p><p class="ds-token-label">Note images</p></div>
+                <div class="ds-token-card"><div class="ds-radius-demo" style="border-radius: 10px;"></div><p class="ds-token-value">10px</p><p class="ds-token-label">Logos, Ko-fi btn</p></div>
+                <div class="ds-token-card"><div class="ds-radius-demo" style="border-radius: 12px;"></div><p class="ds-token-value">12px</p><p class="ds-token-label">Cards, resume, posts</p></div>
+                <div class="ds-token-card"><div class="ds-radius-demo" style="border-radius: 16px;"></div><p class="ds-token-value">16px</p><p class="ds-token-label">Tags, bring grid</p></div>
+                <div class="ds-token-card"><div class="ds-radius-demo" style="border-radius: 50%;"></div><p class="ds-token-value">50%</p><p class="ds-token-label">Avatars, icon buttons</p></div>
+                <div class="ds-token-card"><div class="ds-radius-demo" style="border-radius: 999px; width: 64px;"></div><p class="ds-token-value">999px</p><p class="ds-token-label">Pills</p></div>
+            </div>
+        </section>
+
+        <!-- Components -->
+        <section id="components" class="ds-section">
+            <p class="ds-section-label">UI</p>
+            <h2 class="ds-section-title">Components</h2>
+            <p class="ds-section-desc">Live examples using production classes from the portfolio stylesheet.</p>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Navigation</p>
+                <div class="ds-component-preview">
+                    <div class="ds-demo-nav">
+                        <a href="/" class="nav-link">Work</a>
+                        <a href="/notes/" class="nav-link active">Notes</a>
+                        <a href="/about/" class="nav-link">About</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Text links (underline grow)</p>
+                <div class="ds-component-preview ds-component-preview--stack">
+                    <a href="#" class="see-all" onclick="return false;">See all work</a>
+                    <a href="#" class="resume-link" onclick="return false;">Keep reading →</a>
+                    <a href="#" class="figma-deck-link" onclick="return false;">
+                        <span>View Figma Slides Deck</span>
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Tags &amp; pills</p>
+                <div class="ds-component-preview ds-component-preview--row">
+                    <span class="tag">Figma</span>
+                    <span class="tag">Design Systems</span>
+                    <span class="tag">React</span>
+                    <span class="post-pill">Product Design</span>
+                    <span class="post-pill">Design System</span>
+                </div>
+            </div>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Plugin tabs</p>
+                <div class="ds-component-preview" style="padding: 0;">
+                    <div class="plugin-tabs">
+                        <button type="button" class="plugin-tab active">Design Systems</button>
+                        <button type="button" class="plugin-tab">Productivity</button>
+                        <button type="button" class="plugin-tab">Widgets</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Project list item</p>
+                <div class="ds-component-preview" style="padding: 0;">
+                    <a href="#" class="project-item" onclick="return false;">
+                        <img class="project-icon" src="../images/logos/bring-figma.svg" alt="" width="40" height="40">
+                        <div class="project-info">
+                            <h4 class="project-title">Example plugin</h4>
+                            <p class="project-description">Short description in secondary text.</p>
+                        </div>
+                        <span class="project-arrow" aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Resume card</p>
+                <div class="ds-demo-resume">
+                    <p class="section-label">Experience</p>
+                    <div class="resume-item">
+                        <h2 class="resume-title">Role title</h2>
+                        <p class="resume-date">Month Year – Present</p>
+                        <p class="resume-description">Body copy at 17px in secondary color with optional inline link.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Icon buttons</p>
+                <div class="ds-component-preview ds-component-preview--row">
+                    <button type="button" class="theme-toggle" aria-label="Theme toggle demo">
+                        <span class="material-icons theme-icon">dark_mode</span>
+                    </button>
+                    <button type="button" class="video-btn" aria-label="Play demo">
+                        <span class="material-icons">play_arrow</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Read more</p>
+                <div class="ds-component-preview">
+                    <button type="button" class="read-more-btn">
+                        Read more
+                        <span class="material-icons read-more-icon">expand_more</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="ds-component-block">
+                <p class="ds-component-label">Social link</p>
+                <div class="ds-component-preview">
+                    <div class="social-links">
+                        <a href="#" class="social-link" onclick="return false;" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-link social-link-figma" onclick="return false;" aria-label="Figma">F</a>
+                    </div>
+                    <p class="footer-text">
+                        <span class="material-icons coffee-icon">coffee</span>
+                        Footer pattern with secondary text at 14px
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Layout -->
+        <section id="layout" class="ds-section">
+            <p class="ds-section-label">Structure</p>
+            <h2 class="ds-section-title">Layout</h2>
+            <p class="ds-section-desc">Single-column editorial layout with a dotted grid background on the body.</p>
+
+            <div class="ds-layout-diagram">
+                <p><strong>Content max-width:</strong> 680px (.container) — 800px on About &amp; this page</p>
+                <p><strong>Horizontal padding:</strong> 20px</p>
+                <p><strong>Main vertical padding:</strong> 60px top · 120px bottom</p>
+                <p><strong>Header:</strong> sticky, blur backdrop, 1px bottom border</p>
+                <p><strong>Background grid:</strong> 24×24px radial dots via --grid-dot-color</p>
+                <p><strong>Breakpoints:</strong> 768px (nav panel, type tweaks) · 900px (bring grid) · multiple mobile steps in styles.css</p>
+            </div>
+        </section>
+
+        <!-- Motion -->
+        <section id="motion" class="ds-section">
+            <p class="ds-section-label">Interaction</p>
+            <h2 class="ds-section-title">Motion</h2>
+            <p class="ds-section-desc">Subtle transitions; respect <code>prefers-reduced-motion</code> (home skeleton skipped when set).</p>
+
+            <ul class="ds-motion-list">
+                <li><span>Theme / background</span><span class="ds-motion-duration">0.3s ease</span></li>
+                <li><span>Link underline grow</span><span class="ds-motion-duration">0.3s ease</span></li>
+                <li><span>Nav, tags, hovers</span><span class="ds-motion-duration">0.2s ease</span></li>
+                <li><span>Card lift (posts, notes)</span><span class="ds-motion-duration">0.2s ease · translateY(-2px)</span></li>
+                <li><span>Read more chevron</span><span class="ds-motion-duration">0.3s ease · rotate 180°</span></li>
+                <li><span>Home skeleton shimmer</span><span class="ds-motion-duration">1.1s · 750ms total load</span></li>
+                <li><span>Mega name footer reveal</span><span class="ds-motion-duration">0.45s ease</span></li>
+            </ul>
+        </section>
+
+        <!-- Assets -->
+        <section id="assets" class="ds-section">
+            <p class="ds-section-label">Brand</p>
+            <h2 class="ds-section-title">Assets</h2>
+            <p class="ds-section-desc">Custom cursors and brand marks used across the site.</p>
+
+            <div class="ds-asset-row">
+                <div class="ds-asset-preview">
+                    <img src="../images/figma-pointer-cursor.png" alt="">
+                </div>
+                <div class="ds-asset-info">
+                    <h4>Site pointer</h4>
+                    <p>Figma-style arrow · <code>--site-cursor</code> · hotspot 1,1</p>
+                </div>
+            </div>
+            <div class="ds-asset-row">
+                <div class="ds-asset-preview">
+                    <img src="../images/figma-cursor-you.png" alt="">
+                </div>
+                <div class="ds-asset-info">
+                    <h4>Hero cursors</h4>
+                    <p>Decorative multiplayer cursors on the home hero (you + jacob)</p>
+                </div>
+            </div>
+            <div class="ds-asset-row">
+                <div class="ds-asset-preview">
+                    <img src="../images/logos/bring-figma.svg" alt="">
+                </div>
+                <div class="ds-asset-info">
+                    <h4>SVG logos</h4>
+                    <p>Tool marks (Figma, Claude, Cursor, Adobe) and club badges in /images</p>
+                </div>
+            </div>
+            <div class="ds-asset-row">
+                <div class="ds-asset-preview" style="font-family: var(--heading-font); font-size: 28px; font-weight: 600;">Ag</div>
+                <div class="ds-asset-info">
+                    <h4>Apple Garamond files</h4>
+                    <p>fonts/AppleGaramond*.ttf — Regular, Light, Italic, Light Italic</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../script.js?v=15"></script>
+</body>
+</html>
