@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="images/work/socialthumbnail.png">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles.css?v=26">
+    <link rel="stylesheet" href="styles.css?v=28">
 </head>
 <body class="has-mega-name">
     <!-- Header -->
@@ -469,23 +469,37 @@
     </div>
 
     <div class="pokeball-widget" id="pokeball-widget">
-        <div class="pokeball-reveal" id="pokeball-reveal" hidden>
-            <div class="pokeball-reveal__flash" aria-hidden="true"></div>
-            <div class="pokeball-reveal__sparkles" aria-hidden="true">
-                <span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <figure class="pikachu-reveal">
-                <img src="images/pikachu.png" alt="" width="1000" height="1000" class="pikachu-reveal__image">
-                <figcaption class="pikachu-reveal__caption">Pika!</figcaption>
-            </figure>
-        </div>
-        <button type="button" class="pokeball-btn" id="pokeball-btn" aria-label="Throw Poké Ball" aria-expanded="false" aria-controls="pokeball-reveal">
+        <button type="button" class="pokeball-btn" id="pokeball-btn" aria-label="Throw Poké Ball" aria-expanded="false" aria-controls="pokeball-video-modal">
             <span class="pokeball-btn__glow" aria-hidden="true"></span>
             <img src="images/pokeball.svg" alt="" width="56" height="56" class="pokeball-btn__ball">
         </button>
     </div>
 
-    <script src="script.js?v=16"></script>
+    <div class="pokeball-video-modal" id="pokeball-video-modal" hidden>
+        <div class="pokeball-video-modal__backdrop" id="pokeball-video-backdrop" aria-hidden="true"></div>
+        <div class="pokeball-video-modal__content" role="dialog" aria-modal="true" aria-labelledby="pokeball-video-title">
+            <h2 class="pokeball-video-modal__title" id="pokeball-video-title">Ash and Pikachu's first meeting</h2>
+            <video class="pokeball-video-modal__video" id="pokeball-video" playsinline preload="metadata" src="video/ash-pikachu-first-meeting.mp4"></video>
+            <div class="pokeball-video-modal__timeline">
+                <span class="pokeball-video-modal__time" id="pokeball-video-current" aria-hidden="true">0:00</span>
+                <input type="range" class="pokeball-video-modal__seek" id="pokeball-video-seek" min="0" max="0" value="0" step="0.1" aria-label="Video timeline" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+                <span class="pokeball-video-modal__time" id="pokeball-video-duration" aria-hidden="true">0:00</span>
+            </div>
+            <div class="pokeball-video-modal__toolbar">
+                <button type="button" class="pokeball-video-modal__btn" id="pokeball-video-play" aria-label="Pause">
+                    <span class="material-icons" aria-hidden="true">pause</span>
+                </button>
+                <button type="button" class="pokeball-video-modal__btn" id="pokeball-video-mute" aria-label="Mute">
+                    <span class="material-icons" aria-hidden="true">volume_up</span>
+                </button>
+                <button type="button" class="pokeball-video-modal__btn pokeball-video-modal__btn--close" id="pokeball-video-close" aria-label="Close video">
+                    <span class="material-icons" aria-hidden="true">close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=19"></script>
 </body>
 </html>
 

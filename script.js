@@ -650,19 +650,67 @@ if (vantageVideo) {
     }
 })();
 
-/** Poké Ball easter egg: shake, throw, reveal Pikachu (home only) */
+/** Poké Ball easter egg: shake, throw, play Ash & Pikachu video (home only) */
 (function initPokeballWidget() {
     const widget = document.getElementById('pokeball-widget');
     const btn = document.getElementById('pokeball-btn');
-    const reveal = document.getElementById('pokeball-reveal');
-    if (!widget || !btn || !reveal) return;
+    const modal = document.getElementById('pokeball-video-modal');
+    const backdrop = document.getElementById('pokeball-video-backdrop');
+    const video = document.getElementById('pokeball-video');
+    const playBtn = document.getElementById('pokeball-video-play');
+    const muteBtn = document.getElementById('pokeball-video-mute');
+    const closeBtn = document.getElementById('pokeball-video-close');
+    const seek = document.getElementById('pokeball-video-seek');
+    const currentTimeEl = document.getElementById('pokeball-video-current');
+    const durationEl = document.getElementById('pokeball-video-duration');
+    if (!widget || !btn || !modal || !video || !playBtn || !muteBtn || !closeBtn || !seek || !currentTimeEl || !durationEl) return;
 
+    const playIcon = playBtn.querySelector('.material-icons');
+    const muteIcon = muteBtn.querySelector('.material-icons');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let isAnimating = false;
     let isOpen = false;
+    let isSeeking = false;
+
+    function formatTime(seconds) {
+        if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function updateSeekAccessibility() {
+        const current = Number(seek.value) || 0;
+        const max = Number(seek.max) || 0;
+        seek.setAttribute('aria-valuenow', String(Math.round(current)));
+        seek.setAttribute('aria-valuemax', String(Math.round(max)));
+        seek.setAttribute('aria-valuetext', `${formatTime(current)} of ${formatTime(max)}`);
+    }
+
+    function setDuration() {
+        if (!Number.isFinite(video.duration)) return;
+        seek.max = String(video.duration);
+        durationEl.textContent = formatTime(video.duration);
+        updateSeekAccessibility();
+    }
+
+    function updateTimeline() {
+        if (isSeeking || !Number.isFinite(video.duration)) return;
+        seek.value = String(video.currentTime);
+        currentTimeEl.textContent = formatTime(video.currentTime);
+        updateSeekAccessibility();
+    }
+
+    function resetTimeline() {
+        seek.value = '0';
+        seek.max = '0';
+        currentTimeEl.textContent = '0:00';
+        durationEl.textContent = '0:00';
+        updateSeekAccessibility();
+    }
 
     function resetClasses() {
-        widget.classList.remove('is-active', 'is-shaking', 'is-throwing', 'is-revealing', 'is-visible');
+        widget.classList.remove('is-active', 'is-shaking', 'is-throwing');
     }
 
     function showBall() {
@@ -680,44 +728,51 @@ if (vantageVideo) {
         btn.hidden = true;
     }
 
-    function openReveal() {
-        reveal.hidden = false;
-        btn.setAttribute('aria-expanded', 'true');
-        hideBall();
-        widget.classList.add('is-active', 'is-revealing');
-
-        window.setTimeout(() => {
-            widget.classList.add('is-visible');
-            widget.classList.remove('is-revealing');
-            isAnimating = false;
-            isOpen = true;
-        }, reducedMotion ? 50 : 900);
+    function updatePlayButton() {
+        const isPlaying = !video.paused && !video.ended;
+        playBtn.setAttribute('aria-label', isPlaying ? 'Pause' : 'Play');
+        if (playIcon) playIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
     }
 
-    function closeReveal() {
+    function updateMuteButton() {
+        const isMuted = video.muted;
+        muteBtn.setAttribute('aria-label', isMuted ? 'Unmute' : 'Mute');
+        if (muteIcon) muteIcon.textContent = isMuted ? 'volume_off' : 'volume_up';
+    }
+
+    function openVideoModal() {
+        modal.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+        hideBall();
+        document.body.classList.add('pokeball-video-open');
+        video.currentTime = 0;
+        video.muted = false;
+        updateMuteButton();
+        setDuration();
+        updateTimeline();
+        video.play().then(updatePlayButton).catch(updatePlayButton);
+        isAnimating = false;
+        isOpen = true;
+    }
+
+    function closeVideoModal() {
         isOpen = false;
         isAnimating = false;
+        isSeeking = false;
+        video.pause();
+        video.currentTime = 0;
+        modal.hidden = true;
+        document.body.classList.remove('pokeball-video-open');
         resetClasses();
-        reveal.hidden = true;
+        resetTimeline();
         showBall();
-
-        const pikachu = reveal.querySelector('.pikachu-reveal');
-        const caption = reveal.querySelector('.pikachu-reveal__caption');
-        if (pikachu) {
-            pikachu.style.animation = 'none';
-            pikachu.style.opacity = '';
-            pikachu.style.transform = '';
-        }
-        if (caption) {
-            caption.style.animation = 'none';
-            caption.style.opacity = '';
-        }
+        updatePlayButton();
     }
 
     function playCatchSequence() {
         if (isAnimating) return;
         if (isOpen) {
-            closeReveal();
+            closeVideoModal();
             return;
         }
 
@@ -730,7 +785,8 @@ if (vantageVideo) {
         }, reducedMotion ? 0 : 650);
 
         window.setTimeout(() => {
-            openReveal();
+            resetClasses();
+            openVideoModal();
         }, reducedMotion ? 80 : 1100);
     }
 
@@ -739,17 +795,54 @@ if (vantageVideo) {
         playCatchSequence();
     });
 
-    reveal.addEventListener('click', () => {
-        if (isOpen && !isAnimating) closeReveal();
+    playBtn.addEventListener('click', () => {
+        if (video.paused || video.ended) {
+            if (video.ended) video.currentTime = 0;
+            video.play().catch(() => {});
+        } else {
+            video.pause();
+        }
+        updatePlayButton();
     });
 
-    document.addEventListener('click', (event) => {
-        if (!isOpen || isAnimating) return;
-        if (!widget.contains(event.target)) closeReveal();
+    muteBtn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        updateMuteButton();
     });
+
+    closeBtn.addEventListener('click', closeVideoModal);
+    backdrop.addEventListener('click', closeVideoModal);
+
+    seek.addEventListener('pointerdown', () => {
+        isSeeking = true;
+    });
+
+    seek.addEventListener('input', () => {
+        const nextTime = Number(seek.value);
+        video.currentTime = nextTime;
+        currentTimeEl.textContent = formatTime(nextTime);
+        updateSeekAccessibility();
+    });
+
+    seek.addEventListener('change', () => {
+        video.currentTime = Number(seek.value);
+        isSeeking = false;
+        updateTimeline();
+    });
+
+    seek.addEventListener('pointerup', () => {
+        isSeeking = false;
+    });
+
+    video.addEventListener('play', updatePlayButton);
+    video.addEventListener('pause', updatePlayButton);
+    video.addEventListener('ended', updatePlayButton);
+    video.addEventListener('timeupdate', updateTimeline);
+    video.addEventListener('loadedmetadata', setDuration);
+    video.addEventListener('durationchange', setDuration);
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && isOpen && !isAnimating) closeReveal();
+        if (event.key === 'Escape' && isOpen && !isAnimating) closeVideoModal();
     });
 })();
 
