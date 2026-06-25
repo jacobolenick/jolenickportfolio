@@ -424,6 +424,12 @@ if (vantageVideo) {
             description: 'I designed the design system and the product for a large credit card company.'
         },
         {
+            href: '/projects/orgspace/',
+            image: '/images/work/orgspace-cover.png',
+            title: 'Orgspace | Modernizing an Enterprise Platform to Support Growth',
+            description: 'Redesigning key workflows and establishing a scalable design system for organizational planning.'
+        },
+        {
             href: '/projects/wasai/',
             image: '/images/work/wasai-visual-app-cover.png',
             title: 'Visual App Design System',
