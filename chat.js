@@ -1,5 +1,5 @@
 /**
- * Site chat — answers questions from a knowledge base built from
+ * Site chat - answers questions from a knowledge base built from
  * content on jacobolenick.com (work, career, sports, about, etc.).
  */
 (function initSiteChat() {
@@ -8,36 +8,36 @@
             company: 'Creative People (placed on Eli Lilly)',
             aliases: ['lilly', 'eli lilly', 'creative people', 'current', 'present', 'now'],
             role: 'Senior Product Designer, Design Systems (Super IC)',
-            dates: 'April 26 – Present',
+            dates: 'April 26 - Present',
             detail: 'Helps design and build the Lilly Design System across numerous sites and pages.'
         },
         {
             company: 'DesignOps Studio',
             aliases: ['designops', 'design ops', 'studio', 'freelance'],
             role: 'Founder',
-            dates: '2025 – Present',
+            dates: '2025 - Present',
             detail: 'Builds plugins, tools, UI kits, and resources for the design community, plus Design Systems client work.'
         },
         {
             company: 'CVS Health',
             aliases: ['cvs', 'cvshealth', 'cvs health', 'pharmacy', 'rhythm'],
             role: 'Lead Product Designer, Design Systems Advocate',
-            dates: '2024 – March 2026',
+            dates: '2024 - March 2026',
             detail: 'Built the design system for the pharmacist application and designed the pharmacy experience (Rhythm Design System advocacy).'
         },
         {
             company: 'Adobe',
             aliases: ['adobe', 'behance', 'adobe portfolio'],
             role: 'Product Design Consultant',
-            dates: '2024 – 2025',
+            dates: '2024 - 2025',
             detail: 'Independent consultant for ~11 months on Adobe Portfolio and an integrated Behance + Adobe Portfolio experience.'
         },
         {
             company: 'Credit One Bank',
             aliases: ['credit one', 'c1b', 'credit card', 'bank'],
             role: 'Lead Product Designer and Design Systems',
-            dates: '2023 – 2024',
-            detail: 'Led a comprehensive design system for internal banking software — 281 Figma components across 5 workspaces.'
+            dates: '2023 - 2024',
+            detail: 'Led a comprehensive design system for internal banking software - 281 Figma components across 5 workspaces.'
         },
         {
             company: 'Cisco',
@@ -50,7 +50,7 @@
             company: 'Wells Fargo',
             aliases: ['wells fargo', 'wells', 'fargo', 'vantage'],
             role: 'Senior Lead Product Designer',
-            dates: '2022 – 2023',
+            dates: '2022 - 2023',
             detail: 'Designed the Vantage product for Wells Fargo.'
         },
         {
@@ -103,7 +103,7 @@
         {
             id: 'personal',
             keywords: ['dog', 'cat', 'pet', 'pets', 'husband', 'family', 'doodle', 'kombucha'],
-            answer: 'Outside of design, Jacob watches soccer with kombucha or coffee, builds digital products and experiments with interior design. He\'s a husband and a proud dog and cat dad — a golden doodle and a tuxedo cat.'
+            answer: 'Outside of design, Jacob watches soccer with kombucha or coffee, builds digital products and experiments with interior design. He\'s a husband and a proud dog and cat dad - a golden doodle and a tuxedo cat.'
         },
         {
             id: 'contact',
@@ -113,12 +113,12 @@
         {
             id: 'projects',
             keywords: ['portfolio projects', 'case study', 'case studies', 'featured work'],
-            answer: 'Featured work includes design systems and product design for Credit One Bank (C1B), Orgspace, Visual App / Wasai, AXS Ticketing, Paramount+, Publix, and Wells Fargo Vantage. Side projects include Espresso Terminal and Coffee Order. Browse Work on the home page.'
+            answer: 'Featured work includes design systems and product design for Paramount+, Credit One Bank (C1B), Orgspace, Visual App / Wasai, AXS Ticketing, Publix, and Wells Fargo Vantage. Side projects include Espresso UI, Espresso Terminal, and Coffee Order. Browse Work on the home page.'
         },
         {
             id: 'orgspace',
             keywords: ['orgspace'],
-            answer: 'Orgspace was about modernizing an enterprise platform — redesigning key workflows and establishing a scalable design system for organizational planning.'
+            answer: 'Orgspace was about modernizing an enterprise platform - redesigning key workflows and establishing a scalable design system for organizational planning.'
         },
         {
             id: 'wasai',
@@ -133,7 +133,7 @@
         {
             id: 'espresso-terminal',
             keywords: ['espresso terminal'],
-            answer: 'Espresso Terminal is a side project Jacob designed and developed — a terminal for designers that\'s less intimidating and more designer-friendly. Live at espressoterminal.com.'
+            answer: 'Espresso Terminal is a side project Jacob designed and developed - a terminal for designers that\'s less intimidating and more designer-friendly. Live at espressoterminal.com.'
         },
         {
             id: 'coffee-order',
@@ -142,13 +142,13 @@
         },
         {
             id: 'espresso-ui',
-            keywords: ['espresso ui', 'agentic design system'],
-            answer: 'Espresso UI is a free Agentic Design System Jacob is building — designed in Figma and translated into code with Claude Code and Figma MCP. He wrote about it in Notes.'
+            keywords: ['espresso ui', 'espressoui', 'shadcn', 'figma library', 'agentic design system'],
+            answer: 'Espresso UI is Jacob\'s free Figma design library for SaaS founders, freelancers, and solopreneurs. He built it in about two months on the shadcn framework after founders and designers asked for a library they could use - and because he needed one for his own projects. Live at espressoui.com.'
         },
         {
             id: 'plugins',
             keywords: ['plugin', 'plugins', 'figma plugin', 'textorize', 'tokenizely', 'colorize'],
-            answer: 'Jacob builds Figma plugins and widgets under DesignOps Studio — including Textorize It, Shadow It, Colorize It, DS Checklist, Tokenizely, Page-Generator, Design Tasks, and UpVote. See Figma Plugins on the About page.'
+            answer: 'Jacob builds Figma plugins and widgets under DesignOps Studio - including Textorize It, Shadow It, Colorize It, DS Checklist, Tokenizely, Page-Generator, Design Tasks, and UpVote. See Figma Plugins on the About page.'
         },
         {
             id: 'designops',
@@ -158,12 +158,12 @@
         {
             id: 'stack',
             keywords: ['stack', 'tools', 'claude', 'cursor', 'what tools'],
-            answer: 'Jacob\'s stack centers on Figma (libraries & Make), Claude Code, Cursor, and Figma MCP — plus Miro, ChatGPT, Material Design, Tailwind UI, Shadcn, HIG, Notion, Jira, and more.'
+            answer: 'Jacob\'s stack centers on Figma (libraries & Make), Claude Code, Cursor, and Figma MCP - plus Miro, ChatGPT, Material Design, Tailwind UI, Shadcn, HIG, Notion, Jira, and more.'
         },
         {
             id: 'notes',
             keywords: ['notes', 'blog', 'writing'],
-            answer: 'Jacob shares short notes on the Notes page — recent ones cover his first week at Lilly and building Espresso UI.'
+            answer: 'Jacob shares short notes on the Notes page - recent ones cover his first week at Lilly and building Espresso UI.'
         }
     ];
 
@@ -181,7 +181,7 @@
     }
 
     function formatJob(job) {
-        return `${job.company} — ${job.role} (${job.dates}). ${job.detail}`;
+        return `${job.company} - ${job.role} (${job.dates}). ${job.detail}`;
     }
 
     function formatTimeline() {
@@ -241,7 +241,7 @@
         if (!q) return 'Ask me anything about Jacob\'s work, career, sports teams, or projects.';
 
         if (GREETINGS.test(q)) {
-            return 'Hey — ask about where Jacob worked, when he was at a company, DesignOps Studio, projects, or sports teams.';
+            return 'Hey - ask about where Jacob worked, when he was at a company, DesignOps Studio, projects, or sports teams.';
         }
         if (THANKS.test(q)) {
             return 'You\'re welcome. Ask another question anytime.';
@@ -382,7 +382,7 @@
             root.classList.add('site-chat--open');
             if (!messages.childElementCount) {
                 addMessage(
-                    'Hi — ask where Jacob worked, when he was at a company, or about projects and sports teams.',
+                    'Hi - ask where Jacob worked, when he was at a company, or about projects and sports teams.',
                     'bot'
                 );
             }

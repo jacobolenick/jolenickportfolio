@@ -156,7 +156,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Active navigation link — scroll on home, pathname match elsewhere
+// Active navigation link - scroll on home, pathname match elsewhere
 const headerNavLinks = document.querySelectorAll('header .nav-link');
 
 if (headerNavLinks.length) {

@@ -419,7 +419,7 @@ header {
     padding: 60px 20px 120px;
 }
 
-/* Hero Section — stacked like a simple personal intro */
+/* Hero Section - stacked like a simple personal intro */
 .hero-section {
     max-width: 520px;
     margin-bottom: 80px;
@@ -897,7 +897,7 @@ header {
     font-size: 20px;
 }
 
-/* What I bring — tool cards (above Stack) */
+/* What I bring - tool cards (above Stack) */
 .bring-section {
     margin-bottom: 80px;
 }
@@ -1606,7 +1606,7 @@ header {
     visibility: hidden;
 }
 
-/* Mega typography footer (home) — pinned to viewport bottom; revealed at scroll end */
+/* Mega typography footer (home) - pinned to viewport bottom; revealed at scroll end */
 body.has-mega-name {
     overflow-x: clip;
 }
@@ -1700,7 +1700,7 @@ body.skeleton-loading .mega-name-footer {
         gap: 40px;
     }
 
-    /* Tabs — mobile */
+    /* Tabs - mobile */
     .plugin-tabs {
         gap: 8px 20px;
         overflow-x: auto;
@@ -2188,7 +2188,7 @@ body.pokeball-video-open {
 }
 
 
-/* Site chat — bottom center */
+/* Site chat - bottom center */
 .site-chat {
     position: fixed;
     left: 50%;

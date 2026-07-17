@@ -83,6 +83,48 @@
     display: block;
 }
 
+.project-hero-block {
+    margin-bottom: 40px;
+}
+
+.project-hero-block .project-hero-image {
+    margin-bottom: 12px;
+}
+
+.project-image-caption {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--secondary-text);
+    letter-spacing: -0.01em;
+}
+
+/* Espresso UI project page */
+.espresso-ui-page .project-intro,
+.espresso-ui-page .metric-label,
+.espresso-ui-page .project-image-caption,
+.espresso-ui-page .content-section p,
+.espresso-ui-page .content-section li {
+    color: #8a8a8a;
+}
+
+.espresso-ui-page .content-section strong {
+    color: #6e6e6e;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .espresso-ui-page .project-intro,
+[data-theme="dark"] .espresso-ui-page .metric-label,
+[data-theme="dark"] .espresso-ui-page .project-image-caption,
+[data-theme="dark"] .espresso-ui-page .content-section p,
+[data-theme="dark"] .espresso-ui-page .content-section li {
+    color: #9a9a9a;
+}
+
+[data-theme="dark"] .espresso-ui-page .content-section strong {
+    color: #b8b8b8;
+}
+
 /* Project Gallery */
 .project-gallery {
     margin-bottom: 64px;
