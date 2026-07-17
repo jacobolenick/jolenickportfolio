@@ -52,8 +52,6 @@
     --skeleton-base: #e8e8e8;
     --skeleton-shine: #f2f2f2;
     --header-bg: rgba(255, 255, 255, 0.8);
-    --project-image-border-width: 4px;
-    --project-image-glass-blur: 12px;
 }
 
 /* Dark Mode */
@@ -748,38 +746,6 @@ header {
     position: relative;
     background-color: #f5f5f5;
     flex-shrink: 0;
-}
-
-.post-image::after,
-.project-hero-image::after,
-.section-image::after,
-.gallery-figure::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 2;
-    padding: var(--project-image-border-width);
-    background: linear-gradient(
-        140deg,
-        rgba(255, 255, 255, 0.58) 0%,
-        rgba(255, 255, 255, 0.14) 42%,
-        rgba(255, 255, 255, 0.32) 100%
-    );
-    -webkit-backdrop-filter: blur(var(--project-image-glass-blur)) saturate(1.25);
-    backdrop-filter: blur(var(--project-image-glass-blur)) saturate(1.25);
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.72),
-        inset 0 0 16px rgba(255, 255, 255, 0.1);
 }
 
 .post-image img,
