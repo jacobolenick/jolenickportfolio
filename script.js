@@ -177,7 +177,7 @@ if (headerNavLinks.length) {
             const currentPath = normalizeNavPath(window.location.pathname);
 
             if (linkPath === '/') {
-                return currentPath === '/' || currentPath === '/experience';
+                return currentPath === '/';
             }
 
             return currentPath === linkPath || currentPath.startsWith(`${linkPath}/`);
@@ -323,7 +323,7 @@ function initCategoryTabs(sectionId, listSelector, tabSelector) {
 }
 
 function initPluginTabs() {
-    initCategoryTabs('case-studies', '.project-list', '.plugin-tab');
+    initCategoryTabs('figma-plugins', '.project-list', '.plugin-tab');
 }
 
 function initWorkTabs() {

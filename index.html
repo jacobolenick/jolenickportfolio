@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="images/work/socialthumbnail.png">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles.css?v=50">
+    <link rel="stylesheet" href="styles.css?v=54">
 </head>
 <body class="has-mega-name">
     <!-- Header -->
@@ -29,6 +29,7 @@
         <nav class="nav-container">
             <div class="nav-content">
                 <a href="#home" class="nav-link active">Work</a>
+                <a href="/experience.html" class="nav-link">Resume</a>
                 <a href="/notes/" class="nav-link">Notes</a>
                 <a href="/about/" class="nav-link">About</a>
                 <div class="nav-theme-controls">
@@ -56,23 +57,6 @@
             </p>
         </section>
 
-        <!-- Resume Section -->
-        <section class="resume-section">
-            <div class="resume-item">
-                <div class="resume-item-head">
-                    <img class="experience-logo" src="images/logos/creative-people.png" alt="" width="48" height="48">
-                    <div>
-                        <h2 class="resume-title">Creative People (Placed on Eli Lilly)</h2>
-                        <p class="resume-date">April 26 - Present</p>
-                    </div>
-                </div>
-                <p class="resume-description">
-                    I'm a Senior Product Designer and Super IC placed through Creative People, helping design and build the Lilly Design System across numerous sites and pages.
-                    <a href="experience.html" class="resume-link">Keep reading →</a>
-                </p>
-            </div>
-        </section>
-
         <!-- Work Section -->
         <section id="work" class="posts-section section--no-reveal">
             <div class="section-header">
@@ -87,6 +71,20 @@
             </div>
 
             <div class="posts-grid" data-active-category="all">
+                <a href="/projects/paramount/" class="post-card-link work-item" data-categories="design-systems product-design">
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="images/work/paramount-streaming-cover.png" alt="Paramount+ streaming UI components">
+                        </div>
+                        <h4 class="post-title">Paramount+</h4>
+                        <div class="post-pills" aria-label="Type of work">
+                            <span class="post-pill">Design System</span>
+                            <span class="post-pill">Product Design</span>
+                        </div>
+                        <p class="post-subtitle">Streaming platform experience design</p>
+                    </article>
+                </a>
+
                 <a href="/projects/c1b/" class="post-card-link work-item" data-categories="design-systems product-design">
                     <article class="post-card">
                         <div class="post-image">
@@ -139,20 +137,6 @@
                             <span class="post-pill">Product Design</span>
                         </div>
                         <p class="post-subtitle">Event ticketing and seat selection platform</p>
-                    </article>
-                </a>
-
-                <a href="/projects/paramount/" class="post-card-link work-item" data-categories="design-systems product-design">
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="images/work/paramount-streaming-cover.png" alt="Paramount+ streaming UI components">
-                        </div>
-                        <h4 class="post-title">Paramount+</h4>
-                        <div class="post-pills" aria-label="Type of work">
-                            <span class="post-pill">Design System</span>
-                            <span class="post-pill">Product Design</span>
-                        </div>
-                        <p class="post-subtitle">Streaming platform experience design</p>
                     </article>
                 </a>
 
@@ -279,98 +263,6 @@
             </div>
         </section>
 
-        <!-- Past Projects Section -->
-        <section id="case-studies" class="projects-section">
-            <h3 class="section-label">Figma Plugins</h3>
-            
-            <div class="plugin-tabs" role="tablist" aria-label="Plugin categories">
-                <button type="button" class="plugin-tab active" role="tab" aria-selected="true" data-category="design-systems">Design Systems</button>
-                <button type="button" class="plugin-tab" role="tab" aria-selected="false" data-category="productivity">Productivity</button>
-                <button type="button" class="plugin-tab" role="tab" aria-selected="false" data-category="widgets">Widgets</button>
-            </div>
-
-            <div class="project-list" data-active-category="design-systems">
-                <a href="https://www.figma.com/community/plugin/1602160860505052540/textorize-it" class="project-item" target="_blank" data-category="design-systems">
-                    <img src="images/plugins/textorize-it.png" alt="" class="project-icon" width="40" height="40">
-                    <div class="project-info">
-                        <h4 class="project-title">Textorize It</h4>
-                        <p class="project-description">Quickly create type variables and styles.</p>
-                    </div>
-                    <span class="project-arrow">→</span>
-                </a>
-
-                <a href="https://www.figma.com/community/plugin/1602118052371791185/shadow-it" class="project-item" target="_blank" data-category="design-systems">
-                    <img src="images/plugins/shadow-it.png" alt="" class="project-icon" width="40" height="40">
-                    <div class="project-info">
-                        <h4 class="project-title">Shadow It</h4>
-                        <p class="project-description">Add elevations as styles based on popular UI libraries.</p>
-                    </div>
-                    <span class="project-arrow">→</span>
-                </a>
-
-                <a href="https://www.figma.com/community/plugin/1602001831211544731/colorize-it" class="project-item" target="_blank" data-category="design-systems">
-                    <img src="images/plugins/colorize-it.png" alt="" class="project-icon" width="40" height="40">
-                    <div class="project-info">
-                        <h4 class="project-title">Colorize It</h4>
-                        <p class="project-description">Create color variables from popular UI libraries in one click.</p>
-                    </div>
-                    <span class="project-arrow">→</span>
-                </a>
-
-                <a href="https://www.figma.com/community/plugin/1601803893584695089/design-tasks" class="project-item" target="_blank" data-category="productivity">
-                    <img src="images/plugins/design-tasks.png" alt="" class="project-icon" width="40" height="40">
-                    <div class="project-info">
-                        <h4 class="project-title">Design Tasks</h4>
-                        <p class="project-description">Create tasks, set a date, or pomodoro timer.</p>
-                    </div>
-                    <span class="project-arrow">→</span>
-                </a>
-
-                <a href="https://www.figma.com/community/widget/1603115958169044986/upvote" class="project-item" target="_blank" data-category="widgets">
-                    <img src="images/plugins/upvote.png" alt="" class="project-icon" width="40" height="40">
-                    <div class="project-info">
-                        <h4 class="project-title">UpVote</h4>
-                        <p class="project-description">Place next to each screen and have your team vote on iterations.</p>
-                    </div>
-                    <span class="project-arrow">→</span>
-                </a>
-
-                <a href="https://www.figma.com/community/plugin/1571428612071462125/ds-checklist" class="project-item" target="_blank" data-category="design-systems">
-                    <img src="images/plugins/ds-checklist.png" alt="" class="project-icon" width="40" height="40">
-                    <div class="project-info">
-                        <h4 class="project-title">DS Checklist</h4>
-                        <p class="project-description">A to-do list for design systems projects and add in your own tasks.</p>
-                    </div>
-                    <span class="project-arrow">→</span>
-                </a>
-
-                <a href="https://www.figma.com/community/plugin/1571390740428803255/tokenizely" class="project-item" target="_blank" data-category="design-systems">
-                    <img src="images/plugins/tokenizely.png" alt="" class="project-icon" width="40" height="40">
-                    <div class="project-info">
-                        <h4 class="project-title">Tokenizely</h4>
-                        <p class="project-description">Name smart tokens for variables and components</p>
-                    </div>
-                    <span class="project-arrow">→</span>
-                </a>
-
-                <a href="https://www.figma.com/community/plugin/1571424922828284135/page-generator" class="project-item" target="_blank" data-category="design-systems">
-                    <img src="images/plugins/page-generator.png" alt="" class="project-icon" width="40" height="40">
-                    <div class="project-info">
-                        <h4 class="project-title">Page-Generator</h4>
-                        <p class="project-description">Quickly generate all pages needed for a design systems project</p>
-                    </div>
-                    <span class="project-arrow">→</span>
-                </a>
-            </div>
-
-            <div class="support-section">
-                <p class="support-text">Support me in making more plugins, resources, and UI kits.</p>
-                <a href="https://ko-fi.com/O5O31U1KMI" class="kofi-support-btn" target="_blank" rel="noopener noreferrer">
-                    <img src="https://storage.ko-fi.com/cdn/kofi1.png?v=6" alt="Buy me a coffee at ko-fi.com" width="145" height="36" loading="lazy" decoding="async">
-                </a>
-            </div>
-        </section>
-
         <!-- Notes Section -->
         <section class="notes-section">
             <div class="notes-header">
@@ -431,8 +323,8 @@
         </svg>
     </div>
 
-    <script src="script.js?v=26"></script>
-    <script src="chat.js?v=3"></script>
+    <script src="script.js?v=30"></script>
+    <script src="chat.js?v=4"></script>
 </body>
 </html>
 

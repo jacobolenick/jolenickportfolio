@@ -120,6 +120,10 @@
     font-family: var(--heading-font);
 }
 
+#figma-plugins .plugin-tabs {
+    margin-bottom: 28px;
+}
+
 .about-text {
     font-size: 18px;
     line-height: 1.8;

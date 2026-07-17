@@ -148,7 +148,7 @@
         {
             id: 'plugins',
             keywords: ['plugin', 'plugins', 'figma plugin', 'textorize', 'tokenizely', 'colorize'],
-            answer: 'Jacob builds Figma plugins and widgets under DesignOps Studio — including Textorize It, Shadow It, Colorize It, DS Checklist, Tokenizely, Page-Generator, Design Tasks, and UpVote. See Figma Plugins on the home page.'
+            answer: 'Jacob builds Figma plugins and widgets under DesignOps Studio — including Textorize It, Shadow It, Colorize It, DS Checklist, Tokenizely, Page-Generator, Design Tasks, and UpVote. See Figma Plugins on the About page.'
         },
         {
             id: 'designops',
