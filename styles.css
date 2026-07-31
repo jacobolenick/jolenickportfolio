@@ -419,8 +419,35 @@ header {
 
 /* Hero Section - stacked like a simple personal intro */
 .hero-section {
-    max-width: 520px;
+    position: relative;
+    width: 100%;
+    max-width: none;
     margin-bottom: 80px;
+    min-height: 220px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+}
+
+.hero-grid {
+    position: absolute;
+    inset: -40px -48px -40px 80px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    --hero-grid-line: color-mix(in srgb, var(--border-color) 70%, transparent);
+    background-image:
+        linear-gradient(to right, var(--hero-grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--hero-grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    transition: opacity 0.15s ease-out;
 }
 
 .profile-image {
@@ -1647,6 +1674,11 @@ body.skeleton-loading .mega-name-footer {
 @media (max-width: 768px) {
     .container {
         padding: 40px 16px 80px;
+    }
+
+    .hero-grid {
+        inset: -24px -16px -24px 40px;
+        background-size: 44px 44px;
     }
 
     .posts-grid {

@@ -8,6 +8,47 @@
     }, 750);
 })();
 
+/** Hero line grid: hidden until hover; spotlight reveals grid near the cursor */
+(function initHeroGrid() {
+    const hero = document.querySelector('.hero-section');
+    const grid = document.querySelector('.hero-grid');
+    if (!hero || !grid) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const spotlightRadius = 220;
+    const spotlightFalloff = 0.45;
+    const maxOpacity = 0.9;
+
+    function clearSpotlight() {
+        grid.style.opacity = '0';
+        grid.style.webkitMaskImage = 'none';
+        grid.style.maskImage = 'none';
+    }
+
+    function setSpotlight(clientX, clientY) {
+        const rect = grid.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        const mask = `radial-gradient(circle ${spotlightRadius}px at ${x}px ${y}px, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, ${spotlightFalloff}) 42%, transparent 72%)`;
+
+        grid.style.opacity = String(maxOpacity);
+        grid.style.webkitMaskImage = mask;
+        grid.style.maskImage = mask;
+    }
+
+    hero.addEventListener('mouseenter', (event) => {
+        setSpotlight(event.clientX, event.clientY);
+    });
+
+    hero.addEventListener('mousemove', (event) => {
+        setSpotlight(event.clientX, event.clientY);
+    });
+
+    hero.addEventListener('mouseleave', clearSpotlight);
+
+    clearSpotlight();
+})();
+
 /** Mega footer: reveal when bottom sentinel is in view; scale dotted outline name to viewport width */
 (function initMegaNameFooter() {
     const mega = document.querySelector('.mega-name-footer');
