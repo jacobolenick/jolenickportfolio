@@ -1405,18 +1405,6 @@ header {
 }
 
 /* Experience Page */
-.experience-hero {
-    margin-bottom: 64px;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.experience-hero img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
 .experience-list-section {
     margin-bottom: 80px;
 }
