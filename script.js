@@ -309,7 +309,8 @@ if (skipSkeletonDelay) {
 
 // Read More functionality for notes
 document.querySelectorAll('.read-more-btn').forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function(e) {
+        e.stopPropagation();
         const content = this.previousElementSibling;
         const readMoreText = this.querySelector('.read-more-text');
         
@@ -323,6 +324,84 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
         }
     });
 });
+
+// Notes page: Posts vs List view toggle
+(function initNotesViewToggle() {
+    const section = document.querySelector('.notes-list-section');
+    const tabs = document.querySelectorAll('.notes-view-tab');
+    if (!section || !tabs.length) return;
+
+    const STORAGE_KEY = 'notes-view';
+
+    function setView(view) {
+        section.setAttribute('data-notes-view', view);
+        tabs.forEach(tab => {
+            const isActive = tab.getAttribute('data-view') === view;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', isActive);
+        });
+        try {
+            localStorage.setItem(STORAGE_KEY, view);
+        } catch (_) {}
+    }
+
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'list' || saved === 'posts') setView(saved);
+    } catch (_) {}
+
+    function openNoteFromHash() {
+        const id = window.location.hash.slice(1);
+        if (!id) return;
+        const item = document.getElementById(id);
+        if (!item || !section.contains(item)) return;
+
+        setView('posts');
+
+        const btn = item.querySelector('.read-more-btn');
+        const content = item.querySelector('.note-expandable-content');
+        if (btn && content && !content.classList.contains('expanded')) {
+            btn.click();
+        }
+
+        requestAnimationFrame(() => {
+            item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    openNoteFromHash();
+    window.addEventListener('hashchange', openNoteFromHash);
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const view = tab.getAttribute('data-view');
+            if (view) setView(view);
+        });
+    });
+
+    section.querySelectorAll('.note-list-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            if (section.getAttribute('data-notes-view') !== 'list') return;
+            if (e.target.closest('a')) return;
+
+            setView('posts');
+
+            const id = item.id;
+            if (id) {
+                history.replaceState(null, '', `#${id}`);
+            }
+
+            requestAnimationFrame(() => {
+                item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const btn = item.querySelector('.read-more-btn');
+                const content = item.querySelector('.note-expandable-content');
+                if (btn && content && !content.classList.contains('expanded')) {
+                    btn.click();
+                }
+            });
+        });
+    });
+})();
 
 // Category tabs (Work + Figma Plugins)
 function initCategoryTabs(sectionId, listSelector, tabSelector) {
