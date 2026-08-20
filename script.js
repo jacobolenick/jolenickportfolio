@@ -325,6 +325,13 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
     });
 });
 
+// Legacy note hash URLs → individual note pages
+(function redirectLegacyNoteHash() {
+    const hash = window.location.hash.slice(1);
+    if (!hash || !document.querySelector('.notes-list-section')) return;
+    window.location.replace(`/notes/${hash}/`);
+})();
+
 // Notes page: Posts vs List view toggle
 (function initNotesViewToggle() {
     const section = document.querySelector('.notes-list-section');
@@ -347,58 +354,14 @@ document.querySelectorAll('.read-more-btn').forEach(button => {
 
     try {
         const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved === 'list' || saved === 'posts') setView(saved);
+        if (saved === 'posts' || saved === 'grid') setView('grid');
+        else if (saved === 'list') setView('list');
     } catch (_) {}
-
-    function openNoteFromHash() {
-        const id = window.location.hash.slice(1);
-        if (!id) return;
-        const item = document.getElementById(id);
-        if (!item || !section.contains(item)) return;
-
-        setView('posts');
-
-        const btn = item.querySelector('.read-more-btn');
-        const content = item.querySelector('.note-expandable-content');
-        if (btn && content && !content.classList.contains('expanded')) {
-            btn.click();
-        }
-
-        requestAnimationFrame(() => {
-            item.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
-
-    openNoteFromHash();
-    window.addEventListener('hashchange', openNoteFromHash);
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const view = tab.getAttribute('data-view');
             if (view) setView(view);
-        });
-    });
-
-    section.querySelectorAll('.note-list-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            if (section.getAttribute('data-notes-view') !== 'list') return;
-            if (e.target.closest('a')) return;
-
-            setView('posts');
-
-            const id = item.id;
-            if (id) {
-                history.replaceState(null, '', `#${id}`);
-            }
-
-            requestAnimationFrame(() => {
-                item.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                const btn = item.querySelector('.read-more-btn');
-                const content = item.querySelector('.note-expandable-content');
-                if (btn && content && !content.classList.contains('expanded')) {
-                    btn.click();
-                }
-            });
         });
     });
 })();

@@ -1,24 +1,5 @@
 /* Project Page Specific Styles */
 
-.back-link {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: var(--primary-text);
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.back-link:hover {
-    color: var(--accent-color);
-}
-
-.back-link .material-icons {
-    font-size: 20px;
-}
-
 .project-container {
     max-width: 800px;
 }
