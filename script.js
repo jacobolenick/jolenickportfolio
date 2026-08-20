@@ -261,17 +261,47 @@ if (headerNavLinks.length) {
     }
 }
 
-// Add hover effect to post cards
-const postCards = document.querySelectorAll('.post-card');
-postCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.opacity = '0.8';
+// Cursor-following "View project" label on work cards
+(function initWorkCardCursor() {
+    const items = document.querySelectorAll('.posts-grid .work-item:not(.video-card)');
+    if (!items.length) return;
+
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    items.forEach((item) => {
+        const cursor = document.createElement('div');
+        cursor.className = 'post-card-cursor';
+        cursor.setAttribute('aria-hidden', 'true');
+        cursor.innerHTML =
+            '<span class="post-card-cursor-label">View project</span>' +
+            '<span class="material-icons post-card-cursor-arrow" aria-hidden="true">arrow_forward</span>';
+        item.appendChild(cursor);
+
+        const moveCursor = (event) => {
+            const rect = item.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            cursor.style.left = `${x}px`;
+            cursor.style.top = `${y}px`;
+        };
+
+        item.addEventListener('mouseenter', (event) => {
+            item.classList.add('is-hovering');
+            moveCursor(event);
+        });
+
+        if (!prefersReducedMotion) {
+            item.addEventListener('mousemove', moveCursor);
+        }
+
+        item.addEventListener('mouseleave', () => {
+            item.classList.remove('is-hovering');
+        });
     });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.opacity = '1';
-    });
-});
+})();
 
 // Optional: fade-in on scroll (delayed on home until skeleton state ends)
 function initSectionFadeIn() {
