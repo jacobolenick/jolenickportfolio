@@ -261,8 +261,13 @@ if (headerNavLinks.length) {
     }
 }
 
-// Cursor-following "View project" label on work cards
-(function initWorkCardCursor() {
+// Cursor-following "View project" label + Vantage video lightbox
+function initHomeWorkInteractions() {
+    initWorkCardCursor();
+    initVantageVideoLightbox();
+}
+
+function initWorkCardCursor() {
     const items = document.querySelectorAll('.posts-grid .work-item');
     if (!items.length) return;
 
@@ -300,18 +305,23 @@ if (headerNavLinks.length) {
         item.addEventListener('mouseleave', () => {
             item.classList.remove('is-hovering');
         });
-    });
-})();
 
-// Wells Fargo Vantage card → video lightbox
-(function initVantageVideoLightbox() {
-    const card = document.querySelector('.video-card--lightbox');
+        cursor.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            item.click();
+        });
+    });
+}
+
+function initVantageVideoLightbox() {
+    const grid = document.querySelector('.posts-grid');
     const modal = document.getElementById('vantage-video-modal');
     const backdrop = document.getElementById('vantage-video-backdrop');
     const closeBtn = document.getElementById('vantage-video-close');
     const previewVideo = document.getElementById('vantage-video');
     const modalVideo = document.getElementById('vantage-modal-video');
-    if (!card || !modal || !backdrop || !closeBtn || !previewVideo || !modalVideo) return;
+    if (!grid || !modal || !backdrop || !closeBtn || !previewVideo || !modalVideo) return;
 
     let isOpen = false;
     let lastFocusedElement = null;
@@ -322,6 +332,7 @@ if (headerNavLinks.length) {
         lastFocusedElement = document.activeElement;
         previewVideo.pause();
         modal.hidden = false;
+        modal.classList.add('is-open');
         document.body.classList.add('video-lightbox-open');
         modalVideo.currentTime = 0;
         modalVideo.play().catch(() => {});
@@ -331,6 +342,7 @@ if (headerNavLinks.length) {
     function closeModal() {
         if (!isOpen) return;
         isOpen = false;
+        modal.classList.remove('is-open');
         modal.hidden = true;
         document.body.classList.remove('video-lightbox-open');
         modalVideo.pause();
@@ -341,12 +353,17 @@ if (headerNavLinks.length) {
         }
     }
 
-    card.addEventListener('click', (event) => {
+    grid.addEventListener('click', (event) => {
+        const card = event.target.closest('.video-card--lightbox');
+        if (!card || !grid.contains(card)) return;
         if (event.target.closest('.video-controls')) return;
+        event.preventDefault();
         openModal();
     });
 
-    card.addEventListener('keydown', (event) => {
+    grid.addEventListener('keydown', (event) => {
+        const card = event.target.closest('.video-card--lightbox');
+        if (!card || !grid.contains(card)) return;
         if (event.target.closest('.video-controls')) return;
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
@@ -360,7 +377,13 @@ if (headerNavLinks.length) {
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && isOpen) closeModal();
     });
-})();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHomeWorkInteractions);
+} else {
+    initHomeWorkInteractions();
+}
 
 // Optional: fade-in on scroll (delayed on home until skeleton state ends)
 function initSectionFadeIn() {

@@ -777,7 +777,8 @@ header {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        pointer-events: none;
+        pointer-events: auto;
+        cursor: pointer;
         opacity: 0;
         transform: translate(-50%, -50%);
         transition: opacity 0.2s ease;
@@ -979,15 +980,19 @@ body.video-lightbox-open {
     position: fixed;
     inset: 0;
     z-index: 300;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 24px;
     box-sizing: border-box;
 }
 
+.video-lightbox.is-open {
+    display: flex;
+}
+
 .video-lightbox[hidden] {
-    display: none;
+    display: none !important;
 }
 
 .video-lightbox__backdrop {
