@@ -909,11 +909,21 @@ header {
 
 /* Video Card */
 .video-card {
-    cursor: default;
+    cursor: pointer;
+}
+
+.video-card--lightbox:focus-visible {
+    outline: 2px solid var(--primary-text);
+    outline-offset: 4px;
+    border-radius: 16px;
 }
 
 .video-card:hover {
     transform: none;
+}
+
+.video-card .video-controls {
+    pointer-events: auto;
 }
 
 .video-container {
@@ -958,6 +968,104 @@ header {
 
 .video-btn .material-icons {
     font-size: 20px;
+}
+
+/* Video lightbox (Vantage project preview) */
+body.video-lightbox-open {
+    overflow: hidden;
+}
+
+.video-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.video-lightbox[hidden] {
+    display: none;
+}
+
+.video-lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+}
+
+.video-lightbox__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(960px, 100%);
+    max-height: calc(100vh - 48px);
+}
+
+.video-lightbox__title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.video-lightbox__video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 96px);
+    border-radius: 12px;
+    background: #000;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+.video-lightbox__close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.video-lightbox__close:hover {
+    transform: scale(1.05);
+    background: #fff;
+}
+
+.video-lightbox__close .material-icons {
+    font-size: 22px;
+}
+
+@media (max-width: 640px) {
+    .video-lightbox {
+        padding: 16px;
+    }
+
+    .video-lightbox__close {
+        top: 8px;
+        right: 8px;
+    }
+
+    .video-lightbox__video {
+        max-height: calc(100vh - 80px);
+    }
 }
 
 /* What I bring - tool cards (above Stack) */

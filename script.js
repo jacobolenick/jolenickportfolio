@@ -263,7 +263,7 @@ if (headerNavLinks.length) {
 
 // Cursor-following "View project" label on work cards
 (function initWorkCardCursor() {
-    const items = document.querySelectorAll('.posts-grid .work-item:not(.video-card)');
+    const items = document.querySelectorAll('.posts-grid .work-item');
     if (!items.length) return;
 
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -300,6 +300,65 @@ if (headerNavLinks.length) {
         item.addEventListener('mouseleave', () => {
             item.classList.remove('is-hovering');
         });
+    });
+})();
+
+// Wells Fargo Vantage card → video lightbox
+(function initVantageVideoLightbox() {
+    const card = document.querySelector('.video-card--lightbox');
+    const modal = document.getElementById('vantage-video-modal');
+    const backdrop = document.getElementById('vantage-video-backdrop');
+    const closeBtn = document.getElementById('vantage-video-close');
+    const previewVideo = document.getElementById('vantage-video');
+    const modalVideo = document.getElementById('vantage-modal-video');
+    if (!card || !modal || !backdrop || !closeBtn || !previewVideo || !modalVideo) return;
+
+    let isOpen = false;
+    let lastFocusedElement = null;
+
+    function openModal() {
+        if (isOpen) return;
+        isOpen = true;
+        lastFocusedElement = document.activeElement;
+        previewVideo.pause();
+        modal.hidden = false;
+        document.body.classList.add('video-lightbox-open');
+        modalVideo.currentTime = 0;
+        modalVideo.play().catch(() => {});
+        closeBtn.focus();
+    }
+
+    function closeModal() {
+        if (!isOpen) return;
+        isOpen = false;
+        modal.hidden = true;
+        document.body.classList.remove('video-lightbox-open');
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+        previewVideo.play().catch(() => {});
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
+    }
+
+    card.addEventListener('click', (event) => {
+        if (event.target.closest('.video-controls')) return;
+        openModal();
+    });
+
+    card.addEventListener('keydown', (event) => {
+        if (event.target.closest('.video-controls')) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openModal();
+        }
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && isOpen) closeModal();
     });
 })();
 

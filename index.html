@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="images/work/socialthumbnail.png">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles.css?v=70">
+    <link rel="stylesheet" href="styles.css?v=71">
 </head>
 <body class="has-mega-name">
     <!-- Header -->
@@ -173,7 +173,7 @@
                     </article>
                 </a>
 
-                <article class="post-card video-card work-item" data-categories="product-design">
+                <article class="post-card video-card work-item video-card--lightbox" data-categories="product-design" tabindex="0" role="button" aria-label="Wells Fargo Vantage — view project video">
                     <div class="post-image video-container">
                         <video id="vantage-video" src="images/work/vantage.mp4" muted loop playsinline></video>
                         <div class="video-controls">
@@ -354,7 +354,18 @@
         </svg>
     </div>
 
-    <script src="script.js?v=39"></script>
+    <div id="vantage-video-modal" class="video-lightbox" hidden>
+        <div class="video-lightbox__backdrop" id="vantage-video-backdrop"></div>
+        <div class="video-lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="vantage-video-modal-title">
+            <button type="button" class="video-lightbox__close" id="vantage-video-close" aria-label="Close video">
+                <span class="material-icons" aria-hidden="true">close</span>
+            </button>
+            <h2 id="vantage-video-modal-title" class="video-lightbox__title">Wells Fargo Vantage</h2>
+            <video id="vantage-modal-video" class="video-lightbox__video" src="images/work/vantage.mp4" controls playsinline preload="metadata"></video>
+        </div>
+    </div>
+
+    <script src="script.js?v=40"></script>
 </body>
 </html>
 
