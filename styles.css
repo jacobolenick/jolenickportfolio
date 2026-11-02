@@ -537,7 +537,7 @@ header {
 }
 
 .site-main__body.container {
-    padding-top: 0;
+    padding-top: clamp(56px, 10vh, 112px);
     padding-bottom: 80px;
 }
 
