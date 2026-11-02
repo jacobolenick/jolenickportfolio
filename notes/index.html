@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - Jacob Olenick</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../styles.css?v=84">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="nav-container">
+            <div class="nav-content">
+                <a href="/" class="nav-link">Work</a>
+                <a href="/experience.html" class="nav-link">Resume</a>
+                <a href="/notes/" class="nav-link active">Notes</a>
+                <a href="/about/" class="nav-link">About</a>
+                <div class="nav-theme-controls">
+                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="material-icons theme-icon">dark_mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Notes</h1>
+            <p class="page-description">Thoughts and learnings on design systems, product design, and more.</p>
+        </section>
+
+        <div class="notes-view-tabs plugin-tabs" role="tablist" aria-label="Notes layout">
+            <button type="button" class="plugin-tab notes-view-tab active" role="tab" aria-selected="true" data-view="grid">
+                <span class="material-icons notes-view-tab__icon" aria-hidden="true">grid_view</span>
+                Grid
+            </button>
+            <button type="button" class="plugin-tab notes-view-tab" role="tab" aria-selected="false" data-view="list">
+                <span class="material-icons notes-view-tab__icon" aria-hidden="true">view_list</span>
+                List
+            </button>
+        </div>
+
+        <!-- Notes List -->
+        <section class="notes-list-section" data-notes-view="grid">
+            <a href="/notes/great-first-week-lilly-creative-people/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/note-lilly-first-week.png" alt="Jacob Olenick smiling in his home office with soccer memorabilia and a peace sign">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">Great first week at my new gig with Lilly through Creative People.</h2>
+                        <p class="note-list-description">Week one on the Lilly Design System - already impressed by the team and grateful I chose this offer.</p>
+                        <p class="note-list-date">Apr 23, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/espresso-ui-agentic-design-system/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image note-list-image--espresso-logo">
+                        <img src="../images/espresso-ui-cover.png" alt="Espresso UI logo">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I'm building a free product. An Agentic Design System called Espresso UI.</h2>
+                        <p class="note-list-description">Giving back, growing the brand, and shipping a Figma-first system with Claude Code and Figma MCP - alongside students from Design XP.</p>
+                        <p class="note-list-date">Apr 6, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/design-systems-studio/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/designops-studio-note.png" alt="DesignOps Studio branding portrait">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I'm starting something new</h2>
+                        <p class="note-list-description">A Design Systems Studio - 0 → 1 systems for startups, from Figma to production-ready agentic design systems with Claude.</p>
+                        <p class="note-list-date">Apr 4, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/lilly-design-system-role/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/logos/creative-people.png" alt="Creative People logo">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I'm stepping into a new design system role at Lilly</h2>
+                        <p class="note-list-description">From CVS Health and the Rhythm Design System to Creative People, placed on Eli Lilly - Super IC and Senior Product Designer on the Lilly Design System.</p>
+                        <p class="note-list-date">Apr 2, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/design-systems-advocate/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/design-systems-advocate.png" alt="Jacob Olenick at his workspace">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I've Stepped into a New Role as a Design Systems Advocate at Work</h2>
+                        <p class="note-list-description">Bridge for product designers and the design system - still designing screens and UX flows while advocating for the Rhythm Design System.</p>
+                        <p class="note-list-date">Feb 12, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/colorize-it/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/colorize-it-cover.png" alt="Colorize It - Color and variable generator based on popular UI frameworks">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I've Built a Figma Plugin that Allows Me to Create Variables in a Second From Top UI Libraries.</h2>
+                        <p class="note-list-description">Building Colorize It to add color variables from Tailwind, Shadcn, Bootstrap, and more - with one click and automatic dark mode variables.</p>
+                        <p class="note-list-date">Feb 12, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/figma-make-components/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/figma-make-map.png" alt="Figma Make interactive map component">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">Building Figma Make Components for Others</h2>
+                        <p class="note-list-description">Exploring how to turn Espresso UI components into Figma Make components for the community, plus interactive components like maps for designers to use.</p>
+                        <p class="note-list-date">Feb 11, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/free-ui-kit/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/work/design-systems-ui-kit.png" alt="Design workspace">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I Got Better as a Design Systems Designer When I Built Free UI Kit</h2>
+                        <p class="note-list-description">How building UI kits in my free time made me an expert in Figma and a better teacher for my product design team.</p>
+                        <p class="note-list-date">Feb 11, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/scalable-design-systems/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/design-systems-alert-dialog.png" alt="Espresso UI Alert Dialog component in Figma">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">Building Scalable Design Systems</h2>
+                        <p class="note-list-description">Exploring the key principles and best practices for creating design systems that can grow with your organization.</p>
+                        <p class="note-list-date">Nov 15, 2025</p>
+                    </div>
+                </article>
+            </a>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="about" class="contact-section">
+            <div class="social-links">
+                <a href="https://linkedin.com/in/jacobmolenick" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
+                <a href="https://www.figma.com/@jacobolenick" class="social-link social-link-figma" aria-label="Figma" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.00005 2.04999H5.52505C4.71043 2.04999 4.05005 2.71037 4.05005 3.52499C4.05005 4.33961 4.71043 4.99999 5.52505 4.99999H7.00005V2.04999ZM7.00005 1.04999H8.00005H9.47505C10.842 1.04999 11.95 2.15808 11.95 3.52499C11.95 4.33163 11.5642 5.04815 10.9669 5.49999C11.5642 5.95184 11.95 6.66836 11.95 7.475C11.95 8.8419 10.842 9.95 9.47505 9.95C8.92236 9.95 8.41198 9.76884 8.00005 9.46266V9.95L8.00005 11.425C8.00005 12.7919 6.89195 13.9 5.52505 13.9C4.15814 13.9 3.05005 12.7919 3.05005 11.425C3.05005 10.6183 3.43593 9.90184 4.03317 9.44999C3.43593 8.99814 3.05005 8.28163 3.05005 7.475C3.05005 6.66836 3.43594 5.95184 4.03319 5.5C3.43594 5.04815 3.05005 4.33163 3.05005 3.52499C3.05005 2.15808 4.15814 1.04999 5.52505 1.04999H7.00005ZM8.00005 2.04999V4.99999H9.47505C10.2897 4.99999 10.95 4.33961 10.95 3.52499C10.95 2.71037 10.2897 2.04999 9.47505 2.04999H8.00005ZM5.52505 8.94998H7.00005L7.00005 7.4788L7.00005 7.475L7.00005 7.4712V6H5.52505C4.71043 6 4.05005 6.66038 4.05005 7.475C4.05005 8.28767 4.70727 8.94684 5.5192 8.94999L5.52505 8.94998ZM4.05005 11.425C4.05005 10.6123 4.70727 9.95315 5.5192 9.94999L5.52505 9.95H7.00005L7.00005 11.425C7.00005 12.2396 6.33967 12.9 5.52505 12.9C4.71043 12.9 4.05005 12.2396 4.05005 11.425ZM8.00005 7.47206C8.00164 6.65879 8.66141 6 9.47505 6C10.2897 6 10.95 6.66038 10.95 7.475C10.95 8.28962 10.2897 8.95 9.47505 8.95C8.66141 8.95 8.00164 8.29121 8.00005 7.47794V7.47206Z" fill="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <p class="footer-text">
+                <span class="material-icons coffee-icon">coffee</span>
+                Made with cursor and claude and plenty of coffee in Las Vegas, NV
+            </p>
+        </section>
+    </main>
+
+    <script src="../script.js?v=45"></script>
+</body>
+</html>
