@@ -549,7 +549,6 @@ function initWorkStack() {
 
     function syncOffset() {
         const height = header ? Math.ceil(header.getBoundingClientRect().height) : 64;
-        document.documentElement.style.setProperty('--site-header-height', `${height}px`);
         list.style.setProperty('--work-stack-offset', `${height + 10}px`);
     }
 
@@ -620,20 +619,6 @@ function initStatementFill() {
     window.addEventListener('scroll', paint, { passive: true });
     window.addEventListener('resize', paint);
 }
-
-(function initSiteHeaderHeight() {
-    const header = document.querySelector('header');
-    if (!header) return;
-
-    function sync() {
-        const height = Math.ceil(header.getBoundingClientRect().height);
-        document.documentElement.style.setProperty('--site-header-height', `${height}px`);
-    }
-
-    sync();
-    window.addEventListener('resize', sync);
-    window.addEventListener('load', sync);
-})();
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {

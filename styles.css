@@ -336,19 +336,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Header & Navigation */
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     background-color: var(--header-bg);
     backdrop-filter: blur(10px);
-    border-bottom: none;
-    z-index: 200;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 100;
     transition: background-color 0.3s ease;
-}
-
-main.container {
-    padding-top: calc(var(--site-header-height) + 36px);
 }
 
 .nav-container {
@@ -2055,7 +2049,7 @@ body.video-lightbox-open {
     background-color: var(--background);
     flex-shrink: 0;
     position: relative;
-    z-index: 1;
+    z-index: 0;
 }
 
 .experience-item:first-child .experience-dot {
@@ -2096,6 +2090,13 @@ body.video-lightbox-open {
 .experience-logo--fill {
     object-fit: cover;
     background-color: transparent;
+}
+
+.experience-logo--brand {
+    object-fit: contain;
+    background-color: transparent;
+    border: none;
+    padding: 0;
 }
 
 .experience-title {
@@ -2440,10 +2441,6 @@ body.skeleton-loading .mega-name-footer {
 @media (max-width: 768px) {
     .container {
         padding: 40px 16px 80px;
-    }
-
-    main.container {
-        padding-top: calc(var(--site-header-height) + 24px);
     }
 
     .hero-full {
