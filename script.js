@@ -549,7 +549,9 @@ function initWorkStack() {
 
     function syncOffset() {
         const height = header ? Math.ceil(header.getBoundingClientRect().height) : 64;
-        list.style.setProperty('--work-stack-offset', `${height + 10}px`);
+        const offset = `${height + 10}px`;
+        document.documentElement.style.setProperty('--work-stack-offset', offset);
+        list.style.setProperty('--work-stack-offset', offset);
     }
 
     function syncIndexes() {
