@@ -21,6 +21,7 @@
     --skeleton-base: #e8e8e8;
     --skeleton-shine: #f2f2f2;
     --header-bg: rgba(255, 255, 255, 0.8);
+    --site-header-height: 64px;
     --card-surface: #ffffff;
     --hero-bg: #f3f3f3;
     --hero-soft-text: #a8a8a8;
@@ -335,13 +336,19 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Header & Navigation */
 header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     background-color: var(--header-bg);
     backdrop-filter: blur(10px);
     border-bottom: none;
-    z-index: 100;
+    z-index: 200;
     transition: background-color 0.3s ease;
+}
+
+main.container {
+    padding-top: calc(var(--site-header-height) + 36px);
 }
 
 .nav-container {
@@ -2433,6 +2440,10 @@ body.skeleton-loading .mega-name-footer {
 @media (max-width: 768px) {
     .container {
         padding: 40px 16px 80px;
+    }
+
+    main.container {
+        padding-top: calc(var(--site-header-height) + 24px);
     }
 
     .hero-full {
