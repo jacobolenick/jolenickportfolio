@@ -536,6 +536,13 @@ header {
     vertical-align: -0.1em;
 }
 
+.hero-inline-logo--youtube {
+    height: 0.72em;
+    width: auto;
+    vertical-align: -0.08em;
+    border-radius: 0.06em;
+}
+
 .site-main__body.container {
     padding-top: clamp(56px, 10vh, 112px);
     padding-bottom: 80px;

@@ -9,9 +9,10 @@
 }
 
 .project-title {
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 1.2;
+    font-size: clamp(40px, 5.5vw, 56px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
     margin-bottom: 16px;
 }
 
@@ -286,7 +287,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .project-title {
-        font-size: 32px;
+        font-size: clamp(34px, 8vw, 40px);
     }
 
     .project-intro {
@@ -323,7 +324,7 @@
 
 @media (max-width: 480px) {
     .project-title {
-        font-size: 28px;
+        font-size: 32px;
     }
 }
 
