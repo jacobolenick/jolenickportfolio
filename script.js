@@ -622,16 +622,109 @@ function initStatementFill() {
     window.addEventListener('resize', paint);
 }
 
+function initYoutubeShortsCarousel() {
+    const section = document.querySelector('[data-shorts-carousel]');
+    const track = document.querySelector('[data-shorts-track]');
+    const status = document.querySelector('[data-shorts-status]');
+    if (!section || !track || !status) return;
+
+    const prevBtn = section.querySelector('.shorts-carousel__arrow--prev');
+    const nextBtn = section.querySelector('.shorts-carousel__arrow--next');
+    const dataUrl = track.dataset.shortsFeed || '/data/youtube-shorts.json';
+
+    function setStatus(message) {
+        status.textContent = message || '';
+    }
+
+    function updateArrows() {
+        if (!prevBtn || !nextBtn) return;
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        prevBtn.disabled = track.scrollLeft <= 4;
+        nextBtn.disabled = track.scrollLeft >= maxScroll - 4;
+    }
+
+    function scrollByPage(direction) {
+        const card = track.querySelector('.shorts-card');
+        const gap = 16;
+        const delta = card ? (card.offsetWidth + gap) * 2 * direction : track.clientWidth * 0.85 * direction;
+        track.scrollBy({ left: delta, behavior: 'smooth' });
+    }
+
+    prevBtn?.addEventListener('click', () => scrollByPage(-1));
+    nextBtn?.addEventListener('click', () => scrollByPage(1));
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+
+    track.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            scrollByPage(-1);
+        }
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            scrollByPage(1);
+        }
+    });
+
+    fetch(dataUrl, { cache: 'no-cache' })
+        .then((res) => {
+            if (!res.ok) throw new Error(`Feed HTTP ${res.status}`);
+            return res.json();
+        })
+        .then((data) => {
+            const shorts = Array.isArray(data?.shorts) ? data.shorts : [];
+            if (!shorts.length) {
+                setStatus('No Shorts to show yet.');
+                return;
+            }
+
+            track.replaceChildren();
+            shorts.forEach((short) => {
+                if (!short?.id) return;
+                const link = document.createElement('a');
+                link.className = 'shorts-card';
+                link.href = short.url || `https://www.youtube.com/shorts/${short.id}`;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.setAttribute('aria-label', short.title || 'Watch on YouTube');
+
+                const img = document.createElement('img');
+                img.src = short.thumbnail || `https://i.ytimg.com/vi/${short.id}/hq2.jpg`;
+                img.alt = '';
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                link.appendChild(img);
+
+                const play = document.createElement('span');
+                play.className = 'shorts-card__play';
+                play.setAttribute('aria-hidden', 'true');
+                play.innerHTML = '<span class="material-icons">play_arrow</span>';
+                link.appendChild(play);
+
+                track.appendChild(link);
+            });
+
+            section.hidden = false;
+            setStatus('');
+            requestAnimationFrame(updateArrows);
+        })
+        .catch(() => {
+            setStatus('Shorts couldn\u2019t load right now. Try again later or visit @jacobtalks-baseball on YouTube.');
+        });
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initPluginTabs();
         initWorkStackOnHome();
         initStatementFill();
+        initYoutubeShortsCarousel();
     });
 } else {
     initPluginTabs();
     initWorkStackOnHome();
     initStatementFill();
+    initYoutubeShortsCarousel();
 }
 
 /** Figma-style drifting cursors on home hero (index only) */
