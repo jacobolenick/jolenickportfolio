@@ -2479,6 +2479,30 @@ body.skeleton-loading .mega-name-footer {
         gap: 0;
     }
 
+    /* Work cards: simple vertical list on mobile (sticky stack is desktop-only) */
+    #work .work-stack-spacer {
+        display: none;
+        height: 0;
+        margin: 0;
+    }
+
+    #work .work-stack-track {
+        padding-bottom: 0;
+    }
+
+    #work .posts-grid[data-active-category="all"] .work-item,
+    #work .posts-grid[data-active-category="design-systems"] .work-item[data-categories*="design-systems"],
+    #work .posts-grid[data-active-category="product-design"] .work-item[data-categories*="product-design"],
+    #work .posts-grid[data-active-category="development"] .work-item[data-categories*="development"] {
+        position: relative;
+        top: auto;
+        z-index: auto;
+    }
+
+    #work .work-stack-track > .work-item + .work-item {
+        margin-top: 20px;
+    }
+
     .statement-text {
         font-size: clamp(28px, 8vw, 36px);
     }
