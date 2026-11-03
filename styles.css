@@ -2438,9 +2438,16 @@ body.skeleton-loading .mega-name-footer {
     .hero-full {
         align-items: flex-start;
         justify-content: flex-start;
-        min-height: 100svh;
-        min-height: 100dvh;
-        padding: clamp(12px, 3vh, 24px) 0 clamp(40px, 8vh, 56px);
+        min-height: auto;
+        padding: clamp(12px, 3vh, 24px) 0 clamp(12px, 3vh, 20px);
+    }
+
+    .site-main__body.container {
+        padding-top: clamp(16px, 4vh, 28px);
+    }
+
+    .statement-section {
+        margin-top: 0;
     }
 
     .hero-full__inner {
