@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-03T13:31:57.686Z",
+  "updatedAt": "2026-11-03T22:50:17.740Z",
   "shorts": [
+    {
+      "id": "GZ922JgNkd4",
+      "title": "The MLB submits a salary cap proposal to the MLBPA #MLB #baseball #mlbcontent",
+      "url": "https://www.youtube.com/shorts/GZ922JgNkd4",
+      "thumbnail": "https://i.ytimg.com/vi/GZ922JgNkd4/hq2.jpg"
+    },
     {
       "id": "UQdlJCB594Y",
       "title": "Here are the 2020 National League Gold Glove winners for the MLB #MLB #Baseball #mlbcontent",
@@ -140,12 +146,6 @@
       "title": "Would Babe Ruth be as dominant as a hitter in todays era of baseball? #baseball #mlb #yankees",
       "url": "https://www.youtube.com/shorts/pyIa6-H4YiM",
       "thumbnail": "https://i.ytimg.com/vi/pyIa6-H4YiM/hq2.jpg"
-    },
-    {
-      "id": "20P4NcSmTKU",
-      "title": "Who will finish with more World Series, Shohei Ohtani or Mookie Betts? #dodgers #shoheiohtani #mlb",
-      "url": "https://www.youtube.com/shorts/20P4NcSmTKU",
-      "thumbnail": "https://i.ytimg.com/vi/20P4NcSmTKU/hq2.jpg"
     }
   ]
 }
