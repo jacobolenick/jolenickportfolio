@@ -338,8 +338,8 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
 }
 
-/* Header & Navigation */
-header {
+/* Header & Navigation (direct child only — not .experience-header on resume) */
+body > header {
     position: sticky;
     top: 0;
     background-color: var(--background);
@@ -2082,11 +2082,19 @@ body.video-lightbox-open {
     margin-bottom: 14px;
 }
 
-.experience-header {
+.experience-header,
+header.experience-header {
     display: flex;
     align-items: flex-start;
     gap: 16px;
     margin-bottom: 12px;
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
+    position: static;
+    top: auto;
+    background: transparent;
+    z-index: auto;
 }
 
 .experience-logo {
