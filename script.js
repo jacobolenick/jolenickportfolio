@@ -1367,14 +1367,16 @@ if (vantageVideo) {
             </button>
             <div class="baseball-card-scene">
                 <div class="baseball-card-stage">
-                    <div class="baseball-card-spin" aria-hidden="true">
-                        <div class="baseball-card-face baseball-card-face--front">
-                            <img src="" alt="Jacob Olenick baseball card front" width="1000" height="1400" decoding="async">
-                            <span class="baseball-card-shine" aria-hidden="true"></span>
-                        </div>
-                        <div class="baseball-card-face baseball-card-face--back">
-                            <img src="" alt="Jacob Olenick baseball card back with bio" width="1000" height="1400" decoding="async">
-                            <span class="baseball-card-shine" aria-hidden="true"></span>
+                    <div class="baseball-card-spin-wrap" aria-hidden="true">
+                        <div class="baseball-card-spin">
+                            <div class="baseball-card-face baseball-card-face--front">
+                                <img src="" alt="Jacob Olenick baseball card front" width="1000" height="1400" decoding="async">
+                                <span class="baseball-card-shine" aria-hidden="true"></span>
+                            </div>
+                            <div class="baseball-card-face baseball-card-face--back">
+                                <img src="" alt="Jacob Olenick baseball card back with bio" width="1000" height="1400" decoding="async">
+                                <span class="baseball-card-shine" aria-hidden="true"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="baseball-pack-wrapper" aria-hidden="true">
@@ -1414,7 +1416,7 @@ if (vantageVideo) {
         img.src = packWrapperUrl;
     });
 
-    const cardSpin = modal.querySelector('.baseball-card-spin');
+    const cardSpinWrap = modal.querySelector('.baseball-card-spin-wrap');
     const packWrapper = modal.querySelector('.baseball-pack-wrapper');
 
     let isOpen = false;
@@ -1596,13 +1598,13 @@ if (vantageVideo) {
         clearRevealTimers();
         modal.classList.remove('is-ripping', 'is-burst', 'is-revealed');
         isAnimating = false;
-        if (cardSpin) cardSpin.setAttribute('aria-hidden', 'true');
+        if (cardSpinWrap) cardSpinWrap.setAttribute('aria-hidden', 'true');
         if (packWrapper) packWrapper.setAttribute('aria-hidden', 'true');
     }
 
     function finishRevealFocus() {
         isAnimating = false;
-        if (cardSpin) cardSpin.setAttribute('aria-hidden', 'false');
+        if (cardSpinWrap) cardSpinWrap.setAttribute('aria-hidden', 'false');
         if (packWrapper) packWrapper.setAttribute('aria-hidden', 'true');
         modal.querySelector('.baseball-card-modal__close')?.focus();
     }

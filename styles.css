@@ -2887,22 +2887,30 @@ body.baseball-card-open {
     width: 100%;
     aspect-ratio: 5 / 7;
     overflow: visible;
+    transform-style: preserve-3d;
+}
+
+.baseball-card-spin-wrap {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.baseball-card-modal.is-revealed .baseball-card-spin-wrap {
+    visibility: visible;
+    animation: baseball-card-debut 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .baseball-card-spin {
     position: absolute;
     inset: 0;
     transform-style: preserve-3d;
-    opacity: 0;
-    visibility: hidden;
-    filter: brightness(2.4) saturate(1.2);
 }
 
 .baseball-card-modal.is-revealed .baseball-card-spin {
-    visibility: visible;
-    animation:
-        baseball-card-debut 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-        baseball-card-spin 10s linear 0.65s infinite;
+    animation: baseball-card-spin 10s linear 0.65s infinite;
 }
 
 .baseball-card-scene:hover .baseball-card-spin {
@@ -3173,15 +3181,12 @@ body.baseball-card-open {
 @keyframes baseball-card-debut {
     0% {
         opacity: 0;
-        filter: brightness(3) saturate(1.35);
     }
-    35% {
+    40% {
         opacity: 1;
-        filter: brightness(1.65) saturate(1.15);
     }
     100% {
         opacity: 1;
-        filter: brightness(1) saturate(1);
     }
 }
 
@@ -3307,10 +3312,9 @@ body.baseball-card-open {
         opacity: 0;
     }
 
-    .baseball-card-spin {
+    .baseball-card-spin-wrap {
         opacity: 1;
         visibility: visible;
-        filter: none;
     }
 
     .baseball-card-modal.is-revealed .baseball-card-spin,
