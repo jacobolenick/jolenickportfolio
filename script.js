@@ -1410,14 +1410,61 @@ if (vantageVideo) {
     const frontImg = modal.querySelector('.baseball-card-face--front img');
     const backImg = modal.querySelector('.baseball-card-face--back img');
     const packWrapperUrl = assetUrl('images/baseball-pack-wrapper.png');
-    frontImg.src = assetUrl('images/baseball-card-front.png');
-    backImg.src = assetUrl('images/baseball-card-back.png');
     modal.querySelectorAll('.baseball-pack-wrapper img').forEach((img) => {
         img.src = packWrapperUrl;
     });
 
     const cardSpinWrap = modal.querySelector('.baseball-card-spin-wrap');
     const packWrapper = modal.querySelector('.baseball-pack-wrapper');
+    const cardDialog = modal.querySelector('.baseball-card-modal__dialog');
+
+    const CARD_VARIANTS = [
+        {
+            front: 'images/baseball-card-topps-front.png',
+            back: 'images/baseball-card-topps-back.png',
+            frontAlt: 'Jacob Olenick Topps baseball card front',
+            backAlt: 'Jacob Olenick Topps baseball card back with bio',
+            dialogLabel: 'Jacob Olenick Topps baseball card',
+        },
+        {
+            front: 'images/baseball-card-heritage-front.png',
+            back: 'images/baseball-card-heritage-back.png',
+            frontAlt: 'Jacob Olenick Topps Heritage baseball card front',
+            backAlt: 'Jacob Olenick Topps Heritage baseball card back with bio',
+            dialogLabel: 'Jacob Olenick Topps Heritage baseball card',
+        },
+    ];
+
+    let lastCardIndex = -1;
+
+    function pickCardVariant() {
+        if (CARD_VARIANTS.length === 1) return CARD_VARIANTS[0];
+        let index = Math.floor(Math.random() * CARD_VARIANTS.length);
+        if (CARD_VARIANTS.length > 1) {
+            while (index === lastCardIndex) {
+                index = Math.floor(Math.random() * CARD_VARIANTS.length);
+            }
+        }
+        lastCardIndex = index;
+        return CARD_VARIANTS[index];
+    }
+
+    function loadCardVariant(variant) {
+        frontImg.src = assetUrl(variant.front);
+        backImg.src = assetUrl(variant.back);
+        frontImg.alt = variant.frontAlt;
+        backImg.alt = variant.backAlt;
+        if (cardDialog) {
+            cardDialog.setAttribute('aria-label', variant.dialogLabel);
+        }
+    }
+
+    CARD_VARIANTS.forEach((variant) => {
+        [variant.front, variant.back].forEach((path) => {
+            const preload = new Image();
+            preload.src = assetUrl(path);
+        });
+    });
 
     let isOpen = false;
     let isAnimating = false;
@@ -1614,6 +1661,7 @@ if (vantageVideo) {
 
         lastFocus = document.activeElement;
         resetRevealState();
+        loadCardVariant(pickCardVariant());
         isAnimating = true;
         modal.hidden = false;
         modal.classList.add('is-open');
