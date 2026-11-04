@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap">
     <link rel="stylesheet" href="../styles.css?v=109">
-    <link rel="stylesheet" href="../about.css?v=12">
+    <link rel="stylesheet" href="../about.css?v=15">
 </head>
 <body>
     <!-- Header -->
@@ -62,9 +62,28 @@
             <p class="about-text">
                 I'm a Principal Product Designer and seasoned super IC with a track record of shipping products from 0→1 and modernizing legacy experiences. I've designed for some of the most recognized companies in the world and projects that have reached over a billion users and generated billions in revenue. When I'm not designing, you'll find me watching baseball, either on TV or at a live game. Outside of the game, I love building - whether that's crafting digital products or experimenting with interior design. I'm also a husband and proud dog (and cat) dad to a golden doodle and a tuxedo cat.
             </p>
-            <figure class="about-photo-feature">
-                <img src="../images/about-photo-2.jpg" alt="Jacob's living room with Athletics and baseball memorabilia, caps, and Jacob Talks Baseball sign" width="1024" height="768" loading="lazy" decoding="async">
-            </figure>
+            <div class="about-photo-carousel" data-about-photo-carousel aria-label="Living room and baseball memorabilia photos">
+                <button type="button" class="about-photo-carousel__arrow about-photo-carousel__arrow--prev" aria-label="Previous photo">
+                    <span class="material-icons" aria-hidden="true">chevron_left</span>
+                </button>
+                <div class="about-photo-carousel__viewport">
+                    <div class="about-photo-carousel__track" tabindex="0">
+                        <figure class="about-photo-carousel__slide">
+                            <img src="../images/about-photo-2.jpg" alt="Jacob's living room with Athletics and baseball memorabilia, caps, and Jacob Talks Baseball sign" width="1024" height="768" loading="lazy" decoding="async">
+                        </figure>
+                        <figure class="about-photo-carousel__slide">
+                            <img src="../images/about-memorabilia-wall.jpg" alt="Wall display of baseball caps, trading cards, and framed Jacob Talks Baseball art" width="768" height="1024" loading="lazy" decoding="async">
+                        </figure>
+                        <figure class="about-photo-carousel__slide">
+                            <img src="../images/about-memorabilia-corner.jpg" alt="Corner of Jacob's room with baseball caps, cards, and memorabilia above a mustard sofa" width="768" height="1024" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                </div>
+                <button type="button" class="about-photo-carousel__arrow about-photo-carousel__arrow--next" aria-label="Next photo">
+                    <span class="material-icons" aria-hidden="true">chevron_right</span>
+                </button>
+            </div>
+            <p class="about-photo-carousel__status" data-about-photo-status aria-live="polite"></p>
         </section>
 
         <!-- Sports teams -->
@@ -221,6 +240,6 @@
         </section>
     </main>
 
-    <script src="../script.js?v=55"></script>
+    <script src="../script.js?v=56"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@
     <meta name="twitter:image" content="https://www.jacobolenick.com/images/work/socialthumbnail.png?v=4">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles.css?v=117">
+    <link rel="stylesheet" href="styles.css?v=119">
 </head>
 <body>
     <!-- Header -->
@@ -82,7 +82,13 @@
                 <h3 class="section-title">Work</h3>
             </div>
 
-            <div class="posts-grid" data-active-category="all">
+            <div class="work-tabs" role="tablist" aria-label="Work categories">
+                <button type="button" class="plugin-tab active" role="tab" aria-selected="true" data-category="product-design">Product Design</button>
+                <button type="button" class="plugin-tab" role="tab" aria-selected="false" data-category="design-systems">Design Systems</button>
+                <button type="button" class="plugin-tab" role="tab" aria-selected="false" data-category="personal-projects">Personal Projects</button>
+            </div>
+
+            <div class="posts-grid" data-active-category="product-design">
                 <a href="/projects/paramount/" class="post-card-link work-item" data-categories="design-systems product-design">
                     <article class="post-card">
                         <div class="post-image">
@@ -97,15 +103,15 @@
                     </article>
                 </a>
 
-                <a href="/projects/jacob-talks-baseball/" class="post-card-link work-item" data-categories="product-design development">
+                <a href="/projects/jacob-talks-baseball/" class="post-card-link work-item" data-categories="personal-projects product-design">
                     <article class="post-card">
                         <div class="post-image">
                             <img src="images/work/jacob-talks-baseball/cover-moves.png" alt="Jacob Talks Baseball Moves page — MLB transactions for fans">
                         </div>
                         <h4 class="post-title">An MLB website for fans</h4>
                         <div class="post-pills" aria-label="Type of work">
+                            <span class="post-pill">Personal Project</span>
                             <span class="post-pill">Product Design</span>
-                            <span class="post-pill">Development</span>
                         </div>
                         <p class="post-subtitle">I designed a website with information for fans to see when trades happen, check scores and highlights and more.</p>
                     </article>
@@ -125,17 +131,16 @@
                     </article>
                 </a>
 
-                <a href="/projects/orgspace/" class="post-card-link work-item" data-categories="design-systems product-design">
+                <a href="/projects/orgspace/" class="post-card-link work-item" data-categories="product-design">
                     <article class="post-card">
                         <div class="post-image">
                             <img src="images/work/orgspace-cover.png" alt="Orgspace enterprise platform onboarding and resource planning UI">
                         </div>
                         <h4 class="post-title">Orgspace | Modernizing an Enterprise Platform to Support Growth</h4>
                         <div class="post-pills" aria-label="Type of work">
-                            <span class="post-pill">Design System</span>
                             <span class="post-pill">Product Design</span>
                         </div>
-                        <p class="post-subtitle">Redesigning key workflows and establishing a scalable design system for organizational planning.</p>
+                        <p class="post-subtitle">Redesigning key workflows for organizational planning and resource management.</p>
                     </article>
                 </a>
 
@@ -364,7 +369,7 @@
         </div>
     </div>
 
-    <script src="script.js?v=55"></script>
+    <script src="script.js?v=58"></script>
 </body>
 </html>
 

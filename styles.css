@@ -881,23 +881,32 @@ body > header {
 
 /* Work category control — iOS-style segmented controller */
 #work .work-tabs {
-    display: flex;
+    display: inline-flex;
     flex-wrap: nowrap;
     align-items: stretch;
     gap: 0;
-    width: 100%;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 0 28px;
     padding: 4px;
     border: none;
-    border-radius: 12px;
+    border-radius: 999px;
     background: var(--hover-bg);
-    overflow: hidden;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#work .work-tabs::-webkit-scrollbar {
+    display: none;
 }
 
 #work .work-tabs .plugin-tab {
-    flex: 1 1 0;
+    flex: 0 0 auto;
     min-width: 0;
-    border-radius: 9px;
+    border: none;
+    border-radius: 999px;
+    white-space: nowrap;
     padding: 8px 12px;
     text-align: center;
     font-size: 14px;
@@ -1025,10 +1034,13 @@ body > header {
     }
 }
 
-.posts-grid[data-active-category="all"] .work-item,
-.posts-grid[data-active-category="design-systems"] .work-item[data-categories*="design-systems"],
-.posts-grid[data-active-category="product-design"] .work-item[data-categories*="product-design"],
-.posts-grid[data-active-category="development"] .work-item[data-categories*="development"] {
+#work .work-stack-track > .work-item {
+    display: none;
+}
+
+#work .posts-grid[data-active-category="design-systems"] .work-stack-track > .work-item[data-categories*="design-systems"],
+#work .posts-grid[data-active-category="product-design"] .work-stack-track > .work-item[data-categories*="product-design"],
+#work .posts-grid[data-active-category="personal-projects"] .work-stack-track > .work-item[data-categories*="personal-projects"] {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -1039,15 +1051,10 @@ body > header {
     box-shadow: none;
 }
 
-#work .work-stack-track > .work-item {
-    display: block;
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .posts-grid[data-active-category="all"] .work-item,
-    .posts-grid[data-active-category="design-systems"] .work-item[data-categories*="design-systems"],
-    .posts-grid[data-active-category="product-design"] .work-item[data-categories*="product-design"],
-    .posts-grid[data-active-category="development"] .work-item[data-categories*="development"] {
+    #work .posts-grid[data-active-category="design-systems"] .work-stack-track > .work-item[data-categories*="design-systems"],
+    #work .posts-grid[data-active-category="product-design"] .work-stack-track > .work-item[data-categories*="product-design"],
+    #work .posts-grid[data-active-category="personal-projects"] .work-stack-track > .work-item[data-categories*="personal-projects"] {
         position: relative;
         top: auto;
         box-shadow: none;

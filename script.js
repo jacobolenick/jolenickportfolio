@@ -493,6 +493,9 @@ function initCategoryTabs(sectionId, listSelector, tabSelector) {
             tab.classList.toggle('active', isActive);
             tab.setAttribute('aria-selected', isActive);
         });
+        if (sectionId === 'work' && typeof list._syncWorkStack === 'function') {
+            requestAnimationFrame(() => list._syncWorkStack());
+        }
     }
 
     function handleTabSelect(tab) {
@@ -519,6 +522,7 @@ function initCategoryTabs(sectionId, listSelector, tabSelector) {
 }
 
 function initPluginTabs() {
+    initCategoryTabs('work', '.posts-grid', '.work-tabs .plugin-tab');
     initCategoryTabs('figma-plugins', '.project-list', '.plugin-tab');
 }
 
@@ -557,24 +561,55 @@ function initWorkStack() {
         list.style.setProperty('--work-stack-offset', offset);
     }
 
+    function isWorkItemVisible(item) {
+        return getComputedStyle(item).display !== 'none';
+    }
+
     function syncIndexes() {
         let index = 0;
         list.querySelectorAll('.work-item').forEach((item) => {
-            if (getComputedStyle(item).display === 'none') return;
+            if (!isWorkItemVisible(item)) return;
             item.style.setProperty('--stack-index', String(index));
             item.style.marginBottom = '';
             index += 1;
         });
     }
 
+    function syncSpacers() {
+        const track = list.querySelector('.work-stack-track');
+        if (!track) return;
+        const children = [...track.children];
+        children.forEach((el, i) => {
+            if (!el.classList.contains('work-stack-spacer')) return;
+            let prev = null;
+            let next = null;
+            for (let j = i - 1; j >= 0; j -= 1) {
+                if (children[j].classList.contains('work-item')) {
+                    prev = children[j];
+                    break;
+                }
+            }
+            for (let j = i + 1; j < children.length; j += 1) {
+                if (children[j].classList.contains('work-item')) {
+                    next = children[j];
+                    break;
+                }
+            }
+            const show = prev && next && isWorkItemVisible(prev) && isWorkItemVisible(next);
+            el.style.display = show ? '' : 'none';
+        });
+    }
+
     function syncAll() {
         syncOffset();
         syncIndexes();
+        syncSpacers();
     }
 
     syncAll();
     window.addEventListener('resize', syncAll);
     window.addEventListener('load', syncAll);
+    list._syncWorkStack = syncAll;
 }
 
 function initStatementFill() {
@@ -676,6 +711,55 @@ function initStatementFill() {
     paint();
     window.addEventListener('scroll', paint, { passive: true });
     window.addEventListener('resize', paint);
+}
+
+function initAboutPhotoCarousel() {
+    const root = document.querySelector('[data-about-photo-carousel]');
+    if (!root) return;
+
+    const track = root.querySelector('.about-photo-carousel__track');
+    const status = document.querySelector('[data-about-photo-status]');
+    const prevBtn = root.querySelector('.about-photo-carousel__arrow--prev');
+    const nextBtn = root.querySelector('.about-photo-carousel__arrow--next');
+    const slides = track ? [...track.querySelectorAll('.about-photo-carousel__slide')] : [];
+    if (!track || !slides.length) return;
+
+    function currentIndex() {
+        const slideWidth = track.clientWidth || 1;
+        return Math.round(track.scrollLeft / slideWidth);
+    }
+
+    function updateUi() {
+        const index = currentIndex();
+        const total = slides.length;
+        if (status) {
+            status.textContent = total > 1 ? `Photo ${index + 1} of ${total}` : '';
+        }
+        if (prevBtn) prevBtn.disabled = index <= 0;
+        if (nextBtn) nextBtn.disabled = index >= total - 1;
+    }
+
+    function scrollBySlide(direction) {
+        track.scrollBy({ left: track.clientWidth * direction, behavior: 'smooth' });
+    }
+
+    prevBtn?.addEventListener('click', () => scrollBySlide(-1));
+    nextBtn?.addEventListener('click', () => scrollBySlide(1));
+    track.addEventListener('scroll', updateUi, { passive: true });
+    window.addEventListener('resize', updateUi);
+
+    track.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            scrollBySlide(-1);
+        }
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            scrollBySlide(1);
+        }
+    });
+
+    updateUi();
 }
 
 function initYoutubeShortsCarousel() {
@@ -933,6 +1017,7 @@ if (document.readyState === 'loading') {
         initPluginTabs();
         initWorkStackOnHome();
         initStatementFill();
+        initAboutPhotoCarousel();
         initYoutubeShortsCarousel();
         initProjectImageLightbox();
     });
@@ -940,6 +1025,7 @@ if (document.readyState === 'loading') {
     initPluginTabs();
     initWorkStackOnHome();
     initStatementFill();
+    initAboutPhotoCarousel();
     initYoutubeShortsCarousel();
     initProjectImageLightbox();
 }
