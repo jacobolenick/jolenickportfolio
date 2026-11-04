@@ -1366,14 +1366,35 @@ if (vantageVideo) {
                 <span class="material-icons" aria-hidden="true">close</span>
             </button>
             <div class="baseball-card-scene">
-                <div class="baseball-card-spin">
-                    <div class="baseball-card-face baseball-card-face--front">
-                        <img src="" alt="Jacob Olenick baseball card front" width="1000" height="1400" decoding="async">
-                        <span class="baseball-card-shine" aria-hidden="true"></span>
+                <div class="baseball-card-stage">
+                    <div class="baseball-card-spin" aria-hidden="true">
+                        <div class="baseball-card-face baseball-card-face--front">
+                            <img src="" alt="Jacob Olenick baseball card front" width="1000" height="1400" decoding="async">
+                            <span class="baseball-card-shine" aria-hidden="true"></span>
+                        </div>
+                        <div class="baseball-card-face baseball-card-face--back">
+                            <img src="" alt="Jacob Olenick baseball card back with bio" width="1000" height="1400" decoding="async">
+                            <span class="baseball-card-shine" aria-hidden="true"></span>
+                        </div>
                     </div>
-                    <div class="baseball-card-face baseball-card-face--back">
-                        <img src="" alt="Jacob Olenick baseball card back with bio" width="1000" height="1400" decoding="async">
-                        <span class="baseball-card-shine" aria-hidden="true"></span>
+                    <div class="baseball-pack-wrapper" aria-hidden="true">
+                        <div class="baseball-pack-wrapper__sealed-layer">
+                            <img class="baseball-pack-wrapper__sealed" src="" alt="" width="598" height="655" decoding="async">
+                            <span class="baseball-pack-wrapper__shine" aria-hidden="true"></span>
+                        </div>
+                        <div class="baseball-pack-wrapper__rip">
+                            <div class="baseball-pack-wrapper__half baseball-pack-wrapper__half--left">
+                                <img src="" alt="" width="598" height="655" decoding="async">
+                            </div>
+                            <div class="baseball-pack-wrapper__half baseball-pack-wrapper__half--right">
+                                <img src="" alt="" width="598" height="655" decoding="async">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="baseball-card-burst" aria-hidden="true">
+                        <span class="baseball-card-burst__rays" aria-hidden="true"></span>
+                        <span class="baseball-card-burst__ring" aria-hidden="true"></span>
+                        <span class="baseball-card-burst__core" aria-hidden="true"></span>
                     </div>
                 </div>
             </div>
@@ -1386,11 +1407,120 @@ if (vantageVideo) {
     const trigger = document.getElementById('baseball-card-trigger');
     const frontImg = modal.querySelector('.baseball-card-face--front img');
     const backImg = modal.querySelector('.baseball-card-face--back img');
+    const packWrapperUrl = assetUrl('images/baseball-pack-wrapper.png');
     frontImg.src = assetUrl('images/baseball-card-front.png');
     backImg.src = assetUrl('images/baseball-card-back.png');
+    modal.querySelectorAll('.baseball-pack-wrapper img').forEach((img) => {
+        img.src = packWrapperUrl;
+    });
+
+    const cardSpin = modal.querySelector('.baseball-card-spin');
+    const packWrapper = modal.querySelector('.baseball-pack-wrapper');
 
     let isOpen = false;
+    let isAnimating = false;
     let lastFocus = null;
+    let revealTimers = [];
+
+    function playRipSound() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+
+        let ctx;
+        try {
+            ctx = new AudioCtx();
+        } catch {
+            return;
+        }
+
+        const now = ctx.currentTime;
+        const master = ctx.createGain();
+        master.gain.setValueAtTime(0, now);
+        master.gain.linearRampToValueAtTime(0.28, now + 0.01);
+        master.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+        master.connect(ctx.destination);
+
+        const length = Math.floor(ctx.sampleRate * 0.35);
+        const noiseBuffer = ctx.createBuffer(1, length, ctx.sampleRate);
+        const samples = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < length; i += 1) {
+            const t = i / length;
+            samples[i] = (Math.random() * 2 - 1) * (1 - t) ** 0.85;
+        }
+        const noise = ctx.createBufferSource();
+        noise.buffer = noiseBuffer;
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'highpass';
+        filter.frequency.setValueAtTime(900, now);
+        filter.frequency.exponentialRampToValueAtTime(4200, now + 0.12);
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.22, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.42);
+        noise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(master);
+        noise.start(now);
+        noise.stop(now + 0.45);
+
+        window.setTimeout(() => {
+            ctx.close().catch(() => {});
+        }, 600);
+    }
+
+    function playBurstSound() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+
+        let ctx;
+        try {
+            ctx = new AudioCtx();
+        } catch {
+            return;
+        }
+
+        const now = ctx.currentTime;
+        const master = ctx.createGain();
+        master.gain.setValueAtTime(0, now);
+        master.gain.linearRampToValueAtTime(0.38, now + 0.02);
+        master.gain.exponentialRampToValueAtTime(0.001, now + 1.1);
+        master.connect(ctx.destination);
+
+        const sweep = ctx.createOscillator();
+        const sweepGain = ctx.createGain();
+        sweep.type = 'sine';
+        sweep.frequency.setValueAtTime(220, now);
+        sweep.frequency.exponentialRampToValueAtTime(2400, now + 0.35);
+        sweepGain.gain.setValueAtTime(0, now);
+        sweepGain.gain.linearRampToValueAtTime(0.2, now + 0.04);
+        sweepGain.gain.exponentialRampToValueAtTime(0.001, now + 0.75);
+        sweep.connect(sweepGain);
+        sweepGain.connect(master);
+        sweep.start(now);
+        sweep.stop(now + 0.8);
+
+        [1047, 1319, 1760, 2093].forEach((freq, i) => {
+            const t = now + 0.08 + i * 0.04;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, t);
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.08, t + 0.03);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
+            osc.connect(gain);
+            gain.connect(master);
+            osc.start(t);
+            osc.stop(t + 0.6);
+        });
+
+        window.setTimeout(() => {
+            ctx.close().catch(() => {});
+        }, 1200);
+    }
 
     function playRevealSound() {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1453,18 +1583,71 @@ if (vantageVideo) {
         }, 1500);
     }
 
+    function clearRevealTimers() {
+        revealTimers.forEach((id) => window.clearTimeout(id));
+        revealTimers = [];
+    }
+
+    function scheduleReveal(fn, delay) {
+        revealTimers.push(window.setTimeout(fn, delay));
+    }
+
+    function resetRevealState() {
+        clearRevealTimers();
+        modal.classList.remove('is-ripping', 'is-burst', 'is-revealed');
+        isAnimating = false;
+        if (cardSpin) cardSpin.setAttribute('aria-hidden', 'true');
+        if (packWrapper) packWrapper.setAttribute('aria-hidden', 'true');
+    }
+
+    function finishRevealFocus() {
+        isAnimating = false;
+        if (cardSpin) cardSpin.setAttribute('aria-hidden', 'false');
+        if (packWrapper) packWrapper.setAttribute('aria-hidden', 'true');
+        modal.querySelector('.baseball-card-modal__close')?.focus();
+    }
+
     function openModal() {
+        if (isOpen || isAnimating) return;
+
         lastFocus = document.activeElement;
-        playRevealSound();
+        resetRevealState();
+        isAnimating = true;
         modal.hidden = false;
         modal.classList.add('is-open');
         document.body.classList.add('baseball-card-open');
         isOpen = true;
-        modal.querySelector('.baseball-card-modal__close')?.focus();
+
+        if (packWrapper) packWrapper.setAttribute('aria-hidden', 'false');
+
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) {
+            modal.classList.add('is-revealed');
+            finishRevealFocus();
+            return;
+        }
+
+        scheduleReveal(() => {
+            modal.classList.add('is-ripping');
+            playRipSound();
+        }, 420);
+
+        scheduleReveal(() => {
+            modal.classList.add('is-burst');
+            playBurstSound();
+        }, 960);
+
+        scheduleReveal(() => {
+            playRevealSound();
+            modal.classList.add('is-revealed');
+        }, 1580);
+
+        scheduleReveal(finishRevealFocus, 2200);
     }
 
     function closeModal() {
-        modal.classList.remove('is-open');
+        resetRevealState();
+        modal.classList.remove('is-open', 'is-revealed', 'is-ripping', 'is-burst');
         modal.hidden = true;
         document.body.classList.remove('baseball-card-open');
         isOpen = false;

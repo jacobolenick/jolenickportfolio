@@ -2879,18 +2879,360 @@ body.baseball-card-open {
 .baseball-card-scene {
     perspective: 1400px;
     padding: 12px 0 24px;
+    overflow: visible;
 }
 
-.baseball-card-spin {
+.baseball-card-stage {
     position: relative;
     width: 100%;
     aspect-ratio: 5 / 7;
+    overflow: visible;
+}
+
+.baseball-card-spin {
+    position: absolute;
+    inset: 0;
     transform-style: preserve-3d;
-    animation: baseball-card-spin 10s linear infinite;
+    opacity: 0;
+    visibility: hidden;
+    filter: brightness(2.4) saturate(1.2);
+}
+
+.baseball-card-modal.is-revealed .baseball-card-spin {
+    visibility: visible;
+    animation:
+        baseball-card-debut 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+        baseball-card-spin 10s linear 0.65s infinite;
 }
 
 .baseball-card-scene:hover .baseball-card-spin {
     animation-play-state: paused;
+}
+
+.baseball-pack-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: 14px;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.baseball-pack-wrapper__sealed-layer {
+    position: absolute;
+    inset: 0;
+}
+
+.baseball-pack-wrapper__sealed {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.45));
+}
+
+.baseball-pack-wrapper__shine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        115deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 38%,
+        rgba(255, 255, 255, 0.45) 48%,
+        rgba(200, 220, 255, 0.25) 52%,
+        transparent 64%
+    );
+    background-size: 220% 220%;
+    mix-blend-mode: soft-light;
+    animation: baseball-pack-shimmer 2.4s ease-in-out infinite;
+}
+
+.baseball-card-modal.is-open:not(.is-ripping):not(.is-revealed) .baseball-pack-wrapper__sealed-layer {
+    animation: baseball-pack-shake 0.24s ease-in-out 0.12s 2;
+}
+
+.baseball-card-modal.is-ripping .baseball-pack-wrapper__shine,
+.baseball-card-modal.is-revealed .baseball-pack-wrapper__shine {
+    animation: none;
+    opacity: 0;
+}
+
+.baseball-pack-wrapper__rip {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.baseball-pack-wrapper__half {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    overflow: hidden;
+    will-change: transform, opacity;
+}
+
+.baseball-pack-wrapper__half img {
+    position: absolute;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.4));
+}
+
+.baseball-pack-wrapper__half--left {
+    left: 0;
+    transform-origin: 100% 42%;
+}
+
+.baseball-pack-wrapper__half--left img {
+    left: 0;
+}
+
+.baseball-pack-wrapper__half--right {
+    right: 0;
+    transform-origin: 0% 42%;
+}
+
+.baseball-pack-wrapper__half--right img {
+    right: 0;
+}
+
+.baseball-card-modal.is-ripping .baseball-pack-wrapper__sealed-layer {
+    opacity: 0;
+    transition: opacity 0.08s linear;
+}
+
+.baseball-card-modal.is-ripping .baseball-pack-wrapper__rip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.baseball-card-modal.is-ripping .baseball-pack-wrapper__half--left {
+    animation: baseball-pack-rip-left 0.52s cubic-bezier(0.33, 1, 0.38, 1) forwards;
+}
+
+.baseball-card-modal.is-ripping .baseball-pack-wrapper__half--right {
+    animation: baseball-pack-rip-right 0.52s cubic-bezier(0.33, 1, 0.38, 1) forwards;
+}
+
+.baseball-card-modal.is-burst .baseball-pack-wrapper,
+.baseball-card-modal.is-revealed .baseball-pack-wrapper {
+    display: none;
+}
+
+.baseball-card-burst {
+    position: absolute;
+    inset: -55%;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.baseball-card-burst__core,
+.baseball-card-burst__ring,
+.baseball-card-burst__rays {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+}
+
+.baseball-card-burst__core {
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 244, 200, 0.95) 12%,
+        rgba(255, 220, 120, 0.55) 28%,
+        rgba(255, 180, 80, 0.15) 45%,
+        transparent 62%
+    );
+    mix-blend-mode: screen;
+}
+
+.baseball-card-burst__ring {
+    background: radial-gradient(
+        circle at 50% 50%,
+        transparent 34%,
+        rgba(255, 255, 255, 0.85) 38%,
+        rgba(180, 220, 255, 0.45) 44%,
+        transparent 58%
+    );
+    mix-blend-mode: screen;
+}
+
+.baseball-card-burst__rays {
+    background:
+        conic-gradient(
+            from 0deg at 50% 50%,
+            transparent 0deg,
+            rgba(255, 255, 255, 0.7) 8deg,
+            transparent 16deg,
+            transparent 30deg,
+            rgba(255, 255, 255, 0.55) 38deg,
+            transparent 46deg,
+            transparent 60deg,
+            rgba(255, 255, 255, 0.65) 68deg,
+            transparent 76deg,
+            transparent 90deg,
+            rgba(255, 255, 255, 0.5) 98deg,
+            transparent 106deg,
+            transparent 120deg,
+            rgba(255, 255, 255, 0.62) 128deg,
+            transparent 136deg,
+            transparent 150deg,
+            rgba(255, 255, 255, 0.48) 158deg,
+            transparent 166deg,
+            transparent 180deg,
+            rgba(255, 255, 255, 0.68) 188deg,
+            transparent 196deg,
+            transparent 210deg,
+            rgba(255, 255, 255, 0.52) 218deg,
+            transparent 226deg,
+            transparent 240deg,
+            rgba(255, 255, 255, 0.6) 248deg,
+            transparent 256deg,
+            transparent 270deg,
+            rgba(255, 255, 255, 0.55) 278deg,
+            transparent 286deg,
+            transparent 300deg,
+            rgba(255, 255, 255, 0.64) 308deg,
+            transparent 316deg,
+            transparent 330deg,
+            rgba(255, 255, 255, 0.5) 338deg,
+            transparent 346deg,
+            transparent 360deg
+        );
+    mix-blend-mode: screen;
+    opacity: 0.85;
+}
+
+.baseball-card-modal.is-burst .baseball-card-burst {
+    visibility: visible;
+    animation: baseball-card-burst-flash 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.baseball-card-modal.is-burst .baseball-card-burst__rays {
+    animation: baseball-card-burst-spin 0.72s ease-out forwards;
+}
+
+.baseball-card-modal.is-burst .baseball-card-modal__backdrop {
+    animation: baseball-card-backdrop-flash 0.72s ease-out forwards;
+}
+
+@keyframes baseball-card-burst-flash {
+    0% {
+        opacity: 0;
+        transform: scale(0.35);
+    }
+    18% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    45% {
+        opacity: 0.95;
+        transform: scale(1.45);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2.1);
+    }
+}
+
+@keyframes baseball-card-burst-spin {
+    from {
+        transform: rotate(0deg) scale(0.9);
+    }
+    to {
+        transform: rotate(28deg) scale(1.35);
+    }
+}
+
+@keyframes baseball-card-backdrop-flash {
+    0% {
+        background: rgba(0, 0, 0, 0.82);
+    }
+    25% {
+        background: rgba(48, 42, 28, 0.55);
+    }
+    100% {
+        background: rgba(0, 0, 0, 0.82);
+    }
+}
+
+@keyframes baseball-card-debut {
+    0% {
+        opacity: 0;
+        filter: brightness(3) saturate(1.35);
+    }
+    35% {
+        opacity: 1;
+        filter: brightness(1.65) saturate(1.15);
+    }
+    100% {
+        opacity: 1;
+        filter: brightness(1) saturate(1);
+    }
+}
+
+@keyframes baseball-pack-shimmer {
+    0% {
+        background-position: 130% 35%;
+        opacity: 0.5;
+    }
+    50% {
+        background-position: -20% 65%;
+        opacity: 1;
+    }
+    100% {
+        background-position: -130% 35%;
+        opacity: 0.5;
+    }
+}
+
+@keyframes baseball-pack-shake {
+    0%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-3px) rotate(-0.8deg);
+    }
+    75% {
+        transform: translateX(3px) rotate(0.8deg);
+    }
+}
+
+@keyframes baseball-pack-rip-left {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-14%) rotate(-7deg);
+        opacity: 0;
+    }
+}
+
+@keyframes baseball-pack-rip-right {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(14%) rotate(7deg);
+        opacity: 0;
+    }
 }
 
 .baseball-card-face {
@@ -2955,6 +3297,23 @@ body.baseball-card-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .baseball-pack-wrapper,
+    .baseball-card-burst {
+        display: none;
+    }
+
+    .baseball-pack-wrapper__shine {
+        animation: none;
+        opacity: 0;
+    }
+
+    .baseball-card-spin {
+        opacity: 1;
+        visibility: visible;
+        filter: none;
+    }
+
+    .baseball-card-modal.is-revealed .baseball-card-spin,
     .baseball-card-spin {
         animation: none;
         transform: rotateY(-18deg);
