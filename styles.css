@@ -2082,19 +2082,30 @@ body.video-lightbox-open {
     margin-bottom: 14px;
 }
 
-.experience-header,
-header.experience-header {
+.experience-timeline .experience-header,
+.experience-timeline header.experience-header {
     display: flex;
     align-items: flex-start;
     gap: 16px;
     margin-bottom: 12px;
-    border: none;
-    border-bottom: none;
+    border: 0;
+    border-bottom: 0;
     box-shadow: none;
     position: static;
     top: auto;
     background: transparent;
     z-index: auto;
+}
+
+.experience-timeline .experience-header::before,
+.experience-timeline .experience-header::after {
+    content: none;
+    display: none;
+}
+
+.experience-timeline .experience-description {
+    border-top: 0;
+    padding-top: 0;
 }
 
 .experience-logo {
