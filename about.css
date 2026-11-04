@@ -18,17 +18,23 @@
 
 /* Photo Stack */
 .photo-stack {
+    --photo-card-width: clamp(220px, 32vw, 280px);
+    --photo-card-gap: clamp(14px, 2.5vw, 28px);
+    --photo-stack-height: calc(var(--photo-card-width) * 1.25 + 36px);
     position: relative;
     width: 100%;
     max-width: 760px;
-    height: 440px;
+    min-height: var(--photo-stack-height);
     margin: 0 auto;
+    padding: 4px 0 8px;
+    overflow: visible;
 }
 
 .photo-card {
     position: absolute;
-    width: 260px;
-    height: 390px;
+    width: var(--photo-card-width);
+    aspect-ratio: 4 / 5;
+    height: auto;
     border-radius: 20px;
     perspective: 1200px;
     transition: transform 0.3s ease;
@@ -56,6 +62,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 18%;
     display: block;
 }
 
@@ -87,14 +94,14 @@
     z-index: 3;
     top: 0;
     left: 50%;
-    transform: translateX(calc(-100% - 24px)) rotate(-8deg);
+    transform: translateX(calc(-100% - var(--photo-card-gap))) rotate(-7deg);
 }
 
 .photo-3 {
     z-index: 1;
-    top: 28px;
+    top: clamp(16px, 3vw, 28px);
     left: 50%;
-    transform: translateX(24px) rotate(-3deg);
+    transform: translateX(var(--photo-card-gap)) rotate(-3deg);
 }
 
 .about-photo-feature {
@@ -115,11 +122,11 @@
 }
 
 .photo-1:hover {
-    transform: translateX(calc(-100% - 24px)) rotate(0deg) scale(1.05);
+    transform: translateX(calc(-100% - var(--photo-card-gap))) rotate(0deg) scale(1.04);
 }
 
 .photo-3:hover {
-    transform: translateX(24px) rotate(0deg) scale(1.05);
+    transform: translateX(var(--photo-card-gap)) rotate(0deg) scale(1.04);
 }
 
 /* About Me Section */
@@ -434,20 +441,19 @@
     }
 
     .photo-stack {
-        height: 280px;
+        --photo-card-width: clamp(158px, 44vw, 210px);
+        --photo-card-gap: clamp(10px, 3vw, 16px);
         max-width: 100%;
         margin: 0 auto;
-        overflow: hidden;
+        padding-bottom: 12px;
     }
 
     .photo-card {
-        width: 150px;
-        height: 220px;
-        border-radius: 14px;
+        border-radius: 16px;
     }
 
     .photo-card__face {
-        border-radius: 14px;
+        border-radius: 16px;
     }
 
     .photo-card__back {
@@ -459,22 +465,20 @@
     }
 
     .photo-1 {
-        left: 50%;
-        transform: translateX(calc(-100% - 10px)) rotate(-6deg);
+        transform: translateX(calc(-100% - var(--photo-card-gap))) rotate(-5deg);
     }
 
     .photo-3 {
-        left: 50%;
-        top: 16px;
-        transform: translateX(10px) rotate(-2deg);
+        top: clamp(12px, 4vw, 20px);
+        transform: translateX(var(--photo-card-gap)) rotate(-2deg);
     }
 
     .photo-1:hover {
-        transform: translateX(calc(-100% - 10px)) rotate(0deg) scale(1.05);
+        transform: translateX(calc(-100% - var(--photo-card-gap))) rotate(0deg) scale(1.03);
     }
 
     .photo-3:hover {
-        transform: translateX(10px) rotate(0deg) scale(1.05);
+        transform: translateX(var(--photo-card-gap)) rotate(0deg) scale(1.03);
     }
 
     .about-photo-feature {
@@ -529,19 +533,16 @@
     }
 
     .photo-stack {
-        height: 220px;
-        margin: 0 auto;
-        overflow: hidden;
+        --photo-card-width: min(46vw, 168px);
+        --photo-card-gap: 8px;
     }
 
     .photo-card {
-        width: 115px;
-        height: 170px;
-        border-radius: 12px;
+        border-radius: 14px;
     }
 
     .photo-card__face {
-        border-radius: 12px;
+        border-radius: 14px;
     }
 
     .photo-card__back {
@@ -550,25 +551,6 @@
 
     .photo-card__caption {
         font-size: 18px;
-    }
-
-    .photo-1 {
-        left: 50%;
-        transform: translateX(calc(-100% - 8px)) rotate(-5deg);
-    }
-
-    .photo-3 {
-        left: 50%;
-        top: 12px;
-        transform: translateX(8px) rotate(-2deg);
-    }
-
-    .photo-1:hover {
-        transform: translateX(calc(-100% - 8px)) rotate(0deg) scale(1.05);
-    }
-
-    .photo-3:hover {
-        transform: translateX(8px) rotate(0deg) scale(1.05);
     }
 
     .about-photo-feature {

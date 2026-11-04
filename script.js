@@ -165,6 +165,9 @@ if (themeToggle && themeIcon) {
         htmlElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
+        if (typeof window.__statementPaint === 'function') {
+            window.__statementPaint();
+        }
     });
 }
 
@@ -602,21 +605,74 @@ function initStatementFill() {
         return;
     }
 
-    const gray = 214;
-    const black = 26;
+    function parseColor(input) {
+        const value = input.trim();
+        if (!value) return { r: 214, g: 214, b: 214, a: 1 };
+
+        if (value.startsWith('rgba')) {
+            const parts = value.match(/[\d.]+/g);
+            if (parts && parts.length >= 4) {
+                return {
+                    r: Number(parts[0]),
+                    g: Number(parts[1]),
+                    b: Number(parts[2]),
+                    a: Number(parts[3]),
+                };
+            }
+        }
+
+        if (value.startsWith('rgb')) {
+            const parts = value.match(/\d+/g);
+            if (parts && parts.length >= 3) {
+                return { r: Number(parts[0]), g: Number(parts[1]), b: Number(parts[2]), a: 1 };
+            }
+        }
+
+        if (value.startsWith('#')) {
+            let hex = value.slice(1);
+            if (hex.length === 3) {
+                hex = hex.split('').map((c) => c + c).join('');
+            }
+            const num = parseInt(hex, 16);
+            return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255, a: 1 };
+        }
+
+        return { r: 214, g: 214, b: 214, a: 1 };
+    }
+
+    function readStatementPalette() {
+        const rootStyle = getComputedStyle(document.documentElement);
+        return {
+            from: parseColor(rootStyle.getPropertyValue('--statement-scroll-muted')),
+            to: parseColor(rootStyle.getPropertyValue('--statement-scroll-active')),
+        };
+    }
+
+    function mixColor(from, to, progress) {
+        const t = Math.min(1, Math.max(0, progress));
+        const r = Math.round(from.r + (to.r - from.r) * t);
+        const g = Math.round(from.g + (to.g - from.g) * t);
+        const b = Math.round(from.b + (to.b - from.b) * t);
+        const a = from.a + (to.a - from.a) * t;
+        if (a < 0.999) {
+            return `rgba(${r}, ${g}, ${b}, ${a.toFixed(3)})`;
+        }
+        return `rgb(${r}, ${g}, ${b})`;
+    }
 
     function paint() {
+        const { from, to } = readStatementPalette();
         const start = window.innerHeight * 0.68;
         const end = window.innerHeight * 0.4;
         const range = start - end || 1;
         words.forEach((word) => {
             const top = word.getBoundingClientRect().top;
             const progress = Math.min(1, Math.max(0, (start - top) / range));
-            const channel = Math.round(gray + (black - gray) * progress);
-            word.style.color = `rgb(${channel}, ${channel}, ${channel})`;
+            word.style.color = mixColor(from, to, progress);
         });
     }
 
+    window.__statementPaint = paint;
     paint();
     window.addEventListener('scroll', paint, { passive: true });
     window.addEventListener('resize', paint);
@@ -713,18 +769,179 @@ function initYoutubeShortsCarousel() {
         });
 }
 
+function initProjectImageLightbox() {
+    const container = document.querySelector('.project-container');
+    if (!container) return;
+
+    const selector = [
+        '.project-hero-image img',
+        '.project-hero-block img',
+        '.section-image img',
+        '.image-section img',
+        '.project-gallery img',
+        '.gallery-grid img',
+    ].join(', ');
+
+    const thumbEls = [...container.querySelectorAll(selector)].filter((img) => {
+        const w = img.naturalWidth || img.width;
+        return w === 0 || w >= 80;
+    });
+    if (!thumbEls.length) return;
+
+    const items = thumbEls.map((img) => ({
+        src: img.currentSrc || img.src,
+        alt: img.getAttribute('alt') || '',
+        caption: img.closest('figure')?.querySelector('figcaption')?.textContent?.trim() || '',
+    }));
+
+    let modal = document.getElementById('project-image-lightbox');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'project-image-lightbox';
+        modal.className = 'project-image-lightbox';
+        modal.hidden = true;
+        modal.innerHTML = `
+            <div class="project-image-lightbox__backdrop" data-project-lightbox-close></div>
+            <button type="button" class="project-image-lightbox__close" aria-label="Close gallery">
+                <span class="material-icons" aria-hidden="true">close</span>
+            </button>
+            <button type="button" class="project-image-lightbox__nav project-image-lightbox__nav--prev" aria-label="Previous image">
+                <span class="material-icons" aria-hidden="true">chevron_left</span>
+            </button>
+            <button type="button" class="project-image-lightbox__nav project-image-lightbox__nav--next" aria-label="Next image">
+                <span class="material-icons" aria-hidden="true">chevron_right</span>
+            </button>
+            <div class="project-image-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Project image gallery">
+                <figure class="project-image-lightbox__figure">
+                    <img class="project-image-lightbox__img" src="" alt="">
+                </figure>
+                <p class="project-image-lightbox__caption" hidden></p>
+                <p class="project-image-lightbox__counter"></p>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    const imgEl = modal.querySelector('.project-image-lightbox__img');
+    const captionEl = modal.querySelector('.project-image-lightbox__caption');
+    const counterEl = modal.querySelector('.project-image-lightbox__counter');
+    const prevBtn = modal.querySelector('.project-image-lightbox__nav--prev');
+    const nextBtn = modal.querySelector('.project-image-lightbox__nav--next');
+    const closeBtn = modal.querySelector('.project-image-lightbox__close');
+    const backdrop = modal.querySelector('[data-project-lightbox-close]');
+    const dialog = modal.querySelector('.project-image-lightbox__dialog');
+
+    let index = 0;
+    let lastFocus = null;
+    let wheelLock = false;
+
+    function render() {
+        const item = items[index];
+        imgEl.src = item.src;
+        imgEl.alt = item.alt;
+        if (item.caption) {
+            captionEl.textContent = item.caption;
+            captionEl.hidden = false;
+        } else {
+            captionEl.textContent = '';
+            captionEl.hidden = true;
+        }
+        counterEl.textContent = `${index + 1} / ${items.length}`;
+        const single = items.length <= 1;
+        prevBtn.disabled = single;
+        nextBtn.disabled = single;
+        dialog.setAttribute('aria-label', item.alt || `Project image ${index + 1} of ${items.length}`);
+    }
+
+    function open(at) {
+        lastFocus = document.activeElement;
+        index = at;
+        render();
+        modal.hidden = false;
+        modal.classList.add('is-open');
+        document.body.classList.add('project-image-lightbox-open');
+        closeBtn.focus();
+    }
+
+    function close() {
+        modal.classList.remove('is-open');
+        modal.hidden = true;
+        document.body.classList.remove('project-image-lightbox-open');
+        imgEl.removeAttribute('src');
+        if (lastFocus && typeof lastFocus.focus === 'function') {
+            lastFocus.focus();
+        }
+    }
+
+    function step(delta) {
+        if (items.length <= 1) return;
+        index = (index + delta + items.length) % items.length;
+        render();
+    }
+
+    thumbEls.forEach((thumb, i) => {
+        thumb.classList.add('project-image-zoomable');
+        if (!thumb.hasAttribute('tabindex')) {
+            thumb.tabIndex = 0;
+        }
+        thumb.setAttribute('role', 'button');
+        const openAt = () => open(i);
+        thumb.addEventListener('click', openAt);
+        thumb.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openAt();
+            }
+        });
+    });
+
+    closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+    prevBtn.addEventListener('click', () => step(-1));
+    nextBtn.addEventListener('click', () => step(1));
+
+    modal.addEventListener('wheel', (event) => {
+        if (modal.hidden || items.length <= 1) return;
+        event.preventDefault();
+        if (wheelLock) return;
+        wheelLock = true;
+        step(event.deltaY > 0 ? 1 : -1);
+        window.setTimeout(() => {
+            wheelLock = false;
+        }, 220);
+    }, { passive: false });
+
+    document.addEventListener('keydown', (event) => {
+        if (modal.hidden) return;
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            close();
+        }
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            step(-1);
+        }
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            step(1);
+        }
+    });
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initPluginTabs();
         initWorkStackOnHome();
         initStatementFill();
         initYoutubeShortsCarousel();
+        initProjectImageLightbox();
     });
 } else {
     initPluginTabs();
     initWorkStackOnHome();
     initStatementFill();
     initYoutubeShortsCarousel();
+    initProjectImageLightbox();
 }
 
 /** Figma-style drifting cursors on home hero (index only) */
@@ -1026,6 +1243,160 @@ if (vantageVideo) {
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && isOpen && !isAnimating) closeVideoModal();
+    });
+})();
+
+/** Baseball card easter egg — site-wide floating button + spinning chrome card modal */
+(function initBaseballCardWidget() {
+    if (document.getElementById('baseball-card-widget')) return;
+
+    function assetUrl(relativePath) {
+        const path = relativePath.replace(/^\//, '');
+        const segments = window.location.pathname.split('/').filter(Boolean);
+        if (segments.length && /\.[a-z0-9]+$/i.test(segments[segments.length - 1])) {
+            segments.pop();
+        }
+        const prefix = segments.length ? `${'../'.repeat(segments.length)}` : '';
+        return `${prefix}${path}`;
+    }
+
+    const widget = document.createElement('div');
+    widget.id = 'baseball-card-widget';
+    widget.className = 'baseball-card-widget';
+    widget.innerHTML = `
+        <button type="button" class="baseball-card-widget__btn" id="baseball-card-trigger" aria-label="Open Jacob Olenick baseball card" aria-haspopup="dialog">
+            ⚾
+        </button>
+    `;
+
+    const modal = document.createElement('div');
+    modal.id = 'baseball-card-modal';
+    modal.className = 'baseball-card-modal';
+    modal.hidden = true;
+    modal.innerHTML = `
+        <div class="baseball-card-modal__backdrop" data-baseball-card-close></div>
+        <div class="baseball-card-modal__dialog" role="dialog" aria-modal="true" aria-label="Jacob Olenick Topps Chrome baseball card">
+            <button type="button" class="baseball-card-modal__close" data-baseball-card-close aria-label="Close baseball card">
+                <span class="material-icons" aria-hidden="true">close</span>
+            </button>
+            <div class="baseball-card-scene">
+                <div class="baseball-card-spin">
+                    <div class="baseball-card-face baseball-card-face--front">
+                        <img src="" alt="Jacob Olenick baseball card front" width="1000" height="1400" decoding="async">
+                        <span class="baseball-card-shine" aria-hidden="true"></span>
+                    </div>
+                    <div class="baseball-card-face baseball-card-face--back">
+                        <img src="" alt="Jacob Olenick baseball card back with bio" width="1000" height="1400" decoding="async">
+                        <span class="baseball-card-shine" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(widget);
+    document.body.appendChild(modal);
+
+    const trigger = document.getElementById('baseball-card-trigger');
+    const frontImg = modal.querySelector('.baseball-card-face--front img');
+    const backImg = modal.querySelector('.baseball-card-face--back img');
+    frontImg.src = assetUrl('images/baseball-card-front.png');
+    backImg.src = assetUrl('images/baseball-card-back.png');
+
+    let isOpen = false;
+    let lastFocus = null;
+
+    function playRevealSound() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+
+        let ctx;
+        try {
+            ctx = new AudioCtx();
+        } catch {
+            return;
+        }
+
+        const now = ctx.currentTime;
+        const master = ctx.createGain();
+        master.gain.setValueAtTime(0, now);
+        master.gain.linearRampToValueAtTime(0.32, now + 0.015);
+        master.gain.exponentialRampToValueAtTime(0.001, now + 1.35);
+        master.connect(ctx.destination);
+
+        [660, 880, 1175, 1568, 2093].forEach((freq, i) => {
+            const t = now + i * 0.055;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, t);
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.11, t + 0.035);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+            osc.connect(gain);
+            gain.connect(master);
+            osc.start(t);
+            osc.stop(t + 0.5);
+        });
+
+        const length = Math.floor(ctx.sampleRate * 0.22);
+        const noiseBuffer = ctx.createBuffer(1, length, ctx.sampleRate);
+        const samples = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < length; i += 1) {
+            samples[i] = (Math.random() * 2 - 1) * (1 - i / length) ** 1.4;
+        }
+        const noise = ctx.createBufferSource();
+        noise.buffer = noiseBuffer;
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(2800, now);
+        filter.Q.value = 1.2;
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.07, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+        noise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(master);
+        noise.start(now);
+        noise.stop(now + 0.3);
+
+        window.setTimeout(() => {
+            ctx.close().catch(() => {});
+        }, 1500);
+    }
+
+    function openModal() {
+        lastFocus = document.activeElement;
+        playRevealSound();
+        modal.hidden = false;
+        modal.classList.add('is-open');
+        document.body.classList.add('baseball-card-open');
+        isOpen = true;
+        modal.querySelector('.baseball-card-modal__close')?.focus();
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.hidden = true;
+        document.body.classList.remove('baseball-card-open');
+        isOpen = false;
+        if (lastFocus && typeof lastFocus.focus === 'function') {
+            lastFocus.focus();
+        }
+    }
+
+    trigger.addEventListener('click', openModal);
+    modal.querySelectorAll('[data-baseball-card-close]').forEach((el) => {
+        el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && isOpen) {
+            event.preventDefault();
+            closeModal();
+        }
     });
 })();
 

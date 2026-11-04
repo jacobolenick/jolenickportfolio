@@ -26,6 +26,8 @@
     --hero-bg: #f3f3f3;
     --hero-soft-text: #a8a8a8;
     --hero-strong-text: #111111;
+    --statement-scroll-muted: #d6d6d6;
+    --statement-scroll-active: #1a1a1a;
 }
 
 /* Dark Mode */
@@ -43,6 +45,8 @@
     --hero-bg: #141414;
     --hero-soft-text: #737373;
     --hero-strong-text: #f5f5f5;
+    --statement-scroll-muted: rgba(255, 255, 255, 0.32);
+    --statement-scroll-active: #f5f5f5;
 }
 
 html {
@@ -569,7 +573,7 @@ header {
     font-weight: 700;
     line-height: 1.12;
     letter-spacing: -0.035em;
-    color: #d6d6d6;
+    color: var(--statement-scroll-muted);
 }
 
 .statement-text + .statement-text {
@@ -577,7 +581,7 @@ header {
 }
 
 .statement-word {
-    color: #d6d6d6;
+    color: var(--statement-scroll-muted);
 }
 
 .hero-content {
@@ -2753,6 +2757,207 @@ body.skeleton-loading .mega-name-footer {
 
     .experience-date {
         font-size: 14px;
+    }
+}
+
+/* Baseball card easter egg (site-wide) */
+.baseball-card-widget {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 58;
+}
+
+.baseball-card-widget__btn {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background: var(--background);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.baseball-card-widget__btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+}
+
+.baseball-card-widget__btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+body.baseball-card-open {
+    overflow: hidden;
+}
+
+.baseball-card-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 330;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.baseball-card-modal.is-open {
+    display: flex;
+}
+
+.baseball-card-modal[hidden] {
+    display: none !important;
+}
+
+.baseball-card-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+}
+
+.baseball-card-modal__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(360px, 88vw);
+}
+
+.baseball-card-modal__close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.baseball-card-modal__close .material-icons {
+    font-size: 22px;
+}
+
+.baseball-card-scene {
+    perspective: 1400px;
+    padding: 12px 0 24px;
+}
+
+.baseball-card-spin {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 7;
+    transform-style: preserve-3d;
+    animation: baseball-card-spin 10s linear infinite;
+}
+
+.baseball-card-scene:hover .baseball-card-spin {
+    animation-play-state: paused;
+}
+
+.baseball-card-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.baseball-card-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.baseball-card-face--back {
+    transform: rotateY(180deg);
+}
+
+.baseball-card-shine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 35%,
+        rgba(255, 255, 255, 0.55) 48%,
+        rgba(180, 220, 255, 0.35) 52%,
+        transparent 68%
+    );
+    background-size: 220% 220%;
+    mix-blend-mode: soft-light;
+    animation: baseball-card-shimmer 2.8s ease-in-out infinite;
+}
+
+@keyframes baseball-card-spin {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes baseball-card-shimmer {
+    0% {
+        background-position: 120% 40%;
+        opacity: 0.55;
+    }
+    50% {
+        background-position: 0% 60%;
+        opacity: 1;
+    }
+    100% {
+        background-position: -120% 40%;
+        opacity: 0.55;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .baseball-card-spin {
+        animation: none;
+        transform: rotateY(-18deg);
+    }
+
+    .baseball-card-shine {
+        animation: none;
+        opacity: 0.35;
+    }
+}
+
+@media (max-width: 640px) {
+    .baseball-card-widget {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .baseball-card-widget__btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .baseball-card-modal {
+        padding: 16px;
+    }
+
+    .baseball-card-modal__close {
+        top: -44px;
     }
 }
 
