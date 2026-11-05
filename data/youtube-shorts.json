@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-05T13:55:03.109Z",
+  "updatedAt": "2026-11-05T23:13:13.898Z",
   "shorts": [
+    {
+      "id": "GmqEIORmyBY",
+      "title": "Here are the 2026 American League Silver Slugger Finalists for the MLB #MLB #Baseball #mlbcontent",
+      "url": "https://www.youtube.com/shorts/GmqEIORmyBY",
+      "thumbnail": "https://i.ytimg.com/vi/GmqEIORmyBY/hq2.jpg"
+    },
     {
       "id": "GZ922JgNkd4",
       "title": "The MLB submits a salary cap proposal to the MLBPA #MLB #baseball #mlbcontent",
@@ -11,13 +17,13 @@
     },
     {
       "id": "UQdlJCB594Y",
-      "title": "Here are the 2020 National League Gold Glove winners for the MLB #MLB #Baseball #mlbcontent",
+      "title": "Here are the 2026 National League Gold Glove winners for the MLB #MLB #Baseball #mlbcontent",
       "url": "https://www.youtube.com/shorts/UQdlJCB594Y",
       "thumbnail": "https://i.ytimg.com/vi/UQdlJCB594Y/hq2.jpg"
     },
     {
       "id": "gUXiSkb4LMw",
-      "title": "Here are the 2020 American League Gold Glove winners for the MLB #MLB #Baseball #mlbcontent",
+      "title": "Here are the 2026 American League Gold Glove winners for the MLB #MLB #Baseball #mlbcontent",
       "url": "https://www.youtube.com/shorts/gUXiSkb4LMw",
       "thumbnail": "https://i.ytimg.com/vi/gUXiSkb4LMw/hq2.jpg"
     },
@@ -140,12 +146,6 @@
       "title": "Who was a better infielder, Omar Vizquel or Derek Jeter? #MLB #Baseball #derekjeter",
       "url": "https://www.youtube.com/shorts/78UytV2irM8",
       "thumbnail": "https://i.ytimg.com/vi/78UytV2irM8/hq2.jpg"
-    },
-    {
-      "id": "pyIa6-H4YiM",
-      "title": "Would Babe Ruth be as dominant as a hitter in todays era of baseball? #baseball #mlb #yankees",
-      "url": "https://www.youtube.com/shorts/pyIa6-H4YiM",
-      "thumbnail": "https://i.ytimg.com/vi/pyIa6-H4YiM/hq2.jpg"
     }
   ]
 }
