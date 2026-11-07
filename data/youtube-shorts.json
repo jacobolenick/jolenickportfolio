@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-07T04:23:06.281Z",
+  "updatedAt": "2026-11-07T12:21:16.542Z",
   "shorts": [
+    {
+      "id": "6Bg-hz8wVtQ",
+      "title": "Pete Crow-Armstrong (PCA) Wins the 2026 Platinum Glove Award #petecrowarmstrong #baseball #mlb",
+      "url": "https://www.youtube.com/shorts/6Bg-hz8wVtQ",
+      "thumbnail": "https://i.ytimg.com/vi/6Bg-hz8wVtQ/hq2.jpg"
+    },
     {
       "id": "4KscZLo9xXQ",
       "title": "Here are the 2026 National League Silver Slugger Finalists for the MLB #MLB #Baseball #mlbcontent",
@@ -140,12 +146,6 @@
       "title": "The Cleveland Guardians take game 1 of the ALCS #Guardians #ALCS #rays",
       "url": "https://www.youtube.com/shorts/5N23lJvL6NQ",
       "thumbnail": "https://i.ytimg.com/vi/5N23lJvL6NQ/hq2.jpg"
-    },
-    {
-      "id": "9PK4loqSU3M",
-      "title": "The Brewers will win the NLCS. Dodgers will be sent to Cancun. #NLCS #Brewers #dodgers",
-      "url": "https://www.youtube.com/shorts/9PK4loqSU3M",
-      "thumbnail": "https://i.ytimg.com/vi/9PK4loqSU3M/hq2.jpg"
     }
   ]
 }
