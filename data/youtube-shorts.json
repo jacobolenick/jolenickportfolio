@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-07T12:21:16.542Z",
+  "updatedAt": "2026-11-07T21:22:52.184Z",
   "shorts": [
+    {
+      "id": "NHVdbHuFxEE",
+      "title": "Ripping Topps 75 2026 baseball card packs # #baseball #baseballcards #topps75",
+      "url": "https://www.youtube.com/shorts/NHVdbHuFxEE",
+      "thumbnail": "https://i.ytimg.com/vi/NHVdbHuFxEE/hq2.jpg"
+    },
     {
       "id": "6Bg-hz8wVtQ",
       "title": "Pete Crow-Armstrong (PCA) Wins the 2026 Platinum Glove Award #petecrowarmstrong #baseball #mlb",
@@ -140,12 +146,6 @@
       "title": "Would the 2004 Red Sox beat the 2025 Dodgers in the World Series? #RedSox #dodgers #mlb",
       "url": "https://www.youtube.com/shorts/M2L4gE7l-Jg",
       "thumbnail": "https://i.ytimg.com/vi/M2L4gE7l-Jg/hq2.jpg"
-    },
-    {
-      "id": "5N23lJvL6NQ",
-      "title": "The Cleveland Guardians take game 1 of the ALCS #Guardians #ALCS #rays",
-      "url": "https://www.youtube.com/shorts/5N23lJvL6NQ",
-      "thumbnail": "https://i.ytimg.com/vi/5N23lJvL6NQ/hq2.jpg"
     }
   ]
 }
