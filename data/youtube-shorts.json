@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-08T12:40:28.314Z",
+  "updatedAt": "2026-11-08T21:37:44.035Z",
   "shorts": [
+    {
+      "id": "FVhopVx3ryg",
+      "title": "The sad reality of Tim Lincecum's career 😭 #baseball #mlb #sfgiants",
+      "url": "https://www.youtube.com/shorts/FVhopVx3ryg",
+      "thumbnail": "https://i.ytimg.com/vi/FVhopVx3ryg/hq2.jpg"
+    },
     {
       "id": "NHVdbHuFxEE",
       "title": "Ripping Topps 75 2026 baseball card packs # #baseball #baseballcards #topps75",
@@ -140,12 +146,6 @@
       "title": "You can only choose one for your team: Manny Ramirez or Aaron Judge. #mannyramirez #aaronjudge #mlb",
       "url": "https://www.youtube.com/shorts/Wf6QkA38mRY",
       "thumbnail": "https://i.ytimg.com/vi/Wf6QkA38mRY/hq2.jpg"
-    },
-    {
-      "id": "M2L4gE7l-Jg",
-      "title": "Would the 2004 Red Sox beat the 2025 Dodgers in the World Series? #RedSox #dodgers #mlb",
-      "url": "https://www.youtube.com/shorts/M2L4gE7l-Jg",
-      "thumbnail": "https://i.ytimg.com/vi/M2L4gE7l-Jg/hq2.jpg"
     }
   ]
 }
