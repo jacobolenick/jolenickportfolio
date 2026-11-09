@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-09T04:22:27.839Z",
+  "updatedAt": "2026-11-09T15:00:06.208Z",
   "shorts": [
+    {
+      "id": "EKvdSgYOqM0",
+      "title": "Why the Dodgers are the favorites for Skubal #mlb #dodgers #freeagency",
+      "url": "https://www.youtube.com/shorts/EKvdSgYOqM0",
+      "thumbnail": "https://i.ytimg.com/vi/EKvdSgYOqM0/hq2.jpg"
+    },
     {
       "id": "FVhopVx3ryg",
       "title": "The sad reality of Tim Lincecum's career 😭 #baseball #mlb #sfgiants",
@@ -140,12 +146,6 @@
       "title": "What all-time closer are you choosing to win the World Series? # #mlb #worldseries #baseball",
       "url": "https://www.youtube.com/shorts/UyYpg17xbOE",
       "thumbnail": "https://i.ytimg.com/vi/UyYpg17xbOE/hq2.jpg"
-    },
-    {
-      "id": "Wf6QkA38mRY",
-      "title": "You can only choose one for your team: Manny Ramirez or Aaron Judge. #mannyramirez #aaronjudge #mlb",
-      "url": "https://www.youtube.com/shorts/Wf6QkA38mRY",
-      "thumbnail": "https://i.ytimg.com/vi/Wf6QkA38mRY/hq2.jpg"
     }
   ]
 }
