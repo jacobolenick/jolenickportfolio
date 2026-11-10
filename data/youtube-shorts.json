@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-09T15:00:06.208Z",
+  "updatedAt": "2026-11-10T01:07:08.742Z",
   "shorts": [
+    {
+      "id": "LWAQEw0vrCI",
+      "title": "Why everyone is still talking about this bat flip 😱 #mlb #baseball #shorts",
+      "url": "https://www.youtube.com/shorts/LWAQEw0vrCI",
+      "thumbnail": "https://i.ytimg.com/vi/LWAQEw0vrCI/hq2.jpg"
+    },
     {
       "id": "EKvdSgYOqM0",
       "title": "Why the Dodgers are the favorites for Skubal #mlb #dodgers #freeagency",
@@ -140,12 +146,6 @@
       "title": "Backyard Sports sent me a gift! Unboxing Video. #backyardbaseball #backyardsports #baseball",
       "url": "https://www.youtube.com/shorts/2RyMUyH6PtA",
       "thumbnail": "https://i.ytimg.com/vi/2RyMUyH6PtA/hq2.jpg"
-    },
-    {
-      "id": "UyYpg17xbOE",
-      "title": "What all-time closer are you choosing to win the World Series? # #mlb #worldseries #baseball",
-      "url": "https://www.youtube.com/shorts/UyYpg17xbOE",
-      "thumbnail": "https://i.ytimg.com/vi/UyYpg17xbOE/hq2.jpg"
     }
   ]
 }
