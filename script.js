@@ -1086,6 +1086,82 @@ function initProjectImageLightbox() {
     });
 }
 
+const SITE_FOOTER_FIGMA_ICON = '<svg class="site-footer__social-icon" width="18" height="18" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.00005 2.04999H5.52505C4.71043 2.04999 4.05005 2.71037 4.05005 3.52499C4.05005 4.33961 4.71043 4.99999 5.52505 4.99999H7.00005V2.04999ZM7.00005 1.04999H8.00005H9.47505C10.842 1.04999 11.95 2.15808 11.95 3.52499C11.95 4.33163 11.5642 5.04815 10.9669 5.49999C11.5642 5.95184 11.95 6.66836 11.95 7.475C11.95 8.8419 10.842 9.95 9.47505 9.95C8.92236 9.95 8.41198 9.76884 8.00005 9.46266V9.95L8.00005 11.425C8.00005 12.7919 6.89195 13.9 5.52505 13.9C4.15814 13.9 3.05005 12.7919 3.05005 11.425C3.05005 10.6183 3.43593 9.90184 4.03317 9.44999C3.43593 8.99814 3.05005 8.28163 3.05005 7.475C3.05005 6.66836 3.43594 5.95184 4.03319 5.5C3.43594 5.04815 3.05005 4.33163 3.05005 3.52499C3.05005 2.15808 4.15814 1.04999 5.52505 1.04999H7.00005ZM8.00005 2.04999V4.99999H9.47505C10.2897 4.99999 10.95 4.33961 10.95 3.52499C10.95 2.71037 10.2897 2.04999 9.47505 2.04999H8.00005ZM5.52505 8.94998H7.00005L7.00005 7.4788L7.00005 7.475L7.00005 7.4712V6H5.52505C4.71043 6 4.05005 6.66038 4.05005 7.475C4.05005 8.28767 4.70727 8.94684 5.5192 8.94999L5.52505 8.94998ZM4.05005 11.425C4.05005 10.6123 4.70727 9.95315 5.5192 9.94999L5.52505 9.95H7.00005L7.00005 11.425C7.00005 12.2396 6.33967 12.9 5.52505 12.9C4.71043 12.9 4.05005 12.2396 4.05005 11.425ZM8.00005 7.47206C8.00164 6.65879 8.66141 6 9.47505 6C10.2897 6 10.95 6.66038 10.95 7.475C10.95 8.28962 10.2897 8.95 9.47505 8.95C8.66141 8.95 8.00164 8.29121 8.00005 7.47794V7.47206Z" fill="currentColor"/></svg>';
+
+function siteFooterSocialIconSvg(name) {
+    const paths = {
+        linkedin: '<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>',
+        threads: '<path d="M17.743 11.123a8.547 8.547 0 00-.315-.142c-.185-3.414-2.05-5.368-5.182-5.388h-.042c-1.874 0-3.431.8-4.39 2.255l1.722 1.181c.716-1.087 1.84-1.319 2.669-1.319h.028c1.031.007 1.81.307 2.313.892.367.425.612 1.014.733 1.756a13.176 13.176 0 00-2.96-.143c-2.977.172-4.892 1.908-4.763 4.321.065 1.224.675 2.277 1.717 2.965.88.582 2.015.866 3.195.802 1.557-.086 2.778-.68 3.63-1.766.648-.825 1.057-1.894 1.238-3.241.742.448 1.292 1.037 1.596 1.745.517 1.205.547 3.184-1.068 4.797-1.415 1.414-3.116 2.025-5.686 2.044-2.851-.02-5.008-.935-6.41-2.717-1.313-1.67-1.991-4.08-2.016-7.165.025-3.085.703-5.496 2.016-7.165 1.402-1.782 3.558-2.696 6.41-2.717 2.871.02 5.065.94 6.521 2.73.714.879 1.252 1.983 1.607 3.27l2.018-.538c-.43-1.585-1.107-2.95-2.027-4.083C18.43 1.2 15.7.024 12.185 0h-.014C8.66.024 5.963 1.205 4.15 3.51c-1.614 2.05-2.446 4.905-2.474 8.482v.016c.028 3.578.86 6.431 2.473 8.482 1.813 2.305 4.512 3.486 8.022 3.51h.014c3.12-.022 5.319-.839 7.13-2.649 2.371-2.368 2.3-5.336 1.518-7.158-.56-1.307-1.629-2.368-3.09-3.07zm-5.387 5.065c-1.305.074-2.66-.512-2.728-1.766-.05-.93.662-1.969 2.808-2.092.246-.015.487-.021.724-.021.78 0 1.508.075 2.171.22-.247 3.088-1.697 3.59-2.975 3.66z"/>',
+        instagram: '<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 11-2.881.001 1.44 1.44 0 012.881-.001z"/>',
+        tiktok: '<path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.5a8.28 8.28 0 004.8 1.52v-3.44a4.85 4.85 0 01-1.05-.09z"/>',
+        facebook: '<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>',
+        x: '<path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83-9.032-11.863h7.59l5.243 6.932 6.026-6.932zm-1.291 19.494h2.039L7.486 3.24H5.316l12.294 17.407z"/>',
+    };
+    const body = paths[name];
+    if (!body) return '';
+    return `<svg class="site-footer__social-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${body}</svg>`;
+}
+
+function getSiteFooterSocialLinksHtml() {
+    const items = [
+        ['https://linkedin.com/in/jacobmolenick', 'LinkedIn', siteFooterSocialIconSvg('linkedin')],
+        ['https://www.figma.com/@jacobolenick', 'Figma', SITE_FOOTER_FIGMA_ICON],
+        ['https://www.threads.com/@jacobtalksbaseball', 'Threads', siteFooterSocialIconSvg('threads')],
+        ['https://www.instagram.com/jacobtalksbaseball', 'Instagram', siteFooterSocialIconSvg('instagram')],
+        ['https://www.tiktok.com/@jacobtalksbaseball', 'TikTok', siteFooterSocialIconSvg('tiktok')],
+        ['https://www.facebook.com/profile.php?id=61595596657892', 'Facebook', siteFooterSocialIconSvg('facebook')],
+        ['https://x.com/jtalksbaseball', 'X', siteFooterSocialIconSvg('x')],
+    ];
+    return items
+        .map(
+            ([href, label, icon]) =>
+                `<a href="${href}" class="site-footer__social-link" aria-label="${label}" target="_blank" rel="noopener noreferrer">${icon}</a>`
+        )
+        .join('');
+}
+
+function getSiteFooterMarkup() {
+    return (
+        '<div class="site-footer__inner">' +
+        '<div class="site-footer__top">' +
+        '<div class="site-footer__lead">' +
+        '<a href="https://www.youtube.com/@jacobtalks-baseball" class="site-footer__cta site-footer__cta--lead" target="_blank" rel="noopener noreferrer">' +
+        'I create Baseball content online around the MLB and MiLB.' +
+        '<span class="site-footer__cta-arrow" aria-hidden="true">↗</span></a></div>' +
+        '<nav class="site-footer__nav" aria-label="Footer">' +
+        '<a href="/">Home</a>' +
+        '<a href="/#work">Projects</a>' +
+        '<a href="/experience.html">Professional path</a>' +
+        '<a href="/about/">About</a>' +
+        '</nav>' +
+        `<div class="site-footer__social" aria-label="Social links">${getSiteFooterSocialLinksHtml()}</div>` +
+        '</div>' +
+        '<div class="site-footer__meta">' +
+        '<p>© 2026 Jacob Olenick. All rights reserved.</p>' +
+        '<p>Designed &amp; built with care.</p>' +
+        '</div>' +
+        '<p class="site-footer__wordmark" aria-hidden="true">Jacob Olenick</p>' +
+        '</div>'
+    );
+}
+
+function initSiteFooter() {
+    const existing = document.querySelector('.site-footer');
+    if (existing) {
+        const social = existing.querySelector('.site-footer__social');
+        if (social) social.innerHTML = getSiteFooterSocialLinksHtml();
+        return;
+    }
+
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    const footer = document.createElement('footer');
+    footer.className = 'site-footer';
+    footer.innerHTML = getSiteFooterMarkup();
+    main.insertAdjacentElement('afterend', footer);
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initPluginTabs();
@@ -1094,6 +1170,7 @@ if (document.readyState === 'loading') {
         initAboutPhotoCarousel();
         initYoutubeShortsCarousel();
         initProjectImageLightbox();
+        initSiteFooter();
     });
 } else {
     initPluginTabs();
@@ -1102,6 +1179,7 @@ if (document.readyState === 'loading') {
     initAboutPhotoCarousel();
     initYoutubeShortsCarousel();
     initProjectImageLightbox();
+    initSiteFooter();
 }
 
 /** Figma-style drifting cursors on home hero (index only) */

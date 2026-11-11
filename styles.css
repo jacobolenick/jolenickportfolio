@@ -2366,8 +2366,10 @@ body.video-lightbox-open {
     background: color-mix(in srgb, var(--hover-bg) 70%, var(--border-color));
 }
 
-.site-footer__social-link--figma svg {
+.site-footer__social-link svg,
+.site-footer__social-icon {
     display: block;
+    flex-shrink: 0;
 }
 
 .site-footer__meta {
