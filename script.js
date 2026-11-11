@@ -530,6 +530,11 @@ function initWorkStackOnHome() {
     initWorkStack();
 }
 
+function getWorkStackSurface(item) {
+    if (item.classList.contains('post-card')) return item;
+    return item.querySelector('.post-card');
+}
+
 function initWorkStack() {
     const section = document.getElementById('work');
     const list = section ? section.querySelector('.posts-grid') : null;
@@ -600,15 +605,84 @@ function initWorkStack() {
         });
     }
 
+    function paintDepth() {
+        const track = list.querySelector('.work-stack-track');
+        if (!track) return;
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const peek = parseFloat(getComputedStyle(list).getPropertyValue('--work-stack-peek')) || 12;
+        const items = [...track.children].filter(
+            (el) => el.classList.contains('work-item') && isWorkItemVisible(el)
+        );
+
+        items.forEach((item, index) => {
+            const surface = getWorkStackSurface(item);
+            if (!surface) return;
+
+            if (reducedMotion) {
+                surface.style.removeProperty('--stack-scale');
+                surface.style.removeProperty('--stack-tz');
+                surface.style.removeProperty('--stack-ty');
+                surface.style.removeProperty('--stack-opacity');
+                return;
+            }
+
+            const baseRect = item.getBoundingClientRect();
+            let depth = 0;
+
+            for (let j = index + 1; j < items.length; j += 1) {
+                const overTop = items[j].getBoundingClientRect().top;
+                const separation = overTop - baseRect.top;
+                const stackedSep = (j - index) * peek;
+                const looseSep = Math.max(baseRect.height * 0.88, 300);
+                if (looseSep <= stackedSep + 1) continue;
+
+                if (separation <= stackedSep + 6) {
+                    depth = j - index;
+                    continue;
+                }
+
+                const t = Math.max(0, Math.min(1, (looseSep - separation) / (looseSep - stackedSep)));
+                if (t > 0.001) {
+                    depth = (j - index - 1) + t;
+                    break;
+                }
+            }
+
+            depth = Math.min(depth, 4);
+            const scale = Math.max(0.86, 1 - depth * 0.045);
+            const tz = -depth * 72;
+            const ty = depth * 10;
+            const opacity = Math.max(0.62, 1 - depth * 0.09);
+
+            surface.style.setProperty('--stack-scale', scale.toFixed(4));
+            surface.style.setProperty('--stack-tz', `${tz.toFixed(1)}px`);
+            surface.style.setProperty('--stack-ty', `${ty.toFixed(1)}px`);
+            surface.style.setProperty('--stack-opacity', opacity.toFixed(4));
+        });
+    }
+
+    let depthRaf = false;
+    function scheduleDepthPaint() {
+        if (depthRaf) return;
+        depthRaf = true;
+        requestAnimationFrame(() => {
+            depthRaf = false;
+            paintDepth();
+        });
+    }
+
     function syncAll() {
         syncOffset();
         syncIndexes();
         syncSpacers();
+        paintDepth();
     }
 
     syncAll();
     window.addEventListener('resize', syncAll);
     window.addEventListener('load', syncAll);
+    window.addEventListener('scroll', scheduleDepthPaint, { passive: true });
     list._syncWorkStack = syncAll;
 }
 

@@ -936,7 +936,7 @@ body > header {
 }
 
 .posts-grid {
-    --work-stack-peek: 12px;
+    --work-stack-peek: 18px;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -952,6 +952,25 @@ body > header {
     display: block;
     width: 100%;
     padding-bottom: clamp(32px, 8vh, 80px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    #work .work-stack-track {
+        perspective: 1400px;
+        perspective-origin: 50% 0%;
+    }
+
+    #work .work-stack-track > .work-item {
+        transform-style: preserve-3d;
+    }
+
+    #work .work-stack-track > .work-item .post-card,
+    #work .work-stack-track > .work-item.post-card {
+        transform-origin: center top;
+        transform: translate3d(0, var(--stack-ty, 0px), var(--stack-tz, 0px)) scale(var(--stack-scale, 1));
+        opacity: var(--stack-opacity, 1);
+        will-change: transform, opacity;
+    }
 }
 
 #work .work-stack-spacer {
