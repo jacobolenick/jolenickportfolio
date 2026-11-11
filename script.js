@@ -836,15 +836,11 @@ function initAboutPhotoCarousel() {
     updateUi();
 }
 
-function initYoutubeShortsCarousel() {
-    const section = document.querySelector('[data-shorts-carousel]');
-    const track = document.querySelector('[data-shorts-track]');
-    const status = document.querySelector('[data-shorts-status]');
+function initHorizontalFeedCarousel(section, { track, status, feedUrl, emptyMessage, loadErrorMessage, renderItems }) {
     if (!section || !track || !status) return;
 
-    const prevBtn = section.querySelector('.shorts-carousel__arrow--prev');
-    const nextBtn = section.querySelector('.shorts-carousel__arrow--next');
-    const dataUrl = track.dataset.shortsFeed || '/data/youtube-shorts.json';
+    const prevBtn = section.querySelector('.social-feed-carousel__arrow--prev');
+    const nextBtn = section.querySelector('.social-feed-carousel__arrow--next');
 
     function setStatus(message) {
         status.textContent = message || '';
@@ -858,7 +854,7 @@ function initYoutubeShortsCarousel() {
     }
 
     function scrollByPage(direction) {
-        const card = track.querySelector('.shorts-card');
+        const card = track.querySelector('a');
         const gap = 16;
         const delta = card ? (card.offsetWidth + gap) * 2 * direction : track.clientWidth * 0.85 * direction;
         track.scrollBy({ left: delta, behavior: 'smooth' });
@@ -880,51 +876,197 @@ function initYoutubeShortsCarousel() {
         }
     });
 
-    fetch(dataUrl, { cache: 'no-cache' })
+    fetch(feedUrl, { cache: 'no-cache' })
         .then((res) => {
             if (!res.ok) throw new Error(`Feed HTTP ${res.status}`);
             return res.json();
         })
         .then((data) => {
-            const shorts = Array.isArray(data?.shorts) ? data.shorts : [];
-            if (!shorts.length) {
-                setStatus('No Shorts to show yet.');
+            const items = renderItems(data);
+            if (!items.length) {
+                setStatus(emptyMessage);
                 return;
             }
 
             track.replaceChildren();
-            shorts.forEach((short) => {
-                if (!short?.id) return;
-                const link = document.createElement('a');
-                link.className = 'shorts-card';
-                link.href = short.url || `https://www.youtube.com/shorts/${short.id}`;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                link.setAttribute('aria-label', short.title || 'Watch on YouTube');
-
-                const img = document.createElement('img');
-                img.src = short.thumbnail || `https://i.ytimg.com/vi/${short.id}/hq2.jpg`;
-                img.alt = '';
-                img.loading = 'lazy';
-                img.decoding = 'async';
-                link.appendChild(img);
-
-                const play = document.createElement('span');
-                play.className = 'shorts-card__play';
-                play.setAttribute('aria-hidden', 'true');
-                play.innerHTML = '<span class="material-icons">play_arrow</span>';
-                link.appendChild(play);
-
-                track.appendChild(link);
-            });
+            items.forEach((node) => track.appendChild(node));
 
             section.hidden = false;
             setStatus('');
             requestAnimationFrame(updateArrows);
         })
         .catch(() => {
-            setStatus('Shorts couldn\u2019t load right now. Try again later or visit @jacobtalks-baseball on YouTube.');
+            setStatus(loadErrorMessage);
         });
+}
+
+function getSocialFeedHost(carouselEl) {
+    return carouselEl.closest('.social-feed-section') || carouselEl.parentElement;
+}
+
+function resolveSiteFeedUrl(rawUrl, fallbackPath) {
+    const fallback = fallbackPath || '/data/youtube-shorts.json';
+    if (!rawUrl) return fallback;
+    if (rawUrl.startsWith('http://') || rawUrl.startsWith('https://')) return rawUrl;
+    try {
+        return new URL(rawUrl, window.location.href).pathname;
+    } catch {
+        return rawUrl.startsWith('/') ? rawUrl : `/${rawUrl.replace(/^\//, '')}`;
+    }
+}
+
+function initYoutubeShortsCarousels() {
+    document.querySelectorAll('[data-shorts-carousel]').forEach((section) => {
+        const track = section.querySelector('[data-shorts-track]');
+        const status = getSocialFeedHost(section)?.querySelector('[data-shorts-status]');
+        const feedUrl = resolveSiteFeedUrl(track?.dataset.shortsFeed, '/data/youtube-shorts.json');
+        initHorizontalFeedCarousel(section, {
+            track,
+            status,
+            feedUrl,
+            emptyMessage: 'No Shorts to show yet.',
+            loadErrorMessage: 'Shorts couldn\u2019t load right now. Try again later or visit @jacobtalks-baseball on YouTube.',
+            renderItems(data) {
+                const shorts = Array.isArray(data?.shorts) ? data.shorts : [];
+                return shorts.filter((short) => short?.id).map((short) => {
+                    const link = document.createElement('a');
+                    link.className = 'shorts-card social-feed-card';
+                    link.href = short.url || `https://www.youtube.com/shorts/${short.id}`;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.setAttribute('aria-label', short.title || 'Watch on YouTube');
+
+                    const img = document.createElement('img');
+                    img.src = short.thumbnail || `https://i.ytimg.com/vi/${short.id}/hq2.jpg`;
+                    img.alt = '';
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                    link.appendChild(img);
+
+                    const play = document.createElement('span');
+                    play.className = 'shorts-card__play social-feed-card__badge';
+                    play.setAttribute('aria-hidden', 'true');
+                    play.innerHTML = '<span class="material-icons">play_arrow</span>';
+                    link.appendChild(play);
+
+                    return link;
+                });
+            },
+        });
+    });
+}
+
+function initInstagramCarousels() {
+    document.querySelectorAll('[data-instagram-carousel]').forEach((section) => {
+        const track = section.querySelector('[data-instagram-track]');
+        const status = getSocialFeedHost(section)?.querySelector('[data-instagram-status]');
+        const feedUrl = resolveSiteFeedUrl(track?.dataset.instagramFeed, '/data/instagram-posts.json');
+        initHorizontalFeedCarousel(section, {
+            track,
+            status,
+            feedUrl,
+            emptyMessage: 'No Instagram posts to show yet.',
+            loadErrorMessage: 'Instagram couldn\u2019t load right now. Try again later or visit @jacobtalksbaseball on Instagram.',
+            renderItems(data) {
+                const posts = Array.isArray(data?.posts) ? data.posts : [];
+                return posts.filter((post) => post?.id && post?.thumbnail).map((post) => {
+                    const link = document.createElement('a');
+                    const captionText = (post.caption || '').trim();
+                    link.className = 'instagram-card';
+                    link.href = post.url || `https://www.instagram.com/p/${post.id}/`;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.setAttribute('aria-label', captionText || 'View on Instagram');
+
+                    const media = document.createElement('div');
+                    media.className = 'instagram-card__media social-feed-card';
+
+                    const img = document.createElement('img');
+                    const thumb = post.thumbnail;
+                    img.src = thumb.startsWith('http') ? thumb : `/${thumb.replace(/^\//, '')}`;
+                    img.alt = '';
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                    media.appendChild(img);
+
+                    if (post.mediaType === 'reel') {
+                        const badge = document.createElement('span');
+                        badge.className = 'instagram-card__reel social-feed-card__badge';
+                        badge.setAttribute('aria-hidden', 'true');
+                        badge.innerHTML = '<span class="material-icons">movie</span>';
+                        media.appendChild(badge);
+                    }
+
+                    link.appendChild(media);
+
+                    if (captionText) {
+                        const caption = document.createElement('p');
+                        caption.className = 'instagram-card__caption';
+                        caption.textContent = captionText;
+                        link.appendChild(caption);
+                    }
+
+                    return link;
+                });
+            },
+        });
+    });
+}
+
+function initXPostsCarousels() {
+    document.querySelectorAll('[data-x-carousel]').forEach((section) => {
+        const track = section.querySelector('[data-x-track]');
+        const status = getSocialFeedHost(section)?.querySelector('[data-x-status]');
+        const feedUrl = resolveSiteFeedUrl(track?.dataset.xFeed, '/data/x-posts.json');
+        initHorizontalFeedCarousel(section, {
+            track,
+            status,
+            feedUrl,
+            emptyMessage: 'No posts on X yet.',
+            loadErrorMessage: 'Posts from X couldn\u2019t load right now. Try again later or visit @jtalksbaseball on X.',
+            renderItems(data) {
+                const posts = Array.isArray(data?.posts) ? data.posts : [];
+                return posts.filter((post) => post?.id && post?.text).map((post) => {
+                    const link = document.createElement('a');
+                    link.className = 'x-post-card';
+                    link.href = post.url || `https://x.com/jtalksbaseball/status/${post.id}`;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.setAttribute('aria-label', post.text.slice(0, 120));
+
+                    const textEl = document.createElement('p');
+                    textEl.className = 'x-post-card__text';
+                    textEl.textContent = post.text;
+                    link.appendChild(textEl);
+
+                    if (post.media) {
+                        const mediaWrap = document.createElement('div');
+                        mediaWrap.className = 'x-post-card__media';
+                        const img = document.createElement('img');
+                        const src = post.media.startsWith('http')
+                            ? post.media
+                            : `/${post.media.replace(/^\//, '')}`;
+                        img.src = src;
+                        img.alt = '';
+                        img.loading = 'lazy';
+                        img.decoding = 'async';
+                        mediaWrap.appendChild(img);
+                        link.appendChild(mediaWrap);
+                    }
+
+                    if (post.hasVideo) {
+                        const badge = document.createElement('span');
+                        badge.className = 'x-post-card__video social-feed-card__badge';
+                        badge.setAttribute('aria-hidden', 'true');
+                        badge.innerHTML = '<span class="material-icons">play_arrow</span>';
+                        link.appendChild(badge);
+                    }
+
+                    return link;
+                });
+            },
+        });
+    });
 }
 
 function initProjectImageLightbox() {
@@ -1168,7 +1310,8 @@ if (document.readyState === 'loading') {
         initWorkStackOnHome();
         initStatementFill();
         initAboutPhotoCarousel();
-        initYoutubeShortsCarousel();
+        initYoutubeShortsCarousels();
+        initXPostsCarousels();
         initProjectImageLightbox();
         initSiteFooter();
     });
@@ -1177,7 +1320,8 @@ if (document.readyState === 'loading') {
     initWorkStackOnHome();
     initStatementFill();
     initAboutPhotoCarousel();
-    initYoutubeShortsCarousel();
+    initYoutubeShortsCarousels();
+    initXPostsCarousels();
     initProjectImageLightbox();
     initSiteFooter();
 }

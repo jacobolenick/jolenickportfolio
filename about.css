@@ -235,61 +235,6 @@
     margin-bottom: 28px;
 }
 
-/* Figma Plugins — pill segmented control */
-#figma-plugins .plugin-tabs {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    gap: 0;
-    width: fit-content;
-    max-width: 100%;
-    margin: 0 0 28px;
-    padding: 4px;
-    border: none;
-    border-radius: 999px;
-    background: var(--hover-bg);
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-#figma-plugins .plugin-tabs::-webkit-scrollbar {
-    display: none;
-}
-
-#figma-plugins .plugin-tab {
-    flex: 0 0 auto;
-    border: none;
-    border-radius: 999px;
-    padding: 10px 18px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--secondary-text);
-    background: transparent;
-    white-space: nowrap;
-    transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-#figma-plugins .plugin-tab:hover {
-    color: var(--primary-text);
-}
-
-#figma-plugins .plugin-tab.active {
-    color: var(--primary-text);
-    font-weight: 600;
-    background: var(--background);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
-}
-
-#figma-plugins .plugin-tab.active::after {
-    content: none;
-}
-
-[data-theme="dark"] #figma-plugins .plugin-tab.active {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
 .about-text {
     font-size: 18px;
     line-height: 1.8;
@@ -329,141 +274,14 @@
     margin-bottom: 64px;
 }
 
-/* YouTube Shorts carousel */
-.youtube-shorts-section {
-    margin-bottom: 64px;
-}
-
-.youtube-shorts-section__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px 20px;
-    margin-bottom: 24px;
-}
-
-.youtube-shorts-section__head .about-heading {
+.youtube-shorts-section__head .about-heading,
+.x-feed-section__head .about-heading {
     margin-bottom: 0;
 }
 
-.youtube-shorts-section__channel {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--secondary-text);
-    text-decoration: none;
-}
-
-.youtube-shorts-section__channel:hover {
-    color: var(--primary-text);
-}
-
-.shorts-carousel {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.shorts-carousel__viewport {
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-}
-
-.shorts-carousel__track {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    padding: 4px 2px 12px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.shorts-carousel__track::-webkit-scrollbar {
-    display: none;
-}
-
-.shorts-carousel__arrow {
-    flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
-    background: var(--background);
-    color: var(--primary-text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.shorts-carousel__arrow:hover {
-    background: var(--hover-bg);
-}
-
-.shorts-carousel__arrow:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-}
-
-.shorts-carousel__arrow .material-icons {
-    font-size: 28px;
-}
-
-.shorts-card {
-    flex: 0 0 clamp(140px, 38vw, 180px);
-    scroll-snap-align: start;
-    position: relative;
-    display: block;
-    border-radius: 16px;
-    overflow: hidden;
-    aspect-ratio: 9 / 16;
-    background: #111;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    text-decoration: none;
-    color: inherit;
-}
-
-.shorts-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.shorts-card__play {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.55);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    pointer-events: none;
-}
-
-.shorts-card__play .material-icons {
-    font-size: 28px;
-}
-
-.shorts-carousel__status {
-    margin: 12px 0 0;
-    font-size: 15px;
-    color: var(--secondary-text);
-}
-
-.shorts-carousel__status:empty {
-    display: none;
+.youtube-shorts-section__head,
+.x-feed-section__head {
+    margin-bottom: 24px;
 }
 
 .clubs-grid {
@@ -688,13 +506,17 @@
     }
 
     .about-photo-carousel__arrow,
-    .shorts-carousel__arrow {
+    .social-feed-carousel__arrow {
         width: 40px;
         height: 40px;
     }
 
     .shorts-card {
         flex: 0 0 clamp(132px, 42vw, 168px);
+    }
+
+    .x-post-card {
+        flex: 0 0 min(300px, 88vw);
     }
 
     .about-photo-carousel__slide img {
@@ -707,18 +529,6 @@
 
     .about-me-section > .about-heading {
         font-size: clamp(30px, 8vw, 36px);
-    }
-
-    #figma-plugins .plugin-tabs {
-        display: flex;
-        width: 100%;
-    }
-
-    #figma-plugins .plugin-tab {
-        flex: 1 1 0;
-        min-width: 0;
-        padding: 9px 10px;
-        font-size: 13px;
     }
 
     .about-text,
