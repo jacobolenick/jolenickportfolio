@@ -2119,15 +2119,67 @@ body.video-lightbox-open {
     line-height: 1.6;
 }
 
-/* Notes view toggle */
+/* Notes view toggle — pill segmented control */
 .notes-view-tabs {
-    margin-bottom: 36px;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 36px;
+    padding: 4px;
+    border: none;
+    border-radius: 999px;
+    background: var(--hover-bg);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-.notes-view-tab {
+.notes-view-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.notes-view-tabs .plugin-tab,
+.notes-view-tabs .notes-view-tab {
+    flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--secondary-text);
+    background: transparent;
+    white-space: nowrap;
+    transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notes-view-tabs .plugin-tab:hover,
+.notes-view-tabs .notes-view-tab:hover {
+    color: var(--primary-text);
+}
+
+.notes-view-tabs .plugin-tab.active,
+.notes-view-tabs .notes-view-tab.active {
+    color: var(--primary-text);
+    font-weight: 600;
+    background: var(--background);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.notes-view-tabs .plugin-tab.active::after,
+.notes-view-tabs .notes-view-tab.active::after {
+    content: none;
+}
+
+[data-theme="dark"] .notes-view-tabs .plugin-tab.active,
+[data-theme="dark"] .notes-view-tabs .notes-view-tab.active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .notes-view-tab__icon {
@@ -2987,6 +3039,21 @@ body.skeleton-loading .mega-name-footer {
         flex: 1 1 0;
         min-width: 0;
         padding: 9px 10px;
+        font-size: 13px;
+    }
+
+    .notes-view-tabs {
+        display: flex;
+        width: 100%;
+        margin-bottom: 28px;
+    }
+
+    .notes-view-tabs .plugin-tab,
+    .notes-view-tabs .notes-view-tab {
+        flex: 1 1 0;
+        min-width: 0;
+        justify-content: center;
+        padding: 9px 12px;
         font-size: 13px;
     }
 
