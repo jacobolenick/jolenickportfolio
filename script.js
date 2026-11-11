@@ -1051,15 +1051,16 @@ function initXPostsCarousels() {
                         img.loading = 'lazy';
                         img.decoding = 'async';
                         mediaWrap.appendChild(img);
-                        link.appendChild(mediaWrap);
-                    }
 
-                    if (post.hasVideo) {
-                        const badge = document.createElement('span');
-                        badge.className = 'x-post-card__video social-feed-card__badge';
-                        badge.setAttribute('aria-hidden', 'true');
-                        badge.innerHTML = '<span class="material-icons">play_arrow</span>';
-                        link.appendChild(badge);
+                        if (post.hasVideo) {
+                            const badge = document.createElement('span');
+                            badge.className = 'x-post-card__video social-feed-card__badge';
+                            badge.setAttribute('aria-hidden', 'true');
+                            badge.innerHTML = '<span class="material-icons">play_arrow</span>';
+                            mediaWrap.appendChild(badge);
+                        }
+
+                        link.appendChild(mediaWrap);
                     }
 
                     return link;

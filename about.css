@@ -515,9 +515,6 @@
         flex: 0 0 clamp(132px, 42vw, 168px);
     }
 
-    .x-post-card {
-        flex: 0 0 min(300px, 88vw);
-    }
 
     .about-photo-carousel__slide img {
         border-radius: 14px;
