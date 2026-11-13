@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-12T19:28:26.868Z",
+  "updatedAt": "2026-11-13T04:49:30.968Z",
   "shorts": [
+    {
+      "id": "7UdjGXkagQM",
+      "title": "Pete Crow-Armstrong wins MVP! The best player in baseball this season. #MLB #baseball #mvp",
+      "url": "https://www.youtube.com/shorts/7UdjGXkagQM",
+      "thumbnail": "https://i.ytimg.com/vi/7UdjGXkagQM/hq2.jpg"
+    },
     {
       "id": "CRFejXm_LMQ",
       "title": "5 A's Players I Wish Never Left for Another Team #athletics #MLB #Baseball",
@@ -140,12 +146,6 @@
       "title": "What MLB would I play for?  #baseball #mlb #yankees",
       "url": "https://www.youtube.com/shorts/DR3KNT89YZ4",
       "thumbnail": "https://i.ytimg.com/vi/DR3KNT89YZ4/hq2.jpg"
-    },
-    {
-      "id": "RVC3StRGXv8",
-      "title": "How would the 98 Yankees stack up against the 2023 Braves?  #mlb #baseball #yankees #braves",
-      "url": "https://www.youtube.com/shorts/RVC3StRGXv8",
-      "thumbnail": "https://i.ytimg.com/vi/RVC3StRGXv8/hq2.jpg"
     }
   ]
 }
