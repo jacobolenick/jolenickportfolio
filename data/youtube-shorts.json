@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-17T01:29:31.997Z",
+  "updatedAt": "2026-11-17T15:25:44.906Z",
   "shorts": [
+    {
+      "id": "aKxKF_rXci4",
+      "title": "Which player would you pick for your team, Barry Bonds or Ted Williams? #Baseball #mlb #MLBCreator",
+      "url": "https://www.youtube.com/shorts/aKxKF_rXci4",
+      "thumbnail": "https://i.ytimg.com/vi/aKxKF_rXci4/hq2.jpg"
+    },
     {
       "id": "7UdjGXkagQM",
       "title": "Pete Crow-Armstrong wins MVP! The best player in baseball this season. #MLB #baseball #mvp",
@@ -140,12 +146,6 @@
       "title": "Opening card packs in Backyard Baseball. My favorite game.  #baseball #rippingpacks #baseballcards",
       "url": "https://www.youtube.com/shorts/a4b7kKDZZ0w",
       "thumbnail": "https://i.ytimg.com/vi/a4b7kKDZZ0w/hq2.jpg"
-    },
-    {
-      "id": "DR3KNT89YZ4",
-      "title": "What MLB would I play for?  #baseball #mlb #yankees",
-      "url": "https://www.youtube.com/shorts/DR3KNT89YZ4",
-      "thumbnail": "https://i.ytimg.com/vi/DR3KNT89YZ4/hq2.jpg"
     }
   ]
 }
