@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-18T23:50:19.067Z",
+  "updatedAt": "2026-11-19T05:42:19.045Z",
   "shorts": [
+    {
+      "id": "iSAsRw-fp-o",
+      "title": "Should I choose the Hanshin Tigers as my favorite NPB team? #baseball #NPB #hanshintigers",
+      "url": "https://www.youtube.com/shorts/iSAsRw-fp-o",
+      "thumbnail": "https://i.ytimg.com/vi/iSAsRw-fp-o/hq2.jpg"
+    },
     {
       "id": "aKxKF_rXci4",
       "title": "Which player would you pick for your team, Barry Bonds or Ted Williams? #Baseball #mlb #MLBCreator",
@@ -140,12 +146,6 @@
       "title": "Ranking MLB logos #mlb  #baseball #baseballcontent",
       "url": "https://www.youtube.com/shorts/rNtWcJ984zo",
       "thumbnail": "https://i.ytimg.com/vi/rNtWcJ984zo/hq2.jpg"
-    },
-    {
-      "id": "a4b7kKDZZ0w",
-      "title": "Opening card packs in Backyard Baseball. My favorite game.  #baseball #rippingpacks #baseballcards",
-      "url": "https://www.youtube.com/shorts/a4b7kKDZZ0w",
-      "thumbnail": "https://i.ytimg.com/vi/a4b7kKDZZ0w/hq2.jpg"
     }
   ]
 }
