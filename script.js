@@ -1629,9 +1629,42 @@ if (vantageVideo) {
     });
 })();
 
-/** Baseball card easter egg — site-wide floating button + spinning chrome card modal */
+/** Baseball pack easter egg — rip a pack for 10 random legend and active player cards */
 (function initBaseballCardWidget() {
     if (document.getElementById('baseball-card-widget')) return;
+
+    const PLAYERS = [
+        { id: 'babe-ruth', name: 'Babe Ruth', team: 'Yankees', teamFull: 'New York Yankees', pos: 'OF', era: '1914–1935', tag: 'Legend', ink: '#0C2340', foil: '#C4CED4', photo: 'images/cards/babe-ruth.jpg', focus: 'center 16%', line: 'Career', stats: [{ k: 'AVG', v: '.342' }, { k: 'HR', v: '714' }, { k: 'RBI', v: '2,214' }], blurb: 'The Sultan of Swat. A pitcher who became the most famous hitter the game has seen.', credit: 'Photo: Irwin, La Broad & Pudlin. Public domain.' },
+        { id: 'lou-gehrig', name: 'Lou Gehrig', team: 'Yankees', teamFull: 'New York Yankees', pos: '1B', era: '1923–1939', tag: 'Legend', ink: '#0C2340', foil: '#C4CED4', photo: 'images/cards/lou-gehrig.jpg', focus: 'center 18%', line: 'Career', stats: [{ k: 'AVG', v: '.340' }, { k: 'HR', v: '493' }, { k: 'RBI', v: '1,995' }], blurb: 'The Iron Horse. He played 2,130 straight games and hit in the middle of Murderers’ Row.', credit: 'Photo: public domain.' },
+        { id: 'jackie-robinson', name: 'Jackie Robinson', team: 'Brooklyn', teamFull: 'Brooklyn Dodgers', pos: '2B', era: '1947–1956', tag: 'Legend', ink: '#005A9C', foil: '#FFFFFF', photo: 'images/cards/jackie-robinson.jpg', focus: 'center 20%', line: 'Career', stats: [{ k: 'AVG', v: '.311' }, { k: 'HR', v: '137' }, { k: 'YEAR', v: '1947' }], blurb: 'Broke the modern color barrier in 1947 and played with a fire that changed the sport.', credit: 'Photo: Harry Warnecke, Frank Livia, Robert F. Cranston, William Klein. CC0.' },
+        { id: 'willie-mays', name: 'Willie Mays', team: 'Giants', teamFull: 'San Francisco Giants', pos: 'CF', era: '1951–1973', tag: 'Legend', ink: '#27251F', foil: '#FD5A1E', photo: 'images/cards/willie-mays.jpg', focus: 'center 22%', line: 'Career', stats: [{ k: 'AVG', v: '.301' }, { k: 'HR', v: '660' }, { k: 'RBI', v: '1,903' }], blurb: 'The Say Hey Kid. Power, speed, and a center-field glove that still sets the standard.', credit: 'Photo: public domain.' },
+        { id: 'hank-aaron', name: 'Hank Aaron', team: 'Braves', teamFull: 'Atlanta Braves', pos: 'RF', era: '1954–1976', tag: 'Legend', ink: '#13274F', foil: '#CE1141', photo: 'images/cards/hank-aaron.jpg', focus: 'center 18%', line: 'Career', stats: [{ k: 'AVG', v: '.305' }, { k: 'HR', v: '755' }, { k: 'RBI', v: '2,297' }], blurb: 'Hammerin’ Hank passed Babe Ruth’s home run record and finished with 755.', credit: 'Photo: public domain.' },
+        { id: 'mickey-mantle', name: 'Mickey Mantle', team: 'Yankees', teamFull: 'New York Yankees', pos: 'CF', era: '1951–1968', tag: 'Legend', ink: '#0C2340', foil: '#C4CED4', photo: 'images/cards/mickey-mantle.jpg', focus: 'center 18%', line: 'Career', stats: [{ k: 'AVG', v: '.298' }, { k: 'HR', v: '536' }, { k: 'RBI', v: '1,509' }], blurb: 'Switch-hitting center fielder whose tape-measure shots defined the Yankees’ next era.', credit: 'Photo: public domain.' },
+        { id: 'ted-williams', name: 'Ted Williams', team: 'Red Sox', teamFull: 'Boston Red Sox', pos: 'LF', era: '1939–1960', tag: 'Legend', ink: '#BD3039', foil: '#0C2340', photo: 'images/cards/ted-williams.jpg', focus: 'center 18%', line: 'Career', stats: [{ k: 'AVG', v: '.344' }, { k: 'HR', v: '521' }, { k: 'OBP', v: '.482' }], blurb: 'The last hitter to bat .400 in a full season. The greatest eye the batter’s box has had.', credit: 'Photo: public domain.' },
+        { id: 'roberto-clemente', name: 'Roberto Clemente', team: 'Pirates', teamFull: 'Pittsburgh Pirates', pos: 'RF', era: '1955–1972', tag: 'Legend', ink: '#27251F', foil: '#FDB827', photo: 'images/cards/roberto-clemente.jpg', focus: 'center 20%', line: 'Career', stats: [{ k: 'AVG', v: '.317' }, { k: 'H', v: '3,000' }, { k: 'HR', v: '240' }], blurb: 'A right-field arm, a .317 bat, and 3,000 hits. He got the last one in his final game.', credit: 'Photo: public domain.' },
+        { id: 'sandy-koufax', name: 'Sandy Koufax', team: 'Dodgers', teamFull: 'Los Angeles Dodgers', pos: 'P', era: '1955–1966', tag: 'Legend', ink: '#005A9C', foil: '#EF3E42', photo: 'images/cards/sandy-koufax.jpg', focus: 'center 20%', line: 'Career', stats: [{ k: 'W', v: '165' }, { k: 'ERA', v: '2.76' }, { k: 'K', v: '2,396' }], blurb: 'Four no-hitters and a peak so dominant he walked away at 30 still at the top.', credit: 'Photo: publicity still. Public domain.' },
+        { id: 'nolan-ryan', name: 'Nolan Ryan', team: 'Rangers', teamFull: 'Texas Rangers', pos: 'P', era: '1966–1993', tag: 'Legend', ink: '#003278', foil: '#C0111F', photo: 'images/cards/nolan-ryan.jpg', focus: 'center 22%', line: 'Career', stats: [{ k: 'K', v: '5,714' }, { k: 'NO', v: '7' }, { k: 'W', v: '324' }], blurb: 'The all-time strikeout king, with seven no-hitters and a fastball that aged in name only.', credit: 'Photo: Chuck Andersen. CC BY 2.0.' },
+        { id: 'ken-griffey-jr', name: 'Ken Griffey Jr.', team: 'Mariners', teamFull: 'Seattle Mariners', pos: 'CF', era: '1989–2010', tag: 'Legend', ink: '#0C2C56', foil: '#005C5C', photo: 'images/cards/ken-griffey-jr.jpg', focus: 'center 12%', line: 'Career', stats: [{ k: 'AVG', v: '.284' }, { k: 'HR', v: '630' }, { k: 'RBI', v: '1,836' }], blurb: 'The sweetest swing of his generation, turned backward in a Mariners cap.', credit: 'Photo: Keith Allison. CC BY-SA 2.0.' },
+        { id: 'rickey-henderson', name: 'Rickey Henderson', team: 'Athletics', teamFull: 'Oakland Athletics', pos: 'LF', era: '1979–2003', tag: 'Legend', ink: '#003831', foil: '#EFB21E', photo: 'images/cards/rickey-henderson.jpg', focus: 'center 18%', line: 'Career', stats: [{ k: 'SB', v: '1,406' }, { k: 'H', v: '3,055' }, { k: 'HR', v: '297' }], blurb: 'The greatest leadoff man ever. If he wasn’t stealing, he was talking about stealing.', credit: 'Photo: public domain.' },
+        { id: 'mariano-rivera', name: 'Mariano Rivera', team: 'Yankees', teamFull: 'New York Yankees', pos: 'P', era: '1995–2013', tag: 'Legend', ink: '#0C2340', foil: '#C4CED4', photo: 'images/cards/mariano-rivera.jpg', focus: 'center 20%', line: 'Career', stats: [{ k: 'SV', v: '652' }, { k: 'ERA', v: '2.21' }, { k: 'PS', v: '0.70' }], blurb: 'One pitch. A cutter. The greatest closer the postseason has ever seen.', credit: 'Photo: Keith Allison. CC BY-SA 2.0.' },
+        { id: 'derek-jeter', name: 'Derek Jeter', team: 'Yankees', teamFull: 'New York Yankees', pos: 'SS', era: '1995–2014', tag: 'Legend', ink: '#0C2340', foil: '#C4CED4', photo: 'images/players/derek-jeter.jpg', focus: 'center 28%', line: 'Career', stats: [{ k: 'AVG', v: '.310' }, { k: 'H', v: '3,465' }, { k: 'HR', v: '260' }], blurb: 'The Captain. Five titles, a .310 bat, and every big moment in the Bronx.', credit: '' },
+        { id: 'omar-vizquel', name: 'Omar Vizquel', team: 'Guardians', teamFull: 'Cleveland', pos: 'SS', era: '1989–2012', tag: 'Legend', ink: '#00385D', foil: '#E31937', photo: 'images/players/omar-vizquel.jpg', focus: 'center 24%', line: 'Career', stats: [{ k: 'H', v: '2,877' }, { k: 'AVG', v: '.272' }, { k: 'GG', v: '11' }], blurb: 'Eleven Gold Gloves. A shortstop who turned the routine play into a highlight.', credit: '' },
+        { id: 'manny-ramirez', name: 'Manny Ramirez', team: 'Red Sox', teamFull: 'Boston Red Sox', pos: 'LF', era: '1993–2011', tag: 'Legend', ink: '#BD3039', foil: '#0C2340', photo: 'images/players/manny-ramirez.jpg', focus: 'center 22%', line: 'Career', stats: [{ k: 'AVG', v: '.312' }, { k: 'HR', v: '555' }, { k: 'RBI', v: '1,831' }], blurb: 'Manny being Manny. A .312 hitter who could take a pitcher deep to any field.', credit: '' },
+        { id: 'shohei-ohtani', name: 'Shohei Ohtani', team: 'Dodgers', teamFull: 'Los Angeles Dodgers', pos: 'DH / P', era: 'Active', tag: 'Active', ink: '#005A9C', foil: '#EF3E42', photo: 'images/players/shohei-ohtani.jpg', focus: 'center 28%', line: '2024', stats: [{ k: 'HR', v: '54' }, { k: 'SB', v: '59' }, { k: 'CLUB', v: '50/50' }], blurb: 'A two-way player who pitches and hits — and the first to go 50 homers and 50 steals.', credit: '' },
+        { id: 'aaron-judge', name: 'Aaron Judge', team: 'Yankees', teamFull: 'New York Yankees', pos: 'RF', era: 'Active', tag: 'Active', ink: '#0C2340', foil: '#C4CED4', photo: 'images/players/aaron-judge.jpg', focus: 'center 28%', line: '2022', stats: [{ k: 'HR', v: '62' }, { k: 'POS', v: 'RF' }, { k: 'TEAM', v: 'NYY' }], blurb: 'The Yankees captain. His 62 home runs in 2022 set the American League record.', credit: '' },
+        { id: 'mookie-betts', name: 'Mookie Betts', team: 'Dodgers', teamFull: 'Los Angeles Dodgers', pos: 'OF', era: 'Active', tag: 'Active', ink: '#005A9C', foil: '#EF3E42', photo: 'images/players/mookie-betts.jpg', focus: 'center 26%', line: 'Highlight', stats: [{ k: 'MVP', v: '2018' }, { k: 'POS', v: 'OF' }, { k: 'TEAM', v: 'LAD' }], blurb: 'An MVP outfielder who can play almost anywhere and still impact both sides of the ball.', credit: '' },
+        { id: 'pete-crow-armstrong', name: 'Pete Crow-Armstrong', team: 'Cubs', teamFull: 'Chicago Cubs', pos: 'CF', era: 'Active', tag: 'Active', ink: '#0E3386', foil: '#CC3433', photo: 'images/players/pete-crow-armstrong.jpg', focus: 'center 28%', line: 'Now', stats: [{ k: 'POS', v: 'CF' }, { k: 'BAT', v: 'L' }, { k: 'TEAM', v: 'CHC' }], blurb: 'Cubs center fielder with range for days and the speed to turn a walk into a run.', credit: '' },
+        { id: 'nick-kurtz', name: 'Nick Kurtz', team: 'Athletics', teamFull: 'Athletics', pos: '1B', era: 'Active', tag: 'Active', ink: '#003831', foil: '#EFB21E', photo: 'images/players/nick-kurtz.jpg', focus: 'center 28%', line: 'Now', stats: [{ k: 'POS', v: '1B' }, { k: 'BAT', v: 'L' }, { k: 'TEAM', v: 'ATH' }], blurb: 'Athletics first baseman with a left-handed swing built to leave the yard.', credit: '' },
+        { id: 'juan-soto', name: 'Juan Soto', team: 'Mets', teamFull: 'New York Mets', pos: 'RF', era: 'Active', tag: 'Active', ink: '#002D72', foil: '#FF5910', photo: 'images/cards/juan-soto.jpg', focus: 'center 18%', line: 'Now', stats: [{ k: 'POS', v: 'RF' }, { k: 'BAT', v: 'L' }, { k: 'TEAM', v: 'NYM' }], blurb: 'One of the best batting eyes in the game. The walk is as loud as the home run.', credit: 'Photo: Leo Altes. CC BY-SA 4.0.' },
+        { id: 'mike-trout', name: 'Mike Trout', team: 'Angels', teamFull: 'Los Angeles Angels', pos: 'CF', era: 'Active', tag: 'Active', ink: '#BA0021', foil: '#003263', photo: 'images/cards/mike-trout.jpg', focus: 'center 18%', line: 'Highlight', stats: [{ k: 'MVP', v: '3×' }, { k: 'POS', v: 'CF' }, { k: 'TEAM', v: 'LAA' }], blurb: 'Three-time MVP. The best all-around player of his generation when healthy.', credit: 'Photo: Mogami Kariya. CC BY-SA 2.0.' },
+        { id: 'bryce-harper', name: 'Bryce Harper', team: 'Phillies', teamFull: 'Philadelphia Phillies', pos: 'RF', era: 'Active', tag: 'Active', ink: '#E81828', foil: '#002D72', photo: 'images/cards/bryce-harper.jpg', focus: 'center 16%', line: 'Highlight', stats: [{ k: 'MVP', v: '2×' }, { k: 'POS', v: 'RF' }, { k: 'TEAM', v: 'PHI' }], blurb: 'Two-time MVP who plays every at-bat like the lights are only on him.', credit: 'Photo: All-Pro Reels. CC BY-SA 2.0.' },
+        { id: 'freddie-freeman', name: 'Freddie Freeman', team: 'Dodgers', teamFull: 'Los Angeles Dodgers', pos: '1B', era: 'Active', tag: 'Active', ink: '#005A9C', foil: '#EF3E42', photo: 'images/cards/freddie-freeman.jpg', focus: 'center 16%', line: 'Highlight', stats: [{ k: 'MVP', v: '2020' }, { k: 'POS', v: '1B' }, { k: 'TEAM', v: 'LAD' }], blurb: 'A 2020 MVP and the steadiest left-handed bat in the Dodgers lineup.', credit: 'Photo: All-Pro Reels. CC BY-SA 2.0.' },
+        { id: 'clayton-kershaw', name: 'Clayton Kershaw', team: 'Dodgers', teamFull: 'Los Angeles Dodgers', pos: 'P', era: 'Active', tag: 'Active', ink: '#005A9C', foil: '#EF3E42', photo: 'images/cards/clayton-kershaw.jpg', focus: 'center 22%', line: 'Highlight', stats: [{ k: 'CY', v: '3×' }, { k: 'POS', v: 'P' }, { k: 'TEAM', v: 'LAD' }], blurb: 'Three Cy Young awards and a curveball that still empties a batter’s knees.', credit: 'Photo: Arturo Pardavila III. CC BY 2.0.' },
+        { id: 'francisco-lindor', name: 'Francisco Lindor', team: 'Mets', teamFull: 'New York Mets', pos: 'SS', era: 'Active', tag: 'Active', ink: '#002D72', foil: '#FF5910', photo: 'images/cards/francisco-lindor.jpg', focus: 'center 18%', line: 'Now', stats: [{ k: 'POS', v: 'SS' }, { k: 'BAT', v: 'S' }, { k: 'TEAM', v: 'NYM' }], blurb: 'Switch-hitting shortstop. Smile, glove, and extra-base power from both sides.', credit: 'Photo: D. Benjamin Miller. CC0.' },
+        { id: 'ronald-acuna', name: 'Ronald Acuña Jr.', team: 'Braves', teamFull: 'Atlanta Braves', pos: 'OF', era: 'Active', tag: 'Active', ink: '#13274F', foil: '#CE1141', photo: 'images/cards/ronald-acuna.png', focus: 'center 14%', line: '2023', stats: [{ k: 'HR', v: '41' }, { k: 'SB', v: '73' }, { k: 'CLUB', v: '40/70' }], blurb: 'The 2023 season was 41 homers and 73 steals. Nobody had done 40 and 70 before.', credit: 'Photo: All-Pro Reels. CC BY-SA 2.0.' },
+        { id: 'julio-rodriguez', name: 'Julio Rodríguez', team: 'Mariners', teamFull: 'Seattle Mariners', pos: 'CF', era: 'Active', tag: 'Active', ink: '#0C2C56', foil: '#005C5C', photo: 'images/cards/julio-rodriguez.png', focus: 'center 30%', line: 'Highlight', stats: [{ k: 'ROY', v: '2022' }, { k: 'POS', v: 'CF' }, { k: 'TEAM', v: 'SEA' }], blurb: '2022 American League Rookie of the Year, and the center fielder Seattle built around.', credit: 'Photo: Latinos En Pelota. CC BY 3.0.' },
+        { id: 'paul-skenes', name: 'Paul Skenes', team: 'Pirates', teamFull: 'Pittsburgh Pirates', pos: 'P', era: 'Active', tag: 'Active', ink: '#27251F', foil: '#FDB827', photo: 'images/cards/paul-skenes.jpg', focus: 'center 12%', line: 'Highlight', stats: [{ k: 'ROY', v: '2024' }, { k: 'POS', v: 'P' }, { k: 'TEAM', v: 'PIT' }], blurb: '2024 National League Rookie of the Year. A fastball that shows up before the batter is ready.', credit: 'Photo: Yeroc3103. CC BY 4.0.' }
+    ];
 
     function assetUrl(relativePath) {
         const path = relativePath.replace(/^\//, '');
@@ -1643,11 +1676,19 @@ if (vantageVideo) {
         return `${prefix}${path}`;
     }
 
+    function escapeHtml(value) {
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
     const widget = document.createElement('div');
     widget.id = 'baseball-card-widget';
     widget.className = 'baseball-card-widget';
     widget.innerHTML = `
-        <button type="button" class="baseball-card-widget__btn" id="baseball-card-trigger" aria-label="Open Jacob Olenick baseball card" aria-haspopup="dialog">
+        <button type="button" class="baseball-card-widget__btn" id="baseball-card-trigger" aria-label="Rip a baseball pack" aria-haspopup="dialog">
             ⚾
         </button>
     `;
@@ -1658,24 +1699,12 @@ if (vantageVideo) {
     modal.hidden = true;
     modal.innerHTML = `
         <div class="baseball-card-modal__backdrop" data-baseball-card-close></div>
-        <div class="baseball-card-modal__dialog" role="dialog" aria-modal="true" aria-label="Jacob Olenick Topps Chrome baseball card">
-            <button type="button" class="baseball-card-modal__close" data-baseball-card-close aria-label="Close baseball card">
+        <div class="baseball-card-modal__dialog" role="dialog" aria-modal="true" aria-label="Baseball card pack">
+            <button type="button" class="baseball-card-modal__close" data-baseball-card-close aria-label="Close baseball pack">
                 <span class="material-icons" aria-hidden="true">close</span>
             </button>
             <div class="baseball-card-scene">
                 <div class="baseball-card-stage">
-                    <div class="baseball-card-spin-wrap" aria-hidden="true">
-                        <div class="baseball-card-spin">
-                            <div class="baseball-card-face baseball-card-face--front">
-                                <img src="" alt="Jacob Olenick baseball card front" width="1000" height="1400" decoding="async">
-                                <span class="baseball-card-shine" aria-hidden="true"></span>
-                            </div>
-                            <div class="baseball-card-face baseball-card-face--back">
-                                <img src="" alt="Jacob Olenick baseball card back with bio" width="1000" height="1400" decoding="async">
-                                <span class="baseball-card-shine" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                    </div>
                     <div class="baseball-pack-wrapper" aria-hidden="true">
                         <div class="baseball-pack-wrapper__sealed-layer">
                             <img class="baseball-pack-wrapper__sealed" src="" alt="" width="598" height="655" decoding="async">
@@ -1697,6 +1726,19 @@ if (vantageVideo) {
                     </div>
                 </div>
             </div>
+            <div class="baseball-pack-result" hidden>
+                <div class="baseball-pack-result__head">
+                    <h2 class="baseball-pack-result__title">1 of 10</h2>
+                    <p class="baseball-pack-result__hint">Tap the card to see the back.</p>
+                </div>
+                <div class="baseball-pack-grid" role="list"></div>
+                <div class="baseball-pack-nav">
+                    <button type="button" class="baseball-pack-prev">Previous</button>
+                    <button type="button" class="baseball-pack-next">Next card</button>
+                </div>
+                <button type="button" class="baseball-pack-again" hidden>Rip another pack</button>
+                <p class="baseball-pack-result__status" aria-live="polite"></p>
+            </div>
         </div>
     `;
 
@@ -1704,64 +1746,99 @@ if (vantageVideo) {
     document.body.appendChild(modal);
 
     const trigger = document.getElementById('baseball-card-trigger');
-    const frontImg = modal.querySelector('.baseball-card-face--front img');
-    const backImg = modal.querySelector('.baseball-card-face--back img');
     const packWrapperUrl = assetUrl('images/baseball-pack-wrapper.png');
     modal.querySelectorAll('.baseball-pack-wrapper img').forEach((img) => {
         img.src = packWrapperUrl;
     });
 
-    const cardSpinWrap = modal.querySelector('.baseball-card-spin-wrap');
     const packWrapper = modal.querySelector('.baseball-pack-wrapper');
     const cardDialog = modal.querySelector('.baseball-card-modal__dialog');
+    const result = modal.querySelector('.baseball-pack-result');
+    const grid = modal.querySelector('.baseball-pack-grid');
+    const againBtn = modal.querySelector('.baseball-pack-again');
+    const prevBtn = modal.querySelector('.baseball-pack-prev');
+    const nextBtn = modal.querySelector('.baseball-pack-next');
+    const titleEl = modal.querySelector('.baseball-pack-result__title');
+    const hintEl = modal.querySelector('.baseball-pack-result__hint');
+    const statusEl = modal.querySelector('.baseball-pack-result__status');
 
-    const CARD_VARIANTS = [
-        {
-            front: 'images/baseball-card-topps-front.png',
-            back: 'images/baseball-card-topps-back.png',
-            frontAlt: 'Jacob Olenick Topps baseball card front',
-            backAlt: 'Jacob Olenick Topps baseball card back with bio',
-            dialogLabel: 'Jacob Olenick Topps baseball card',
-        },
-        {
-            front: 'images/baseball-card-heritage-front.png',
-            back: 'images/baseball-card-heritage-back.png',
-            frontAlt: 'Jacob Olenick Topps Heritage baseball card front',
-            backAlt: 'Jacob Olenick Topps Heritage baseball card back with bio',
-            dialogLabel: 'Jacob Olenick Topps Heritage baseball card',
-        },
-    ];
+    let lastPackKey = '';
+    let packCards = [];
+    let cardIndex = 0;
+    let showingAll = false;
 
-    let lastCardIndex = -1;
-
-    function pickCardVariant() {
-        if (CARD_VARIANTS.length === 1) return CARD_VARIANTS[0];
-        let index = Math.floor(Math.random() * CARD_VARIANTS.length);
-        if (CARD_VARIANTS.length > 1) {
-            while (index === lastCardIndex) {
-                index = Math.floor(Math.random() * CARD_VARIANTS.length);
-            }
+    function drawPack() {
+        const pool = PLAYERS.slice();
+        for (let i = pool.length - 1; i > 0; i -= 1) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const swap = pool[i];
+            pool[i] = pool[j];
+            pool[j] = swap;
         }
-        lastCardIndex = index;
-        return CARD_VARIANTS[index];
+        let pick = pool.slice(0, 10);
+        let key = pick.map((player) => player.id).sort().join('|');
+        if (key === lastPackKey && pool.length > 10) {
+            pick = pool.slice(1, 11);
+            key = pick.map((player) => player.id).sort().join('|');
+        }
+        lastPackKey = key;
+        return pick;
     }
 
-    function loadCardVariant(variant) {
-        frontImg.src = assetUrl(variant.front);
-        backImg.src = assetUrl(variant.back);
-        frontImg.alt = variant.frontAlt;
-        backImg.alt = variant.backAlt;
+    function cardMarkup(player, index) {
+        const setNo = String(PLAYERS.findIndex((entry) => entry.id === player.id) + 1).padStart(2, '0');
+        const stats = player.stats.map((stat) => `
+            <div class="pull-card__stat">
+                <span class="pull-card__stat-value">${escapeHtml(stat.v)}</span>
+                <span class="pull-card__stat-label">${escapeHtml(stat.k)}</span>
+            </div>
+        `).join('');
+        const credit = player.credit
+            ? `<p class="pull-card__credit">${escapeHtml(player.credit)}</p>`
+            : '';
+        return `
+            <button type="button" class="pull-card" role="listitem" data-tag="${escapeHtml(player.tag)}" aria-pressed="false" aria-label="${escapeHtml(`${player.name}, ${player.teamFull} ${player.pos}. Flip card.`)}" style="--ink:${player.ink};--foil:${player.foil};--focus:${player.focus};animation-delay:${index * 55}ms">
+                <span class="pull-card__inner">
+                    <span class="pull-card__face pull-card__face--front">
+                        <span class="pull-card__sheet">
+                            <span class="pull-card__topline">
+                                <span class="pull-card__brand">TOPPS</span>
+                                <span class="pull-card__tag">${escapeHtml(player.tag)}</span>
+                                <span class="pull-card__no">${setNo}</span>
+                            </span>
+                            <span class="pull-card__photo">
+                                <img src="${assetUrl(player.photo)}" alt="" width="400" height="520" decoding="async">
+                            </span>
+                            <span class="pull-card__plate">
+                                <span class="pull-card__name">${escapeHtml(player.name)}</span>
+                                <span class="pull-card__meta">${escapeHtml(player.pos)} · ${escapeHtml(player.team)}</span>
+                            </span>
+                        </span>
+                    </span>
+                    <span class="pull-card__face pull-card__face--back">
+                        <span class="pull-card__back">
+                            <span class="pull-card__back-kicker">${escapeHtml(player.tag)} · ${escapeHtml(player.line)}</span>
+                            <span class="pull-card__back-name">${escapeHtml(player.name)}</span>
+                            <span class="pull-card__back-team">${escapeHtml(player.teamFull)}</span>
+                            <span class="pull-card__back-era">${escapeHtml(player.pos)} · ${escapeHtml(player.era)}</span>
+                            <span class="pull-card__stats">${stats}</span>
+                            <span class="pull-card__blurb">${escapeHtml(player.blurb)}</span>
+                            ${credit}
+                        </span>
+                    </span>
+                </span>
+            </button>
+        `;
+    }
+
+    function renderPack(pack) {
+        grid.innerHTML = pack.map((player, index) => cardMarkup(player, index)).join('');
         if (cardDialog) {
-            cardDialog.setAttribute('aria-label', variant.dialogLabel);
+            const names = pack.map((player) => player.name).join(', ');
+            cardDialog.setAttribute('aria-label', `Baseball pack with ${names}`);
         }
+        return pack.map((player) => player.name).join(', ');
     }
-
-    CARD_VARIANTS.forEach((variant) => {
-        [variant.front, variant.back].forEach((path) => {
-            const preload = new Image();
-            preload.src = assetUrl(path);
-        });
-    });
 
     let isOpen = false;
     let isAnimating = false;
@@ -1929,6 +2006,93 @@ if (vantageVideo) {
         }, 1500);
     }
 
+    function playWithContext(start) {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        let ctx;
+        try {
+            ctx = new AudioCtx();
+        } catch {
+            return;
+        }
+        const now = ctx.currentTime;
+        const master = ctx.createGain();
+        master.gain.setValueAtTime(0.0001, now);
+        master.gain.exponentialRampToValueAtTime(0.34, now + 0.012);
+        master.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
+        master.connect(ctx.destination);
+        start(ctx, master, now);
+        window.setTimeout(() => {
+            ctx.close().catch(() => {});
+        }, 1000);
+    }
+
+    function addSnap(ctx, master, now) {
+        const length = Math.floor(ctx.sampleRate * 0.08);
+        const noiseBuffer = ctx.createBuffer(1, length, ctx.sampleRate);
+        const samples = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < length; i += 1) {
+            samples[i] = (Math.random() * 2 - 1) * (1 - i / length) ** 1.6;
+        }
+        const noise = ctx.createBufferSource();
+        noise.buffer = noiseBuffer;
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'highpass';
+        filter.frequency.value = 1400;
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.35, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.09);
+        noise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(master);
+        noise.start(now);
+        noise.stop(now + 0.1);
+    }
+
+    function playFlipSound() {
+        playWithContext((ctx, master, now) => {
+            addSnap(ctx, master, now);
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(240, now);
+            osc.frequency.exponentialRampToValueAtTime(140, now + 0.08);
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(0.2, now + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+            osc.connect(gain);
+            gain.connect(master);
+            osc.start(now);
+            osc.stop(now + 0.14);
+        });
+    }
+
+    function playLegendSound() {
+        playWithContext((ctx, master, now) => {
+            addSnap(ctx, master, now);
+            [523, 659, 784].forEach((freq, i) => {
+                const t = now + 0.04 + i * 0.07;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, t);
+                gain.gain.setValueAtTime(0.0001, t);
+                gain.gain.exponentialRampToValueAtTime(0.16, t + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.38);
+                osc.connect(gain);
+                gain.connect(master);
+                osc.start(t);
+                osc.stop(t + 0.4);
+            });
+        });
+    }
+
+    function playCardSound(player) {
+        if (player && player.tag === 'Legend') playLegendSound();
+        else playFlipSound();
+    }
+
     function clearRevealTimers() {
         revealTimers.forEach((id) => window.clearTimeout(id));
         revealTimers = [];
@@ -1942,35 +2106,99 @@ if (vantageVideo) {
         clearRevealTimers();
         modal.classList.remove('is-ripping', 'is-burst', 'is-revealed');
         isAnimating = false;
-        if (cardSpinWrap) cardSpinWrap.setAttribute('aria-hidden', 'true');
         if (packWrapper) packWrapper.setAttribute('aria-hidden', 'true');
+        if (result) {
+            result.hidden = true;
+            result.classList.remove('is-single', 'is-gallery');
+        }
+        modal.classList.remove('is-gallery');
+        packCards = [];
+        cardIndex = 0;
+        showingAll = false;
+        if (statusEl) statusEl.textContent = '';
+    }
+
+    function showSingle(index) {
+        const cards = [...grid.querySelectorAll('.pull-card')];
+        if (!cards.length) return;
+        showingAll = false;
+        cardIndex = index;
+        result.classList.add('is-single');
+        result.classList.remove('is-gallery');
+        modal.classList.remove('is-gallery');
+        cards.forEach((card, i) => {
+            const current = i === index;
+            card.hidden = !current;
+            card.classList.toggle('is-current', current);
+            if (current) {
+                card.classList.remove('is-entering');
+                void card.offsetWidth;
+                card.classList.add('is-entering');
+            }
+        });
+        const player = packCards[index];
+        if (titleEl) titleEl.textContent = `${index + 1} of ${packCards.length}`;
+        if (hintEl) hintEl.textContent = 'Tap the card to see the back.';
+        if (prevBtn) prevBtn.hidden = index === 0;
+        if (nextBtn) {
+            nextBtn.hidden = false;
+            nextBtn.textContent = index === cards.length - 1 ? 'Show all 10' : 'Next card';
+        }
+        if (againBtn) againBtn.hidden = true;
+        if (statusEl && player) {
+            statusEl.textContent = `${player.name}. ${player.tag}. Card ${index + 1} of ${packCards.length}.`;
+        }
+        playCardSound(player);
+        cards[index].focus();
+    }
+
+    function showAll() {
+        showingAll = true;
+        result.classList.remove('is-single');
+        result.classList.add('is-gallery');
+        modal.classList.add('is-gallery');
+        grid.querySelectorAll('.pull-card').forEach((card) => {
+            card.hidden = false;
+            card.classList.remove('is-current', 'is-entering');
+        });
+        if (titleEl) titleEl.textContent = 'Your 10 cards';
+        if (hintEl) hintEl.textContent = 'Tap a card to see the back.';
+        if (prevBtn) prevBtn.hidden = true;
+        if (nextBtn) nextBtn.hidden = true;
+        if (againBtn) againBtn.hidden = false;
+        if (statusEl) {
+            statusEl.textContent = `All 10 cards: ${packCards.map((player) => player.name).join(', ')}`;
+        }
+    }
+
+    function advanceCard() {
+        if (showingAll || !packCards.length) return;
+        if (cardIndex < packCards.length - 1) showSingle(cardIndex + 1);
+        else showAll();
     }
 
     function finishRevealFocus() {
         isAnimating = false;
-        if (cardSpinWrap) cardSpinWrap.setAttribute('aria-hidden', 'false');
         if (packWrapper) packWrapper.setAttribute('aria-hidden', 'true');
-        modal.querySelector('.baseball-card-modal__close')?.focus();
     }
 
-    function openModal() {
-        if (isOpen || isAnimating) return;
+    function revealFirstCard() {
+        modal.classList.add('is-revealed');
+        if (result) result.hidden = false;
+        showSingle(0);
+        finishRevealFocus();
+    }
 
-        lastFocus = document.activeElement;
+    function startRip() {
         resetRevealState();
-        loadCardVariant(pickCardVariant());
+        packCards = drawPack();
+        renderPack(packCards);
         isAnimating = true;
-        modal.hidden = false;
-        modal.classList.add('is-open');
-        document.body.classList.add('baseball-card-open');
-        isOpen = true;
-
         if (packWrapper) packWrapper.setAttribute('aria-hidden', 'false');
 
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (reduced) {
-            modal.classList.add('is-revealed');
-            finishRevealFocus();
+            revealFirstCard();
             return;
         }
 
@@ -1984,12 +2212,17 @@ if (vantageVideo) {
             playBurstSound();
         }, 960);
 
-        scheduleReveal(() => {
-            playRevealSound();
-            modal.classList.add('is-revealed');
-        }, 1580);
+        scheduleReveal(revealFirstCard, 1580);
+    }
 
-        scheduleReveal(finishRevealFocus, 2200);
+    function openModal() {
+        if (isOpen || isAnimating) return;
+        lastFocus = document.activeElement;
+        modal.hidden = false;
+        modal.classList.add('is-open');
+        document.body.classList.add('baseball-card-open');
+        isOpen = true;
+        startRip();
     }
 
     function closeModal() {
@@ -1998,21 +2231,49 @@ if (vantageVideo) {
         modal.hidden = true;
         document.body.classList.remove('baseball-card-open');
         isOpen = false;
+        if (grid) grid.innerHTML = '';
         if (lastFocus && typeof lastFocus.focus === 'function') {
             lastFocus.focus();
         }
     }
 
     trigger.addEventListener('click', openModal);
+    againBtn.addEventListener('click', () => {
+        if (!isOpen || isAnimating) return;
+        startRip();
+    });
+    nextBtn.addEventListener('click', () => {
+        if (!isOpen || isAnimating) return;
+        advanceCard();
+    });
+    prevBtn.addEventListener('click', () => {
+        if (!isOpen || isAnimating || showingAll || cardIndex === 0) return;
+        showSingle(cardIndex - 1);
+    });
+    grid.addEventListener('click', (event) => {
+        const card = event.target.closest('.pull-card');
+        if (!card) return;
+        const flipped = card.classList.toggle('is-flipped');
+        card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+    });
     modal.querySelectorAll('[data-baseball-card-close]').forEach((el) => {
         el.addEventListener('click', closeModal);
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && isOpen) {
+        if (!isOpen) return;
+        if (event.key === 'Escape') {
             event.preventDefault();
             closeModal();
+            return;
+        }
+        if (isAnimating || showingAll) return;
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            advanceCard();
+        } else if (event.key === 'ArrowLeft' && cardIndex > 0) {
+            event.preventDefault();
+            showSingle(cardIndex - 1);
         }
     });
 })();
-

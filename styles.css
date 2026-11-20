@@ -23,7 +23,7 @@
     --header-bg: rgba(255, 255, 255, 0.8);
     --site-header-height: 64px;
     --card-surface: #ffffff;
-    --hero-bg: #f3f3f3;
+    --hero-bg: var(--background);
     --hero-soft-text: #a8a8a8;
     --hero-strong-text: #111111;
     --statement-scroll-muted: #d6d6d6;
@@ -535,9 +535,33 @@ body > header {
 .hero-inline-logo--mlb {
     height: 0.88em;
     width: auto;
-    border-radius: 0.1em;
+    border-radius: 0.12em;
     object-fit: contain;
     vertical-align: -0.1em;
+    background: #111111;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .hero-inline-logo--mlb {
+    background: #2a2a2a;
+    box-shadow: none;
+}
+
+.hero-inline-logo-link {
+    display: inline-block;
+    line-height: 0;
+    vertical-align: -0.08em;
+    margin: 0 0.06em;
+}
+
+.hero-inline-logo-link:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+    border-radius: 0.08em;
+}
+
+.hero-inline-logo-link .hero-inline-logo--youtube {
+    margin: 0;
 }
 
 .hero-inline-logo--youtube {
@@ -545,6 +569,19 @@ body > header {
     width: auto;
     vertical-align: -0.08em;
     border-radius: 0.06em;
+    transform-origin: center;
+    transition: transform 0.28s ease;
+}
+
+.hero-inline-logo-link:hover .hero-inline-logo--youtube,
+.hero-inline-logo-link:focus-visible .hero-inline-logo--youtube {
+    transform: rotate(-12deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-inline-logo--youtube {
+        transition: none;
+    }
 }
 
 .site-main__body.container {
@@ -3331,13 +3368,14 @@ body.baseball-card-open {
 .baseball-card-modal__backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.82);
+    background: rgba(8, 8, 10, 0.94);
 }
 
 .baseball-card-modal__dialog {
     position: relative;
     z-index: 1;
-    width: min(360px, 88vw);
+    width: min(1080px, 96vw);
+    max-height: calc(100vh - 36px);
 }
 
 .baseball-card-modal__close {
@@ -3369,10 +3407,15 @@ body.baseball-card-open {
 
 .baseball-card-stage {
     position: relative;
-    width: 100%;
+    width: min(250px, 58vw);
+    margin: 12px auto 0;
     aspect-ratio: 5 / 7;
     overflow: visible;
     transform-style: preserve-3d;
+}
+
+.baseball-card-modal.is-revealed .baseball-card-scene {
+    display: none;
 }
 
 .baseball-card-spin-wrap {
@@ -3653,13 +3696,13 @@ body.baseball-card-open {
 
 @keyframes baseball-card-backdrop-flash {
     0% {
-        background: rgba(0, 0, 0, 0.82);
+        background: rgba(8, 8, 10, 0.94);
     }
     25% {
-        background: rgba(48, 42, 28, 0.55);
+        background: rgba(48, 42, 28, 0.72);
     }
     100% {
-        background: rgba(0, 0, 0, 0.82);
+        background: rgba(8, 8, 10, 0.94);
     }
 }
 
@@ -3814,6 +3857,387 @@ body.baseball-card-open {
     }
 }
 
+.baseball-card-modal.is-revealed:not(.is-gallery) .baseball-card-modal__dialog {
+    width: min(440px, 94vw);
+}
+
+.baseball-pack-result {
+    color: #f7f4ee;
+    max-height: calc(100vh - 108px);
+    overflow: auto;
+    padding: 4px 4px 8px;
+}
+
+.baseball-pack-result__head {
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.baseball-pack-result__title {
+    margin: 4px 0 0;
+    font-family: var(--heading-font);
+    font-size: 28px;
+    font-weight: 650;
+    letter-spacing: -0.03em;
+}
+
+.baseball-pack-result__hint,
+.baseball-pack-result__status {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.baseball-pack-result__status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.baseball-pack-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.baseball-pack-result.is-single .baseball-pack-grid {
+    display: flex;
+    justify-content: center;
+}
+
+.baseball-pack-result.is-single .pull-card {
+    width: min(280px, 72vw);
+    animation: none;
+}
+
+.baseball-pack-result.is-single .pull-card.is-entering {
+    animation: pull-card-deal 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.baseball-pack-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.baseball-pack-result.is-gallery .baseball-pack-nav {
+    display: none;
+}
+
+.baseball-pack-prev,
+.baseball-pack-next {
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    background: #fff;
+    color: #111;
+    font: 600 14px/1 var(--body-font);
+    cursor: pointer;
+}
+
+.baseball-pack-prev {
+    background: transparent;
+    color: #fff;
+}
+
+.baseball-pack-prev:hover,
+.baseball-pack-next:hover {
+    filter: brightness(0.95);
+}
+
+.baseball-pack-prev:focus-visible,
+.baseball-pack-next:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.baseball-pack-again[hidden],
+.baseball-pack-prev[hidden],
+.baseball-pack-next[hidden] {
+    display: none !important;
+}
+
+.baseball-pack-again {
+    display: flex;
+    margin: 16px auto 4px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font: 600 14px/1 var(--body-font);
+    cursor: pointer;
+}
+
+.baseball-pack-again:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.baseball-pack-again:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.pull-card[hidden] {
+    display: none !important;
+}
+
+.pull-card {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    perspective: 900px;
+    animation: pull-card-deal 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.pull-card:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+    border-radius: 12px;
+}
+
+.pull-card__inner {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 7.15;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pull-card.is-flipped .pull-card__inner {
+    transform: none;
+}
+
+.pull-card__face {
+    position: absolute;
+    inset: 0;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
+}
+
+.pull-card__face--front,
+.pull-card__face--back {
+    background: #f4f2ee;
+    padding: 0;
+}
+
+.pull-card.is-flipped .pull-card__face--front {
+    visibility: hidden;
+}
+
+.pull-card__face--back {
+    visibility: hidden;
+    color: #f6f1e6;
+}
+
+.pull-card.is-flipped .pull-card__face--back {
+    visibility: visible;
+}
+
+.pull-card__sheet,
+.pull-card__back {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+.pull-card__sheet {
+    background: #f4f2ee;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.pull-card__topline,
+.pull-card__plate,
+.pull-card__photo,
+.pull-card__name,
+.pull-card__meta,
+.pull-card__brand,
+.pull-card__tag,
+.pull-card__no,
+.pull-card__back-kicker,
+.pull-card__back-name,
+.pull-card__back-team,
+.pull-card__back-era,
+.pull-card__stats,
+.pull-card__blurb,
+.pull-card__credit,
+.pull-card__stat {
+    display: block;
+}
+
+.pull-card__topline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 7px 0;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.pull-card__brand {
+    font-weight: 800;
+}
+
+.pull-card__tag {
+    margin-left: auto;
+    color: #6b6560;
+}
+
+.pull-card__no {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.pull-card__photo {
+    flex: 1;
+    min-height: 0;
+    margin: 6px 6px 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #d9d3c7;
+}
+
+.pull-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--focus, center 20%);
+    display: block;
+}
+
+.pull-card__plate {
+    margin: 6px;
+    padding: 6px 7px 7px;
+    border-radius: 4px;
+    background: var(--ink);
+    color: #fff;
+}
+
+.pull-card__name {
+    font-size: clamp(11px, 1.15vw, 14px);
+    font-weight: 750;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.pull-card__meta {
+    margin-top: 2px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.pull-card__back {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    padding: 12px 12px 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--ink);
+}
+
+.pull-card__back-kicker {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.pull-card__back-name {
+    margin-top: 6px;
+    font-size: clamp(13px, 1.3vw, 16px);
+    font-weight: 750;
+    line-height: 1.1;
+}
+
+.pull-card__back-team,
+.pull-card__back-era {
+    margin-top: 3px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.pull-card__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.pull-card__stat {
+    padding: 5px 2px 4px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    text-align: center;
+}
+
+.pull-card__stat-value,
+.pull-card__stat-label {
+    display: block;
+}
+
+.pull-card__stat-value {
+    font-size: 13px;
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+}
+
+.pull-card__stat-label {
+    margin-top: 1px;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.pull-card__blurb {
+    margin-top: 8px;
+    font-size: 10px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.pull-card__credit {
+    margin-top: auto;
+    padding-top: 6px;
+    font-size: 8px;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes pull-card-deal {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.94);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .baseball-pack-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 640px) {
     .baseball-card-widget {
         right: 16px;
@@ -3832,6 +4256,23 @@ body.baseball-card-open {
 
     .baseball-card-modal__close {
         top: -44px;
+    }
+
+    .baseball-pack-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .baseball-pack-result__title {
+        font-size: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pull-card,
+    .pull-card__inner {
+        animation: none;
+        transition: none;
     }
 }
 
