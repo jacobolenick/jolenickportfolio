@@ -526,6 +526,42 @@ function initPluginTabs() {
     initCategoryTabs('figma-plugins', '.project-list', '.plugin-tab');
 }
 
+function initWorkViewToggle() {
+    const section = document.getElementById('work');
+    const list = section ? section.querySelector('.posts-grid') : null;
+    const tabs = section ? section.querySelectorAll('.work-view-tab') : [];
+    if (!list || !tabs.length) return;
+
+    const STORAGE_KEY = 'work-view';
+
+    function setView(view) {
+        list.setAttribute('data-work-view', view);
+        tabs.forEach((tab) => {
+            const isActive = tab.getAttribute('data-view') === view;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        try {
+            localStorage.setItem(STORAGE_KEY, view);
+        } catch (_) {}
+        if (typeof list._syncWorkStack === 'function') {
+            requestAnimationFrame(() => list._syncWorkStack());
+        }
+    }
+
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'grid' || saved === 'stack') setView(saved);
+    } catch (_) {}
+
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            const view = tab.getAttribute('data-view');
+            if (view) setView(view);
+        });
+    });
+}
+
 function initWorkStackOnHome() {
     initWorkStack();
 }
@@ -1309,6 +1345,7 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initPluginTabs();
         initWorkStackOnHome();
+        initWorkViewToggle();
         initStatementFill();
         initAboutPhotoCarousel();
         initYoutubeShortsCarousels();
@@ -1319,6 +1356,7 @@ if (document.readyState === 'loading') {
 } else {
     initPluginTabs();
     initWorkStackOnHome();
+    initWorkViewToggle();
     initStatementFill();
     initAboutPhotoCarousel();
     initYoutubeShortsCarousels();
