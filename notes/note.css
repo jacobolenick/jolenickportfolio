@@ -1,0 +1,185 @@
+/* Note Page Styles */
+
+.note-container {
+    max-width: 720px;
+}
+
+.note-page-date {
+    display: block;
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin-bottom: 16px;
+}
+
+.note-page-title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+}
+
+.note-page-hero {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background-color: #f5f5f5;
+}
+
+.note-page-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.note-page-hero--espresso-logo {
+    background-color: #000000;
+}
+
+.note-page-hero--espresso-logo img {
+    object-fit: contain;
+    padding: 12%;
+}
+
+.note-page-body p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+}
+
+.note-page-body p:last-child {
+    margin-bottom: 0;
+}
+
+.note-page-body figure {
+    margin: 32px 0 0;
+}
+
+.note-page-body figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.note-content-link {
+    color: var(--primary-text);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.note-content-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-text);
+    transition: width 0.3s ease;
+}
+
+.note-content-link:hover::after {
+    width: 100%;
+}
+
+.note-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 64px;
+    padding-top: 64px;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 48px;
+}
+
+.note-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    padding: 24px 0;
+    flex: 1;
+}
+
+.note-nav.prev {
+    align-items: flex-start;
+}
+
+.note-nav.next {
+    align-items: flex-end;
+}
+
+.note-nav-label {
+    font-size: 14px;
+    color: var(--secondary-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.note-nav-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-text);
+    font-family: var(--heading-font);
+    position: relative;
+    padding-bottom: 2px;
+    max-width: min(300px, 42vw);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note-nav-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-text);
+    transition: width 0.3s ease;
+}
+
+.note-nav:hover .note-nav-title::after {
+    width: 100%;
+}
+
+.note-nav-spacer {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .note-page-title {
+        font-size: 32px;
+    }
+
+    .note-page-body p {
+        font-size: 16px;
+    }
+
+    .note-navigation {
+        flex-direction: column;
+        margin-top: 48px;
+        padding-top: 48px;
+        gap: 24px;
+    }
+
+    .note-nav-title {
+        max-width: 100%;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .note-nav.next {
+        align-items: flex-start;
+    }
+}

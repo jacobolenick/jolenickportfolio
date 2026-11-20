@@ -1,43 +1,187 @@
-# jacobolenick.com — v2
+# Portfolio Website
 
-A minimal static portfolio with canvas pixel animations. No framework, no dependencies.
+A clean, minimalist portfolio website inspired by modern design principles.
 
-## Edit
-All copy lives in `src/content.mjs` (projects, experience, notes, plugins, about).
-After editing, rebuild:
+## Features
 
-    node build.mjs
+- 🎨 Clean and minimal design
+- 📱 Fully responsive (mobile, tablet, desktop)
+- ⚡ Smooth scrolling navigation
+- 🎯 Active navigation indicators
+- 💫 Subtle animations and transitions
+- 🔍 SEO-friendly structure
+- 🔤 Apple Garamond font for elegant headings
 
-## Preview locally
+## Sections
 
-    node scripts/serve.mjs     # http://localhost:4321
+1. **Hero** - Introduction and profile
+2. **Resume** - Work experience
+3. **Posts** - Portfolio items/case studies
+4. **Stack** - Tools and technologies
+5. **Past Projects** - Previous work
+6. **Contact** - Get in touch section
 
-## Images
-Images live in `images/`. The build uses that folder automatically when it's present; without it
-(e.g. a fresh copy with no images), pages fall back to loading images from `IMG` in `src/content.mjs`.
+## Customization Guide
 
-## Structure
-- `index.html`, `projects/<slug>/`, `notes/`, `experience.html`, `about/`, `404.html` — generated
-- URLs match the old site, so existing links keep working (old `/notes/<slug>/` URLs redirect to `/notes/#<slug>`)
-- `assets/pixel.js` — the pixel animation engine + every animation (procedural, ~10fps, pauses off-screen, respects reduced motion)
-- `assets/style.css` — tokens at the top; light/dark follows the system with a manual toggle
+### 1. Update Personal Information
 
-## Deploy
-This repo is served by GitHub Pages (custom domain in `CNAME`). Edit, run `node build.mjs`, commit and push to `main` — the site updates in a minute or two.
-Old URLs from the previous site (`/about.html`, `/projects/<slug>.html`, `/notes/<slug>.html`) redirect to the new pages.
+In `index.html`, replace the placeholder text:
 
-## YouTube Shorts carousel
-The About page carousel (with view counts) is built from `data/youtube-shorts.json`. To pull in new Shorts and fresh view counts:
+- `[Your Name]` - Your full name
+- `[Your Role]` - Your job title (e.g., "Product Designer")
+- `[Company]` - Your current company
+- `[Project]` - Your side project or notable work
+- `[X]+` - Number of years of experience
+- `your.email@gmail.com` - Your actual email
 
-    node scripts/update-shorts.mjs && node build.mjs
+### 2. Add Your Profile Picture
 
-If the site is hosted from a GitHub repo, `.github/workflows/update-shorts.yml` does this automatically every day.
+Replace the profile picture URL:
+```html
+<img src="https://via.placeholder.com/80" alt="Profile Picture">
+```
 
-View counts come from the public RSS feed and video pages. For the most reliable counts, set a
-`YOUTUBE_API_KEY` environment variable (or a repo secret of the same name for the GitHub workflow).
+Change to your actual image:
+```html
+<img src="path/to/your-photo.jpg" alt="Your Name">
+```
 
-## Dugout card packs
-The pixel baseball in the bottom-right corner of every page opens a pack of 10 random cards from a
-30-card set (`SET` and `TEAMS` at the top of `assets/packs.js`). About 1 in 6 cards is a holo.
-Sounds are synthesized with Web Audio, so there are no audio files. Each visitor's collection
-progress is stored in their own browser.
+### 3. Customize Posts/Portfolio Items
+
+Edit the `.post-card` sections to showcase your work:
+- Update the `post-image` background gradients
+- Change post titles and descriptions
+- Add your own images or designs
+
+### 4. Update Stack/Tools
+
+Modify the tags in the Stack section to reflect your actual tools:
+```html
+<span class="tag">Your Tool</span>
+```
+
+### 5. Add Your Projects
+
+Update the Past Projects section with your actual projects:
+- Change project titles
+- Update descriptions
+- Link to live projects or case studies
+
+### 6. Social Links
+
+Update social media links in the Contact section:
+```html
+<a href="https://twitter.com/yourhandle" class="social-link">𝕏</a>
+<a href="https://linkedin.com/in/yourprofile" class="social-link">in</a>
+<a href="https://dribbble.com/yourprofile" class="social-link">○</a>
+```
+
+## Color Customization
+
+Edit CSS variables in `styles.css`:
+
+```css
+:root {
+    --primary-text: #1a1a1a;      /* Main text color */
+    --secondary-text: #666666;     /* Secondary text color */
+    --border-color: #e5e5e5;       /* Border color */
+    --background: #ffffff;          /* Background color */
+    --hover-bg: #f5f5f5;           /* Hover state background */
+    --accent-color: #0066ff;        /* Accent color */
+}
+```
+
+## Adding New Sections
+
+To add a new section:
+
+1. Add the HTML in `index.html`:
+```html
+<section id="new-section" class="new-section">
+    <h3 class="section-label">New Section</h3>
+    <!-- Your content here -->
+</section>
+```
+
+2. Add a navigation link:
+```html
+<a href="#new-section" class="nav-link">New Section</a>
+```
+
+3. Style it in `styles.css`:
+```css
+.new-section {
+    margin-bottom: 80px;
+}
+```
+
+## Font Setup
+
+The site uses **Apple Garamond** for all headings (h1, h2, h3, h4). 
+
+### Option 1: Add Apple Garamond Font Files
+
+Place your Apple Garamond font files in the `fonts/` directory:
+- `AppleGaramond.woff2`, `AppleGaramond.woff`, `AppleGaramond.ttf`
+- `AppleGaramond-Bold.woff2`, `AppleGaramond-Bold.woff`, `AppleGaramond-Bold.ttf` (optional)
+
+### Option 2: Use a Free Alternative
+
+If you don't have Apple Garamond, use EB Garamond (free Google Font):
+
+1. Add to the top of `styles.css`:
+```css
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap');
+```
+
+2. Update the CSS variable:
+```css
+--heading-font: 'EB Garamond', Georgia, serif;
+```
+
+3. Remove or comment out the `@font-face` declarations
+
+See `fonts/README.md` for more details.
+
+## Running Locally
+
+Simply open `index.html` in your web browser. No build process required!
+
+For a local server (recommended):
+
+```bash
+# Using Python 3
+python -m http.server 8000
+
+# Using Python 2
+python -m SimpleHTTPServer 8000
+
+# Using Node.js (requires npx)
+npx serve
+```
+
+Then visit `http://localhost:8000` in your browser.
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Tips
+
+1. **Images**: Use high-quality images for your portfolio items
+2. **Content**: Keep descriptions concise and impactful
+3. **Performance**: Optimize images before uploading (use WebP format when possible)
+4. **Testing**: Test on multiple devices and screen sizes
+5. **Accessibility**: Add proper alt text to all images
+
+## License
+
+Feel free to use this template for your personal portfolio!
+
+## Credits
+
+Design inspired by modern portfolio best practices and minimal design principles.
+

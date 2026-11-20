@@ -1,317 +1,249 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About — Jacob Olenick</title>
-<meta name="description" content="About Jacob Olenick, Senior Design Systems Designer at General Motors.">
-<link rel="canonical" href="https://www.jacobolenick.com/about/">
-<meta property="og:title" content="About — Jacob Olenick">
-<meta property="og:description" content="About Jacob Olenick, Senior Design Systems Designer at General Motors.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.jacobolenick.com/about/">
-<meta property="og:site_name" content="Jacob Olenick">
-<meta property="og:image" content="https://www.jacobolenick.com/assets/og-image.png">
-<meta property="og:image:width" content="2400">
-<meta property="og:image:height" content="1260">
-<meta property="og:image:alt" content="Jacob Olenick — I design the systems behind the screens in your car.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About — Jacob Olenick">
-<meta name="twitter:description" content="About Jacob Olenick, Senior Design Systems Designer at General Motors.">
-<meta name="twitter:image" content="https://www.jacobolenick.com/assets/og-image.png">
-<meta name="theme-color" content="#f4f3ef">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Jacob Olenick</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap">
+    <link rel="stylesheet" href="../styles.css?v=137">
+    <link rel="stylesheet" href="../about.css?v=23">
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><canvas data-pix="mark" data-scale="2" aria-label="Jacob Olenick logo"></canvas><span>Jacob Olenick</span></a>
-    <nav class="nav mono" aria-label="Main">
-      <a href="/#work">Work</a>
-      <a href="/notes/">Notes</a>
-      <a href="/experience.html">Experience</a>
-      <a href="/about/" aria-current="page">About</a>
-      <button class="theme" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7 0h2v3H7zM7 13h2v3H7zM0 7h3v2H0zM13 7h3v2h-3zM2 3.4 3.4 2l2 2L4 5.4zM10.6 12l1.4-1.4 2 2-1.4 1.4zM2 12.6l2-2L5.4 12l-2 2zM10.6 4l2-2L14 3.4l-2 2zM5 5h6v6H5z"/></svg></button>
-    </nav>
-  </div>
-</header>
-<main>
+    <!-- Header -->
+    <header>
+        <nav class="nav-container">
+            <div class="nav-content">
+                <a href="/" class="nav-link">Work</a>
+                <a href="/experience.html" class="nav-link">Resume</a>
+                <a href="/notes/" class="nav-link">Notes</a>
+                <a href="/about/" class="nav-link active">About</a>
+                <div class="nav-theme-controls">
+                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="material-icons theme-icon">dark_mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<div class="wrap">
-  <header class="page-head">
-    <a class="back mono" href="/">← Home</a>
-    <h1>About</h1>
-  </header>
-  <div class="prose">
-    <div class="about-grid">
-      <img src="/images/hero-portrait.jpg" alt="Portrait of Jacob Olenick">
-      <div><p>I’m a Senior Design Systems Designer at General Motors and a seasoned super IC with a track record of shipping products from 0 → 1 and modernizing legacy experiences.</p><p>I’ve designed for some of the most recognized companies in the world, on projects that have reached over a billion users and generated billions in revenue.</p><p>When I’m not designing, you’ll find me watching baseball — on TV or at a live game. Outside of the game I love building, whether that’s digital products, Figma plugins, or experimenting with interior design. I’m also a husband and a proud dog (and cat) dad to a golden doodle and a tuxedo cat.</p>
-        <div class="cta"><a class="btn" href="https://linkedin.com/in/jacobmolenick" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener">Figma ↗</a><a class="btn" href="https://ko-fi.com/O5O31U1KMI" target="_blank" rel="noopener">Ko-fi ↗</a></div>
-      </div>
-    </div>
-  </div>
+    <!-- Main Content -->
+    <main class="container about-container">
+        <!-- Info Section -->
+        <section class="info-section">
+            <!-- Photo Stack -->
+            <div class="photo-stack">
+                <div class="photo-card photo-1" tabindex="0">
+                    <div class="photo-card__inner">
+                        <div class="photo-card__face photo-card__front">
+                            <img src="../images/about-photo-1.png" alt="Jacob Olenick wearing an Athletics cap and making a peace sign">
+                        </div>
+                        <div class="photo-card__face photo-card__back">
+                            <p class="photo-card__caption">Everyone needs a professional headshot</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-card photo-3" tabindex="0">
+                    <div class="photo-card__inner">
+                        <div class="photo-card__face photo-card__front">
+                            <img src="../images/about-photo-3.png" alt="Jacob at an Athletics game in Las Vegas wearing team gear">
+                        </div>
+                        <div class="photo-card__face photo-card__back">
+                            <p class="photo-card__caption">Me at the Athletics game in June of 2026 here in Las Vegas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section class="fan">
-    <h2 class="label"><b>⚾</b> My favorite teams</h2>
-    <div class="fan-grid">
-      <div>
-        <canvas data-pix="cap" data-scale="4" data-i="0" data-letters="A" data-c1="#003831" data-c2="#efb21e" data-brim="#efb21e" aria-label="Pixel cap for the Athletics"></canvas>
-        <strong>Athletics</strong>
-      </div>
-      <div>
-        <canvas data-pix="cap" data-scale="4" data-i="1" data-letters="LV" data-c1="#0b2341" data-c2="#c4a24c" data-brim="#0b2341" aria-label="Pixel cap for the Las Vegas Aviators"></canvas>
-        <strong>Las Vegas Aviators</strong>
-      </div>
-      <div>
-        <canvas data-pix="cap" data-scale="4" data-i="2" data-letters="US" data-c1="#0a2a66" data-c2="#ffffff" data-brim="#bf0d3e" aria-label="Pixel cap for the USA Baseball"></canvas>
-        <strong>USA Baseball</strong>
-      </div>
-      <div>
-        <canvas data-pix="cap" data-scale="4" data-i="3" data-letters="HT" data-c1="#151515" data-c2="#ffe201" data-brim="#ffe201" aria-label="Pixel cap for the Hanshin Tigers"></canvas>
-        <strong>Hanshin Tigers</strong>
-      </div>
-    </div>
-  </section>
+        <!-- About Me Section -->
+        <section class="about-me-section">
+            <h2 class="about-heading">About Me</h2>
+            <p class="about-text">
+                I'm a Principal Product Designer and seasoned super IC with a track record of shipping products from 0→1 and modernizing legacy experiences. I've designed for some of the most recognized companies in the world and projects that have reached over a billion users and generated billions in revenue. When I'm not designing, you'll find me watching baseball, either on TV or at a live game. Outside of the game, I love building - whether that's crafting digital products or experimenting with interior design. I'm also a husband and proud dog (and cat) dad to a golden doodle and a tuxedo cat.
+            </p>
+            <div class="about-photo-carousel" data-about-photo-carousel aria-label="Living room and baseball memorabilia photos">
+                <button type="button" class="about-photo-carousel__arrow about-photo-carousel__arrow--prev" aria-label="Previous photo">
+                    <span class="material-icons" aria-hidden="true">chevron_left</span>
+                </button>
+                <div class="about-photo-carousel__viewport">
+                    <div class="about-photo-carousel__track" tabindex="0">
+                        <figure class="about-photo-carousel__slide">
+                            <img src="../images/about-carousel-4.jpg" alt="Wide view of Jacob's baseball memorabilia room with caps, cards, and framed art" width="1024" height="768" loading="lazy" decoding="async">
+                        </figure>
+                        <figure class="about-photo-carousel__slide">
+                            <img src="../images/about-carousel-2.jpg" alt="Wall of baseball caps, trading cards, glove, and Jacob Talks Baseball framed sign" width="768" height="1024" loading="lazy" decoding="async">
+                        </figure>
+                        <figure class="about-photo-carousel__slide">
+                            <img src="../images/about-carousel-3.jpg" alt="Corner display of baseball caps, cards, bat, and Jacob Talks Baseball sign near a yellow couch" width="768" height="1024" loading="lazy" decoding="async">
+                        </figure>
+                        <figure class="about-photo-carousel__slide">
+                            <img src="../images/about-carousel-1.jpg" alt="Baseball memorabilia wall with Athletics ballpark poster above a mustard sofa" width="768" height="1024" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                </div>
+                <button type="button" class="about-photo-carousel__arrow about-photo-carousel__arrow--next" aria-label="Next photo">
+                    <span class="material-icons" aria-hidden="true">chevron_right</span>
+                </button>
+            </div>
+            <p class="about-photo-carousel__status" data-about-photo-status aria-live="polite"></p>
+        </section>
 
-  <section class="fan">
-    <h2 class="label"><b>⚾</b> My favorite players</h2>
-    <div class="fan-grid">
-      <div>
-        <canvas data-pix="jersey" data-scale="4" data-i="0" data-num="2" data-body="#ffffff" data-numc="#0c2340" data-trim="#0c2340" data-pin="#9aa6bf" aria-label="Pixel jersey number 2 for Derek Jeter"></canvas>
-        <strong>Derek Jeter</strong><span class="mono">#2 · Yankees</span>
-      </div>
-      <div>
-        <canvas data-pix="jersey" data-scale="4" data-i="1" data-num="13" data-body="#ffffff" data-numc="#0c2340" data-trim="#e31937" aria-label="Pixel jersey number 13 for Omar Vizquel"></canvas>
-        <strong>Omar Vizquel</strong><span class="mono">#13 · Cleveland</span>
-      </div>
-      <div>
-        <canvas data-pix="jersey" data-scale="4" data-i="2" data-num="4" data-body="#ffffff" data-numc="#0e3386" data-trim="#cc3433" data-pin="#9fb0dc" aria-label="Pixel jersey number 4 for Pete Crow-Armstrong"></canvas>
-        <strong>Pete Crow-Armstrong</strong><span class="mono">#4 · Cubs</span>
-      </div>
-      <div>
-        <canvas data-pix="jersey" data-scale="4" data-i="3" data-num="99" data-body="#ffffff" data-numc="#0c2340" data-trim="#0c2340" data-pin="#9aa6bf" aria-label="Pixel jersey number 99 for Aaron Judge"></canvas>
-        <strong>Aaron Judge</strong><span class="mono">#99 · Yankees</span>
-      </div>
-      <div>
-        <canvas data-pix="jersey" data-scale="4" data-i="4" data-num="16" data-body="#003831" data-numc="#efb21e" data-trim="#efb21e" aria-label="Pixel jersey number 16 for Nick Kurtz"></canvas>
-        <strong>Nick Kurtz</strong><span class="mono">#16 · Athletics</span>
-      </div>
-      <div>
-        <canvas data-pix="jersey" data-scale="4" data-i="5" data-num="17" data-body="#ffffff" data-numc="#ef3e42" data-trim="#005a9c" aria-label="Pixel jersey number 17 for Shohei Ohtani"></canvas>
-        <strong>Shohei Ohtani</strong><span class="mono">#17 · Dodgers</span>
-      </div>
-      <div>
-        <canvas data-pix="jersey" data-scale="4" data-i="6" data-num="50" data-body="#ffffff" data-numc="#ef3e42" data-trim="#005a9c" aria-label="Pixel jersey number 50 for Mookie Betts"></canvas>
-        <strong>Mookie Betts</strong><span class="mono">#50 · Dodgers</span>
-      </div>
-      <div>
-        <canvas data-pix="jersey" data-scale="4" data-i="7" data-num="24" data-body="#ffffff" data-numc="#bd3039" data-trim="#0c2340" aria-label="Pixel jersey number 24 for Manny Ramirez"></canvas>
-        <strong>Manny Ramirez</strong><span class="mono">#24 · Red Sox</span>
-      </div>
-    </div>
-  </section>
+        <!-- Sports teams -->
+        <section class="sports-teams-section">
+            <h2 class="about-heading">My Favorite Baseball Teams</h2>
+            <div class="clubs-grid clubs-grid--baseball">
+                <div class="club-item">
+                    <img src="../images/clubs/athletics.svg" alt="Athletics" width="64" height="64" loading="lazy" decoding="async">
+                    <span class="club-name">Athletics</span>
+                </div>
+                <div class="club-item">
+                    <img src="../images/clubs/las-vegas-aviators.svg" alt="Las Vegas Aviators" width="64" height="64" loading="lazy" decoding="async">
+                    <span class="club-name">Las Vegas Aviators</span>
+                </div>
+                <div class="club-item">
+                    <img src="../images/clubs/usa-baseball.svg" alt="USA Baseball" width="64" height="64" loading="lazy" decoding="async" class="club-logo--usa-baseball">
+                    <span class="club-name">USA Baseball</span>
+                </div>
+                <div class="club-item">
+                    <img src="../images/clubs/hanshin-tigers.png" alt="Hanshin Tigers" width="64" height="64" loading="lazy" decoding="async">
+                    <span class="club-name">Hanshin Tigers</span>
+                </div>
+            </div>
+        </section>
 
-  <section class="fan shorts" data-shorts>
-    <div class="shorts-head">
-      <h2 class="label"><b>⚾</b> My Shorts</h2>
-      <div class="shorts-nav">
-        <button type="button" data-dir="-1" aria-label="Previous Shorts">←</button>
-        <button type="button" data-dir="1" aria-label="Next Shorts">→</button>
-      </div>
-    </div>
-    <div class="shorts-intro">
-      <p>I make baseball content around the MLB and MiLB — <strong class="views-total">61K views</strong> across 24 Shorts. <a class="link" href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener">@jacobtalks-baseball on YouTube ↗</a></p>
-    </div>
-    <div class="shorts-track" tabindex="0" aria-label="YouTube Shorts">
-      <a class="short" href="https://www.youtube.com/shorts/iSAsRw-fp-o" target="_blank" rel="noopener" title="Japanese Baseball Player are the Best in the World. It's Not Even Close. #baseball #mlb #MLBCreator">
-        <img src="https://i.ytimg.com/vi/iSAsRw-fp-o/oar2.jpg" data-id="iSAsRw-fp-o" alt="Japanese Baseball Player are the Best in the World. It's Not Even Close." loading="lazy" decoding="async">
-        <span class="short-views" aria-label="207 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>207</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Japanese Baseball Player are the Best in the World. It's Not Even Close.</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/aKxKF_rXci4" target="_blank" rel="noopener" title="Which player would you pick for your team, Barry Bonds or Ted Williams? #Baseball #mlb #MLBCreator">
-        <img src="https://i.ytimg.com/vi/aKxKF_rXci4/oar2.jpg" data-id="aKxKF_rXci4" alt="Which player would you pick for your team, Barry Bonds or Ted Williams?" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="3,279 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>3.3K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Which player would you pick for your team, Barry Bonds or Ted Williams?</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/7UdjGXkagQM" target="_blank" rel="noopener" title="Pete Crow-Armstrong wins MVP! The best player in baseball this season. #MLB #baseball #mvp">
-        <img src="https://i.ytimg.com/vi/7UdjGXkagQM/oar2.jpg" data-id="7UdjGXkagQM" alt="Pete Crow-Armstrong wins MVP! The best player in baseball this season." loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,728 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.7K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Pete Crow-Armstrong wins MVP! The best player in baseball this season.</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/CRFejXm_LMQ" target="_blank" rel="noopener" title="5 A's Players I Wish Never Left for Another Team #athletics #MLB #Baseball">
-        <img src="https://i.ytimg.com/vi/CRFejXm_LMQ/oar2.jpg" data-id="CRFejXm_LMQ" alt="5 A's Players I Wish Never Left for Another Team" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,084 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.1K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">5 A's Players I Wish Never Left for Another Team</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/LWAQEw0vrCI" target="_blank" rel="noopener" title="Why everyone is still talking about this bat flip 😱 #mlb #baseball #shorts">
-        <img src="https://i.ytimg.com/vi/LWAQEw0vrCI/oar2.jpg" data-id="LWAQEw0vrCI" alt="Why everyone is still talking about this bat flip 😱" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,102 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.1K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Why everyone is still talking about this bat flip 😱</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/EKvdSgYOqM0" target="_blank" rel="noopener" title="Why the Dodgers are the favorites for Skubal #mlb #dodgers #freeagency">
-        <img src="https://i.ytimg.com/vi/EKvdSgYOqM0/oar2.jpg" data-id="EKvdSgYOqM0" alt="Why the Dodgers are the favorites for Skubal" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,171 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.2K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Why the Dodgers are the favorites for Skubal</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/FVhopVx3ryg" target="_blank" rel="noopener" title="The sad reality of Tim Lincecum's career 😭 #baseball #mlb #sfgiants">
-        <img src="https://i.ytimg.com/vi/FVhopVx3ryg/oar2.jpg" data-id="FVhopVx3ryg" alt="The sad reality of Tim Lincecum's career 😭" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,843 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.8K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">The sad reality of Tim Lincecum's career 😭</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/NHVdbHuFxEE" target="_blank" rel="noopener" title="Ripping Topps 75 2026 baseball card packs # #baseball #baseballcards #topps75">
-        <img src="https://i.ytimg.com/vi/NHVdbHuFxEE/oar2.jpg" data-id="NHVdbHuFxEE" alt="Ripping Topps 75 2026 baseball card packs #" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="17 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>17</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Ripping Topps 75 2026 baseball card packs</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/6Bg-hz8wVtQ" target="_blank" rel="noopener" title="Pete Crow-Armstrong (PCA) Wins the 2026 Platinum Glove Award #petecrowarmstrong #baseball #mlb">
-        <img src="https://i.ytimg.com/vi/6Bg-hz8wVtQ/oar2.jpg" data-id="6Bg-hz8wVtQ" alt="Pete Crow-Armstrong (PCA) Wins the 2026 Platinum Glove Award" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="2,860 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>2.9K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Pete Crow-Armstrong (PCA) Wins the 2026 Platinum Glove Award</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/4KscZLo9xXQ" target="_blank" rel="noopener" title="Here are the 2026 National League Silver Slugger Finalists for the MLB #MLB #Baseball #mlbcontent">
-        <img src="https://i.ytimg.com/vi/4KscZLo9xXQ/oar2.jpg" data-id="4KscZLo9xXQ" alt="Here are the 2026 National League Silver Slugger Finalists for the MLB" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="9,205 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>9.2K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Here are the 2026 National League Silver Slugger Finalists for the MLB</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/GmqEIORmyBY" target="_blank" rel="noopener" title="Here are the 2026 American League Silver Slugger Finalists for the MLB #MLB #Baseball #mlbcontent">
-        <img src="https://i.ytimg.com/vi/GmqEIORmyBY/oar2.jpg" data-id="GmqEIORmyBY" alt="Here are the 2026 American League Silver Slugger Finalists for the MLB" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="2,575 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>2.6K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Here are the 2026 American League Silver Slugger Finalists for the MLB</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/GZ922JgNkd4" target="_blank" rel="noopener" title="The MLB submits a salary cap proposal to the MLBPA #MLB #baseball #mlbcontent">
-        <img src="https://i.ytimg.com/vi/GZ922JgNkd4/oar2.jpg" data-id="GZ922JgNkd4" alt="The MLB submits a salary cap proposal to the MLBPA" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,940 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.9K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">The MLB submits a salary cap proposal to the MLBPA</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/UQdlJCB594Y" target="_blank" rel="noopener" title="Here are the 2026 National League Gold Glove winners for the MLB #MLB #Baseball #mlbcontent">
-        <img src="https://i.ytimg.com/vi/UQdlJCB594Y/oar2.jpg" data-id="UQdlJCB594Y" alt="Here are the 2026 National League Gold Glove winners for the MLB" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="10,179 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>10K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Here are the 2026 National League Gold Glove winners for the MLB</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/gUXiSkb4LMw" target="_blank" rel="noopener" title="Here are the 2026 American League Gold Glove winners for the MLB #MLB #Baseball #mlbcontent">
-        <img src="https://i.ytimg.com/vi/gUXiSkb4LMw/oar2.jpg" data-id="gUXiSkb4LMw" alt="Here are the 2026 American League Gold Glove winners for the MLB" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="8,739 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>8.7K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Here are the 2026 American League Gold Glove winners for the MLB</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/A_i5OxoRuaQ" target="_blank" rel="noopener" title="You can still watch baseball during the MLB lockout. #mlb #mlblockout #baseball">
-        <img src="https://i.ytimg.com/vi/A_i5OxoRuaQ/oar2.jpg" data-id="A_i5OxoRuaQ" alt="You can still watch baseball during the MLB lockout." loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,754 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.8K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">You can still watch baseball during the MLB lockout.</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/sQ7HoVRUmbI" target="_blank" rel="noopener" title="Halloween Baseball Gloves. #Baseballdrip #Baseball #baseballplayer">
-        <img src="https://i.ytimg.com/vi/sQ7HoVRUmbI/oar2.jpg" data-id="sQ7HoVRUmbI" alt="Halloween Baseball Gloves." loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,010 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Halloween Baseball Gloves.</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/onAsJy4EGzU" target="_blank" rel="noopener" title="Ranking the American League West logos by tier. #mlb #baseball #mlbcontent">
-        <img src="https://i.ytimg.com/vi/onAsJy4EGzU/oar2.jpg" data-id="onAsJy4EGzU" alt="Ranking the American League West logos by tier." loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,371 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.4K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Ranking the American League West logos by tier.</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/KcWtZzNZQ-A" target="_blank" rel="noopener" title="Will the Brewers go back to back? #brewers #worldseries #baseball">
-        <img src="https://i.ytimg.com/vi/KcWtZzNZQ-A/oar2.jpg" data-id="KcWtZzNZQ-A" alt="Will the Brewers go back to back?" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,097 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.1K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Will the Brewers go back to back?</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/xlky9xcsYXs" target="_blank" rel="noopener" title="The Brewers are World Series Champions for the first time! #Brewers #worldseries #mlb">
-        <img src="https://i.ytimg.com/vi/xlky9xcsYXs/oar2.jpg" data-id="xlky9xcsYXs" alt="The Brewers are World Series Champions for the first time!" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,268 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.3K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">The Brewers are World Series Champions for the first time!</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/z4U9WCoGQD0" target="_blank" rel="noopener" title="The Tampa Bay Rays beat the Brewers in Game 4 of the World Series. #worldseries #brewers #rays">
-        <img src="https://i.ytimg.com/vi/z4U9WCoGQD0/oar2.jpg" data-id="z4U9WCoGQD0" alt="The Tampa Bay Rays beat the Brewers in Game 4 of the World Series." loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,428 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.4K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">The Tampa Bay Rays beat the Brewers in Game 4 of the World Series.</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/BYFEsN2SkVI" target="_blank" rel="noopener" title="Game 4 of the World Series. Brewers are up 3-0. Will Tampa steal a game? #worldseries #mlb #baseball">
-        <img src="https://i.ytimg.com/vi/BYFEsN2SkVI/oar2.jpg" data-id="BYFEsN2SkVI" alt="Game 4 of the World Series. Brewers are up 3-0. Will Tampa steal a game?" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="2,029 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>2K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Game 4 of the World Series. Brewers are up 3-0. Will Tampa steal a game?</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/vooYQLBid-Q" target="_blank" rel="noopener" title="Brewers take a 2-0 lead in a thrilling Game 2 of the World Series #worldseries  #baseball #mlblb">
-        <img src="https://i.ytimg.com/vi/vooYQLBid-Q/oar2.jpg" data-id="vooYQLBid-Q" alt="Brewers take a 2-0 lead in a thrilling Game 2 of the World Series" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,393 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.4K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Brewers take a 2-0 lead in a thrilling Game 2 of the World Series</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/e40fI8-GOVk" target="_blank" rel="noopener" title="Ranking MLB logos in the American League Central. #mlb #baseball #worldseries">
-        <img src="https://i.ytimg.com/vi/e40fI8-GOVk/oar2.jpg" data-id="e40fI8-GOVk" alt="Ranking MLB logos in the American League Central." loading="lazy" decoding="async">
-        <span class="short-views" aria-label="1,174 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>1.2K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Ranking MLB logos in the American League Central.</span>
-      </a>
-      <a class="short" href="https://www.youtube.com/shorts/rNtWcJ984zo" target="_blank" rel="noopener" title="Ranking MLB logos #mlb  #baseball #baseballcontent">
-        <img src="https://i.ytimg.com/vi/rNtWcJ984zo/oar2.jpg" data-id="rNtWcJ984zo" alt="Ranking MLB logos" loading="lazy" decoding="async">
-        <span class="short-views" aria-label="2,152 views"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3C4.4 3 1.7 5.4.6 8c1.1 2.6 3.8 5 7.4 5s6.3-2.4 7.4-5C14.3 5.4 11.6 3 8 3zm0 8.2A3.2 3.2 0 1 1 8 4.8a3.2 3.2 0 0 1 0 6.4zM8 6.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>2.2K</span>
-        <svg class="short-play" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.5 6v8l7-4z" fill="#fff"/></svg>
-        <span class="short-title">Ranking MLB logos</span>
-      </a>
-    </div>
-  </section>
+        <section class="favorite-players-section" aria-labelledby="favorite-players-heading">
+            <h2 id="favorite-players-heading" class="about-heading">My Favorite Players</h2>
+            <div class="players-grid">
+                <div class="player-item">
+                    <div class="player-item__photo player-item__photo--action">
+                        <img src="../images/players/derek-jeter.jpg" alt="Derek Jeter batting for the New York Yankees" width="120" height="160" loading="lazy" decoding="async">
+                    </div>
+                    <span class="player-name">Derek Jeter</span>
+                </div>
+                <div class="player-item">
+                    <div class="player-item__photo">
+                        <img src="../images/players/omar-vizquel.jpg" alt="Omar Vizquel" width="120" height="160" loading="lazy" decoding="async">
+                    </div>
+                    <span class="player-name">Omar Vizquel</span>
+                </div>
+                <div class="player-item">
+                    <div class="player-item__photo">
+                        <img src="../images/players/pete-crow-armstrong.jpg?v=2" alt="Pete Crow-Armstrong in a Chicago Cubs uniform" width="120" height="160" loading="lazy" decoding="async">
+                    </div>
+                    <span class="player-name">Pete Crow-Armstrong</span>
+                </div>
+                <div class="player-item">
+                    <div class="player-item__photo">
+                        <img src="../images/players/aaron-judge.jpg" alt="Aaron Judge" width="120" height="160" loading="lazy" decoding="async">
+                    </div>
+                    <span class="player-name">Aaron Judge</span>
+                </div>
+                <div class="player-item">
+                    <div class="player-item__photo">
+                        <img src="../images/players/nick-kurtz.jpg?v=2" alt="Nick Kurtz in an Oakland Athletics uniform" width="120" height="160" loading="lazy" decoding="async">
+                    </div>
+                    <span class="player-name">Nick Kurtz</span>
+                </div>
+                <div class="player-item">
+                    <div class="player-item__photo">
+                        <img src="../images/players/shohei-ohtani.jpg" alt="Shohei Ohtani" width="120" height="160" loading="lazy" decoding="async">
+                    </div>
+                    <span class="player-name">Shohei Ohtani</span>
+                </div>
+                <div class="player-item">
+                    <div class="player-item__photo">
+                        <img src="../images/players/mookie-betts.jpg" alt="Mookie Betts" width="120" height="160" loading="lazy" decoding="async">
+                    </div>
+                    <span class="player-name">Mookie Betts</span>
+                </div>
+                <div class="player-item">
+                    <div class="player-item__photo player-item__photo--action">
+                        <img src="../images/players/manny-ramirez.jpg" alt="Manny Ramirez in a Boston Red Sox uniform" width="120" height="160" loading="lazy" decoding="async">
+                    </div>
+                    <span class="player-name">Manny Ramirez <span class="player-name-note">(Red Sox)</span></span>
+                </div>
+            </div>
+        </section>
 
-  <section class="fan">
-    <h2 class="label"><b>⚾</b> Find me talking baseball</h2>
-    <ul class="rows socials">
-      <li><a href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener"><span class="mono">YouTube</span><h3>@jacobtalks-baseball</h3><span class="mono arrow">↗</span></a></li>
-      <li><a href="https://x.com/jtalksbaseball" target="_blank" rel="noopener"><span class="mono">X</span><h3>@jtalksbaseball</h3><span class="mono arrow">↗</span></a></li>
-      <li><a href="https://www.threads.com/@jacobtalksbaseball" target="_blank" rel="noopener"><span class="mono">Threads</span><h3>@jacobtalksbaseball</h3><span class="mono arrow">↗</span></a></li>
-      <li><a href="https://www.instagram.com/jacobtalksbaseball" target="_blank" rel="noopener"><span class="mono">Instagram</span><h3>@jacobtalksbaseball</h3><span class="mono arrow">↗</span></a></li>
-      <li><a href="https://www.tiktok.com/@jacobtalksbaseball" target="_blank" rel="noopener"><span class="mono">TikTok</span><h3>@jacobtalksbaseball</h3><span class="mono arrow">↗</span></a></li>
-      <li><a href="https://www.facebook.com/profile.php?id=61595596657892" target="_blank" rel="noopener"><span class="mono">Facebook</span><h3>Jacob Talks Baseball</h3><span class="mono arrow">↗</span></a></li>
-    </ul>
-  </section>
-</div>
-</main>
-<footer class="foot">
-  <div class="wrap">
-    <p class="label"><b>Contact</b></p>
-    <h2>Building a design system?<br><span class="muted">Let’s talk.</span></h2>
-    <div class="links">
-      <a class="link" href="https://linkedin.com/in/jacobmolenick" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="link" href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener">Figma ↗</a>
-      <a class="link" href="https://ko-fi.com/O5O31U1KMI" target="_blank" rel="noopener">Ko-fi ↗</a>
-    </div>
-    <div class="links social">
-      <span class="mono">Talking baseball</span>
-      <a class="link" href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener">YouTube ↗</a>
-      <a class="link" href="https://x.com/jtalksbaseball" target="_blank" rel="noopener">X ↗</a>
-      <a class="link" href="https://www.threads.com/@jacobtalksbaseball" target="_blank" rel="noopener">Threads ↗</a>
-      <a class="link" href="https://www.instagram.com/jacobtalksbaseball" target="_blank" rel="noopener">Instagram ↗</a>
-      <a class="link" href="https://www.tiktok.com/@jacobtalksbaseball" target="_blank" rel="noopener">TikTok ↗</a>
-      <a class="link" href="https://www.facebook.com/profile.php?id=61595596657892" target="_blank" rel="noopener">Facebook ↗</a>
-    </div>
-    <canvas data-pix="pets" data-scale="3" aria-label="A pixel golden doodle walking over to a tuxedo cat"></canvas>
-    <div class="fine mono"><span>© 2026 Jacob Olenick</span><span>Designed &amp; built with care — and a lot of pixels.</span></div>
-  </div>
-</footer>
-<script src="/assets/pixel.js"></script>
-<script src="/assets/site.js"></script>
-<script src="/assets/packs.js"></script>
+        <!-- YouTube Shorts -->
+        <section class="social-feed-section youtube-shorts-section" aria-labelledby="youtube-shorts-heading">
+            <div class="social-feed-section__head youtube-shorts-section__head">
+                <h2 id="youtube-shorts-heading" class="about-heading">My Shorts</h2>
+                <a class="social-feed-section__channel" href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener noreferrer">@jacobtalks-baseball</a>
+            </div>
+            <div class="social-feed-carousel" data-shorts-carousel hidden>
+                <button type="button" class="social-feed-carousel__arrow social-feed-carousel__arrow--prev" aria-label="Previous shorts">
+                    <span class="material-icons" aria-hidden="true">chevron_left</span>
+                </button>
+                <div class="social-feed-carousel__viewport">
+                    <div class="social-feed-carousel__track" data-shorts-track data-shorts-feed="../data/youtube-shorts.json" tabindex="0" aria-label="Jacob Talks Baseball Shorts"></div>
+                </div>
+                <button type="button" class="social-feed-carousel__arrow social-feed-carousel__arrow--next" aria-label="Next shorts">
+                    <span class="material-icons" aria-hidden="true">chevron_right</span>
+                </button>
+            </div>
+            <p class="social-feed-carousel__status" data-shorts-status>Loading Shorts…</p>
+        </section>
+
+        <!-- X posts -->
+        <section class="social-feed-section x-feed-section" aria-labelledby="x-posts-heading">
+            <div class="social-feed-section__head x-feed-section__head">
+                <h2 id="x-posts-heading" class="about-heading">On X</h2>
+                <a class="social-feed-section__channel" href="https://x.com/jtalksbaseball" target="_blank" rel="noopener noreferrer">@jtalksbaseball</a>
+            </div>
+            <div class="social-feed-carousel" data-x-carousel hidden>
+                <button type="button" class="social-feed-carousel__arrow social-feed-carousel__arrow--prev" aria-label="Previous posts on X">
+                    <span class="material-icons" aria-hidden="true">chevron_left</span>
+                </button>
+                <div class="social-feed-carousel__viewport">
+                    <div class="social-feed-carousel__track social-feed-carousel__track--posts" data-x-track data-x-feed="../data/x-posts.json" tabindex="0" aria-label="Jacob Talks Baseball on X"></div>
+                </div>
+                <button type="button" class="social-feed-carousel__arrow social-feed-carousel__arrow--next" aria-label="Next posts on X">
+                    <span class="material-icons" aria-hidden="true">chevron_right</span>
+                </button>
+            </div>
+            <p class="social-feed-carousel__status" data-x-status>Loading posts…</p>
+        </section>
+
+        <!-- Connect Section -->
+        <section class="connect-section">
+            <h2 class="about-heading">Connect</h2>
+            <p class="connect-intro">Feel free to reach out to me on any of these platforms:</p>
+            
+            <div class="social-list">
+                <div class="social-item">
+                    <span class="social-platform">LinkedIn:</span>
+                    <a href="https://linkedin.com/in/jacobmolenick" target="_blank" rel="noopener noreferrer" class="social-handle">@jacobmolenick</a>
+                </div>
+                <div class="social-item">
+                    <span class="social-platform">Figma:</span>
+                    <a href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener noreferrer" class="social-handle">@jacobolenick</a>
+                </div>
+                <div class="social-item">
+                    <span class="social-platform">Threads:</span>
+                    <a href="https://www.threads.com/@jacobtalksbaseball" target="_blank" rel="noopener noreferrer" class="social-handle">@jacobtalksbaseball</a>
+                </div>
+                <div class="social-item">
+                    <span class="social-platform">Instagram:</span>
+                    <a href="https://www.instagram.com/jacobtalksbaseball" target="_blank" rel="noopener noreferrer" class="social-handle">@jacobtalksbaseball</a>
+                </div>
+                <div class="social-item">
+                    <span class="social-platform">TikTok:</span>
+                    <a href="https://www.tiktok.com/@jacobtalksbaseball" target="_blank" rel="noopener noreferrer" class="social-handle">@jacobtalksbaseball</a>
+                </div>
+                <div class="social-item">
+                    <span class="social-platform">Facebook:</span>
+                    <a href="https://www.facebook.com/profile.php?id=61595596657892" target="_blank" rel="noopener noreferrer" class="social-handle">Jacob Talks Baseball</a>
+                </div>
+                <div class="social-item">
+                    <span class="social-platform">X:</span>
+                    <a href="https://x.com/jtalksbaseball" target="_blank" rel="noopener noreferrer" class="social-handle">@jtalksbaseball</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../script.js?v=75"></script>
 </body>
 </html>

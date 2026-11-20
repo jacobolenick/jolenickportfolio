@@ -1,168 +1,303 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Experience — Jacob Olenick</title>
-<meta name="description" content="Jacob Olenick’s experience: General Motors, Eli Lilly, CVS Health, Adobe, Credit One Bank, Cisco, Wells Fargo, Paramount+, AXS and more.">
-<link rel="canonical" href="https://www.jacobolenick.com/experience.html">
-<meta property="og:title" content="Experience — Jacob Olenick">
-<meta property="og:description" content="Jacob Olenick’s experience: General Motors, Eli Lilly, CVS Health, Adobe, Credit One Bank, Cisco, Wells Fargo, Paramount+, AXS and more.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.jacobolenick.com/experience.html">
-<meta property="og:site_name" content="Jacob Olenick">
-<meta property="og:image" content="https://www.jacobolenick.com/assets/og-image.png">
-<meta property="og:image:width" content="2400">
-<meta property="og:image:height" content="1260">
-<meta property="og:image:alt" content="Jacob Olenick — I design the systems behind the screens in your car.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Experience — Jacob Olenick">
-<meta name="twitter:description" content="Jacob Olenick’s experience: General Motors, Eli Lilly, CVS Health, Adobe, Credit One Bank, Cisco, Wells Fargo, Paramount+, AXS and more.">
-<meta name="twitter:image" content="https://www.jacobolenick.com/assets/og-image.png">
-<meta name="theme-color" content="#f4f3ef">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Jacob Olenick</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="styles.css?v=114">
+    <style>
+        /* Job blocks must never inherit site nav header borders (incl. cached CSS). */
+        .experience-timeline .experience-header,
+        .experience-timeline header.experience-header {
+            border: 0 !important;
+            border-bottom: 0 !important;
+            box-shadow: none !important;
+            background-image: none !important;
+        }
+
+        .experience-timeline .experience-header::before,
+        .experience-timeline .experience-header::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        .experience-timeline .experience-description {
+            border-top: 0 !important;
+        }
+    </style>
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><canvas data-pix="mark" data-scale="2" aria-label="Jacob Olenick logo"></canvas><span>Jacob Olenick</span></a>
-    <nav class="nav mono" aria-label="Main">
-      <a href="/#work">Work</a>
-      <a href="/notes/">Notes</a>
-      <a href="/experience.html" aria-current="page">Experience</a>
-      <a href="/about/">About</a>
-      <button class="theme" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7 0h2v3H7zM7 13h2v3H7zM0 7h3v2H0zM13 7h3v2h-3zM2 3.4 3.4 2l2 2L4 5.4zM10.6 12l1.4-1.4 2 2-1.4 1.4zM2 12.6l2-2L5.4 12l-2 2zM10.6 4l2-2L14 3.4l-2 2zM5 5h6v6H5z"/></svg></button>
-    </nav>
-  </div>
-</header>
-<main>
+    <!-- Header -->
+    <header>
+        <nav class="nav-container">
+            <div class="nav-content">
+                <a href="/" class="nav-link">Work</a>
+                <a href="/experience.html" class="nav-link active">Resume</a>
+                <a href="/notes/" class="nav-link">Notes</a>
+                <a href="/about/" class="nav-link">About</a>
+                <div class="nav-theme-controls">
+                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="material-icons theme-icon">dark_mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<div class="wrap">
-  <header class="page-head">
-    <a class="back mono" href="/">← Home</a>
-    <h1>Experience</h1>
-    <p class="lede">Eight years of product design, most of it spent building the systems underneath — from startups to some of the biggest brands in the world.</p>
-  </header>
-  <div class="prose">
-    <div class="timeline">
-      <div class="road" aria-hidden="true"><canvas data-pix="car" data-scale="3" aria-label=""></canvas></div>
-      <div class="job now">
-        <span class="mono">2026 – Present</span>
-        <h2>Senior Design Systems Designer</h2>
-        <p class="org">General Motors</p>
-        <p>Helping shape the car experience through design systems.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2026</span>
-        <h2>Senior Product Designer, Design Systems</h2>
-        <p class="org">Creative People (placed at Eli Lilly)</p>
-        <p>Super IC helping design and build the Lilly Design System across numerous sites and pages.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2025 – Present</span>
-        <h2>Founder</h2>
-        <p class="org">DesignOps Studio</p>
-        <p>Plugins, tools, UI kits, and resources for the design community — plus 0 → 1 agentic design systems for startups, from Figma to production with Claude.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2024 – 2026</span>
-        <h2>Lead Product Designer, Design Systems Advocate</h2>
-        <p class="org">CVS Health</p>
-        <p>Built the design system for the pharmacist application and designed the pharmacy experience. The bridge between DesignOps and Product Design, advocating for the Rhythm Design System.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2024 – 2025</span>
-        <h2>Product Design Consultant</h2>
-        <p class="org">Adobe</p>
-        <p>11 months on Adobe Portfolio, plus an integrated experience between Behance and Adobe Portfolio.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2023 – 2024</span>
-        <h2>Lead Product Designer &amp; Design Systems</h2>
-        <p class="org">Credit One Bank</p>
-        <p>Led a design system for internal banking software: 281 components using advanced properties and variants, deployed across 5 workspaces.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2023</span>
-        <h2>Senior Product Designer (AI)</h2>
-        <p class="org">Cisco</p>
-        <p>Designed an AI dashboard for cyber security.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2022 – 2023</span>
-        <h2>Senior Lead Product Designer</h2>
-        <p class="org">Wells Fargo</p>
-        <p>Designed the Vantage product for Wells Fargo.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2022</span>
-        <h2>Senior Product Designer</h2>
-        <p class="org">Paramount+</p>
-        <p>Designed the Paramount+ main experience and design system.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2021 – 2022</span>
-        <h2>Founding Designer</h2>
-        <p class="org">Arena Club</p>
-        <p>Shaped the product experience from early concept through launch.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2021</span>
-        <h2>Product Designer</h2>
-        <p class="org">AXS</p>
-        <p>Designed the design system and B2B (white label) experience.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2020 – 2021</span>
-        <h2>Founding Designer</h2>
-        <p class="org">Crtside</p>
-        <p>A LinkedIn for athletes — product design and prototype from concept through pre-seed.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2019 – 2020</span>
-        <h2>Founding Product Designer</h2>
-        <p class="org">Adapt</p>
-        <p>Shaped the product from early concept through launch.</p>
-      </div>
-      <div class="job">
-        <span class="mono">2018 – 2019</span>
-        <h2>Product Designer</h2>
-        <p class="org">Apartments 24/7</p>
-        <p>Apartment listings and rental platform.</p>
-      </div>
-    </div>
-  </div>
-</div>
-</main>
-<footer class="foot">
-  <div class="wrap">
-    <p class="label"><b>Contact</b></p>
-    <h2>Building a design system?<br><span class="muted">Let’s talk.</span></h2>
-    <div class="links">
-      <a class="link" href="https://linkedin.com/in/jacobmolenick" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="link" href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener">Figma ↗</a>
-      <a class="link" href="https://ko-fi.com/O5O31U1KMI" target="_blank" rel="noopener">Ko-fi ↗</a>
-    </div>
-    <div class="links social">
-      <span class="mono">Talking baseball</span>
-      <a class="link" href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener">YouTube ↗</a>
-      <a class="link" href="https://x.com/jtalksbaseball" target="_blank" rel="noopener">X ↗</a>
-      <a class="link" href="https://www.threads.com/@jacobtalksbaseball" target="_blank" rel="noopener">Threads ↗</a>
-      <a class="link" href="https://www.instagram.com/jacobtalksbaseball" target="_blank" rel="noopener">Instagram ↗</a>
-      <a class="link" href="https://www.tiktok.com/@jacobtalksbaseball" target="_blank" rel="noopener">TikTok ↗</a>
-      <a class="link" href="https://www.facebook.com/profile.php?id=61595596657892" target="_blank" rel="noopener">Facebook ↗</a>
-    </div>
-    <canvas data-pix="pets" data-scale="3" aria-label="A pixel golden doodle walking over to a tuxedo cat"></canvas>
-    <div class="fine mono"><span>© 2026 Jacob Olenick</span><span>Designed &amp; built with care — and a lot of pixels.</span></div>
-  </div>
-</footer>
-<script src="/assets/pixel.js"></script>
-<script src="/assets/site.js"></script>
-<script src="/assets/packs.js"></script>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Experience</h1>
+            <p class="page-description">A journey through design systems, product design, and building impactful digital experiences.</p>
+        </section>
+
+        <!-- Experience Timeline -->
+        <ol class="experience-timeline">
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2026">2026 – Present</time>
+                    <div class="experience-header">
+                        <img class="experience-logo experience-logo--fill" src="images/logos/gm.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Senior Design System Designer</h2>
+                            <p class="experience-company">General Motors</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        I'm helping shape the car experience through design systems.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2026">2026</time>
+                    <div class="experience-header">
+                        <img class="experience-logo experience-logo--fill" src="images/logos/lilly.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Senior Product Designer, Design Systems</h2>
+                            <p class="experience-company">Creative People (Placed on Eli Lilly)</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        I'm a Senior Product Designer and Super IC placed through Creative People, helping design and build the Lilly Design System across numerous sites and pages.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2025">2025 – Present</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/designops-studio.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Founder</h2>
+                            <p class="experience-company">DESIGNOPS STUDIO.</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        I build plugins, tools, ui kits, and resources for the design community as well as take on client work for top companies.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2024/2026">2024 – 2026</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/cvs.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Lead Product Designer, Design Systems Advocate</h2>
+                            <p class="experience-company">CVSHealth</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        I build the design system for our pharmacist application and also design the pharmacy experience. I make sure the design system is used consistently across the application and work closely with both the DesignOps and Product Design teams.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2024/2025">2024 – 2025</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/adobe.svg" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Product Design Consultant</h2>
+                            <p class="experience-company">Adobe</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        I worked as an independent consultant for 11 months on design work for the Adobe Portfolio platform as well as creating an integrated experience with the Behance and Adobe Portfolio platforms.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2023/2024">2023 – 2024</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/credit-one-bank.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Lead Product Designer and Design Systems</h2>
+                            <p class="experience-company">Credit One Bank</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Led the design and implementation of a comprehensive design system for internal banking software. Created 281 components using Figma's advanced properties and variants, deployed across 5 different workspaces.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2023">2023</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/cisco.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Senior Product Designer (AI)</h2>
+                            <p class="experience-company">Cisco</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Designed an AI dashboard for cyber security.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2022/2023">2022 – 2023</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/wells-fargo.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Senior Lead Product Designer</h2>
+                            <p class="experience-company">Wells Fargo</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Designed the Vantage product for Wells Fargo.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2022">2022</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/paramount-plus.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Senior Product Designer</h2>
+                            <p class="experience-company">Paramount+</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Designed the Paramount+ main experience and design system.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2021">2021</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/axs.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Product Designer</h2>
+                            <p class="experience-company">AXS</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Designed the design system and B2B (White Label) experience for AXS.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2021/2022">2021 – 2022</time>
+                    <div class="experience-header">
+                        <img class="experience-logo experience-logo--brand" src="images/logos/arena-club.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Founding Designer</h2>
+                            <p class="experience-company">Arena Club</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Founding designer shaping the product experience from early concept through launch.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2020/2021">2020 – 2021</time>
+                    <div class="experience-header">
+                        <img class="experience-logo experience-logo--brand" src="images/logos/crtside.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Founding Designer</h2>
+                            <p class="experience-company">Crtside</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Founding designer for a LinkedIn for athletes — product design and prototype from concept through pre-seed fundraising.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2019/2020">2019 – 2020</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/adapt.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Founding Product Designer</h2>
+                            <p class="experience-company">Adapt</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Founding Product Designer helping shape the product from early concept through launch.
+                    </p>
+                </article>
+            </li>
+
+            <li class="experience-item">
+                <div class="experience-marker" aria-hidden="true"><span class="experience-dot"></span></div>
+                <article class="experience-content">
+                    <time class="experience-date" datetime="2018/2019">2018 – 2019</time>
+                    <div class="experience-header">
+                        <img class="experience-logo" src="images/logos/apartments-247.png" alt="" width="48" height="48">
+                        <div>
+                            <h2 class="experience-title">Product Designer</h2>
+                            <p class="experience-company">Apartments 24/7</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Product Designer for an apartment listings and rental platform.
+                    </p>
+                </article>
+            </li>
+        </ol>
+
+    </main>
+
+    <script src="script.js?v=55"></script>
 </body>
 </html>
+
+

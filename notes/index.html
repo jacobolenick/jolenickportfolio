@@ -1,121 +1,175 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Notes — Jacob Olenick</title>
-<meta name="description" content="Notes on design systems, product design, and building with AI by Jacob Olenick.">
-<link rel="canonical" href="https://www.jacobolenick.com/notes/">
-<meta property="og:title" content="Notes — Jacob Olenick">
-<meta property="og:description" content="Notes on design systems, product design, and building with AI by Jacob Olenick.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.jacobolenick.com/notes/">
-<meta property="og:site_name" content="Jacob Olenick">
-<meta property="og:image" content="https://www.jacobolenick.com/assets/og-image.png">
-<meta property="og:image:width" content="2400">
-<meta property="og:image:height" content="1260">
-<meta property="og:image:alt" content="Jacob Olenick — I design the systems behind the screens in your car.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Notes — Jacob Olenick">
-<meta name="twitter:description" content="Notes on design systems, product design, and building with AI by Jacob Olenick.">
-<meta name="twitter:image" content="https://www.jacobolenick.com/assets/og-image.png">
-<meta name="theme-color" content="#f4f3ef">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - Jacob Olenick</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../styles.css?v=138">
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><canvas data-pix="mark" data-scale="2" aria-label="Jacob Olenick logo"></canvas><span>Jacob Olenick</span></a>
-    <nav class="nav mono" aria-label="Main">
-      <a href="/#work">Work</a>
-      <a href="/notes/" aria-current="page">Notes</a>
-      <a href="/experience.html">Experience</a>
-      <a href="/about/">About</a>
-      <button class="theme" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7 0h2v3H7zM7 13h2v3H7zM0 7h3v2H0zM13 7h3v2h-3zM2 3.4 3.4 2l2 2L4 5.4zM10.6 12l1.4-1.4 2 2-1.4 1.4zM2 12.6l2-2L5.4 12l-2 2zM10.6 4l2-2L14 3.4l-2 2zM5 5h6v6H5z"/></svg></button>
-    </nav>
-  </div>
-</header>
-<main>
+    <!-- Header -->
+    <header>
+        <nav class="nav-container">
+            <div class="nav-content">
+                <a href="/" class="nav-link">Work</a>
+                <a href="/experience.html" class="nav-link">Resume</a>
+                <a href="/notes/" class="nav-link active">Notes</a>
+                <a href="/about/" class="nav-link">About</a>
+                <div class="nav-theme-controls">
+                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="material-icons theme-icon">dark_mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<div class="wrap">
-  <header class="page-head">
-    <a class="back mono" href="/">← Home</a>
-    <h1>Notes</h1>
-    <p class="lede">Thoughts and learnings on design systems, product design, and building with AI.</p>
-  </header>
-  <div class="prose">
-    <article class="note" id="ultimate-baseball-website-for-fans">
-      <time class="mono">Nov 11, 2026</time>
-      <div><h2>I built the ultimate baseball website for fans.</h2><p>I played from tee-ball through high school, and baseball has stayed at the center of my life. When the offseason started and a lockout started to loom, I wanted one calm place where fans could catch up, relive last season, and follow where players are signing or getting traded.</p><p>That’s Jacob Talks Baseball — Moves tracks trades, signings, options, and free-agent deals in a clear timeline; Feed brings in news and highlights; Scores and Teams round it out.</p><a class="link mono" href="/projects/jacob-talks-baseball/">Read the case study →</a></div>
-    </article>
-    <article class="note" id="great-first-week-lilly-creative-people">
-      <time class="mono">Apr 23, 2026</time>
-      <div><h2>Great first week at my new gig with Lilly through Creative People.</h2><p>I started my new gig this Wednesday with Eli Lilly through Creative People. I’m so impressed with the team already and feel thankful I took this offer over others.</p><p>I’m excited to be designing the Lilly Design System and to contribute to the look and feel of Lilly sites and products. Week 1 down and many more to go.</p></div>
-    </article>
-    <article class="note" id="espresso-ui-agentic-design-system">
-      <time class="mono">Apr 6, 2026</time>
-      <div><h2>I’m building a free product: an agentic design system called Espresso UI.</h2><p>Why build this for free? I want to give back and build my brand. It’s been a dream of mine since 2020 — my pal Joey Banks inspired me. Now I’m working on it with a few students from Design XP, which gives students real-world experience.</p><p>We’re building it from scratch in Figma and using Claude Code and the Figma MCP to translate it into an agentic design system.</p><a class="link mono" href="https://espressoui.com/" target="_blank" rel="noopener">espressoui.com →</a></div>
-    </article>
-    <article class="note" id="design-systems-studio">
-      <time class="mono">Apr 4, 2026</time>
-      <div><h2>I’m starting something new.</h2><p>A first-of-its-kind Design Systems Studio: 0 → 1 design systems for startups.</p><p>We start in Figma, then implement a production-ready agentic design system using Claude — so anyone on your team can ship production-ready UI with your company’s own design system.</p></div>
-    </article>
-    <article class="note" id="lilly-design-system-role">
-      <time class="mono">Apr 2, 2026</time>
-      <div><h2>I’m stepping into a new design system role at Lilly.</h2><p>After a year and a half at CVS Health working on the Rhythm Design System and the pharmacy software, I’m stepping into a new season as a Super IC, Senior Product Designer building and maintaining the Lilly Design System through Creative People.</p><p>Excited for this next chapter and to keep working in healthcare tech.</p></div>
-    </article>
-    <article class="note" id="design-systems-advocate">
-      <time class="mono">Feb 12, 2026</time>
-      <div><h2>I’ve stepped into a new role as a Design Systems Advocate.</h2><p>I’m the bridge between our product designers and our design system — on the Product Design team and back on the Design Systems team.</p><p>I’ll be advocating for the Rhythm Design System and making sure it’s used properly, while still designing screens and UX flows.</p></div>
-    </article>
-    <article class="note" id="colorize-it">
-      <time class="mono">Feb 12, 2026</time>
-      <div><h2>I built a Figma plugin that creates variables in a second from top UI libraries.</h2><p>I couldn’t find a plugin that did exactly what I needed to save time on design system builds. So I built Colorize It.</p><p>Pick from popular UI libraries like Tailwind, shadcn, and Bootstrap, and with one click the previewed colors land in your variables table — with dark mode variables created automatically.</p><a class="link mono" href="https://www.figma.com/community/plugin/1602001831211544731/colorize-it" target="_blank" rel="noopener">Try Colorize It →</a></div>
-    </article>
-    <article class="note" id="figma-make-components">
-      <time class="mono">Feb 11, 2026</time>
-      <div><h2>Building Figma Make components for others.</h2><p>I’ve been turning components from Espresso UI into components others can use in Figma Make, and publishing them on my Figma Community page for remixing — including interactive ones like a location map designers can drop into their sites.</p><p>I feel Make is the future of design systems. Many teams, including my own, have design systems designers using AI — Make, V0, and Cursor.</p><a class="link mono" href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener">Figma Community →</a></div>
-    </article>
-    <article class="note" id="free-ui-kit">
-      <time class="mono">Feb 11, 2026</time>
-      <div><h2>I got better as a design systems designer when I built a free UI kit.</h2><p>I really became an expert in Figma once I started designing and building my own UI kits in my free time — pushing the limits of the tool without guardrails.</p><p>It made me better at work, and better at teaching my product design team how to use our components and build screens with precision.</p></div>
-    </article>
-    <article class="note" id="scalable-design-systems">
-      <time class="mono">Nov 15, 2025</time>
-      <div><h2>Building scalable design systems.</h2><p>A design system that scales takes thoughtful planning and a deep understanding of your organization’s needs. It’s not just components — it’s a living ecosystem that evolves with your product.</p><p>Start small and iterate. Focus on the most commonly used components and patterns first, then expand as you learn how teams actually use the system.</p></div>
-    </article>
-  </div>
-</div>
-</main>
-<footer class="foot">
-  <div class="wrap">
-    <p class="label"><b>Contact</b></p>
-    <h2>Building a design system?<br><span class="muted">Let’s talk.</span></h2>
-    <div class="links">
-      <a class="link" href="https://linkedin.com/in/jacobmolenick" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="link" href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener">Figma ↗</a>
-      <a class="link" href="https://ko-fi.com/O5O31U1KMI" target="_blank" rel="noopener">Ko-fi ↗</a>
-    </div>
-    <div class="links social">
-      <span class="mono">Talking baseball</span>
-      <a class="link" href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener">YouTube ↗</a>
-      <a class="link" href="https://x.com/jtalksbaseball" target="_blank" rel="noopener">X ↗</a>
-      <a class="link" href="https://www.threads.com/@jacobtalksbaseball" target="_blank" rel="noopener">Threads ↗</a>
-      <a class="link" href="https://www.instagram.com/jacobtalksbaseball" target="_blank" rel="noopener">Instagram ↗</a>
-      <a class="link" href="https://www.tiktok.com/@jacobtalksbaseball" target="_blank" rel="noopener">TikTok ↗</a>
-      <a class="link" href="https://www.facebook.com/profile.php?id=61595596657892" target="_blank" rel="noopener">Facebook ↗</a>
-    </div>
-    <canvas data-pix="pets" data-scale="3" aria-label="A pixel golden doodle walking over to a tuxedo cat"></canvas>
-    <div class="fine mono"><span>© 2026 Jacob Olenick</span><span>Designed &amp; built with care — and a lot of pixels.</span></div>
-  </div>
-</footer>
-<script src="/assets/pixel.js"></script>
-<script src="/assets/site.js"></script>
-<script src="/assets/packs.js"></script>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Notes</h1>
+            <p class="page-description">Thoughts and learnings on design systems, product design, and more.</p>
+        </section>
+
+        <div class="notes-view-tabs plugin-tabs" role="tablist" aria-label="Notes layout">
+            <button type="button" class="plugin-tab notes-view-tab active" role="tab" aria-selected="true" data-view="grid">
+                <span class="material-icons notes-view-tab__icon" aria-hidden="true">grid_view</span>
+                Grid
+            </button>
+            <button type="button" class="plugin-tab notes-view-tab" role="tab" aria-selected="false" data-view="list">
+                <span class="material-icons notes-view-tab__icon" aria-hidden="true">view_list</span>
+                List
+            </button>
+        </div>
+
+        <!-- Notes List -->
+        <section class="notes-list-section" data-notes-view="grid">
+            <a href="/notes/ultimate-baseball-website-for-fans/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/note-ultimate-baseball-website.png" alt="Jacob Talks Baseball Moves page showing recent MLB trades and signings">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I built the ultimate baseball website for fans.</h2>
+                        <p class="note-list-description">From tee-ball through high school to today — a fan-first site for offseason moves, highlights, and reliving last season while a lockout looms.</p>
+                        <p class="note-list-date">Nov 11, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/great-first-week-lilly-creative-people/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/note-lilly-first-week.png" alt="Jacob Olenick smiling in his home office with soccer memorabilia and a peace sign">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">Great first week at my new gig with Lilly through Creative People.</h2>
+                        <p class="note-list-description">Week one on the Lilly Design System - already impressed by the team and grateful I chose this offer.</p>
+                        <p class="note-list-date">Apr 23, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/espresso-ui-agentic-design-system/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image note-list-image--espresso-logo">
+                        <img src="../images/espresso-ui-cover.png" alt="Espresso UI logo">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I'm building a free product. An Agentic Design System called Espresso UI.</h2>
+                        <p class="note-list-description">Giving back, growing the brand, and shipping a Figma-first system with Claude Code and Figma MCP - alongside students from Design XP.</p>
+                        <p class="note-list-date">Apr 6, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/design-systems-studio/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/designops-studio-note.png" alt="DesignOps Studio branding portrait">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I'm starting something new</h2>
+                        <p class="note-list-description">A Design Systems Studio - 0 → 1 systems for startups, from Figma to production-ready agentic design systems with Claude.</p>
+                        <p class="note-list-date">Apr 4, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/lilly-design-system-role/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/logos/creative-people.png" alt="Creative People logo">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I'm stepping into a new design system role at Lilly</h2>
+                        <p class="note-list-description">From CVS Health and the Rhythm Design System to Creative People, placed on Eli Lilly - Super IC and Senior Product Designer on the Lilly Design System.</p>
+                        <p class="note-list-date">Apr 2, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/design-systems-advocate/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/design-systems-advocate.png" alt="Jacob Olenick at his workspace">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I've Stepped into a New Role as a Design Systems Advocate at Work</h2>
+                        <p class="note-list-description">Bridge for product designers and the design system - still designing screens and UX flows while advocating for the Rhythm Design System.</p>
+                        <p class="note-list-date">Feb 12, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/colorize-it/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/colorize-it-cover.png" alt="Colorize It - Color and variable generator based on popular UI frameworks">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I've Built a Figma Plugin that Allows Me to Create Variables in a Second From Top UI Libraries.</h2>
+                        <p class="note-list-description">Building Colorize It to add color variables from Tailwind, Shadcn, Bootstrap, and more - with one click and automatic dark mode variables.</p>
+                        <p class="note-list-date">Feb 12, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/figma-make-components/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/figma-make-map.png" alt="Figma Make interactive map component">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">Building Figma Make Components for Others</h2>
+                        <p class="note-list-description">Exploring how to turn Espresso UI components into Figma Make components for the community, plus interactive components like maps for designers to use.</p>
+                        <p class="note-list-date">Feb 11, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/free-ui-kit/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/work/design-systems-ui-kit.png" alt="Design workspace">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">I Got Better as a Design Systems Designer When I Built Free UI Kit</h2>
+                        <p class="note-list-description">How building UI kits in my free time made me an expert in Figma and a better teacher for my product design team.</p>
+                        <p class="note-list-date">Feb 11, 2026</p>
+                    </div>
+                </article>
+            </a>
+            <a href="/notes/scalable-design-systems/" class="note-list-link">
+                <article class="note-list-item">
+                    <div class="note-list-image">
+                        <img src="../images/design-systems-alert-dialog.png" alt="Espresso UI Alert Dialog component in Figma">
+                    </div>
+                    <div class="note-list-content">
+                        <h2 class="note-list-title">Building Scalable Design Systems</h2>
+                        <p class="note-list-description">Exploring the key principles and best practices for creating design systems that can grow with your organization.</p>
+                        <p class="note-list-date">Nov 15, 2025</p>
+                    </div>
+                </article>
+            </a>
+        </section>
+
+    </main>
+
+    <script src="../script.js?v=55"></script>
 </body>
 </html>

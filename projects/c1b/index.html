@@ -1,103 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Large credit card company — Jacob Olenick</title>
-<meta name="description" content="I designed the design system and the product for a large credit card company.">
-<link rel="canonical" href="https://www.jacobolenick.com/projects/c1b/">
-<meta property="og:title" content="Large credit card company — Jacob Olenick">
-<meta property="og:description" content="I designed the design system and the product for a large credit card company.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.jacobolenick.com/projects/c1b/">
-<meta property="og:site_name" content="Jacob Olenick">
-<meta property="og:image" content="https://www.jacobolenick.com/assets/og-image.png">
-<meta property="og:image:width" content="2400">
-<meta property="og:image:height" content="1260">
-<meta property="og:image:alt" content="Jacob Olenick — I design the systems behind the screens in your car.">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Large credit card company — Jacob Olenick">
-<meta name="twitter:description" content="I designed the design system and the product for a large credit card company.">
-<meta name="twitter:image" content="https://www.jacobolenick.com/assets/og-image.png">
-<meta name="theme-color" content="#f4f3ef">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit One Bank - Jacob Olenick</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../styles.css?v=109">
+    <link rel="stylesheet" href="../project.css?v=11">
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/"><canvas data-pix="mark" data-scale="2" aria-label="Jacob Olenick logo"></canvas><span>Jacob Olenick</span></a>
-    <nav class="nav mono" aria-label="Main">
-      <a href="/#work" aria-current="page">Work</a>
-      <a href="/notes/">Notes</a>
-      <a href="/experience.html">Experience</a>
-      <a href="/about/">About</a>
-      <button class="theme" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7 0h2v3H7zM7 13h2v3H7zM0 7h3v2H0zM13 7h3v2h-3zM2 3.4 3.4 2l2 2L4 5.4zM10.6 12l1.4-1.4 2 2-1.4 1.4zM2 12.6l2-2L5.4 12l-2 2zM10.6 4l2-2L14 3.4l-2 2zM5 5h6v6H5z"/></svg></button>
-    </nav>
-  </div>
-</header>
-<main>
+    <!-- Header -->
+    <header>
+        <nav class="nav-container">
+            <div class="nav-content">
+                <a href="/" class="back-link">
+                    <span class="material-icons">arrow_back</span>
+                    Back
+                </a>
+                <div class="nav-theme-controls">
+                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="material-icons theme-icon">dark_mode</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<div class="wrap">
-  <header class="page-head">
-    <a class="back mono" href="/#work">← All work</a>
-    <canvas data-pix="card" data-scale="6" aria-label="Large credit card company"></canvas>
-    <h1>Design System and Product for a Large Credit Card Company</h1>
-    <p class="lede">I designed the design system and the product for a large credit card company.</p>
-    <div class="facts mono">
-      <span><b>Role</b>Lead Product Designer</span>
-      <span><b>Year</b>2023</span>
-      <span><b>Type</b>Design System · Product Design</span>
-    </div>
+    <!-- Main Content -->
+    <main class="container project-container">
+        <!-- Project Header -->
+        <section class="project-header">
+            <h1 class="project-title">Design System and Product for a Large Credit Card Company</h1>
+            <p class="project-intro">I designed the design system and the product for a large credit card company.</p>
+        </section>
+
+        <!-- Project Metrics -->
+        <section class="metrics-section">
+            <div class="metric">
+                <span class="metric-value">281</span>
+                <span class="metric-label">Components</span>
+                <p>I was able to keep the number of components down by utilizing variables and properties. 
+
+                    This helped save my team money with their budget and Figma bill by making sure the usage of the file didn't reach it's limit. </p>
+            </div>
+            <div class="metric">
+                <span class="metric-value">5</span>
+                <span class="metric-label">Workspaces</span>
+                <p>I had to design this Figma library/Design System for the use across 5 different workspaces in the internal tooling suite</p>
+            </div>
+        </section>
+
+        <!-- Project Image -->
+        <section class="project-hero-image">
+            <img src="../../images/work/c1b-design-system-cover.png" alt="Credit One Bank design system components">
+        </section>
+
+        <!-- Project Details -->
+        <section class="project-content">
+            <div class="content-section">
+                <h2>Overview</h2>
+                <p>Led the design and implementation of a comprehensive design system for a major credit card company, establishing design standards and component libraries that improved consistency across all digital products.</p>
+            </div>
+
+            <div class="content-section">
+                <h2>My Role</h2>
+                <p><strong>Lead Product Designer</strong></p>
+            </div>
+
+            <div class="content-section">
+                <h2>Challenge</h2>
+                <p>C1B needed a Figma/Angular Design System for their internal suite software that helps run the bank. 
+
+                    They also needed it designed in a way with clear documentation and great collaboration so the dev team could implement components, variables, and tokens with ease and quick... So the other dev teams could build the screens. </p>
+            </div>
+
+            <div class="content-section">
+                <h2>User Story</h2>
+                <p>We need to follow WCAG AA compliance rules and guidelines to ensure the product is accessible to all</p>
+            </div>
+
+            <div class="content-section">
+                <h2>User Story</h2>
+                <p>We need a customer panel that is dynamic and encompasses the following. This will be one of the more complex components we will need to build.
+                <ul>
+                    <li>Customer info</li>
+                    <li> Customer card+accounts</li>
+                    <li>Search + Advanced search through filtering</li>
+                    <li>Recent history</li>
+                    <li>pricing strategy</li>
+                </ul>
+                <div class="section-image" style="margin-top: 32px;">
+                    <img src="../../images/work/CUSTOMER PANEL.jpg" alt="Customer Panel">
+                </div>
+            </div>
+
+            <div class="content-section image-section">
     
-    <div class="stats"><div><strong>281</strong><span class="mono">components</span><p>Kept the count down with variables and properties — saving the team budget on their Figma bill</p></div><div><strong>5</strong><span class="mono">workspaces</span><p>One library serving 5 workspaces across the internal tooling suite</p></div></div>
-    <div class="cover"><img src="/images/work/c1b-design-system-cover.png" alt="Design System and Product for a Large Credit Card Company cover" fetchpriority="high"></div>
-    
-  </header>
+                <h2>Better the library performance</h2>
+                <p>Strategically building components with well structured properties helps me keep my Design Systems files storage down which then allows the files to run faster when working in them. 
 
-  <div class="prose">
-    <div class="block"><h2>Overview</h2><div><p>Led the design and implementation of a comprehensive design system for a major credit card company, establishing design standards and component libraries that improved consistency across all digital products.</p></div></div>
-    <div class="block"><h2>My role</h2><div><p class="role">Lead Product Designer</p></div></div>
-    <div class="block"><h2>Challenge</h2><div><p>The bank needed a Figma/Angular design system for the internal suite software that helps run the bank — with clear documentation and great collaboration, so the dev team could implement components, variables, and tokens quickly and other dev teams could build the screens.</p></div></div>
-    <div class="block"><h2>User stories</h2><div><ul><li>We need to follow WCAG AA compliance rules and guidelines to ensure the product is accessible to all.</li><li>We need a dynamic customer panel — customer info, customer card + accounts, search + advanced search through filtering, recent history, and pricing strategy. One of the more complex components we’d build.</li></ul></div><div class="figs"><figure><img src="/images/work/CUSTOMER%20PANEL.jpg" alt="Customer panel" loading="lazy"><figcaption>Customer panel</figcaption></figure></div></div>
-    <div class="block"><h2>Better library performance</h2><div><p>Strategically building components with well-structured properties keeps the design system file’s storage down, which keeps the file fast to work in — and saves the team’s budget by avoiding fees for storage limits.</p></div><div class="figs"><figure><img src="/images/work/figmaprops.png" alt="Component properties" loading="lazy"><figcaption>Component properties</figcaption></figure></div></div>
-    <div class="block"><h2>Tools</h2><div><ul class="chips"><li>Figma</li><li>Storybook</li></ul></div></div>
-  </div>
+                    Not to mention it saves on my teams budget by not paying extra fees for meeting storage limits.</p>
+                    <div class="section-image">
+                        <img src="../../images/work/figmaprops.png" alt="Project Detail">
+                    </div>
+            </div>
 
-  <nav class="pager" aria-label="More projects">
-    <a href="/projects/jacob-talks-baseball/"><span class="mono">← Previous</span>An MLB website for fans</a>
-    <a href="/projects/orgspace/"><span class="mono">Next →</span>Orgspace</a>
-  </nav>
-</div>
-</main>
-<footer class="foot">
-  <div class="wrap">
-    <p class="label"><b>Contact</b></p>
-    <h2>Building a design system?<br><span class="muted">Let’s talk.</span></h2>
-    <div class="links">
-      <a class="link" href="https://linkedin.com/in/jacobmolenick" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="link" href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener">Figma ↗</a>
-      <a class="link" href="https://ko-fi.com/O5O31U1KMI" target="_blank" rel="noopener">Ko-fi ↗</a>
-    </div>
-    <div class="links social">
-      <span class="mono">Talking baseball</span>
-      <a class="link" href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener">YouTube ↗</a>
-      <a class="link" href="https://x.com/jtalksbaseball" target="_blank" rel="noopener">X ↗</a>
-      <a class="link" href="https://www.threads.com/@jacobtalksbaseball" target="_blank" rel="noopener">Threads ↗</a>
-      <a class="link" href="https://www.instagram.com/jacobtalksbaseball" target="_blank" rel="noopener">Instagram ↗</a>
-      <a class="link" href="https://www.tiktok.com/@jacobtalksbaseball" target="_blank" rel="noopener">TikTok ↗</a>
-      <a class="link" href="https://www.facebook.com/profile.php?id=61595596657892" target="_blank" rel="noopener">Facebook ↗</a>
-    </div>
-    <canvas data-pix="pets" data-scale="3" aria-label="A pixel golden doodle walking over to a tuxedo cat"></canvas>
-    <div class="fine mono"><span>© 2026 Jacob Olenick</span><span>Designed &amp; built with care — and a lot of pixels.</span></div>
-  </div>
-</footer>
-<script src="/assets/pixel.js"></script>
-<script src="/assets/site.js"></script>
-<script src="/assets/packs.js"></script>
+            <div class="content-section">
+                <h2>Tools & Technologies</h2>
+                <div class="tags-container">
+                    <span class="tag">Figma</span>
+                    <span class="tag">Storybook</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <section class="project-navigation">
+            <a href="/projects/jacob-talks-baseball/" class="nav-project prev">
+                <span class="nav-label">Previous Project</span>
+                <span class="nav-title">← An MLB website for fans</span>
+            </a>
+            <a href="/projects/orgspace/" class="nav-project next">
+                <span class="nav-label">Next Project</span>
+                <span class="nav-title">Orgspace →</span>
+            </a>
+        </section>
+    </main>
+
+    <script src="../../script.js?v=55"></script>
 </body>
 </html>
