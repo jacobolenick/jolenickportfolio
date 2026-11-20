@@ -1,148 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publix - Jacob Olenick</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="../../styles.css?v=109">
-    <link rel="stylesheet" href="../project.css?v=11">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publix — Jacob Olenick</title>
+<meta name="description" content="Design system and responsive components for web, iPad, Android, and iOS.">
+<link rel="canonical" href="https://www.jacobolenick.com/projects/publix/">
+<meta property="og:title" content="Publix — Jacob Olenick">
+<meta property="og:description" content="Design system and responsive components for web, iPad, Android, and iOS.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f4f3ef">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="nav-container">
-            <div class="nav-content">
-                <a href="/" class="back-link">
-                    <span class="material-icons">arrow_back</span>
-                    Back
-                </a>
-                <div class="nav-theme-controls">
-                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="material-icons theme-icon">dark_mode</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><canvas data-pix="mark" data-scale="2" aria-label="Jacob Olenick logo"></canvas><span>Jacob Olenick</span></a>
+    <nav class="nav mono" aria-label="Main">
+      <a href="/#work" aria-current="page">Work</a>
+      <a href="/notes/">Notes</a>
+      <a href="/experience.html">Experience</a>
+      <a href="/about/">About</a>
+      <button class="theme" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7 0h2v3H7zM7 13h2v3H7zM0 7h3v2H0zM13 7h3v2h-3zM2 3.4 3.4 2l2 2L4 5.4zM10.6 12l1.4-1.4 2 2-1.4 1.4zM2 12.6l2-2L5.4 12l-2 2zM10.6 4l2-2L14 3.4l-2 2zM5 5h6v6H5z"/></svg></button>
+    </nav>
+  </div>
+</header>
+<main>
 
-    <!-- Main Content -->
-    <main class="container project-container">
-        <!-- Project Header -->
-        <section class="project-header">
-            <h1 class="project-title">Publix Design System</h1>
-            <p class="project-intro">Design system and responsive components for web, iPad, Android, and iOS</p>
-        </section>
+<div class="wrap">
+  <header class="page-head">
+    <a class="back mono" href="/#work">← All work</a>
+    <canvas data-pix="cart" data-scale="6" aria-label="Publix"></canvas>
+    <h1>Publix Design System</h1>
+    <p class="lede">Design system and responsive components for web, iPad, Android, and iOS.</p>
+    <div class="facts mono">
+      <span><b>Role</b>Design Systems Designer &amp; Product Designer</span>
+      <span><b>Year</b>2021</span>
+      <span><b>Type</b>Design System · Product Design</span>
+    </div>
+    
+    <div class="stats"><div><strong>4</strong><span class="mono">platforms</span><p>Web, iPad, Android, and iOS</p></div><div><strong>100+</strong><span class="mono">components</span><p>Customer-facing components for the design system</p></div><div><strong>+55%</strong><span class="mono">online orders</span><p>After the Catering redesign</p></div></div>
+    <div class="cover"><img src="/images/work/publix-design-system-cover.png" alt="Publix Design System cover" fetchpriority="high"></div>
+    
+  </header>
 
-        <!-- Project Metrics -->
-        <section class="metrics-section">
-            <div class="metric">
-                <span class="metric-value">4</span>
-                <span class="metric-label">Platforms</span>
-                <p>Web, iPad, Android, and iOS responsive components</p>
-            </div>
-            <div class="metric">
-                <span class="metric-value">100+</span>
-                <span class="metric-label">Components</span>
-                <p>Customer-facing components built for the design system</p>
-            </div>
-        </section>
+  <div class="prose">
+    <div class="block"><h2>Overview</h2><div><p>Worked on the Publix design system in Figma, using Publix’s private Figma plugin for real data. I built responsive components across web, iPad, Android, and iOS for every customer-facing project, and set up a robust token and variable system.</p></div></div>
+    <div class="block"><h2>My role</h2><div><p class="role">Design Systems Designer &amp; Product Designer</p><ul><li>Design system development in Figma</li><li>Integration with Publix’s private Figma plugin for data</li><li>Responsive components for web, iPad, Android, and iOS</li><li>Components for all customer-facing projects</li><li>Token and variable system setup</li></ul></div></div>
+    <div class="block"><h2>Challenge</h2><div><p>Publix needed a unified design system that could scale across web, iPad, Android, and iOS while staying consistent across every customer-facing experience — integrated with their proprietary data plugin.</p></div></div>
+    <div class="block"><h2>Catering</h2><div><p>I redesigned the Catering experience to improve how people choose stores and create orders — reducing wrong-store mistakes and streamlining order creation.</p></div><div class="figs two"><figure><img src="/images/work/catering%203.png" alt="Catering" loading="lazy"><figcaption>Catering</figcaption></figure><figure><img src="/images/work/catering%202.png" alt="Catering" loading="lazy"><figcaption>Catering</figcaption></figure><figure><img src="/images/work/catering%201.png" alt="Catering" loading="lazy"><figcaption>Catering</figcaption></figure><figure><img src="/images/work/catering%204.png" alt="Catering" loading="lazy"><figcaption>Catering</figcaption></figure><figure><img src="/images/work/catering%205.png" alt="Catering" loading="lazy"><figcaption>Catering</figcaption></figure></div></div>
+    <div class="block"><h2>Impact</h2><div><ul><li>Increased online orders by 55%</li><li>Improved checkout completion rate by 38%</li><li>Reduced order time by 30%</li><li>Improved customer satisfaction scores</li></ul></div></div>
+    <div class="block"><h2>Tools</h2><div><ul class="chips"><li>Figma</li><li>Publix Figma Plugin</li><li>Design Tokens</li><li>Variables</li></ul></div></div>
+  </div>
 
-        <!-- Project Image -->
-        <section class="project-hero-image">
-            <img src="../../images/work/publix-design-system-cover.png" alt="Publix digital design system and e-commerce UI">
-        </section>
-
-        <!-- Project Details -->
-        <section class="project-content">
-            <div class="content-section">
-                <h2>Overview</h2>
-                <p>Worked on the design system for Publix using Figma and Publix's private Figma plugin for data integration. I helped create responsive components across all platforms including web, iPad, Android, and iOS. My work focused on building components for all customer-facing projects while establishing a robust token and variable system.</p>
-            </div>
-
-            <div class="content-section">
-                <h2>My Role</h2>
-                <p><strong>Design Systems Designer and Product Designer</strong></p>
-                <ul>
-                    <li>Design system development in Figma</li>
-                    <li>Integration with Publix's private Figma plugin for data</li>
-                    <li>Responsive component creation for web, iPad, Android, and iOS</li>
-                    <li>Customer-facing project component development</li>
-                    <li>Token and variable system setup</li>
-                </ul>
-            </div>
-
-            <div class="content-section">
-                <h2>Challenge</h2>
-                <p>Publix needed a unified design system that could scale across multiple platforms - web, iPad, Android, and iOS - while maintaining consistency across all customer-facing experiences. The system needed to integrate with their proprietary data plugin and support a growing product ecosystem.</p>
-            </div>
-
-            <div class="content-section">
-                <h2>Solution</h2>
-                <p>Built a comprehensive design system with:</p>
-                <ul>
-                    <li>Responsive components that adapt seamlessly across web, iPad, Android, and iOS</li>
-                    <li>Integration with Publix's private Figma plugin for real data</li>
-                    <li>Reusable components for all customer-facing projects</li>
-                    <li>Organized tokens and variables for consistent styling</li>
-                </ul>
-            </div>
-
-            <div class="content-section">
-                <h2>Catering</h2>
-                <p>I worked on the Catering experience to improve how users choose stores and create their orders. The redesign focused on reducing user errors when selecting the wrong store location, streamlining the order creation flow, and creating a more intuitive experience overall.</p>
-                <ul>
-                    <li>Improved store selection flow to reduce user mistakes</li>
-                    <li>Streamlined the order creation process</li>
-                    <li>Enhanced the overall catering experience</li>
-                </ul>
-            </div>
-
-            <!-- Catering Images -->
-            <section class="project-gallery">
-                <div class="gallery-grid">
-                    <img src="../../images/work/catering 3.png" alt="Publix Catering Design 3">
-                    <img src="../../images/work/catering 2.png" alt="Publix Catering Design 2">
-                    <img src="../../images/work/catering 1.png" alt="Publix Catering Design 2">
-                    <img src="../../images/work/catering 4.png" alt="Publix Catering Design 2">
-                    <img src="../../images/work/catering 5.png" alt="Publix Catering Design 2">
-                </div>
-            </section>
-
-            <div class="content-section">
-                <h2>Impact</h2>
-                <ul>
-                    <li>Increased online orders by 55%</li>
-                    <li>Improved checkout completion rate by 38%</li>
-                    <li>Reduced order time by 30%</li>
-                    <li>Enhanced customer satisfaction scores</li>
-                </ul>
-            </div>
-
-            <div class="content-section">
-                <h2>Tools & Technologies</h2>
-                <div class="tags-container">
-                    <span class="tag">Figma</span>
-                    <span class="tag">Publix Figma Plugin</span>
-                    <span class="tag">Design Tokens</span>
-                    <span class="tag">Variables</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Navigation -->
-        <section class="project-navigation">
-            <a href="/projects/axs/" class="nav-project prev">
-                <span class="nav-label">Previous Project</span>
-                <span class="nav-title">← AXS Ticketing</span>
-            </a>
-            <a href="/projects/espressoui/" class="nav-project next">
-                <span class="nav-label">Next Project</span>
-                <span class="nav-title">Espresso UI →</span>
-            </a>
-        </section>
-    </main>
-
-    <script src="../../script.js?v=55"></script>
+  <nav class="pager" aria-label="More projects">
+    <a href="/projects/axs/"><span class="mono">← Previous</span>AXS Ticketing</a>
+    <a href="/projects/espressoui/"><span class="mono">Next →</span>Espresso UI</a>
+  </nav>
+</div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="label"><b>Contact</b></p>
+    <h2>Building a design system?<br><span class="muted">Let’s talk.</span></h2>
+    <div class="links">
+      <a class="link" href="https://linkedin.com/in/jacobmolenick" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="link" href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener">Figma ↗</a>
+      <a class="link" href="https://ko-fi.com/O5O31U1KMI" target="_blank" rel="noopener">Ko-fi ↗</a>
+    </div>
+    <div class="links social">
+      <span class="mono">Talking baseball</span>
+      <a class="link" href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener">YouTube ↗</a>
+      <a class="link" href="https://x.com/jtalksbaseball" target="_blank" rel="noopener">X ↗</a>
+      <a class="link" href="https://www.threads.com/@jacobtalksbaseball" target="_blank" rel="noopener">Threads ↗</a>
+      <a class="link" href="https://www.instagram.com/jacobtalksbaseball" target="_blank" rel="noopener">Instagram ↗</a>
+      <a class="link" href="https://www.tiktok.com/@jacobtalksbaseball" target="_blank" rel="noopener">TikTok ↗</a>
+      <a class="link" href="https://www.facebook.com/profile.php?id=61595596657892" target="_blank" rel="noopener">Facebook ↗</a>
+    </div>
+    <canvas data-pix="pets" data-scale="3" aria-label="A pixel golden doodle walking over to a tuxedo cat"></canvas>
+    <div class="fine mono"><span>© 2026 Jacob Olenick</span><span>Designed &amp; built with care — and a lot of pixels.</span></div>
+  </div>
+</footer>
+<script src="/assets/pixel.js"></script>
+<script src="/assets/site.js"></script>
+<script src="/assets/packs.js"></script>
 </body>
 </html>

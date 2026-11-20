@@ -1,168 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>An MLB website for fans - Jacob Olenick</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="../../styles.css?v=109">
-    <link rel="stylesheet" href="../project.css?v=11">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An MLB website for fans — Jacob Olenick</title>
+<meta name="description" content="Jacob Talks Baseball — a fan-first site for trades, scores, teams, news, and highlights in one calm, readable experience.">
+<link rel="canonical" href="https://www.jacobolenick.com/projects/jacob-talks-baseball/">
+<meta property="og:title" content="An MLB website for fans — Jacob Olenick">
+<meta property="og:description" content="Jacob Talks Baseball — a fan-first site for trades, scores, teams, news, and highlights in one calm, readable experience.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f4f3ef">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
-    <header>
-        <nav class="nav-container">
-            <div class="nav-content">
-                <a href="/" class="back-link">
-                    <span class="material-icons">arrow_back</span>
-                    Back
-                </a>
-                <div class="nav-theme-controls">
-                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="material-icons theme-icon">dark_mode</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><canvas data-pix="mark" data-scale="2" aria-label="Jacob Olenick logo"></canvas><span>Jacob Olenick</span></a>
+    <nav class="nav mono" aria-label="Main">
+      <a href="/#work" aria-current="page">Work</a>
+      <a href="/notes/">Notes</a>
+      <a href="/experience.html">Experience</a>
+      <a href="/about/">About</a>
+      <button class="theme" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7 0h2v3H7zM7 13h2v3H7zM0 7h3v2H0zM13 7h3v2h-3zM2 3.4 3.4 2l2 2L4 5.4zM10.6 12l1.4-1.4 2 2-1.4 1.4zM2 12.6l2-2L5.4 12l-2 2zM10.6 4l2-2L14 3.4l-2 2zM5 5h6v6H5z"/></svg></button>
+    </nav>
+  </div>
+</header>
+<main>
 
-    <main class="container project-container">
-        <section class="project-header">
-            <h1 class="project-title">An MLB website for fans</h1>
-            <p class="project-intro">Jacob Talks Baseball — a fan-first site for trades, scores, teams, news, and highlights in one calm, readable experience.</p>
-        </section>
+<div class="wrap">
+  <header class="page-head">
+    <a class="back mono" href="/#work">← All work</a>
+    <canvas data-pix="scoreboard" data-scale="6" aria-label="An MLB website for fans"></canvas>
+    <h1>An MLB website for fans</h1>
+    <p class="lede">Jacob Talks Baseball — a fan-first site for trades, scores, teams, news, and highlights in one calm, readable experience.</p>
+    <div class="facts mono">
+      <span><b>Role</b>Lead Product Designer &amp; Design Engineer</span>
+      <span><b>Year</b>2026</span>
+      <span><b>Type</b>Personal Project · Product Design</span>
+    </div>
+    <div class="cta"><a class="btn solid" href="https://www.jacobtalksbaseball.com/" target="_blank" rel="noopener">View live site ↗</a></div>
+    <div class="stats"><div><strong>Lead</strong><span class="mono">role</span><p>Product design and design engineering from concept through build</p></div><div><strong>5</strong><span class="mono">core areas</span><p>Moves, Feed, Scores, Teams, and creator link-in-bio</p></div></div>
+    <div class="cover"><img src="/images/work/jacob-talks-baseball/cover-moves.png" alt="An MLB website for fans cover" fetchpriority="high"></div>
+    
+  </header>
 
-        <section class="metrics-section">
-            <div class="metric">
-                <span class="metric-value">Lead</span>
-                <span class="metric-label">Role</span>
-                <p>Product design and design engineering from concept through build</p>
-            </div>
-            <div class="metric">
-                <span class="metric-value">5</span>
-                <span class="metric-label">Core areas</span>
-                <p>Moves, Feed, Scores, Teams, and creator link-in-bio</p>
-            </div>
-        </section>
+  <div class="prose">
+    <div class="block"><h2>Overview</h2><div><p>I designed and built a website for fans to see when trades happen, check scores and highlights, and dig into teams, payroll, and front offices — without the noise of a typical sports portal. It has a live transaction ticker, filterable moves feed, news and video feed, historical scores, and team directories with detail pages. I owned UX, visual design, and implementation.</p></div></div>
+    <div class="block"><h2>My role</h2><div><p class="role">Lead Product Designer &amp; Design Engineer</p><ul><li>End-to-end product design — IA, flows, components, and responsive layouts</li><li>Design and build of Moves, Feed, Scores, Teams, and link-in-bio experiences</li><li>Player and news modals with stats, breakdowns, and embedded video</li><li>Navigation model with persistent bottom bar and transaction ticker</li></ul></div></div>
+    <div class="block"><h2>Moves</h2><div><p>Trades, signings, options, and free-agency updates in one scannable feed — with filters by move type, team, and minor-league deals, plus expandable cards for full context and links to reports.</p></div><div class="figs"><figure><img src="/images/work/jacob-talks-baseball/moves-list.png" alt="Moves" loading="lazy"><figcaption>Moves</figcaption></figure></div></div>
+    <div class="block"><h2>Feed</h2><div><p>News, video, and Shorts from MLB and clubs — tabbed filters and a Shorts row for quick highlights alongside full article cards.</p></div><div class="figs"><figure><img src="/images/work/jacob-talks-baseball/feed.png" alt="Feed" loading="lazy"><figcaption>Feed</figcaption></figure></div></div>
+    <div class="block"><h2>Scores</h2><div><p>Final scores grouped by date, team filters, and celebratory moments like championship callouts when a season ends.</p></div><div class="figs"><figure><img src="/images/work/jacob-talks-baseball/scores.png" alt="Scores" loading="lazy"><figcaption>Scores</figcaption></figure></div></div>
+    <div class="block"><h2>Teams</h2><div><p>Every club organized by division, with team pages for payroll, front office, and coaching staff.</p></div><div class="figs two"><figure><img src="/images/work/jacob-talks-baseball/teams-directory.png" alt="Teams directory" loading="lazy"><figcaption>Teams directory</figcaption></figure><figure><img src="/images/work/jacob-talks-baseball/teams-red-sox.png" alt="Team detail" loading="lazy"><figcaption>Team detail</figcaption></figure></div></div>
+    <div class="block"><h2>Detail modals</h2><div><p>Deep dives without leaving the page — trade rumor write-ups, player profiles with career stats, game recaps with line scores and starters, and in-feed video playback.</p></div><div class="figs two"><figure><img src="/images/work/jacob-talks-baseball/trade-rumors-modal.png" alt="Trade rumors &amp; transaction detail" loading="lazy"><figcaption>Trade rumors &amp; transaction detail</figcaption></figure><figure><img src="/images/work/jacob-talks-baseball/player-profile-modal.png" alt="Player profile" loading="lazy"><figcaption>Player profile</figcaption></figure><figure><img src="/images/work/jacob-talks-baseball/world-series-recap.jpg" alt="Game recap &amp; box score" loading="lazy"><figcaption>Game recap &amp; box score</figcaption></figure><figure><img src="/images/work/jacob-talks-baseball/feed-video-modal.jpg" alt="In-feed video" loading="lazy"><figcaption>In-feed video</figcaption></figure></div></div>
+    <div class="block"><h2>Link-in-bio</h2><div></div><div class="figs"><figure><img src="/images/work/jacob-talks-baseball/link-in-bio.png" alt="Creator link-in-bio" loading="lazy"><figcaption>Creator link-in-bio</figcaption></figure></div></div>
+    <div class="block"><h2>Tools</h2><div><ul class="chips"><li>Product Design</li><li>Design Engineering</li><li>Figma</li><li>Front-end development</li></ul></div></div>
+  </div>
 
-        <p class="project-live-cta-wrap">
-            <a href="https://www.jacobtalksbaseball.com/" class="project-live-cta" target="_blank" rel="noopener noreferrer">
-                View live site
-                <span class="material-icons" aria-hidden="true">open_in_new</span>
-            </a>
-        </p>
-
-        <section class="project-hero-image">
-            <img src="../../images/work/jacob-talks-baseball/cover-moves.png" alt="Jacob Talks Baseball Moves page with transaction feed and filters">
-        </section>
-
-        <section class="project-content">
-            <div class="content-section">
-                <h2>Overview</h2>
-                <p>I designed and built a website with information for fans to see when trades happen, check scores and highlights, and dig into teams, payroll, and front offices — without the noise of a typical sports portal.</p>
-                <p>The product lives under the Jacob Talks Baseball brand: a live transaction ticker, filterable moves feed, news and video feed, historical scores, and team directories with detail pages. I was the <strong>Lead Product Designer and Design Engineer</strong>, owning UX, visual design, and implementation.</p>
-            </div>
-
-            <div class="content-section">
-                <h2>My Role</h2>
-                <p><strong>Lead Product Designer &amp; Design Engineer</strong></p>
-                <ul>
-                    <li>End-to-end product design — IA, flows, components, and responsive layouts</li>
-                    <li>Design and build of Moves, Feed, Scores, Teams, and link-in-bio experiences</li>
-                    <li>Player and news modals with stats, breakdowns, and embedded video</li>
-                    <li>Navigation model with persistent bottom bar and transaction ticker</li>
-                </ul>
-            </div>
-
-            <div class="content-section">
-                <h2>Moves</h2>
-                <p>Trades, signings, options, and free-agency updates in one scannable feed — with filters by move type, team, and minor-league deals, plus expandable cards for full context and links to reports.</p>
-                <div class="section-image" style="margin-top: 24px;">
-                    <img src="../../images/work/jacob-talks-baseball/moves-list.png" alt="Moves feed listing daily transactions with status pills" loading="lazy">
-                </div>
-            </div>
-
-            <div class="content-section">
-                <h2>Feed</h2>
-                <p>News, video, and Shorts from MLB and clubs — tabbed filters and a Shorts row for quick highlights alongside full article cards.</p>
-                <div class="section-image" style="margin-top: 24px;">
-                    <img src="../../images/work/jacob-talks-baseball/feed.png" alt="Feed page with Shorts carousel and MLB news cards" loading="lazy">
-                </div>
-            </div>
-
-            <div class="content-section">
-                <h2>Scores</h2>
-                <p>Final scores grouped by date, team filters, and celebratory moments like championship callouts when a season ends.</p>
-                <div class="section-image" style="margin-top: 24px;">
-                    <img src="../../images/work/jacob-talks-baseball/scores.png" alt="Scores page with World Series results and championship toast" loading="lazy">
-                </div>
-            </div>
-
-            <div class="content-section">
-                <h2>Teams</h2>
-                <p>Every club organized by division, with team pages for payroll, front office, and coaching staff.</p>
-                <div class="section-image" style="margin-top: 24px;">
-                    <img src="../../images/work/jacob-talks-baseball/teams-directory.png" alt="Teams directory grouped by AL divisions" loading="lazy">
-                </div>
-                <div class="section-image" style="margin-top: 24px;">
-                    <img src="../../images/work/jacob-talks-baseball/teams-red-sox.png" alt="Boston Red Sox team page with payroll and front office" loading="lazy">
-                </div>
-            </div>
-
-            <div class="content-section">
-                <h2>Detail modals</h2>
-                <p>Deep dives without leaving the page — trade rumor write-ups, player profiles with career stats, game recaps with line scores and starters, and in-feed video playback.</p>
-            </div>
-        </section>
-
-        <section class="project-gallery" aria-label="Jacob Talks Baseball interface gallery">
-            <div class="gallery-grid">
-                <figure class="gallery-figure">
-                    <img src="../../images/work/jacob-talks-baseball/trade-rumors-modal.png" alt="MLB trade rumors modal with article and player stats" loading="lazy">
-                    <figcaption>Trade rumors &amp; transaction detail</figcaption>
-                </figure>
-                <figure class="gallery-figure">
-                    <img src="../../images/work/jacob-talks-baseball/player-profile-modal.png" alt="Player profile modal with bio and pitching stats" loading="lazy">
-                    <figcaption>Player profile</figcaption>
-                </figure>
-                <figure class="gallery-figure">
-                    <img src="../../images/work/jacob-talks-baseball/world-series-recap.jpg" alt="World Series game recap modal with video and box score" loading="lazy">
-                    <figcaption>Game recap &amp; box score</figcaption>
-                </figure>
-                <figure class="gallery-figure">
-                    <img src="../../images/work/jacob-talks-baseball/feed-video-modal.jpg" alt="Video modal playing a Pirates Beyond the Bench episode" loading="lazy">
-                    <figcaption>In-feed video</figcaption>
-                </figure>
-                <figure class="gallery-figure">
-                    <img src="../../images/work/jacob-talks-baseball/link-in-bio.png" alt="Jacob Talks Baseball mobile link-in-bio with social links and favorite team" loading="lazy">
-                    <figcaption>Creator link-in-bio</figcaption>
-                </figure>
-            </div>
-        </section>
-
-        <section class="project-content">
-            <div class="content-section">
-                <h2>Tools &amp; Technologies</h2>
-                <div class="tags-container">
-                    <span class="tag">Product Design</span>
-                    <span class="tag">Design Engineering</span>
-                    <span class="tag">Figma</span>
-                    <span class="tag">Front-end development</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="project-navigation">
-            <a href="/projects/paramount/" class="nav-project prev">
-                <span class="nav-label">Previous Project</span>
-                <span class="nav-title">← Paramount+</span>
-            </a>
-            <a href="/projects/c1b/" class="nav-project next">
-                <span class="nav-label">Next Project</span>
-                <span class="nav-title">Credit Card Company →</span>
-            </a>
-        </section>
-    </main>
-
-    <script src="../../script.js?v=55"></script>
+  <nav class="pager" aria-label="More projects">
+    <a href="/projects/paramount/"><span class="mono">← Previous</span>Paramount+</a>
+    <a href="/projects/c1b/"><span class="mono">Next →</span>Large credit card company</a>
+  </nav>
+</div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="label"><b>Contact</b></p>
+    <h2>Building a design system?<br><span class="muted">Let’s talk.</span></h2>
+    <div class="links">
+      <a class="link" href="https://linkedin.com/in/jacobmolenick" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="link" href="https://www.figma.com/@jacobolenick" target="_blank" rel="noopener">Figma ↗</a>
+      <a class="link" href="https://ko-fi.com/O5O31U1KMI" target="_blank" rel="noopener">Ko-fi ↗</a>
+    </div>
+    <div class="links social">
+      <span class="mono">Talking baseball</span>
+      <a class="link" href="https://www.youtube.com/@jacobtalks-baseball" target="_blank" rel="noopener">YouTube ↗</a>
+      <a class="link" href="https://x.com/jtalksbaseball" target="_blank" rel="noopener">X ↗</a>
+      <a class="link" href="https://www.threads.com/@jacobtalksbaseball" target="_blank" rel="noopener">Threads ↗</a>
+      <a class="link" href="https://www.instagram.com/jacobtalksbaseball" target="_blank" rel="noopener">Instagram ↗</a>
+      <a class="link" href="https://www.tiktok.com/@jacobtalksbaseball" target="_blank" rel="noopener">TikTok ↗</a>
+      <a class="link" href="https://www.facebook.com/profile.php?id=61595596657892" target="_blank" rel="noopener">Facebook ↗</a>
+    </div>
+    <canvas data-pix="pets" data-scale="3" aria-label="A pixel golden doodle walking over to a tuxedo cat"></canvas>
+    <div class="fine mono"><span>© 2026 Jacob Olenick</span><span>Designed &amp; built with care — and a lot of pixels.</span></div>
+  </div>
+</footer>
+<script src="/assets/pixel.js"></script>
+<script src="/assets/site.js"></script>
+<script src="/assets/packs.js"></script>
 </body>
 </html>
