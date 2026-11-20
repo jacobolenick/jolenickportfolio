@@ -32,6 +32,16 @@ function layout({ title, description = C.site.description, path = '/', body, nav
 <meta property="og:title" content="${esc(full)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="${C.site.url}${path}">
+<meta property="og:site_name" content="${C.site.name}">
+<meta property="og:image" content="${C.site.url}/assets/og-image.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="${esc(C.site.name)} — I design the systems behind the screens in your car.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(full)}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${C.site.url}/assets/og-image.png">
 <meta name="theme-color" content="#f4f3ef">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
