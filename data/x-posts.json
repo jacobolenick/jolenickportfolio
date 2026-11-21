@@ -1,8 +1,15 @@
 {
   "screenName": "jtalksbaseball",
   "profileUrl": "https://x.com/jtalksbaseball",
-  "updatedAt": "2026-11-18T20:45:17.517Z",
+  "updatedAt": "2026-11-21T07:34:19.816Z",
   "posts": [
+    {
+      "id": "3995e40677e9ab23",
+      "url": "https://x.com/jtalksbaseball",
+      "text": "Barry Bonds or Ted Williams? If they played in the same era, which player would you choose to have on your team, and why? #MLB #Baseball #BarryBonds",
+      "media": null,
+      "hasVideo": false
+    },
     {
       "id": "3acb547ccb590545",
       "url": "https://x.com/jtalksbaseball",
@@ -30,13 +37,6 @@
       "text": "5 Athletics players I wish had never left for other teams. If they stayed, would the A's have won more rings? Follow @jtalksbaseball for all your baseball content, and don't forget to share with 3 friends and save for later. #MLB #Baseball",
       "media": "images/x/2120654017806385152.jpg",
       "hasVideo": true
-    },
-    {
-      "id": "b5a054ccb22c4b00",
-      "url": "https://x.com/jtalksbaseball",
-      "text": "The MLB has announced the American and National League Coaches of the Year. Pat Murphy is the first coach to win it 3 years in a row in MLB history. He's also coming off a World Series Championship. Will Venable took a losing White Sox team to the playoffs. #MLB #Baseball #MLBCreator",
-      "media": "images/x/b5a054ccb22c4b00.jpg",
-      "hasVideo": false
     }
   ]
 }
