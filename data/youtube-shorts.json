@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-21T22:32:19.778Z",
+  "updatedAt": "2026-11-22T03:52:43.714Z",
   "shorts": [
+    {
+      "id": "8omQ1XvBlWY",
+      "title": "The MLB Owners Aren't Budging. They Expect a Lockout! #MLB #mlblockout #Baseball",
+      "url": "https://www.youtube.com/shorts/8omQ1XvBlWY",
+      "thumbnail": "https://i.ytimg.com/vi/8omQ1XvBlWY/hq2.jpg"
+    },
     {
       "id": "iSAsRw-fp-o",
       "title": "Japanese Baseball Player are the Best in the World. It's Not Even Close. #baseball #mlb #MLBCreator",
@@ -140,12 +146,6 @@
       "title": "Ranking MLB logos in the American League Central. #mlb #baseball #worldseries",
       "url": "https://www.youtube.com/shorts/e40fI8-GOVk",
       "thumbnail": "https://i.ytimg.com/vi/e40fI8-GOVk/hq2.jpg"
-    },
-    {
-      "id": "rNtWcJ984zo",
-      "title": "Ranking MLB logos #mlb  #baseball #baseballcontent",
-      "url": "https://www.youtube.com/shorts/rNtWcJ984zo",
-      "thumbnail": "https://i.ytimg.com/vi/rNtWcJ984zo/hq2.jpg"
     }
   ]
 }
