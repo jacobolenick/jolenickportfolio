@@ -1,8 +1,14 @@
 {
   "channelId": "UCNdzT3Xk9gRy613TC5wP6Kw",
   "channelUrl": "https://www.youtube.com/@jacobtalks-baseball",
-  "updatedAt": "2026-11-22T13:43:55.790Z",
+  "updatedAt": "2026-11-22T22:55:29.016Z",
   "shorts": [
+    {
+      "id": "jXuagUTNGV8",
+      "title": "MLB Says All 30 Teams Are in Agreement for a Salary Cap and Floor. #MLB #Baseball #mlbbshorts",
+      "url": "https://www.youtube.com/shorts/jXuagUTNGV8",
+      "thumbnail": "https://i.ytimg.com/vi/jXuagUTNGV8/hq2.jpg"
+    },
     {
       "id": "g5yu-aO_LIU",
       "title": "Skubal to the Mets for $400M? #tarikskubal #mlb #mlbfreeagency",
@@ -140,12 +146,6 @@
       "title": "Game 4 of the World Series. Brewers are up 3-0. Will Tampa steal a game? #worldseries #mlb #baseball",
       "url": "https://www.youtube.com/shorts/BYFEsN2SkVI",
       "thumbnail": "https://i.ytimg.com/vi/BYFEsN2SkVI/hq2.jpg"
-    },
-    {
-      "id": "vooYQLBid-Q",
-      "title": "Brewers take a 2-0 lead in a thrilling Game 2 of the World Series #worldseries  #baseball #mlblb",
-      "url": "https://www.youtube.com/shorts/vooYQLBid-Q",
-      "thumbnail": "https://i.ytimg.com/vi/vooYQLBid-Q/hq2.jpg"
     }
   ]
 }
